@@ -1,3 +1,4 @@
+-- main entry point
 -- purpose: entry point wiring all modules
 local function req(name)
     if script and script.Parent then

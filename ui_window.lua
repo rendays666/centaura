@@ -1,7 +1,6 @@
--- purpose: main window, title bar, status bar, drag
+-- purpose: main window, title bar, status bar, drag, floating toggle logo
 local M = {}
 function M.setup(ctx)
-    local PG = ctx.PG
     local UIS = ctx.UIS
     local Cam = ctx.Cam
     local CONFIG = ctx.CONFIG
@@ -22,7 +21,7 @@ function M.setup(ctx)
     ctx.gui.ResetOnSpawn = false
     ctx.gui.IgnoreGuiInset = true
     ctx.gui.DisplayOrder = 999
-    ctx.gui.Parent = PG
+    ctx.gui.Parent = ctx.PG
 
     local main = Instance.new("Frame")
     main.Size = UDim2.new(0, FRAME_W, 0, FRAME_H)
@@ -49,7 +48,7 @@ function M.setup(ctx)
     ctx.tb = tb
 
     local tl = Instance.new("TextLabel")
-    tl.Size = UDim2.new(1, -50, 1, 0)
+    tl.Size = UDim2.new(1, -28, 1, 0)
     tl.Position = UDim2.new(0, 8, 0, 0)
     tl.BackgroundTransparency = 1
     tl.Text = CONFIG.Title
@@ -61,7 +60,7 @@ function M.setup(ctx)
 
     local mBtn = Instance.new("TextButton")
     mBtn.Size = UDim2.new(0, 20, 0, 20)
-    mBtn.Position = UDim2.new(1, -44, 0, 2)
+    mBtn.Position = UDim2.new(1, -24, 0, 2)
     mBtn.BackgroundColor3 = Color3.fromRGB(50, 50, 70)
     mBtn.Text = "-"
     mBtn.TextColor3 = Color3.new(1, 1, 1)
@@ -72,20 +71,6 @@ function M.setup(ctx)
     mBtn.Parent = tb
     Instance.new("UICorner", mBtn).CornerRadius = UDim.new(0, 3)
     ctx.mBtn = mBtn
-
-    local xBtn = Instance.new("TextButton")
-    xBtn.Size = UDim2.new(0, 20, 0, 20)
-    xBtn.Position = UDim2.new(1, -22, 0, 2)
-    xBtn.BackgroundColor3 = Color3.fromRGB(210, 55, 55)
-    xBtn.Text = "X"
-    xBtn.TextColor3 = Color3.new(1, 1, 1)
-    xBtn.TextSize = 11
-    xBtn.Font = Enum.Font.GothamBold
-    xBtn.BorderSizePixel = 0
-    xBtn.AutoButtonColor = false
-    xBtn.Parent = tb
-    Instance.new("UICorner", xBtn).CornerRadius = UDim.new(0, 3)
-    ctx.xBtn = xBtn
 
     local statusBar = Instance.new("Frame")
     statusBar.Size = UDim2.new(1, -6, 0, STATUS_H)
@@ -119,18 +104,7 @@ function M.setup(ctx)
         mBtn.Text = minimized and "+" or "-"
     end)
 
-    xBtn.Activated:Connect(function()
-        local opts = ctx.opts
-        for k in pairs(opts) do if type(opts[k]) == "boolean" then opts[k] = false end end
-        if ctx.MODULES_OK then ctx.apply() end
-        for k in pairs(ctx.pending) do ctx.pending[k] = nil end
-        ctx.clearPlayerESP()
-        if ctx.fovCircle then pcall(function() ctx.fovCircle:Remove() end) end
-        ctx.gui:Destroy()
-        ctx.lbGui:Destroy()
-    end)
-
-    do
+    do -- title bar drag
         local d, s, sp = false, nil, nil
         tb.InputBegan:Connect(function(i)
             if i.UserInputType == Enum.UserInputType.Touch or i.UserInputType == Enum.UserInputType.MouseButton1 then
@@ -148,6 +122,54 @@ function M.setup(ctx)
         end)
         UIS.InputEnded:Connect(function(i)
             if i.UserInputType == Enum.UserInputType.Touch or i.UserInputType == Enum.UserInputType.MouseButton1 then
+                d = false
+            end
+        end)
+    end
+
+    do -- floating logo at right-middle: drag to move, tap to show/hide the GUI
+        local tog = Instance.new("TextButton")
+        tog.Size = UDim2.new(0, 34, 0, 34)
+        tog.Position = UDim2.new(1, -46, 0.5, -17)
+        tog.BackgroundColor3 = Color3.fromRGB(0, 170, 130)
+        tog.Text = "T"
+        tog.TextColor3 = Color3.new(1, 1, 1)
+        tog.TextSize = 16
+        tog.Font = Enum.Font.GothamBlack
+        tog.BorderSizePixel = 0
+        tog.AutoButtonColor = false
+        tog.Parent = ctx.gui
+        Instance.new("UICorner", tog).CornerRadius = UDim.new(1, 0)
+        local tstroke = Instance.new("UIStroke")
+        tstroke.Color = Color3.fromRGB(0, 255, 200)
+        tstroke.Thickness = 1.5
+        tstroke.Parent = tog
+        ctx.togBtn = tog
+
+        local d, s, sp, moved = false, nil, nil, false
+        tog.InputBegan:Connect(function(i)
+            if i.UserInputType == Enum.UserInputType.Touch or i.UserInputType == Enum.UserInputType.MouseButton1 then
+                d, moved = true, false
+                s = i.Position
+                sp = tog.Position
+            end
+        end)
+        UIS.InputChanged:Connect(function(i)
+            if not d then return end
+            if i.UserInputType == Enum.UserInputType.Touch or i.UserInputType == Enum.UserInputType.MouseMovement then
+                local dd = i.Position - s
+                if math.abs(dd.X) > 6 or math.abs(dd.Y) > 6 then moved = true end
+                if moved then
+                    tog.Position = UDim2.new(sp.X.Scale, sp.X.Offset + dd.X, sp.Y.Scale, sp.Y.Offset + dd.Y)
+                end
+            end
+        end)
+        UIS.InputEnded:Connect(function(i)
+            if i.UserInputType == Enum.UserInputType.Touch or i.UserInputType == Enum.UserInputType.MouseButton1 then
+                if d and not moved then
+                    main.Visible = not main.Visible
+                    tog.BackgroundColor3 = main.Visible and Color3.fromRGB(0, 170, 130) or Color3.fromRGB(120, 120, 130)
+                end
                 d = false
             end
         end)

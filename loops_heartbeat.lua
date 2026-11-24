@@ -24,19 +24,19 @@ function M.setup(ctx)
             for k in pairs(ctx.pending) do ctx.pending[k] = nil end
         end
 
-        if ctx.MODULES_OK and ctx.opts.DamageArmor then
+        if ctx.MODULES_OK and (ctx.opts.DamageArmor or ctx.opts.ArmorESP) then
             pcall(function()
                 local now = tick()
                 if now - ctx.armorLastScan >= ctx.CONFIG.ArmorScanInterval then
                     ctx.armorLastScan = now
                     ctx.armorCache = ctx.scanEnemyArmor()
                 end
-                if #ctx.armorCache > 0 and now - ctx.armorLastShot >= ctx.CONFIG.ArmorFireInterval then
+                if ctx.opts.DamageArmor and #ctx.armorCache > 0 and now - ctx.armorLastShot >= ctx.CONFIG.ArmorFireInterval then
                     local myHRP = (LP.Character and LP.Character:FindFirstChild("HumanoidRootPart"))
                     local best, bestD = nil, math.huge
                     for _, m in ipairs(ctx.armorCache) do
                         if m.Parent then
-                            local ref = m:FindFirstChild("Head") or m.PrimaryPart
+                            local ref = m:FindFirstChild("Head") or m.PrimaryPart or m:FindFirstChildOfClass("BasePart")
                             if ref then
                                 local d = myHRP and (ref.Position - myHRP.Position).Magnitude or 0
                                 if d < bestD and d <= ctx.CONFIG.MaxArmorDistance then

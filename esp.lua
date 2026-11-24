@@ -16,6 +16,58 @@ function M.setup(ctx)
         for k in pairs(playerESPObjects) do playerESPObjects[k] = nil end
     end
 
+    ctx.vehicleESPObjects = ctx.vehicleESPObjects or {}
+    local vehicleESPObjects = ctx.vehicleESPObjects
+
+    ctx.clearVehicleESP = function()
+        for _, obj in pairs(vehicleESPObjects) do
+            for _, d in pairs(obj) do pcall(function() d:Remove() end) end
+        end
+        for k in pairs(vehicleESPObjects) do vehicleESPObjects[k] = nil end
+    end
+
+    ctx.updateVehicleESP = function()
+        if not opts.ArmorESP then ctx.clearVehicleESP(); return end
+        local seen = {}
+        for _, m in ipairs(ctx.armorCache or {}) do
+            if m.Parent then
+                local ref = m.PrimaryPart or m:FindFirstChildOfClass("BasePart")
+                if ref then
+                    local pos, onScreen = Cam:WorldToViewportPoint(ref.Position)
+                    local dist = (Cam.CFrame.Position - ref.Position).Magnitude
+                    if onScreen and dist <= ctx.CONFIG.MaxArmorDistance then
+                        seen[m] = true
+                        if not vehicleESPObjects[m] then
+                            local ok, txt, dtxt = pcall(function()
+                                local a = Drawing.new("Text"); a.Size = 14; a.Color = Color3.fromRGB(255, 170, 60); a.Center = true; a.Outline = true
+                                local b = Drawing.new("Text"); b.Size = 12; b.Color = Color3.fromRGB(255, 220, 120); b.Center = true; b.Outline = true
+                                return a, b
+                            end)
+                            if ok then vehicleESPObjects[m] = { name = txt, dist = dtxt } end
+                        end
+                        local obj = vehicleESPObjects[m]
+                        if obj then
+                            obj.name.Text = "[ARMOR] " .. m.Name
+                            obj.name.Position = Vector2.new(pos.X, pos.Y - 14)
+                            obj.name.Visible = true
+                            if opts.ArmorESPShowDist then
+                                obj.dist.Text = math.floor(dist) .. "m"
+                                obj.dist.Position = Vector2.new(pos.X, pos.Y)
+                                obj.dist.Visible = true
+                            else obj.dist.Visible = false end
+                        end
+                    end
+                end
+            end
+        end
+        for m, obj in pairs(vehicleESPObjects) do
+            if not seen[m] then
+                for _, d in pairs(obj) do pcall(function() d:Remove() end) end
+                vehicleESPObjects[m] = nil
+            end
+        end
+    end
+
     ctx.updatePlayerESP = function()
         if not opts.PlayerESP then ctx.clearPlayerESP(); return end
         local seen = {}

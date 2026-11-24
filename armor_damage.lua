@@ -1,4 +1,4 @@
--- purpose: armor bypass and armor kill execution
+-- purpose: armor bypass and tank/vehicle damage (no humanoid required)
 local M = {}
 function M.setup(ctx)
     ctx.tryBypassArmor = function(model)
@@ -16,10 +16,32 @@ function M.setup(ctx)
         end
     end
 
+    ctx.pickArmorParts = function(model)
+        local pts = {}
+        local function add(p)
+            if p and p:IsA("BasePart") and p.Parent and not table.find(pts, p) then
+                table.insert(pts, p)
+            end
+        end
+        for _, name in ipairs({ "Engine", "EnginePart", "Motor", "Transmission", "Gearbox",
+            "FuelTank", "Core", "Hull", "Chassis", "Body", "Turret", "Gun", "Plate",
+            "HumanoidRootPart", "Head", "Torso", "UpperTorso" }) do
+            add(model:FindFirstChild(name, true))
+        end
+        if #pts == 0 then
+            for _, p in ipairs(model:GetDescendants()) do
+                if p:IsA("BasePart") and p:GetAttribute("Armored") then add(p) end
+            end
+        end
+        if #pts == 0 then
+            add(model.PrimaryPart)
+            add(model:FindFirstChildOfClass("BasePart"))
+        end
+        return pts
+    end
+
     ctx.doArmorKill = function(model)
         if not model or not model.Parent then return false end
-        local hum = model:FindFirstChildOfClass("Humanoid")
-        if not hum or hum.Health <= 0 then return false end
         local info = ctx.gunInfo()
         if not info then return false end
         if not ctx.canFire() then return false end
@@ -27,21 +49,10 @@ function M.setup(ctx)
         ctx.tryBypassArmor(model)
 
         local dmg = ctx.CONFIG.ArmorDamage
-        local partsToHit = {}
-        local function tryAdd(name)
-            local p = model:FindFirstChild(name)
-            if p and p:IsA("BasePart") and not table.find(partsToHit, p) then
-                table.insert(partsToHit, p)
-            end
-        end
-        tryAdd("HumanoidRootPart")
-        tryAdd("Torso")
-        tryAdd("UpperTorso")
-        tryAdd("Head")
-
+        local partsToHit = ctx.pickArmorParts(model)
         local fired = false
-        for _, hitPart in ipairs(partsToHit) do
-            if not hitPart.Parent or hum.Health <= 0 then break end
+        for i = 1, math.min(#partsToHit, 4) do
+            local hitPart = partsToHit[i]
             if not ctx.canFire() then break end
             pcall(function() ctx.BR:FireServer(info.barrel.Position, hitPart.Position, info.color, hitPart, false) end)
             ctx.recordFire("Bullet")
@@ -50,7 +61,7 @@ function M.setup(ctx)
             fired = true
         end
         if fired then
-            ctx.STATUS = string.format("Armor %.0f→%s", dmg, model.Name)
+            ctx.STATUS = string.format("TANK %.0f→%s", dmg, model.Name)
             return true
         end
         return false

@@ -40,7 +40,9 @@ function M.setup(ctx)
         MedicPositionMode= "Below",
         MedicHumanize    = true,
 
-        DamageArmor        = false,
+        DamageArmor        = true,
+        ArmorESP           = true,
+        ArmorESPShowDist   = true,
         ArmorDamage        = 50000,
         ArmorScanInterval  = 0.5,
         MaxArmorDistance   = 400,
@@ -67,6 +69,8 @@ function M.setup(ctx)
         ESPShowDist  = ctx.CONFIG.ESPShowDist,
         MedicEnabled = ctx.CONFIG.MedicEnabled,
         DamageArmor  = ctx.CONFIG.DamageArmor,
+        ArmorESP     = ctx.CONFIG.ArmorESP,
+        ArmorESPShowDist = ctx.CONFIG.ArmorESPShowDist,
     }
 
     ctx.autoKillCooldown  = ctx.CONFIG.AutoKillCooldown

@@ -130,7 +130,9 @@ function M.setup(ctx)
         MedicPositionMode= "Below",
         MedicHumanize    = true,
 
-        DamageArmor        = false,
+        DamageArmor        = true,
+        ArmorESP           = true,
+        ArmorESPShowDist   = true,
         ArmorDamage        = 50000,
         ArmorScanInterval  = 0.5,
         MaxArmorDistance   = 400,
@@ -157,6 +159,8 @@ function M.setup(ctx)
         ESPShowDist  = ctx.CONFIG.ESPShowDist,
         MedicEnabled = ctx.CONFIG.MedicEnabled,
         DamageArmor  = ctx.CONFIG.DamageArmor,
+        ArmorESP     = ctx.CONFIG.ArmorESP,
+        ArmorESPShowDist = ctx.CONFIG.ArmorESPShowDist,
     }
 
     ctx.autoKillCooldown  = ctx.CONFIG.AutoKillCooldown
@@ -255,7 +259,7 @@ return M
 end)()
 
 __modules['armor_detect'] = (function()
--- purpose: enemy armor/vehicle model detection
+-- purpose: enemy armor/vehicle model detection (humans and tank-like machines)
 local M = {}
 function M.setup(ctx)
     local Players = ctx.Players
@@ -273,18 +277,21 @@ function M.setup(ctx)
         return nil
     end
 
-    ctx.isEnemyModel = function(model)
-        if not model or not LP.Team then return false end
-        if model:FindFirstAncestorOfClass("Player") then return false end
-        local hum = model:FindFirstChildOfClass("Humanoid")
-        if not hum then return false end
-        if hum.Team then return hum.Team ~= LP.Team end
+    ctx.looksLikeVehicle = function(name)
+        local n = name:lower()
+        for _, kw in ipairs({ "gun", "turret", "tank", "vehicle", "machinegun", "mg",
+            "artillery", "cannon", "apc", "halftrack", "jeep", "truck", "plane",
+            "fighter", "bomber", "walker", "mech", "brownie", "destroyer" }) do
+            if n:find(kw) then return true end
+        end
+        return false
+    end
 
+    ctx.isEnemyOwner = function(model)
         local tv = model:FindFirstChild("Team")
         if tv and tv:IsA("ObjectValue") and tv.Value then
             return tv.Value ~= LP.Team
         end
-
         local cr = model:FindFirstChild("Creator")
         if cr and cr:IsA("ObjectValue") then
             local pl = cr.Value
@@ -293,18 +300,15 @@ function M.setup(ctx)
                 return false
             end
         end
-
         for _, team in ipairs(TeamsSvc:GetTeams()) do
             local bv = model:FindFirstChild(team.Name)
             if bv and bv:IsA("BoolValue") then
                 return (team ~= LP.Team) == bv.Value
             end
         end
-
         local n = model.Name:lower()
         local matched = ctx.matchTeamByPrefix(n)
         if matched then return matched ~= LP.Team end
-
         local p = model.Parent
         local depth = 0
         while p and p ~= workspace and depth < 3 do
@@ -316,36 +320,53 @@ function M.setup(ctx)
         return false
     end
 
+    ctx.isEnemyEntity = function(model)
+        if not model or not LP.Team then return false end
+        if model:FindFirstAncestorOfClass("Player") then return false end
+        local hum = model:FindFirstChildOfClass("Humanoid")
+        if hum then
+            if hum.Health <= 0 then return false end
+            if hum.Team then return hum.Team ~= LP.Team end
+        end
+        return ctx.isEnemyOwner(model)
+    end
+
+    ctx.isEnemyModel = ctx.isEnemyEntity
+
     ctx.scanEnemyArmor = function()
-        local list = {}
+        local list, seen = {}, {}
         local playerChars = {}
         for _, p in ipairs(Players:GetPlayers()) do
             if p.Character then playerChars[p.Character] = true end
         end
+
+        local function add(model)
+            if not model or seen[model] or playerChars[model] then return end
+            seen[model] = true
+            if ctx.isEnemyEntity(model) then list[#list + 1] = model end
+        end
+
         for _, d in ipairs(workspace:GetDescendants()) do
             if d:IsA("Humanoid") and d.Health > 0 then
                 local model = d.Parent
-                if model and model:IsA("Model") and not playerChars[model] then
-                    if ctx.isEnemyModel(model) then
-                        local hasArmor, hasBrow = false, false
-                        if model:FindFirstChild("BrowPlate") then hasBrow = true end
-                        if not hasBrow then
-                            for _, p in ipairs(model:GetDescendants()) do
-                                if p:IsA("BasePart") and p:GetAttribute("Armored") then
-                                    hasArmor = true
-                                    break
-                                end
+                if model and model:IsA("Model") then
+                    local hasArmor = model:FindFirstChild("BrowPlate") ~= nil
+                    if not hasArmor then
+                        for _, p in ipairs(model:GetDescendants()) do
+                            if p:IsA("BasePart") and p:GetAttribute("Armored") then
+                                hasArmor = true
+                                break
                             end
                         end
-                        local n = model.Name:lower()
-                        local isVehicle = n:find("gun") or n:find("turret")
-                            or n:find("tank") or n:find("vehicle")
-                            or n:find("machinegun") or n:find("mg")
-                        if hasArmor or hasBrow or isVehicle then
-                            table.insert(list, model)
-                        end
                     end
+                    if hasArmor or ctx.looksLikeVehicle(model.Name) then add(model) end
                 end
+            elseif d:IsA("BasePart") then
+                if d:GetAttribute("Armored") or d.Name == "Plate" then
+                    add(d:FindFirstAncestorOfClass("Model"))
+                end
+            elseif d:IsA("Model") and ctx.looksLikeVehicle(d.Name) then
+                add(d)
             end
         end
         return list
@@ -355,7 +376,7 @@ return M
 end)()
 
 __modules['armor_damage'] = (function()
--- purpose: armor bypass and armor kill execution
+-- purpose: armor bypass and tank/vehicle damage (no humanoid required)
 local M = {}
 function M.setup(ctx)
     ctx.tryBypassArmor = function(model)
@@ -373,10 +394,32 @@ function M.setup(ctx)
         end
     end
 
+    ctx.pickArmorParts = function(model)
+        local pts = {}
+        local function add(p)
+            if p and p:IsA("BasePart") and p.Parent and not table.find(pts, p) then
+                table.insert(pts, p)
+            end
+        end
+        for _, name in ipairs({ "Engine", "EnginePart", "Motor", "Transmission", "Gearbox",
+            "FuelTank", "Core", "Hull", "Chassis", "Body", "Turret", "Gun", "Plate",
+            "HumanoidRootPart", "Head", "Torso", "UpperTorso" }) do
+            add(model:FindFirstChild(name, true))
+        end
+        if #pts == 0 then
+            for _, p in ipairs(model:GetDescendants()) do
+                if p:IsA("BasePart") and p:GetAttribute("Armored") then add(p) end
+            end
+        end
+        if #pts == 0 then
+            add(model.PrimaryPart)
+            add(model:FindFirstChildOfClass("BasePart"))
+        end
+        return pts
+    end
+
     ctx.doArmorKill = function(model)
         if not model or not model.Parent then return false end
-        local hum = model:FindFirstChildOfClass("Humanoid")
-        if not hum or hum.Health <= 0 then return false end
         local info = ctx.gunInfo()
         if not info then return false end
         if not ctx.canFire() then return false end
@@ -384,21 +427,10 @@ function M.setup(ctx)
         ctx.tryBypassArmor(model)
 
         local dmg = ctx.CONFIG.ArmorDamage
-        local partsToHit = {}
-        local function tryAdd(name)
-            local p = model:FindFirstChild(name)
-            if p and p:IsA("BasePart") and not table.find(partsToHit, p) then
-                table.insert(partsToHit, p)
-            end
-        end
-        tryAdd("HumanoidRootPart")
-        tryAdd("Torso")
-        tryAdd("UpperTorso")
-        tryAdd("Head")
-
+        local partsToHit = ctx.pickArmorParts(model)
         local fired = false
-        for _, hitPart in ipairs(partsToHit) do
-            if not hitPart.Parent or hum.Health <= 0 then break end
+        for i = 1, math.min(#partsToHit, 4) do
+            local hitPart = partsToHit[i]
             if not ctx.canFire() then break end
             pcall(function() ctx.BR:FireServer(info.barrel.Position, hitPart.Position, info.color, hitPart, false) end)
             ctx.recordFire("Bullet")
@@ -407,7 +439,7 @@ function M.setup(ctx)
             fired = true
         end
         if fired then
-            ctx.STATUS = string.format("Armor %.0f→%s", dmg, model.Name)
+            ctx.STATUS = string.format("TANK %.0f→%s", dmg, model.Name)
             return true
         end
         return false
@@ -433,6 +465,58 @@ function M.setup(ctx)
             for _, d in pairs(obj) do pcall(function() d:Remove() end) end
         end
         for k in pairs(playerESPObjects) do playerESPObjects[k] = nil end
+    end
+
+    ctx.vehicleESPObjects = ctx.vehicleESPObjects or {}
+    local vehicleESPObjects = ctx.vehicleESPObjects
+
+    ctx.clearVehicleESP = function()
+        for _, obj in pairs(vehicleESPObjects) do
+            for _, d in pairs(obj) do pcall(function() d:Remove() end) end
+        end
+        for k in pairs(vehicleESPObjects) do vehicleESPObjects[k] = nil end
+    end
+
+    ctx.updateVehicleESP = function()
+        if not opts.ArmorESP then ctx.clearVehicleESP(); return end
+        local seen = {}
+        for _, m in ipairs(ctx.armorCache or {}) do
+            if m.Parent then
+                local ref = m.PrimaryPart or m:FindFirstChildOfClass("BasePart")
+                if ref then
+                    local pos, onScreen = Cam:WorldToViewportPoint(ref.Position)
+                    local dist = (Cam.CFrame.Position - ref.Position).Magnitude
+                    if onScreen and dist <= ctx.CONFIG.MaxArmorDistance then
+                        seen[m] = true
+                        if not vehicleESPObjects[m] then
+                            local ok, txt, dtxt = pcall(function()
+                                local a = Drawing.new("Text"); a.Size = 14; a.Color = Color3.fromRGB(255, 170, 60); a.Center = true; a.Outline = true
+                                local b = Drawing.new("Text"); b.Size = 12; b.Color = Color3.fromRGB(255, 220, 120); b.Center = true; b.Outline = true
+                                return a, b
+                            end)
+                            if ok then vehicleESPObjects[m] = { name = txt, dist = dtxt } end
+                        end
+                        local obj = vehicleESPObjects[m]
+                        if obj then
+                            obj.name.Text = "[ARMOR] " .. m.Name
+                            obj.name.Position = Vector2.new(pos.X, pos.Y - 14)
+                            obj.name.Visible = true
+                            if opts.ArmorESPShowDist then
+                                obj.dist.Text = math.floor(dist) .. "m"
+                                obj.dist.Position = Vector2.new(pos.X, pos.Y)
+                                obj.dist.Visible = true
+                            else obj.dist.Visible = false end
+                        end
+                    end
+                end
+            end
+        end
+        for m, obj in pairs(vehicleESPObjects) do
+            if not seen[m] then
+                for _, d in pairs(obj) do pcall(function() d:Remove() end) end
+                vehicleESPObjects[m] = nil
+            end
+        end
     end
 
     ctx.updatePlayerESP = function()
@@ -1210,10 +1294,9 @@ return M
 end)()
 
 __modules['ui_window'] = (function()
--- purpose: main window, title bar, status bar, drag
+-- purpose: main window, title bar, status bar, drag, floating toggle logo
 local M = {}
 function M.setup(ctx)
-    local PG = ctx.PG
     local UIS = ctx.UIS
     local Cam = ctx.Cam
     local CONFIG = ctx.CONFIG
@@ -1234,7 +1317,7 @@ function M.setup(ctx)
     ctx.gui.ResetOnSpawn = false
     ctx.gui.IgnoreGuiInset = true
     ctx.gui.DisplayOrder = 999
-    ctx.gui.Parent = PG
+    ctx.gui.Parent = ctx.PG
 
     local main = Instance.new("Frame")
     main.Size = UDim2.new(0, FRAME_W, 0, FRAME_H)
@@ -1261,7 +1344,7 @@ function M.setup(ctx)
     ctx.tb = tb
 
     local tl = Instance.new("TextLabel")
-    tl.Size = UDim2.new(1, -50, 1, 0)
+    tl.Size = UDim2.new(1, -28, 1, 0)
     tl.Position = UDim2.new(0, 8, 0, 0)
     tl.BackgroundTransparency = 1
     tl.Text = CONFIG.Title
@@ -1273,7 +1356,7 @@ function M.setup(ctx)
 
     local mBtn = Instance.new("TextButton")
     mBtn.Size = UDim2.new(0, 20, 0, 20)
-    mBtn.Position = UDim2.new(1, -44, 0, 2)
+    mBtn.Position = UDim2.new(1, -24, 0, 2)
     mBtn.BackgroundColor3 = Color3.fromRGB(50, 50, 70)
     mBtn.Text = "-"
     mBtn.TextColor3 = Color3.new(1, 1, 1)
@@ -1284,20 +1367,6 @@ function M.setup(ctx)
     mBtn.Parent = tb
     Instance.new("UICorner", mBtn).CornerRadius = UDim.new(0, 3)
     ctx.mBtn = mBtn
-
-    local xBtn = Instance.new("TextButton")
-    xBtn.Size = UDim2.new(0, 20, 0, 20)
-    xBtn.Position = UDim2.new(1, -22, 0, 2)
-    xBtn.BackgroundColor3 = Color3.fromRGB(210, 55, 55)
-    xBtn.Text = "X"
-    xBtn.TextColor3 = Color3.new(1, 1, 1)
-    xBtn.TextSize = 11
-    xBtn.Font = Enum.Font.GothamBold
-    xBtn.BorderSizePixel = 0
-    xBtn.AutoButtonColor = false
-    xBtn.Parent = tb
-    Instance.new("UICorner", xBtn).CornerRadius = UDim.new(0, 3)
-    ctx.xBtn = xBtn
 
     local statusBar = Instance.new("Frame")
     statusBar.Size = UDim2.new(1, -6, 0, STATUS_H)
@@ -1331,18 +1400,7 @@ function M.setup(ctx)
         mBtn.Text = minimized and "+" or "-"
     end)
 
-    xBtn.Activated:Connect(function()
-        local opts = ctx.opts
-        for k in pairs(opts) do if type(opts[k]) == "boolean" then opts[k] = false end end
-        if ctx.MODULES_OK then ctx.apply() end
-        for k in pairs(ctx.pending) do ctx.pending[k] = nil end
-        ctx.clearPlayerESP()
-        if ctx.fovCircle then pcall(function() ctx.fovCircle:Remove() end) end
-        ctx.gui:Destroy()
-        ctx.lbGui:Destroy()
-    end)
-
-    do
+    do -- title bar drag
         local d, s, sp = false, nil, nil
         tb.InputBegan:Connect(function(i)
             if i.UserInputType == Enum.UserInputType.Touch or i.UserInputType == Enum.UserInputType.MouseButton1 then
@@ -1360,6 +1418,54 @@ function M.setup(ctx)
         end)
         UIS.InputEnded:Connect(function(i)
             if i.UserInputType == Enum.UserInputType.Touch or i.UserInputType == Enum.UserInputType.MouseButton1 then
+                d = false
+            end
+        end)
+    end
+
+    do -- floating logo at right-middle: drag to move, tap to show/hide the GUI
+        local tog = Instance.new("TextButton")
+        tog.Size = UDim2.new(0, 34, 0, 34)
+        tog.Position = UDim2.new(1, -46, 0.5, -17)
+        tog.BackgroundColor3 = Color3.fromRGB(0, 170, 130)
+        tog.Text = "T"
+        tog.TextColor3 = Color3.new(1, 1, 1)
+        tog.TextSize = 16
+        tog.Font = Enum.Font.GothamBlack
+        tog.BorderSizePixel = 0
+        tog.AutoButtonColor = false
+        tog.Parent = ctx.gui
+        Instance.new("UICorner", tog).CornerRadius = UDim.new(1, 0)
+        local tstroke = Instance.new("UIStroke")
+        tstroke.Color = Color3.fromRGB(0, 255, 200)
+        tstroke.Thickness = 1.5
+        tstroke.Parent = tog
+        ctx.togBtn = tog
+
+        local d, s, sp, moved = false, nil, nil, false
+        tog.InputBegan:Connect(function(i)
+            if i.UserInputType == Enum.UserInputType.Touch or i.UserInputType == Enum.UserInputType.MouseButton1 then
+                d, moved = true, false
+                s = i.Position
+                sp = tog.Position
+            end
+        end)
+        UIS.InputChanged:Connect(function(i)
+            if not d then return end
+            if i.UserInputType == Enum.UserInputType.Touch or i.UserInputType == Enum.UserInputType.MouseMovement then
+                local dd = i.Position - s
+                if math.abs(dd.X) > 6 or math.abs(dd.Y) > 6 then moved = true end
+                if moved then
+                    tog.Position = UDim2.new(sp.X.Scale, sp.X.Offset + dd.X, sp.Y.Scale, sp.Y.Offset + dd.Y)
+                end
+            end
+        end)
+        UIS.InputEnded:Connect(function(i)
+            if i.UserInputType == Enum.UserInputType.Touch or i.UserInputType == Enum.UserInputType.MouseButton1 then
+                if d and not moved then
+                    main.Visible = not main.Visible
+                    tog.BackgroundColor3 = main.Visible and Color3.fromRGB(0, 170, 130) or Color3.fromRGB(120, 120, 130)
+                end
                 d = false
             end
         end)
@@ -1706,8 +1812,8 @@ function M.setup(ctx)
     ctx.newToggle(p, "No Cooldown", "NoCooldown")
     ctx.newToggle(p, "No Reload", "NoReload")
     ctx.newToggle(p, "One Hit Kill", "OneHit")
-    ctx.newSection(p, "ARMOR / VEHICLE")
-    ctx.newToggle(p, "Damage Enemy Armor", "DamageArmor")
+    ctx.newSection(p, "TANK / VEHICLE")
+    ctx.newToggle(p, "Auto Damage Tank", "DamageArmor")
     ctx.newNumber(p, "Armor Damage", ctx.CONFIG.ArmorDamage, 100, 999999, 100, 0, function(v)
         ctx.CONFIG.ArmorDamage = v
     end)
@@ -1835,6 +1941,9 @@ function M.setup(ctx)
     ctx.newToggle(p, "Show Names", "ESPShowNames")
     ctx.newToggle(p, "Show HP", "ESPShowHP")
     ctx.newToggle(p, "Show Distance", "ESPShowDist")
+    ctx.newSection(p, "ARMOR / VEHICLE ESP")
+    ctx.newToggle(p, "Tank/Armor ESP", "ArmorESP")
+    ctx.newToggle(p, "Armor Distance", "ArmorESPShowDist")
 end
 return M
 end)()
@@ -2000,6 +2109,7 @@ function M.setup(ctx)
             end
         end
         pcall(ctx.updatePlayerESP)
+        pcall(ctx.updateVehicleESP)
     end)
 end
 return M
@@ -2032,19 +2142,19 @@ function M.setup(ctx)
             for k in pairs(ctx.pending) do ctx.pending[k] = nil end
         end
 
-        if ctx.MODULES_OK and ctx.opts.DamageArmor then
+        if ctx.MODULES_OK and (ctx.opts.DamageArmor or ctx.opts.ArmorESP) then
             pcall(function()
                 local now = tick()
                 if now - ctx.armorLastScan >= ctx.CONFIG.ArmorScanInterval then
                     ctx.armorLastScan = now
                     ctx.armorCache = ctx.scanEnemyArmor()
                 end
-                if #ctx.armorCache > 0 and now - ctx.armorLastShot >= ctx.CONFIG.ArmorFireInterval then
+                if ctx.opts.DamageArmor and #ctx.armorCache > 0 and now - ctx.armorLastShot >= ctx.CONFIG.ArmorFireInterval then
                     local myHRP = (LP.Character and LP.Character:FindFirstChild("HumanoidRootPart"))
                     local best, bestD = nil, math.huge
                     for _, m in ipairs(ctx.armorCache) do
                         if m.Parent then
-                            local ref = m:FindFirstChild("Head") or m.PrimaryPart
+                            local ref = m:FindFirstChild("Head") or m.PrimaryPart or m:FindFirstChildOfClass("BasePart")
                             if ref then
                                 local d = myHRP and (ref.Position - myHRP.Position).Magnitude or 0
                                 if d < bestD and d <= ctx.CONFIG.MaxArmorDistance then
@@ -2150,7 +2260,7 @@ function M.setup(ctx)
                 if m.Parent then armorN = armorN + 1 end
             end
             local modeStr = ctx.opts.MedicEnabled and "MED" or (ctx.opts.AutoKill and "KILL" or "IDLE")
-            if ctx.opts.DamageArmor then modeStr = modeStr .. "+ARM" end
+            if ctx.opts.DamageArmor then modeStr = modeStr .. "+TANK" end
             local line1 = string.format("%s | %s | %s%s%s", modeStr, ctx.STATUS, tgtName,
                 tgtHP ~= "-" and (" " .. tgtHP .. "HP") or "", pendHP)
             local line2 = string.format("R:%.1f/%d E:%d/%d L:%d B:%d A:%d",
