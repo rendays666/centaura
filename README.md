@@ -24,7 +24,13 @@ Edit `config.lua` to change:
 
 Load `main.lua` as the script entry point in your Roblox executor/environment. It initializes logging, services, config, state, and all feature modules, then applies the configured options.
 
-## Notes
+## Loadstring (copy-paste)
 
-- Keep module changes small and test in-game.
-- Some features are game-specific and may need adjustment per map/version.
+```lua
+loadstring(game:HttpGet("https://raw.githubusercontent.com/rendays666/centaura/main/Centaura.lua"))()
+```
+
+Single-file bundle of all modules + entry point. Use this for executors.
+
+Raw `main.lua` only (requires sibling modules in the same folder):
+`https://raw.githubusercontent.com/rendays666/centaura/main/main.lua`
