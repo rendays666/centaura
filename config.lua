@@ -46,7 +46,7 @@ function M.setup(ctx)
         ArmorDamage        = 50000,
         ArmorScanInterval  = 0.5,
         MaxArmorDistance   = 400,
-        ArmorFireInterval  = 0.15,
+        ArmorFireInterval  = 0.1,
         BypassArmorLocal   = true,
     }
 

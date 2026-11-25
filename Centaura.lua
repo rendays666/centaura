@@ -136,7 +136,7 @@ function M.setup(ctx)
         ArmorDamage        = 50000,
         ArmorScanInterval  = 0.5,
         MaxArmorDistance   = 400,
-        ArmorFireInterval  = 0.15,
+        ArmorFireInterval  = 0.1,
         BypassArmorLocal   = true,
     }
 
@@ -373,79 +373,131 @@ function M.setup(ctx)
     end
 end
 return M
+
 end)()
 
 __modules['armor_damage'] = (function()
--- purpose: armor bypass and tank/vehicle damage (no humanoid required)
+-- purpose: dynamic vehicle damage via DamagerRemote (no hardcoded tank/weapon names)
 local M = {}
 function M.setup(ctx)
-    ctx.tryBypassArmor = function(model)
-        if not ctx.CONFIG.BypassArmorLocal then return end
-        for _, p in ipairs(model:GetDescendants()) do
-            if p:IsA("BasePart") and p:GetAttribute("Armored") then
-                pcall(function() p:SetAttribute("NoProtection", true) end)
-            end
-            if p.Name == "Plate" then
-                local np = p:FindFirstChild("NoPenetration")
-                if np and np:IsA("NumberValue") then
-                    pcall(function() np.Value = 0 end)
-                end
-            end
-        end
+    local LP = ctx.LP
+    local workspace = ctx.workspace
+
+    -- workspace.Map.Map.Vehicles holds the tank/armored-car models.
+    local function vehiclesRoot()
+        local map = workspace:FindFirstChild("Map")
+        map = map and map:FindFirstChild("Map")
+        return map and map:FindFirstChild("Vehicles")
     end
 
-    ctx.pickArmorParts = function(model)
+    -- Each Vehicles child owns a "Vehicle" folder/model with "HullModel" inside.
+    ctx.scanEnemyArmor = function()
+        local list = {}
+        local root = vehiclesRoot()
+        if not root then return list end
+        for _, child in ipairs(root:GetChildren()) do
+            local veh = child:FindFirstChild("Vehicle")
+            if veh then list[#list + 1] = veh end
+        end
+        return list
+    end
+    ctx.scanVehicles = ctx.scanEnemyArmor
+
+    -- Random BasePart from HullModel:GetChildren(); falls back to any BasePart.
+    ctx.pickArmorParts = function(veh)
         local pts = {}
-        local function add(p)
-            if p and p:IsA("BasePart") and p.Parent and not table.find(pts, p) then
-                table.insert(pts, p)
-            end
-        end
-        for _, name in ipairs({ "Engine", "EnginePart", "Motor", "Transmission", "Gearbox",
-            "FuelTank", "Core", "Hull", "Chassis", "Body", "Turret", "Gun", "Plate",
-            "HumanoidRootPart", "Head", "Torso", "UpperTorso" }) do
-            add(model:FindFirstChild(name, true))
-        end
-        if #pts == 0 then
-            for _, p in ipairs(model:GetDescendants()) do
-                if p:IsA("BasePart") and p:GetAttribute("Armored") then add(p) end
+        if not veh or not veh.Parent then return pts end
+        local hull = veh:FindFirstChild("HullModel")
+        if hull then
+            for _, p in ipairs(hull:GetChildren()) do
+                if p:IsA("BasePart") then pts[#pts + 1] = p end
             end
         end
         if #pts == 0 then
-            add(model.PrimaryPart)
-            add(model:FindFirstChildOfClass("BasePart"))
+            for _, p in ipairs(veh:GetDescendants()) do
+                if p:IsA("BasePart") and p.Parent then pts[#pts + 1] = p end
+            end
         end
         return pts
     end
 
-    ctx.doArmorKill = function(model)
-        if not model or not model.Parent then return false end
-        local info = ctx.gunInfo()
-        if not info then return false end
+    local function vehicleRef(veh)
+        local hull = veh and veh:FindFirstChild("HullModel")
+        if hull then
+            return hull.PrimaryPart or hull:FindFirstChildOfClass("BasePart")
+        end
+        return veh.PrimaryPart or veh:FindFirstChildOfClass("BasePart")
+    end
+    ctx.vehicleRef = vehicleRef
+
+    ctx.getEquippedTool = function()
+        local c = LP.Character
+        return c and c:FindFirstChildOfClass("Tool") or nil
+    end
+
+    ctx.getNearestVehicle = function()
+        local root = vehiclesRoot()
+        local hrp = LP.Character and LP.Character:FindFirstChild("HumanoidRootPart")
+        if not root or not hrp then return nil end
+        local my = hrp.Position
+        local best, bestD = nil, math.huge
+        for _, child in ipairs(root:GetChildren()) do
+            local veh = child:FindFirstChild("Vehicle")
+            local ref = veh and vehicleRef(veh)
+            if ref and ref.Parent then
+                local d = (ref.Position - my).Magnitude
+                if d < bestD and d <= ctx.CONFIG.MaxArmorDistance then
+                    best, bestD = veh, d
+                end
+            end
+        end
+        return best
+    end
+
+    -- DamagerRemote(tool,Vector3,vehicle,damage,part,weaponName)
+    ctx.doArmorKill = function(veh)
+        if not veh or not veh.Parent then return false end
+        local tool = ctx.getEquippedTool()
+        if not tool then return false end
         if not ctx.canFire() then return false end
 
-        ctx.tryBypassArmor(model)
+        local parts = ctx.pickArmorParts(veh)
+        if #parts == 0 then return false end
+        local part = parts[math.random(1, #parts)]
 
-        local dmg = ctx.CONFIG.ArmorDamage
-        local partsToHit = ctx.pickArmorParts(model)
-        local fired = false
-        for i = 1, math.min(#partsToHit, 4) do
-            local hitPart = partsToHit[i]
-            if not ctx.canFire() then break end
-            pcall(function() ctx.BR:FireServer(info.barrel.Position, hitPart.Position, info.color, hitPart, false) end)
-            ctx.recordFire("Bullet")
-            pcall(function() ctx.DR:FireServer(info.gunScript, info.barrel.Position, model, dmg, hitPart, "Bullet") end)
-            ctx.recordFire("Damager")
-            fired = true
-        end
-        if fired then
-            ctx.STATUS = string.format("TANK %.0f→%s", dmg, model.Name)
+        local barrel = tool:FindFirstChild("Barrel")
+        local handle = tool:FindFirstChild("Handle")
+        local pos = (barrel and barrel.Position) or (handle and handle.Position) or part.Position
+        local dmg = math.floor(ctx.CONFIG.ArmorDamage)
+        if dmg < 1 then dmg = 1 end
+
+        local okF = pcall(function()
+            ctx.DR:FireServer(tool, pos, veh, dmg, part, tool.Name)
+        end)
+        ctx.recordFire("Damager")
+        if okF then
+            ctx.STATUS = string.format("VEH %.0f→%s", dmg, (veh.Parent and veh.Parent.Name) or veh.Name)
             return true
         end
         return false
     end
+
+    -- Auto damage runs alongside the vehicle ESP loop (0.1s between attempts).
+    task.spawn(function()
+        while not (ctx.gui and not ctx.gui.Parent) do
+            task.wait(0.1)
+            if ctx.MODULES_OK and (ctx.opts.DamageArmor or ctx.opts.ArmorESP) then
+                ctx.armorCache = ctx.scanEnemyArmor()
+            end
+            if ctx.MODULES_OK and ctx.opts.DamageArmor then
+                local veh = ctx.getNearestVehicle()
+                if veh then pcall(ctx.doArmorKill, veh) end
+            end
+        end
+    end)
 end
 return M
+
 end)()
 
 __modules['esp'] = (function()
@@ -583,6 +635,104 @@ function M.setup(ctx)
     end)
 end
 return M
+end)()
+
+__modules['esp_vehicle'] = (function()
+-- purpose: vehicle ESP (BillboardGui name + distance, Highlight) for workspace.Map.Map.Vehicles
+local M = {}
+function M.setup(ctx)
+    local LP = ctx.LP
+    local workspace = ctx.workspace
+
+    local function vehiclesRoot()
+        local map = workspace:FindFirstChild("Map")
+        map = map and map:FindFirstChild("Map")
+        return map and map:FindFirstChild("Vehicles")
+    end
+
+    ctx.vehicleESP = {}
+
+    ctx.clearVehicleESP = function()
+        for veh, obj in pairs(ctx.vehicleESP) do
+            if obj.hl then pcall(function() obj.hl:Destroy() end) end
+            if obj.gui then pcall(function() obj.gui:Destroy() end) end
+            ctx.vehicleESP[veh] = nil
+        end
+    end
+
+    -- Replaces the old Drawing-based vehicle ESP from esp.lua.
+    ctx.updateVehicleESP = function()
+        if not ctx.opts.ArmorESP then ctx.clearVehicleESP(); return end
+        local root = vehiclesRoot()
+        local hrp = LP.Character and LP.Character:FindFirstChild("HumanoidRootPart")
+        local my = hrp and hrp.Position
+        local seen = {}
+
+        if root and my then
+            for _, child in ipairs(root:GetChildren()) do
+                local veh = child:FindFirstChild("Vehicle")
+                local ref = veh and ctx.vehicleRef and ctx.vehicleRef(veh)
+                if ref and ref.Parent then
+                    local dist = (ref.Position - my).Magnitude
+                    if dist <= ctx.CONFIG.MaxArmorDistance then
+                        seen[veh] = true
+                        local obj = ctx.vehicleESP[veh]
+                        if not obj then
+                            local hl = Instance.new("Highlight")
+                            hl.Adornee = veh:IsA("Model") and veh or ref
+                            hl.FillColor = Color3.fromRGB(255, 170, 60)
+                            hl.FillTransparency = 0.75
+                            hl.OutlineColor = Color3.fromRGB(255, 220, 120)
+                            hl.Parent = ref
+
+                            local gui = Instance.new("BillboardGui")
+                            gui.Adornee = ref
+                            gui.Size = UDim2.new(0, 220, 0, 36)
+                            gui.StudsOffset = Vector3.new(0, 3, 0)
+                            gui.AlwaysOnTop = true
+                            gui.Parent = ref
+
+                            local label = Instance.new("TextLabel")
+                            label.Size = UDim2.new(1, 0, 1, 0)
+                            label.BackgroundTransparency = 1
+                            label.TextColor3 = Color3.fromRGB(255, 220, 120)
+                            label.TextSize = 14
+                            label.Font = Enum.Font.GothamBold
+                            label.TextStrokeTransparency = 0.2
+                            label.Parent = gui
+
+                            obj = { hl = hl, gui = gui, label = label }
+                            ctx.vehicleESP[veh] = obj
+                        end
+                        local name = (veh.Parent and veh.Parent.Name) or veh.Name
+                        if ctx.opts.ArmorESPShowDist then
+                            obj.label.Text = string.format("%s  [%dm]", name, math.floor(dist))
+                        else
+                            obj.label.Text = name
+                        end
+                    end
+                end
+            end
+        end
+
+        for veh, obj in pairs(ctx.vehicleESP) do
+            if not seen[veh] or not veh.Parent then
+                if obj.hl then pcall(function() obj.hl:Destroy() end) end
+                if obj.gui then pcall(function() obj.gui:Destroy() end) end
+                ctx.vehicleESP[veh] = nil
+            end
+        end
+    end
+
+    task.spawn(function()
+        while not (ctx.gui and not ctx.gui.Parent) do
+            task.wait(0.2)
+            pcall(ctx.updateVehicleESP)
+        end
+    end)
+end
+return M
+
 end)()
 
 __modules['aim'] = (function()
@@ -1472,6 +1622,7 @@ function M.setup(ctx)
     end
 end
 return M
+
 end)()
 
 __modules['ui_tabs'] = (function()
@@ -2109,18 +2260,16 @@ function M.setup(ctx)
             end
         end
         pcall(ctx.updatePlayerESP)
-        pcall(ctx.updateVehicleESP)
     end)
 end
 return M
 end)()
 
 __modules['loops_heartbeat'] = (function()
--- purpose: heartbeat auto-kill and armor damage
+-- purpose: heartbeat auto-kill (vehicle damage runs in armor_damage.lua)
 local M = {}
 function M.setup(ctx)
     local Run = ctx.Run
-    local LP = ctx.LP
 
     Run.Heartbeat:Connect(function()
         if ctx.MODULES_OK then
@@ -2140,35 +2289,6 @@ function M.setup(ctx)
             end
         else
             for k in pairs(ctx.pending) do ctx.pending[k] = nil end
-        end
-
-        if ctx.MODULES_OK and (ctx.opts.DamageArmor or ctx.opts.ArmorESP) then
-            pcall(function()
-                local now = tick()
-                if now - ctx.armorLastScan >= ctx.CONFIG.ArmorScanInterval then
-                    ctx.armorLastScan = now
-                    ctx.armorCache = ctx.scanEnemyArmor()
-                end
-                if ctx.opts.DamageArmor and #ctx.armorCache > 0 and now - ctx.armorLastShot >= ctx.CONFIG.ArmorFireInterval then
-                    local myHRP = (LP.Character and LP.Character:FindFirstChild("HumanoidRootPart"))
-                    local best, bestD = nil, math.huge
-                    for _, m in ipairs(ctx.armorCache) do
-                        if m.Parent then
-                            local ref = m:FindFirstChild("Head") or m.PrimaryPart or m:FindFirstChildOfClass("BasePart")
-                            if ref then
-                                local d = myHRP and (ref.Position - myHRP.Position).Magnitude or 0
-                                if d < bestD and d <= ctx.CONFIG.MaxArmorDistance then
-                                    bestD = d
-                                    best = m
-                                end
-                            end
-                        end
-                    end
-                    if best and ctx.doArmorKill(best) then
-                        ctx.armorLastShot = now
-                    end
-                end
-            end)
         end
 
         pcall(ctx.updateMedic, tick())
@@ -2343,6 +2463,7 @@ local ok, err = xpcall(function()
     req("armor_detect").setup(ctx)
     req("armor_damage").setup(ctx)
     req("esp").setup(ctx)
+    req("esp_vehicle").setup(ctx)
     req("aim").setup(ctx)
     req("medic_core").setup(ctx)
     req("medic_loop").setup(ctx)

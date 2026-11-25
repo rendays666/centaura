@@ -18,7 +18,6 @@ function M.setup(ctx)
             end
         end
         pcall(ctx.updatePlayerESP)
-        pcall(ctx.updateVehicleESP)
     end)
 end
 return M
