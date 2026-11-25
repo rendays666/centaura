@@ -9,6 +9,5 @@ function M.setup(ctx)
     ctx.newToggle(p, "Show Distance", "ESPShowDist")
     ctx.newSection(p, "ARMOR / VEHICLE ESP")
     ctx.newToggle(p, "Tank/Armor ESP", "ArmorESP")
-    ctx.newToggle(p, "Armor Distance", "ArmorESPShowDist")
 end
 return M

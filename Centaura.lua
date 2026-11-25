@@ -133,8 +133,6 @@ function M.setup(ctx)
         PullTanks          = false,
         PullDistance       = 15,
         ArmorESP           = true,
-        ArmorESPShowDist   = true,
-        MaxArmorDistance   = 400,
     }
 
     ctx.opts = {
@@ -157,7 +155,6 @@ function M.setup(ctx)
         MedicEnabled = ctx.CONFIG.MedicEnabled,
         PullTanks    = ctx.CONFIG.PullTanks,
         ArmorESP     = ctx.CONFIG.ArmorESP,
-        ArmorESPShowDist = ctx.CONFIG.ArmorESPShowDist,
     }
 
     ctx.autoKillCooldown  = ctx.CONFIG.AutoKillCooldown
@@ -490,16 +487,6 @@ function M.setup(ctx)
         return map and map:FindFirstChild("Vehicles")
     end
 
-    -- vehicle reference used by vehicle ESP
-    local function vehicleRef(veh)
-        local hull = veh and veh:FindFirstChild("HullModel")
-        if hull then
-            return hull.PrimaryPart or hull:FindFirstChildOfClass("BasePart")
-        end
-        return veh and (veh.PrimaryPart or veh:FindFirstChildOfClass("BasePart"))
-    end
-    ctx.vehicleRef = vehicleRef
-
     ctx.scanEnemyArmor = function()
         local list = {}
         local root = vehiclesRoot()
@@ -531,6 +518,7 @@ function M.setup(ctx)
 
         return false
     end
+    ctx.isTankDestroyed = isTankDestroyed
 
     local function isFriendlyVehicle(vehicleModel, vehicle)
         local myTeam = LP.Team
@@ -610,58 +598,6 @@ function M.setup(ctx)
         for k in pairs(playerESPObjects) do playerESPObjects[k] = nil end
     end
 
-    ctx.vehicleESPObjects = ctx.vehicleESPObjects or {}
-    local vehicleESPObjects = ctx.vehicleESPObjects
-
-    ctx.clearVehicleESP = function()
-        for _, obj in pairs(vehicleESPObjects) do
-            for _, d in pairs(obj) do pcall(function() d:Remove() end) end
-        end
-        for k in pairs(vehicleESPObjects) do vehicleESPObjects[k] = nil end
-    end
-
-    ctx.updateVehicleESP = function()
-        if not opts.ArmorESP then ctx.clearVehicleESP(); return end
-        local seen = {}
-        for _, m in ipairs(ctx.armorCache or {}) do
-            if m.Parent then
-                local ref = m.PrimaryPart or m:FindFirstChildOfClass("BasePart")
-                if ref then
-                    local pos, onScreen = Cam:WorldToViewportPoint(ref.Position)
-                    local dist = (Cam.CFrame.Position - ref.Position).Magnitude
-                    if onScreen and dist <= ctx.CONFIG.MaxArmorDistance then
-                        seen[m] = true
-                        if not vehicleESPObjects[m] then
-                            local ok, txt, dtxt = pcall(function()
-                                local a = Drawing.new("Text"); a.Size = 14; a.Color = Color3.fromRGB(255, 170, 60); a.Center = true; a.Outline = true
-                                local b = Drawing.new("Text"); b.Size = 12; b.Color = Color3.fromRGB(255, 220, 120); b.Center = true; b.Outline = true
-                                return a, b
-                            end)
-                            if ok then vehicleESPObjects[m] = { name = txt, dist = dtxt } end
-                        end
-                        local obj = vehicleESPObjects[m]
-                        if obj then
-                            obj.name.Text = "[ARMOR] " .. m.Name
-                            obj.name.Position = Vector2.new(pos.X, pos.Y - 14)
-                            obj.name.Visible = true
-                            if opts.ArmorESPShowDist then
-                                obj.dist.Text = math.floor(dist) .. "m"
-                                obj.dist.Position = Vector2.new(pos.X, pos.Y)
-                                obj.dist.Visible = true
-                            else obj.dist.Visible = false end
-                        end
-                    end
-                end
-            end
-        end
-        for m, obj in pairs(vehicleESPObjects) do
-            if not seen[m] then
-                for _, d in pairs(obj) do pcall(function() d:Remove() end) end
-                vehicleESPObjects[m] = nil
-            end
-        end
-    end
-
     ctx.updatePlayerESP = function()
         if not opts.PlayerESP then ctx.clearPlayerESP(); return end
         local seen = {}
@@ -729,11 +665,11 @@ return M
 end)()
 
 __modules['esp_vehicle'] = (function()
--- purpose: vehicle ESP (BillboardGui name + distance, Highlight) for workspace.Map.Map.Vehicles
+-- purpose: vehicle ESP via Highlight on the Vehicle model (tested autopull method)
 local M = {}
 function M.setup(ctx)
-    local LP = ctx.LP
     local workspace = ctx.workspace
+    local opts = ctx.opts
 
     local function vehiclesRoot()
         local map = workspace:FindFirstChild("Map")
@@ -744,72 +680,37 @@ function M.setup(ctx)
     ctx.vehicleESP = {}
 
     ctx.clearVehicleESP = function()
-        for veh, obj in pairs(ctx.vehicleESP) do
-            if obj.hl then pcall(function() obj.hl:Destroy() end) end
-            if obj.gui then pcall(function() obj.gui:Destroy() end) end
+        for veh, hl in pairs(ctx.vehicleESP) do
+            if hl then pcall(function() hl:Destroy() end) end
             ctx.vehicleESP[veh] = nil
         end
     end
 
-    -- Replaces the old Drawing-based vehicle ESP from esp.lua.
     ctx.updateVehicleESP = function()
-        if not ctx.opts.ArmorESP then ctx.clearVehicleESP(); return end
+        if not opts.ArmorESP then ctx.clearVehicleESP(); return end
         local root = vehiclesRoot()
-        local hrp = LP.Character and LP.Character:FindFirstChild("HumanoidRootPart")
-        local my = hrp and hrp.Position
+        if not root then ctx.clearVehicleESP(); return end
+
         local seen = {}
-
-        if root and my then
-            for _, child in ipairs(root:GetChildren()) do
-                local veh = child:FindFirstChild("Vehicle")
-                local ref = veh and ctx.vehicleRef and ctx.vehicleRef(veh)
-                if ref and ref.Parent then
-                    local dist = (ref.Position - my).Magnitude
-                    if dist <= ctx.CONFIG.MaxArmorDistance then
-                        seen[veh] = true
-                        local obj = ctx.vehicleESP[veh]
-                        if not obj then
-                            local hl = Instance.new("Highlight")
-                            hl.Adornee = veh:IsA("Model") and veh or ref
-                            hl.FillColor = Color3.fromRGB(255, 170, 60)
-                            hl.FillTransparency = 0.75
-                            hl.OutlineColor = Color3.fromRGB(255, 220, 120)
-                            hl.Parent = ref
-
-                            local gui = Instance.new("BillboardGui")
-                            gui.Adornee = ref
-                            gui.Size = UDim2.new(0, 220, 0, 36)
-                            gui.StudsOffset = Vector3.new(0, 3, 0)
-                            gui.AlwaysOnTop = true
-                            gui.Parent = ref
-
-                            local label = Instance.new("TextLabel")
-                            label.Size = UDim2.new(1, 0, 1, 0)
-                            label.BackgroundTransparency = 1
-                            label.TextColor3 = Color3.fromRGB(255, 220, 120)
-                            label.TextSize = 14
-                            label.Font = Enum.Font.GothamBold
-                            label.TextStrokeTransparency = 0.2
-                            label.Parent = gui
-
-                            obj = { hl = hl, gui = gui, label = label }
-                            ctx.vehicleESP[veh] = obj
-                        end
-                        local name = (veh.Parent and veh.Parent.Name) or veh.Name
-                        if ctx.opts.ArmorESPShowDist then
-                            obj.label.Text = string.format("%s  [%dm]", name, math.floor(dist))
-                        else
-                            obj.label.Text = name
-                        end
-                    end
+        for _, child in ipairs(root:GetChildren()) do
+            local vehicle = child:FindFirstChild("Vehicle")
+            if vehicle and not (ctx.isTankDestroyed and ctx.isTankDestroyed(child, vehicle)) then
+                seen[vehicle] = true
+                if not ctx.vehicleESP[vehicle] then
+                    local hl = Instance.new("Highlight")
+                    hl.Adornee = vehicle
+                    hl.FillColor = Color3.fromRGB(255, 50, 50)
+                    hl.OutlineColor = Color3.fromRGB(255, 255, 255)
+                    hl.FillTransparency = 0.6
+                    hl.Parent = vehicle
+                    ctx.vehicleESP[vehicle] = hl
                 end
             end
         end
 
-        for veh, obj in pairs(ctx.vehicleESP) do
+        for veh, hl in pairs(ctx.vehicleESP) do
             if not seen[veh] or not veh.Parent then
-                if obj.hl then pcall(function() obj.hl:Destroy() end) end
-                if obj.gui then pcall(function() obj.gui:Destroy() end) end
+                if hl then pcall(function() hl:Destroy() end) end
                 ctx.vehicleESP[veh] = nil
             end
         end
@@ -817,7 +718,7 @@ function M.setup(ctx)
 
     task.spawn(function()
         while not (ctx.gui and not ctx.gui.Parent) do
-            task.wait(0.2)
+            task.wait(0.5)
             pcall(ctx.updateVehicleESP)
         end
     end)
@@ -2061,9 +1962,6 @@ function M.setup(ctx)
         ctx.pullDistance = v
         ctx.CONFIG.PullDistance = v
     end)
-    ctx.newNumber(p, "Armor ESP Dist (m)", ctx.CONFIG.MaxArmorDistance, 50, 2000, 50, 0, function(v)
-        ctx.CONFIG.MaxArmorDistance = v
-    end)
     ctx.newSection(p, "ACTIONS")
     local b = Instance.new("TextButton")
     b.Size = UDim2.new(1, 0, 0, 28)
@@ -2186,7 +2084,6 @@ function M.setup(ctx)
     ctx.newToggle(p, "Show Distance", "ESPShowDist")
     ctx.newSection(p, "ARMOR / VEHICLE ESP")
     ctx.newToggle(p, "Tank/Armor ESP", "ArmorESP")
-    ctx.newToggle(p, "Armor Distance", "ArmorESPShowDist")
 end
 return M
 end)()

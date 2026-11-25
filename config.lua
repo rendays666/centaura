@@ -43,8 +43,6 @@ function M.setup(ctx)
         PullTanks          = false,
         PullDistance       = 15,
         ArmorESP           = true,
-        ArmorESPShowDist   = true,
-        MaxArmorDistance   = 400,
     }
 
     ctx.opts = {
@@ -67,7 +65,6 @@ function M.setup(ctx)
         MedicEnabled = ctx.CONFIG.MedicEnabled,
         PullTanks    = ctx.CONFIG.PullTanks,
         ArmorESP     = ctx.CONFIG.ArmorESP,
-        ArmorESPShowDist = ctx.CONFIG.ArmorESPShowDist,
     }
 
     ctx.autoKillCooldown  = ctx.CONFIG.AutoKillCooldown

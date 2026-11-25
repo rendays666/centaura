@@ -10,16 +10,6 @@ function M.setup(ctx)
         return map and map:FindFirstChild("Vehicles")
     end
 
-    -- vehicle reference used by vehicle ESP
-    local function vehicleRef(veh)
-        local hull = veh and veh:FindFirstChild("HullModel")
-        if hull then
-            return hull.PrimaryPart or hull:FindFirstChildOfClass("BasePart")
-        end
-        return veh and (veh.PrimaryPart or veh:FindFirstChildOfClass("BasePart"))
-    end
-    ctx.vehicleRef = vehicleRef
-
     ctx.scanEnemyArmor = function()
         local list = {}
         local root = vehiclesRoot()
@@ -51,6 +41,7 @@ function M.setup(ctx)
 
         return false
     end
+    ctx.isTankDestroyed = isTankDestroyed
 
     local function isFriendlyVehicle(vehicleModel, vehicle)
         local myTeam = LP.Team

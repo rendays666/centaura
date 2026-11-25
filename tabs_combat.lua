@@ -14,9 +14,6 @@ function M.setup(ctx)
         ctx.pullDistance = v
         ctx.CONFIG.PullDistance = v
     end)
-    ctx.newNumber(p, "Armor ESP Dist (m)", ctx.CONFIG.MaxArmorDistance, 50, 2000, 50, 0, function(v)
-        ctx.CONFIG.MaxArmorDistance = v
-    end)
     ctx.newSection(p, "ACTIONS")
     local b = Instance.new("TextButton")
     b.Size = UDim2.new(1, 0, 0, 28)
