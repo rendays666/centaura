@@ -1,59 +1,77 @@
 {
-  "files": {
-    "shorted/readme.md": {
-      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
-      "last_processed": "2026-11-25T05:45:53Z",
-      "category": "Infrastructure"
-    },
-    "unshorted/Readme.md": {
-      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
-      "last_processed": "2026-11-25T05:45:53Z",
-      "category": "Infrastructure"
-    },
-    "unshorted/ai_brief_20261125_083600.txt": {
-      "sha256": "3d2c1e12e00034e255c90c10dcfd5fc7fa25f3d31c084e6e3b7c255e80cc25e1",
-      "last_processed": "2026-11-25T05:45:53Z",
-      "category": "Infrastructure"
-    },
-    "unshorted/config_20261125_083600.txt": {
-      "sha256": "21b51c237d8b403212f52472efba32a5c356f4490e6e639bced38cbc314c42c0",
-      "last_processed": "2026-11-25T05:45:53Z",
-      "category": "Infrastructure"
-    },
-    "unshorted/full_20261125_083600.txt": {
-      "sha256": "ce261f68755c96b8f6e650468f21e3d884d112695e646e0a332acdbe438153be",
-      "last_processed": "2026-11-25T05:45:53Z",
-      "category": "Infrastructure"
-    },
-    "unshorted/index_20261125_083600.txt": {
-      "sha256": "01fac68e612c87eff14b3bb9f019a3ef0fc25c0d21161ed26ffcf8202f68c26f",
-      "last_processed": "2026-11-25T05:45:53Z",
-      "category": "Infrastructure"
-    },
-    "unshorted/mechanics_20261125_083600.txt": {
-      "sha256": "9fa13cdd9cb9a587d8c1349bb3588455ac0da14af1747ead7d6a9abc42b649a1",
-      "last_processed": "2026-11-25T05:45:53Z",
-      "category": "Infrastructure"
-    },
-    "unshorted/paths_20261125_083600.txt": {
-      "sha256": "571fce18e4929e5b0dc24a82704616f233f9b118d29879b4160eed5fdec1292f",
-      "last_processed": "2026-11-25T05:45:53Z",
-      "category": "Infrastructure"
-    },
-    "unshorted/remotes_20261125_083600.txt": {
-      "sha256": "7c5436cee5b866fa0e6fddbad4435f525ab7d8a9f162af6bf4245cfc7141ceea",
-      "last_processed": "2026-11-25T05:45:53Z",
-      "category": "Infrastructure"
-    },
-    "unshorted/smart_20261125_083600.txt": {
-      "sha256": "b99301079514176d47f0dda82a4f9edf10b30629ca4a4bb8127cdcac3d1ee3f6",
-      "last_processed": "2026-11-25T05:45:53Z",
-      "category": "Infrastructure"
-    },
-    "unshorted/tree_20261125_083600.txt": {
-      "sha256": "8f7242592bb5d6c7045a91dbd3ee92003aa36a708797403002a25c2ceba857c2",
-      "last_processed": "2026-11-25T05:45:53Z",
-      "category": "Infrastructure"
-    }
+ "files": {
+  "01fac68e612c87eff14b3bb9f019a3ef0fc25c0d21161ed26ffcf8202f68c26f": {
+   "archive": "database/input/shorted/centaura/20261125_083600/index_20261125_083600.txt",
+   "batch": "20261125_083600",
+   "bytes": 99595,
+   "name": "index_20261125_083600.txt",
+   "processed_at": "2026-11-25T06:10:13Z",
+   "type": "index"
+  },
+  "21b51c237d8b403212f52472efba32a5c356f4490e6e639bced38cbc314c42c0": {
+   "archive": "database/input/shorted/centaura/20261125_083600/config_20261125_083600.txt",
+   "batch": "20261125_083600",
+   "bytes": 100766,
+   "name": "config_20261125_083600.txt",
+   "processed_at": "2026-11-25T06:10:13Z",
+   "type": "config"
+  },
+  "3d2c1e12e00034e255c90c10dcfd5fc7fa25f3d31c084e6e3b7c255e80cc25e1": {
+   "archive": "database/input/shorted/centaura/20261125_083600/ai_brief_20261125_083600.txt",
+   "batch": "20261125_083600",
+   "bytes": 22858,
+   "name": "ai_brief_20261125_083600.txt",
+   "processed_at": "2026-11-25T06:10:13Z",
+   "type": "ai_brief"
+  },
+  "571fce18e4929e5b0dc24a82704616f233f9b118d29879b4160eed5fdec1292f": {
+   "archive": "database/input/shorted/centaura/20261125_083600/paths_20261125_083600.txt",
+   "batch": "20261125_083600",
+   "bytes": 86178,
+   "name": "paths_20261125_083600.txt",
+   "processed_at": "2026-11-25T06:10:13Z",
+   "type": "paths"
+  },
+  "7c5436cee5b866fa0e6fddbad4435f525ab7d8a9f162af6bf4245cfc7141ceea": {
+   "archive": "database/input/shorted/centaura/20261125_083600/remotes_20261125_083600.txt",
+   "batch": "20261125_083600",
+   "bytes": 6565,
+   "name": "remotes_20261125_083600.txt",
+   "processed_at": "2026-11-25T06:10:13Z",
+   "type": "remotes"
+  },
+  "8f7242592bb5d6c7045a91dbd3ee92003aa36a708797403002a25c2ceba857c2": {
+   "archive": "database/input/shorted/centaura/20261125_083600/tree_20261125_083600.txt",
+   "batch": "20261125_083600",
+   "bytes": 83373,
+   "name": "tree_20261125_083600.txt",
+   "processed_at": "2026-11-25T06:10:13Z",
+   "type": "tree"
+  },
+  "9fa13cdd9cb9a587d8c1349bb3588455ac0da14af1747ead7d6a9abc42b649a1": {
+   "archive": "database/input/shorted/centaura/20261125_083600/mechanics_20261125_083600.txt",
+   "batch": "20261125_083600",
+   "bytes": 104410,
+   "name": "mechanics_20261125_083600.txt",
+   "processed_at": "2026-11-25T06:10:13Z",
+   "type": "mechanics"
+  },
+  "b99301079514176d47f0dda82a4f9edf10b30629ca4a4bb8127cdcac3d1ee3f6": {
+   "archive": "database/input/shorted/centaura/20261125_083600/smart_20261125_083600.txt",
+   "batch": "20261125_083600",
+   "bytes": 157426,
+   "name": "smart_20261125_083600.txt",
+   "processed_at": "2026-11-25T06:10:13Z",
+   "type": "smart"
+  },
+  "ce261f68755c96b8f6e650468f21e3d884d112695e646e0a332acdbe438153be": {
+   "archive": "database/input/shorted/centaura/20261125_083600/full_20261125_083600.txt",
+   "batch": "20261125_083600",
+   "bytes": 445471,
+   "name": "full_20261125_083600.txt",
+   "processed_at": "2026-11-25T06:10:13Z",
+   "type": "full"
   }
+ },
+ "schema": 2
 }

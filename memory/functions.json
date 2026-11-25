@@ -1,3 +1,23 @@
 {
-  "functions": {}
+ "calls": {
+  "ReplicatedStorage.56a05903-8631-4bc9-bc8c-74fc656fa25c": {
+   "ex": [
+    "table[5], \"!^ \\000^B\\\"]H\u0002[\", table[2], \"373ddc92-da88-4dd0-bc77-d44353\""
+   ],
+   "first_seen": "20261125_083600",
+   "last_seen": "20261125_083600",
+   "method": "FireServer",
+   "sigs": {
+    "table,string,table,string": 1
+   }
+  }
+ },
+ "declared_sigs": {},
+ "handlers": {},
+ "modules": {},
+ "schema": 2,
+ "unresolved": {
+  "batch": "20261125_083600",
+  "count": 10
+ }
 }

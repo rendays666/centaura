@@ -1,0 +1,1139 @@
+{
+ "schema": 2,
+ "ui": {
+  "PlayerGui.CustomEquipmentShopUI.Modal": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    " "
+   ]
+  },
+  "PlayerGui.CustomEquipmentShopUI.ShopMenu.CloseButton": {
+   "c": "ImageButton",
+   "img": [
+    "http://www.roblox.com/asset/?id=5198838744"
+   ],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.CustomEquipmentShopUI.ShopMenu.PerkItemInfo.EquipButton": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    "EQUIP"
+   ]
+  },
+  "PlayerGui.CustomEquipmentShopUI.ShopMenu.PerksSelectList.Perk": {
+   "c": "TextButton",
+   "img": [],
+   "n": 22,
+   "t": [
+    "UNTANGLER",
+    "THICK SKULL",
+    "PAIN TOLERANCE",
+    "CHARGER",
+    "SHARPSHOOTER",
+    "LIGHTWEIGHT",
+    "FOCUSED",
+    "STRONG ARM",
+    "STURDY",
+    "FIGHT-OR-FLIGHT",
+    "SHORT FUSE",
+    "EFFICIENT HEALING",
+    "CAUTIOUS",
+    "RISK-TAKER",
+    "WIRING PARTY",
+    "ATTENTIVE",
+    "STOPPING POWER",
+    "HARDENED CORE",
+    "SURPLUS",
+    "COOLHEADED",
+    "BERSERKER",
+    "UPARMORED"
+   ]
+  },
+  "PlayerGui.CustomEquipmentShopUI.ShopMenu.PerksTab": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    "PERKS"
+   ]
+  },
+  "PlayerGui.CustomEquipmentShopUI.ShopMenu.ShopButtonManager.ItemTemplate": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    "WEAPON"
+   ]
+  },
+  "PlayerGui.CustomEquipmentShopUI.ShopMenu.WeaponItemInfo.EquipButton": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    "EQUIP"
+   ]
+  },
+  "PlayerGui.CustomEquipmentShopUI.ShopMenu.WeaponSelectList.Item": {
+   "c": "TextButton",
+   "img": [],
+   "n": 16,
+   "t": [
+    "M1889 LA RIFLE",
+    "M1909 SMG",
+    "T05 RIFLE",
+    "T09 SMG",
+    "DOUBLE BARREL SHOTGUN",
+    "E/VIII RIFLE",
+    "E/XV AUTOMATIC",
+    "M99 RIFLE",
+    "M12 SMG",
+    "MODELO 1898 RIFLE",
+    "MODELO 13 SMG",
+    "BARTON MODEL 10",
+    "ALBUS-GRAHAM NO. 4",
+    "DECIMA SHOTGUN",
+    "ENE AERA RIFLE",
+    "ENE MARS CARBINE"
+   ]
+  },
+  "PlayerGui.CustomEquipmentShopUI.ShopMenu.WeaponsTab": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    "WEAPONS"
+   ]
+  },
+  "PlayerGui.CustomInventory.Backpack.Hotbar.1": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.CustomInventory.Backpack.Hotbar.10": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.CustomInventory.Backpack.Hotbar.2": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.CustomInventory.Backpack.Hotbar.3": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.CustomInventory.Backpack.Hotbar.4": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.CustomInventory.Backpack.Hotbar.5": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.CustomInventory.Backpack.Hotbar.6": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.CustomInventory.Backpack.Hotbar.7": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.CustomInventory.Backpack.Hotbar.8": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.CustomInventory.Backpack.Hotbar.9": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.CustomInventory.Backpack.Inventory.InventoryModal": {
+   "c": "ImageButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.CustomInventory.Backpack.Inventory.InventoryModal.Search.X": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.CustomInventory.Backpack.Inventory.InventoryModal.Search._MODAL": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.CustomInventory.Backpack.OpenInventory": {
+   "c": "ImageButton",
+   "img": [
+    "rbxasset://textures/ui/Backpack/ScrollUpArrow.png"
+   ],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.EquipmentShopUI.Modal": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    " "
+   ]
+  },
+  "PlayerGui.EquipmentShopUI.ShopMenu.CloseButton": {
+   "c": "ImageButton",
+   "img": [
+    "http://www.roblox.com/asset/?id=5198838744"
+   ],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.EquipmentShopUI.ShopMenu.EquipmentSelectList.Item": {
+   "c": "TextButton",
+   "img": [],
+   "n": 7,
+   "t": [
+    "GRENADE",
+    "WIRE CUTTERS",
+    "SMOKE GRENADE",
+    "TRENCH SHIELD",
+    "SPARKBOMB",
+    "TRIPWIRE BOMB",
+    "DYNAMITE"
+   ]
+  },
+  "PlayerGui.EquipmentShopUI.ShopMenu.ItemInfo.PurchaseButton": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    "PURCHASE"
+   ]
+  },
+  "PlayerGui.EquipmentShopUI.ShopMenu.ShopButtonManager.ItemTemplate": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    "WEAPON"
+   ]
+  },
+  "PlayerGui.MobileUI.MobileButtons.AimButton": {
+   "c": "ImageButton",
+   "img": [
+    "http://www.roblox.com/asset/?id=6256840888"
+   ],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.MobileUI.MobileButtons.AutofireToggleButton": {
+   "c": "ImageButton",
+   "img": [
+    "http://www.roblox.com/asset/?id=6256840888"
+   ],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.MobileUI.MobileButtons.BayonetButton": {
+   "c": "ImageButton",
+   "img": [
+    "http://www.roblox.com/asset/?id=6256840888"
+   ],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.MobileUI.MobileButtons.CrouchButton": {
+   "c": "ImageButton",
+   "img": [
+    "http://www.roblox.com/asset/?id=6256840888"
+   ],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.MobileUI.MobileButtons.FireButton": {
+   "c": "ImageButton",
+   "img": [
+    "http://www.roblox.com/asset/?id=6256840888"
+   ],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.MobileUI.MobileButtons.ReloadButton": {
+   "c": "ImageButton",
+   "img": [
+    "http://www.roblox.com/asset/?id=6256840888"
+   ],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.MobileUI.MobileButtons.SprintButton": {
+   "c": "ImageButton",
+   "img": [
+    "http://www.roblox.com/asset/?id=6256840888"
+   ],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.SpawnMenuUI.ClassSelectionMenu.ClassButtonsFrame.AntiTank.ClickDetector": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    "Button"
+   ]
+  },
+  "PlayerGui.SpawnMenuUI.ClassSelectionMenu.ClassButtonsFrame.Assault.ClickDetector": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    "Button"
+   ]
+  },
+  "PlayerGui.SpawnMenuUI.ClassSelectionMenu.ClassButtonsFrame.Flametrooper.ClickDetector": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    "Button"
+   ]
+  },
+  "PlayerGui.SpawnMenuUI.ClassSelectionMenu.ClassButtonsFrame.Grenadier.ClickDetector": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    "Button"
+   ]
+  },
+  "PlayerGui.SpawnMenuUI.ClassSelectionMenu.ClassButtonsFrame.Gunner.ClickDetector": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    "Button"
+   ]
+  },
+  "PlayerGui.SpawnMenuUI.ClassSelectionMenu.ClassButtonsFrame.Medic.ClickDetector": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    "Button"
+   ]
+  },
+  "PlayerGui.SpawnMenuUI.ClassSelectionMenu.ClassButtonsFrame.Mortarman.ClickDetector": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    "Button"
+   ]
+  },
+  "PlayerGui.SpawnMenuUI.ClassSelectionMenu.ClassButtonsFrame.Officer.ClickDetector": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    "Button"
+   ]
+  },
+  "PlayerGui.SpawnMenuUI.ClassSelectionMenu.ClassButtonsFrame.Rifleman.ClickDetector": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    "Button"
+   ]
+  },
+  "PlayerGui.SpawnMenuUI.ClassSelectionMenu.ClassButtonsFrame.Sweeper.ClickDetector": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    "Button"
+   ]
+  },
+  "PlayerGui.SpawnMenuUI.OpenEquipmentShop": {
+   "c": "ImageButton",
+   "img": [
+    "http://www.roblox.com/asset/?id=13488848250"
+   ],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.SpawnMenuUI.OpenWeaponShop": {
+   "c": "ImageButton",
+   "img": [
+    "rbxassetid://17027886019"
+   ],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.SpawnMenuUI.TeleportMenu.Antares": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.SpawnMenuUI.TeleportMenu.AquilaActual": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.SpawnMenuUI.TeleportMenu.PointA": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    "A"
+   ]
+  },
+  "PlayerGui.SpawnMenuUI.TeleportMenu.PointB": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    "B"
+   ]
+  },
+  "PlayerGui.SpawnMenuUI.TeleportMenu.PointC": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    "C"
+   ]
+  },
+  "PlayerGui.SpawnMenuUI.TeleportMenu.PointD": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    "D"
+   ]
+  },
+  "PlayerGui.SpawnMenuUI.TeleportMenu.PointE": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    "E"
+   ]
+  },
+  "PlayerGui.TREKHud.Cursor.Cursor.ImageButton": {
+   "c": "ImageButton",
+   "img": [
+    "rbxassetid://5784632465",
+    "rbxassetid://4127970660",
+    "rbxassetid://4586653091"
+   ],
+   "n": 4,
+   "t": []
+  },
+  "PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.Frame.TextButton": {
+   "c": "TextButton",
+   "img": [],
+   "n": 34,
+   "t": [
+    "−",
+    "+",
+    "Nearest",
+    "Queue",
+    "Reset Queue",
+    "Clear Blacklist",
+    "Smooth",
+    "Head",
+    "Below"
+   ]
+  },
+  "PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.TextButton": {
+   "c": "TextButton",
+   "img": [],
+   "n": 21,
+   "t": [
+    "No Recoil  [ON]",
+    "No Spread  [ON]",
+    "No Cooldown  [OFF]",
+    "No Reload  [OFF]",
+    "One Hit Kill  [OFF]",
+    "Auto Damage Tank  [OFF]",
+    "Reapply Mods",
+    "Auto Kill  [OFF]",
+    "Sekarat Mode  [OFF]",
+    "Auto Aim  [OFF]",
+    "FOV Circle  [OFF]",
+    "Player ESP  [ON]",
+    "Show Names  [ON]",
+    "Show HP  [ON]",
+    "Show Distance  [ON]",
+    "Tank/Armor ESP  [OFF]",
+    "Armor Distance  [OFF]",
+    "Medic Enabled  [OFF]",
+    "Humanize  [ON]",
+    "Leaderboard  [OFF]",
+    "Copy Error Log"
+   ]
+  },
+  "PlayerGui.TREK_Combined.Frame.Frame.TextButton": {
+   "c": "TextButton",
+   "img": [],
+   "n": 7,
+   "t": [
+    "+",
+    "Combat",
+    "AutoKill",
+    "Aim",
+    "ESP",
+    "Medic",
+    "Display"
+   ]
+  },
+  "PlayerGui.TREK_Combined.TextButton": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    "T"
+   ]
+  },
+  "PlayerGui.TREK_LB.Frame.Frame.TextButton": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    "X"
+   ]
+  },
+  "PlayerGui.TopBar.ButtonManager.PlayerOption": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.ControlsMenu.Modal": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    " "
+   ]
+  },
+  "PlayerGui.TopBar.MainMenu.Modal": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    " "
+   ]
+  },
+  "PlayerGui.TopBar.MainMenu.ScrollingFrame.ChangeTeam": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    "SWITCH TEAMS"
+   ]
+  },
+  "PlayerGui.TopBar.MainMenu.ScrollingFrame.ManageSettings": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    "SETTINGS"
+   ]
+  },
+  "PlayerGui.TopBar.MainMenu.ScrollingFrame.ServerList": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    "SERVER LIST"
+   ]
+  },
+  "PlayerGui.TopBar.MainMenu.ScrollingFrame.ShowControls": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    "CONTROLS"
+   ]
+  },
+  "PlayerGui.TopBar.MainMenu.ScrollingFrame.ShowVotekickMenu": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    "VOTEKICK"
+   ]
+  },
+  "PlayerGui.TopBar.ServerBrowserHandler.Template.TextButton": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    " "
+   ]
+  },
+  "PlayerGui.TopBar.ServerMenu.Modal": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    " "
+   ]
+  },
+  "PlayerGui.TopBar.ServerMenu.RefreshButton": {
+   "c": "ImageButton",
+   "img": [
+    "http://www.roblox.com/asset/?id=6023565901"
+   ],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.SettingsMenu.Modal": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    " "
+   ]
+  },
+  "PlayerGui.TopBar.SettingsMenu.ScrollingFrame.DamageCounterToggle": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    "DAMAGE COUNTERS"
+   ]
+  },
+  "PlayerGui.TopBar.SettingsMenu.ScrollingFrame.KillfeedToggle": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    "KILLFEED"
+   ]
+  },
+  "PlayerGui.TopBar.SettingsMenu.ScrollingFrame.SprintToggle": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    "SPRINT TOGGLE"
+   ]
+  },
+  "PlayerGui.TopBar.SettingsMenu.ScrollingFrame.TinnitusToggle": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    "TINNITUS"
+   ]
+  },
+  "PlayerGui.TopBar.ToggleMainMenu": {
+   "c": "ImageButton",
+   "img": [
+    "rbxassetid://16800635228"
+   ],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.Modal": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": [
+    " "
+   ]
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.1234013643E": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.1234_Dregq": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.1notalexander4": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.1ubybyggzk": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.3e3e3yirtjil": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.59goated1": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Aarav_Eggo": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Afoc_8aXD": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Ahimigatito": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Batronicboy": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.BluZombie208": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.COVARACHO78": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Christmas14700": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Cwcoolboy1": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.DaniloW50": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Dustmover112": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.ElCapoMessi1812": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.FEARDAFFYBADUSERNAME": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Galaxy_noodles123": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Gavinroi24": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Gigachad124664": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Iheartspace03": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Imperial_Italy2": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.ItzMeMr": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.JULIO2005e": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.KINGbob01094": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.LeaveE18": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Mrs_OfTheLily": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.OWNPLASMA303": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.PuroTheGreat21": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Raxtusv": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.SScp096101": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Sadbooyz13": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Sandviper_th3": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.SchoolieC": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Skeletalistic": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Stanley4510": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.TYTTRkl": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Thiago3a1ioe": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.TinyScrub": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Veneno818718": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.WesternEastNorth": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.angelon123xdd": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.anuelnoob": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.atgamer37": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.banana_chum7": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.bobmaniscoolpoop": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.borrega247": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.brandonbarberertioc": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.coolcookieboss12345": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.darthnihilus_66": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.dratlast": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.dudelegand98": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.dylanspiderss": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.fastcoaster": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.frnxster": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.gerson8352": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.ghost751333": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.hamstermannster": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.matexd809": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.memo1117872": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.potati46980": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.renrenhu6": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.roblox_user_1416249619": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.samirch08": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.sammy868792": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.shadownan_2008": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.skeletonbud20113": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.skyguy1451": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.sucoofingball": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.tengonovia_248": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.traincrash2007": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.turtle23874": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.xXxPIMBLOxXx": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.xxn00bslayerxxx7": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TopBar.VotekickMenu.ScrollingFrame.zhaul2016": {
+   "c": "TextButton",
+   "img": [],
+   "n": 1,
+   "t": []
+  },
+  "PlayerGui.TouchGui.TouchControlFrame.JumpButton": {
+   "c": "ImageButton",
+   "img": [
+    "rbxasset://textures/ui/Input/TouchControlsSheetV2.png"
+   ],
+   "n": 1,
+   "t": []
+  }
+ }
+}

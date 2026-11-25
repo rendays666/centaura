@@ -1,0 +1,1405 @@
+{
+ "schema": 2,
+ "tree": {
+  "Lighting": {
+   "Atmosphere [Atmosphere]": {
+    "x": 1
+   },
+   "ColorCorrection [ColorCorrectionEffect]": {
+    "x": 1
+   },
+   "ConcussionFilter [ColorCorrectionEffect]": {
+    "x": 1
+   },
+   "ExplosionBlur [BlurEffect]": {
+    "x": 1
+   },
+   "Sky [Sky]": {
+    "x": 1
+   },
+   "SunRays [SunRaysEffect]": {
+    "x": 1
+   },
+   "SuppressionBlurEffect [BlurEffect]": {
+    "x": 1
+   }
+  },
+  "Players": {
+   "<PLAYER> [Player]": {
+    "x": 64
+   }
+  },
+  "ReplicatedFirst": {},
+  "ReplicatedStorage": {
+   "56a05903-8631-4bc9-bc8c-74fc656fa25c [RemoteEvent]": {
+    "f": "!",
+    "x": 1
+   },
+   "AdminEndMatch [RemoteEvent]": {
+    "f": "!",
+    "x": 1
+   },
+   "ArtilleryTracer [RemoteEvent]": {
+    "f": "!",
+    "x": 1
+   },
+   "AutoTeamBalance [BoolValue]": {
+    "x": 1
+   },
+   "BeginIntermission [BindableEvent]": {
+    "x": 1
+   },
+   "BloodEffects [RemoteEvent]": {
+    "f": "!",
+    "x": 1
+   },
+   "BloodSplatter [BindableEvent]": {
+    "x": 1
+   },
+   "BoundariesEnabled [BoolValue]": {
+    "x": 1
+   },
+   "CUSTOM_ArtilleryDisabled [BoolValue]": {
+    "x": 1
+   },
+   "CUSTOM_ManualMatchStart [BoolValue]": {
+    "x": 1
+   },
+   "CUSTOM_MapRotationDisabled [BoolValue]": {
+    "x": 1
+   },
+   "CUSTOM_PointGainDisabled [BoolValue]": {
+    "x": 1
+   },
+   "CUSTOM_VehiclesDisabled [BoolValue]": {
+    "x": 1
+   },
+   "CameraShaker [ModuleScript]": {
+    "f": "*",
+    "x": 1
+   },
+   "ChangeTeam [RemoteEvent]": {
+    "f": "!",
+    "x": 1
+   },
+   "ChooseClass [RemoteEvent]": {
+    "f": "!",
+    "x": 1
+   },
+   "ClassSelectionMenu [Frame]": {
+    "x": 1
+   },
+   "Click [ImageButton]": {
+    "x": 1
+   },
+   "ClientNotification [BindableEvent]": {
+    "x": 1
+   },
+   "ClientVehicleHitboxes [Folder]": {
+    "k": {
+     "AntaresArmoredCar [Model]": {
+      "x": 1
+     },
+     "CetusArmoredCar [Model]": {
+      "x": 1
+     },
+     "CorvusArmoredCar [Model]": {
+      "x": 1
+     }
+    },
+    "x": 1
+   },
+   "Concussion [RemoteEvent]": {
+    "f": "!",
+    "x": 1
+   },
+   "CurrentMap [StringValue]": {
+    "x": 1
+   },
+   "CurrentYear [IntValue]": {
+    "x": 1
+   },
+   "CustomEquipmentDictionary [ModuleScript]": {
+    "f": "*",
+    "x": 1
+   },
+   "CustomEquipmentDictionarySAVE [ModuleScript]": {
+    "f": "*",
+    "x": 1
+   },
+   "CustomInventoryAssets [Folder]": {
+    "k": {
+     "BackpackView [ModuleScript]": {
+      "f": "*",
+      "x": 1
+     },
+     "InventoryInstances [Folder]": {
+      "x": 1
+     }
+    },
+    "x": 1
+   },
+   "CutsceneAssets [ModuleScript]": {
+    "f": "*",
+    "x": 1
+   },
+   "CutsceneModule [ModuleScript]": {
+    "f": "*",
+    "x": 1
+   },
+   "Daze [BindableEvent]": {
+    "x": 1
+   },
+   "Deaths [IntValue]": {
+    "x": 1
+   },
+   "DefaultSoundEvents [Folder]": {
+    "k": {
+     "AddCharacterLoadedEvent [RemoteEvent]": {
+      "f": "!",
+      "x": 1
+     },
+     "DefaultServerSoundEvent [RemoteEvent]": {
+      "f": "!",
+      "x": 1
+     },
+     "RemoveCharacterEvent [RemoteEvent]": {
+      "f": "!",
+      "x": 1
+     },
+     "SoundDispatcher [BindableEvent]": {
+      "x": 1
+     }
+    },
+    "x": 1
+   },
+   "DynamiteStick [Model]": {
+    "k": {
+     "Detonate [BindableEvent]": {
+      "x": 1
+     },
+     "DynamiteHandler [Script]": {
+      "f": "*",
+      "x": 1
+     },
+     "DynamiteStick [MeshPart]": {
+      "x": 1
+     },
+     "Humanoid [Humanoid]": {
+      "x": 1
+     }
+    },
+    "x": 1
+   },
+   "Functions [Folder]": {
+    "k": {
+     "Ban [RemoteFunction]": {
+      "f": "!",
+      "x": 1
+     },
+     "Handshake [RemoteEvent]": {
+      "f": "!",
+      "x": 1
+     },
+     "Kick [RemoteEvent]": {
+      "f": "!",
+      "x": 1
+     }
+    },
+    "x": 1
+   },
+   "GAME_FirstLoad [BoolValue]": {
+    "x": 1
+   },
+   "GAME_MapLoaded [BoolValue]": {
+    "x": 1
+   },
+   "Gib [UnionOperation]": {
+    "x": 1
+   },
+   "GrenadeThrow [Animation]": {
+    "x": 1
+   },
+   "HelmetShot [RemoteEvent]": {
+    "f": "!",
+    "x": 1
+   },
+   "InMatch [BoolValue]": {
+    "x": 1
+   },
+   "InTransition [BoolValue]": {
+    "x": 1
+   },
+   "Intermission [BoolValue]": {
+    "x": 1
+   },
+   "IntermissionEvent [RemoteEvent]": {
+    "f": "!",
+    "x": 1
+   },
+   "LOCAL_CameraAngle [NumberValue]": {
+    "x": 1
+   },
+   "LOCAL_InStartMenu [BoolValue]": {
+    "x": 1
+   },
+   "LOCAL_PlayerBackpackEnabled [BoolValue]": {
+    "x": 1
+   },
+   "LOCAL_SelectedClass [StringValue]": {
+    "x": 1
+   },
+   "LoadCharacter [RemoteEvent]": {
+    "f": "!",
+    "x": 1
+   },
+   "LoadLibrary [Folder]": {
+    "k": {
+     "RbxGui [ModuleScript]": {
+      "f": "*",
+      "x": 1
+     },
+     "RbxStamper [ModuleScript]": {
+      "f": "*",
+      "x": 1
+     },
+     "RbxUtility [ModuleScript]": {
+      "f": "*",
+      "x": 1
+     }
+    },
+    "x": 1
+   },
+   "ManualMatchStart [BindableEvent]": {
+    "x": 1
+   },
+   "MapLoaded [BoolValue]": {
+    "x": 1
+   },
+   "MortarAssets [Folder]": {
+    "k": {
+     "MortarAimIndicator [Model]": {
+      "x": 1
+     },
+     "MortarAimIndicatorOLD [Model]": {
+      "x": 1
+     },
+     "ReticleDot [Part]": {
+      "x": 1
+     },
+     "ReticlesFolder [Folder]": {
+      "x": 1
+     }
+    },
+    "x": 1
+   },
+   "MortarFire [RemoteEvent]": {
+    "f": "!",
+    "x": 1
+   },
+   "MouseOverModule [ModuleScript]": {
+    "f": "*",
+    "x": 1
+   },
+   "MovementSounds [Folder]": {
+    "k": {
+     "MaterialSounds [Folder]": {
+      "x": 1
+     },
+     "Sounds [Folder]": {
+      "x": 1
+     }
+    },
+    "x": 1
+   },
+   "NotificationAssets [ModuleScript]": {
+    "f": "*",
+    "x": 1
+   },
+   "OpenShopUI [RemoteEvent]": {
+    "f": "!",
+    "x": 1
+   },
+   "OutOfBounds [RemoteEvent]": {
+    "f": "!",
+    "x": 1
+   },
+   "PerksDictionary [ModuleScript]": {
+    "f": "*",
+    "x": 1
+   },
+   "PlaceablesPreviews [Folder]": {
+    "k": {
+     "TrenchShieldPreview [Model]": {
+      "x": 1
+     }
+    },
+    "x": 1
+   },
+   "RankUpNotification [RemoteEvent]": {
+    "f": "!",
+    "x": 1
+   },
+   "RaycastHitboxModule [ModuleScript]": {
+    "f": "*",
+    "x": 1
+   },
+   "RemoteFloodCheck [ModuleScript]": {
+    "f": "*",
+    "x": 1
+   },
+   "RemoveGripWeld [RemoteEvent]": {
+    "f": "!",
+    "x": 1
+   },
+   "RemoveWire [RemoteEvent]": {
+    "f": "!",
+    "x": 1
+   },
+   "ReplicatedTweening [ModuleScript]": {
+    "f": "*",
+    "x": 1
+   },
+   "RequestClass [RemoteFunction]": {
+    "f": "!",
+    "x": 1
+   },
+   "RequestCustomEquipment [RemoteFunction]": {
+    "f": "!",
+    "x": 1
+   },
+   "RequestPerkEquip [RemoteFunction]": {
+    "f": "!",
+    "x": 1
+   },
+   "RequestShopPurchase [RemoteFunction]": {
+    "f": "!",
+    "x": 1
+   },
+   "RoundClock [IntValue]": {
+    "x": 1
+   },
+   "ServerListRemotes [Folder]": {
+    "k": {
+     "ClientUpdateServers [RemoteEvent]": {
+      "f": "!",
+      "x": 1
+     },
+     "JoinServer [RemoteEvent]": {
+      "f": "!",
+      "x": 1
+     },
+     "UpdateServers [RemoteEvent]": {
+      "f": "!",
+      "x": 1
+     }
+    },
+    "x": 1
+   },
+   "ServerNotification [RemoteEvent]": {
+    "f": "!",
+    "x": 1
+   },
+   "ShopItemDictionary [ModuleScript]": {
+    "f": "*",
+    "x": 1
+   },
+   "SpringModule [ModuleScript]": {
+    "f": "*",
+    "x": 1
+   },
+   "Status [StringValue]": {
+    "x": 1
+   },
+   "SunFlareColor [Color3Value]": {
+    "x": 1
+   },
+   "Suppression [BindableEvent]": {
+    "x": 1
+   },
+   "SystemChat [RemoteEvent]": {
+    "f": "!",
+    "x": 1
+   },
+   "TREKModules [Folder]": {
+    "k": {
+     "GlobalSettings [ModuleScript]": {
+      "f": "*",
+      "x": 1
+     },
+     "GunSettings [Folder]": {
+      "x": 1
+     },
+     "MeleeHit [Sound]": {
+      "x": 1
+     },
+     "TweenModule [ModuleScript]": {
+      "f": "*",
+      "x": 1
+     }
+    },
+    "x": 1
+   },
+   "TREKRemotes [Folder]": {
+    "k": {
+     "BulletBind [BindableEvent]": {
+      "x": 1
+     },
+     "BulletRemote [RemoteEvent]": {
+      "f": "!",
+      "x": 1
+     },
+     "DamageRemote [UnreliableRemoteEvent]": {
+      "x": 1
+     },
+     "DamagerRemote [RemoteEvent]": {
+      "f": "!",
+      "x": 1
+     },
+     "FlashBind [BindableEvent]": {
+      "x": 1
+     },
+     "FlashRemote [RemoteEvent]": {
+      "f": "!",
+      "x": 1
+     },
+     "KillfeedRemote [RemoteEvent]": {
+      "f": "!",
+      "x": 1
+     },
+     "PenBind [BindableEvent]": {
+      "x": 1
+     },
+     "PenRemote [RemoteEvent]": {
+      "f": "!",
+      "x": 1
+     },
+     "PersonalfeedRemote [RemoteEvent]": {
+      "f": "!",
+      "x": 1
+     },
+     "ReloadRemote [RemoteEvent]": {
+      "f": "!",
+      "x": 1
+     }
+    },
+    "x": 1
+   },
+   "TREKScripts [Folder]": {
+    "k": {
+     "Gun [LocalScript]": {
+      "f": "*",
+      "x": 1
+     },
+     "GunSAVE [LocalScript]": {
+      "f": "*",
+      "x": 1
+     },
+     "Gun_ [LocalScript]": {
+      "f": "*",
+      "x": 1
+     }
+    },
+    "x": 1
+   },
+   "TREKStorage [Folder]": {
+    "k": {
+     "BulletGlow [BillboardGui]": {
+      "x": 1
+     },
+     "BulletTemp [Part]": {
+      "x": 1
+     },
+     "Charge [Animation]": {
+      "x": 1
+     },
+     "Crouch [Animation]": {
+      "x": 1
+     },
+     "Medkit [Model]": {
+      "x": 1
+     },
+     "Particles [Part]": {
+      "x": 1
+     },
+     "ParticlesOLD [Part]": {
+      "x": 1
+     },
+     "Roll [Animation]": {
+      "x": 1
+     },
+     "Run [Animation]": {
+      "x": 1
+     },
+     "Walk [Animation]": {
+      "x": 1
+     }
+    },
+    "x": 1
+   },
+   "Team1 [ObjectValue]": {
+    "x": 1
+   },
+   "Team2 [ObjectValue]": {
+    "x": 1
+   },
+   "TweenEvent [RemoteEvent]": {
+    "f": "!",
+    "x": 1
+   },
+   "TweenModule [ModuleScript]": {
+    "f": "*",
+    "x": 1
+   },
+   "UpdateSettings [BindableEvent]": {
+    "x": 1
+   },
+   "VK [RemoteEvent]": {
+    "f": "!",
+    "x": 1
+   },
+   "Victor [StringValue]": {
+    "x": 1
+   },
+   "Viewmodel [Model]": {
+    "k": {
+     "AnimationController [AnimationController]": {
+      "x": 1
+     },
+     "HeadWeld [Weld]": {
+      "x": 1
+     },
+     "HumanoidRootPart [Part]": {
+      "x": 1
+     },
+     "Torso [Part]": {
+      "x": 1
+     }
+    },
+    "x": 1
+   },
+   "ViewmodelBox [Part]": {
+    "x": 1
+   },
+   "ViewmodelSAVE [Model]": {
+    "k": {
+     "AnimationController [AnimationController]": {
+      "x": 1
+     },
+     "Head [Part]": {
+      "x": 1
+     },
+     "HeadWeld [Weld]": {
+      "x": 1
+     },
+     "HumanoidRootPart [Part]": {
+      "x": 1
+     },
+     "Left Arm [Part]": {
+      "x": 1
+     },
+     "Right Arm [Part]": {
+      "x": 1
+     },
+     "Torso [Part]": {
+      "x": 1
+     }
+    },
+    "x": 1
+   },
+   "Voiceline [RemoteEvent]": {
+    "f": "!",
+    "x": 1
+   },
+   "Voicelines [Folder]": {
+    "k": {
+     "English [Folder]": {
+      "x": 1
+     },
+     "ExplosionDeathScreams [Folder]": {
+      "x": 1
+     },
+     "MaskLoudener [CompressorSoundEffect]": {
+      "x": 1
+     },
+     "MaskMuffle [EqualizerSoundEffect]": {
+      "x": 1
+     },
+     "Portuguese [Folder]": {
+      "x": 1
+     },
+     "WarCries [Folder]": {
+      "x": 1
+     }
+    },
+    "x": 1
+   },
+   "Votekick [RemoteEvent]": {
+    "f": "!",
+    "x": 1
+   },
+   "VotekickValues [Folder]": {
+    "k": {
+     "1234_Dregq [IntValue]": {
+      "x": 1
+     },
+     "1notalexander4 [IntValue]": {
+      "x": 1
+     },
+     "1ubybyggzk [IntValue]": {
+      "x": 1
+     },
+     "3e3e3yirtjil [IntValue]": {
+      "x": 1
+     },
+     "59goated1 [IntValue]": {
+      "x": 1
+     },
+     "Aarav_Eggo [IntValue]": {
+      "x": 1
+     },
+     "Afoc_8aXD [IntValue]": {
+      "x": 1
+     },
+     "Ahimigatito [IntValue]": {
+      "x": 1
+     },
+     "BluZombie208 [IntValue]": {
+      "x": 1
+     },
+     "COVARACHO78 [IntValue]": {
+      "x": 1
+     },
+     "Cocaferia0 [IntValue]": {
+      "x": 1
+     },
+     "Cwcoolboy1 [IntValue]": {
+      "x": 1
+     },
+     "DaniloW50 [IntValue]": {
+      "x": 1
+     },
+     "Dustmover112 [IntValue]": {
+      "x": 1
+     },
+     "ElCapoMessi1812 [IntValue]": {
+      "x": 1
+     },
+     "FEARDAFFYBADUSERNAME [IntValue]": {
+      "x": 1
+     },
+     "Galaxy_noodles123 [IntValue]": {
+      "x": 1
+     },
+     "Gavinroi24 [IntValue]": {
+      "x": 1
+     },
+     "Iheartspace03 [IntValue]": {
+      "x": 1
+     },
+     "Imperial_Italy2 [IntValue]": {
+      "x": 1
+     },
+     "JULIO2005e [IntValue]": {
+      "x": 1
+     },
+     "KINGbob01094 [IntValue]": {
+      "x": 1
+     },
+     "Mrs_OfTheLily [IntValue]": {
+      "x": 1
+     },
+     "PuroTheGreat21 [IntValue]": {
+      "x": 1
+     },
+     "Raxtusv [IntValue]": {
+      "x": 1
+     },
+     "Robloxremix14 [IntValue]": {
+      "x": 1
+     },
+     "Sadbooyz13 [IntValue]": {
+      "x": 1
+     },
+     "Sandviper_th3 [IntValue]": {
+      "x": 1
+     },
+     "Skeletalistic [IntValue]": {
+      "x": 1
+     },
+     "Stanley4510 [IntValue]": {
+      "x": 1
+     },
+     "TYTTRkl [IntValue]": {
+      "x": 1
+     },
+     "Thiago3a1ioe [IntValue]": {
+      "x": 1
+     },
+     "TideBraker [IntValue]": {
+      "x": 1
+     },
+     "TinyScrub [IntValue]": {
+      "x": 1
+     },
+     "Veneno818718 [IntValue]": {
+      "x": 1
+     },
+     "WesternEastNorth [IntValue]": {
+      "x": 1
+     },
+     "angelon123xdd [IntValue]": {
+      "x": 1
+     },
+     "anuelnoob [IntValue]": {
+      "x": 1
+     },
+     "atgamer37 [IntValue]": {
+      "x": 1
+     },
+     "banana_chum7 [IntValue]": {
+      "x": 1
+     },
+     "bobmaniscoolpoop [IntValue]": {
+      "x": 1
+     },
+     "borrega247 [IntValue]": {
+      "x": 1
+     },
+     "brandonbarberertioc [IntValue]": {
+      "x": 1
+     },
+     "coolcookieboss12345 [IntValue]": {
+      "x": 1
+     },
+     "darthnihilus_66 [IntValue]": {
+      "x": 1
+     },
+     "dratlast [IntValue]": {
+      "x": 1
+     },
+     "dudelegand98 [IntValue]": {
+      "x": 1
+     },
+     "dylanspiderss [IntValue]": {
+      "x": 1
+     },
+     "frnxster [IntValue]": {
+      "x": 1
+     },
+     "gerson8352 [IntValue]": {
+      "x": 1
+     },
+     "hamstermannster [IntValue]": {
+      "x": 1
+     },
+     "josevar7987 [IntValue]": {
+      "x": 1
+     },
+     "matexd809 [IntValue]": {
+      "x": 1
+     },
+     "memo1117872 [IntValue]": {
+      "x": 1
+     },
+     "renrenhu6 [IntValue]": {
+      "x": 1
+     },
+     "roblox_user_1416249619 [IntValue]": {
+      "x": 1
+     },
+     "samirch08 [IntValue]": {
+      "x": 1
+     },
+     "sammy868792 [IntValue]": {
+      "x": 1
+     },
+     "shadownan_2008 [IntValue]": {
+      "x": 1
+     },
+     "skeletonbud20113 [IntValue]": {
+      "x": 1
+     },
+     "skyguy1451 [IntValue]": {
+      "x": 1
+     },
+     "tengonovia_248 [IntValue]": {
+      "x": 1
+     },
+     "traincrash2007 [IntValue]": {
+      "x": 1
+     },
+     "turtle23874 [IntValue]": {
+      "x": 1
+     },
+     "xXxPIMBLOxXx [IntValue]": {
+      "x": 1
+     },
+     "xxn00bslayerxxx7 [IntValue]": {
+      "x": 1
+     },
+     "zhaul2016 [IntValue]": {
+      "x": 1
+     }
+    },
+    "x": 1
+   },
+   "WhistleCharge [RemoteEvent]": {
+    "f": "!",
+    "x": 1
+   },
+   "Zone [ModuleScript]": {
+    "f": "*",
+    "x": 1
+   },
+   "ZonePlusReference [ObjectValue]": {
+    "x": 1
+   }
+  },
+  "StarterGui": {
+   "AmbientTexture [ScreenGui]": {
+    "x": 1
+   },
+   "AttentivePerkUI [ScreenGui]": {
+    "x": 1
+   },
+   "ChangelogGUI [ScreenGui]": {
+    "x": 1
+   },
+   "CustomEquipmentShopUI [ScreenGui]": {
+    "x": 1
+   },
+   "CustomInventory [ScreenGui]": {
+    "x": 1
+   },
+   "DamageGui [ScreenGui]": {
+    "x": 1
+   },
+   "DeathCounter [ScreenGui]": {
+    "x": 1
+   },
+   "DeathScreen [ScreenGui]": {
+    "x": 1
+   },
+   "Disorientation [ScreenGui]": {
+    "x": 1
+   },
+   "EquipmentShopUI [ScreenGui]": {
+    "x": 1
+   },
+   "FreecamDetector [ScreenGui]": {
+    "x": 1
+   },
+   "MobileUI [ScreenGui]": {
+    "x": 1
+   },
+   "PlayerListGui [ScreenGui]": {
+    "x": 1
+   },
+   "PlayerNametags [ScreenGui]": {
+    "x": 1
+   },
+   "RankUpUI [ScreenGui]": {
+    "x": 1
+   },
+   "ReturnToCombatZone [ScreenGui]": {
+    "x": 1
+   },
+   "SpawnMenuUI [ScreenGui]": {
+    "x": 1
+   },
+   "TREKHud [ScreenGui]": {
+    "x": 1
+   },
+   "Tense [ScreenGui]": {
+    "x": 1
+   },
+   "TopBar [ScreenGui]": {
+    "x": 1
+   },
+   "UniqueMapEffects [ScreenGui]": {
+    "x": 1
+   }
+  },
+  "StarterPlayer": {
+   "StarterCharacter [Model]": {
+    "k": {
+     "Animate [LocalScript]": {
+      "f": "*",
+      "x": 1
+     },
+     "Body Colors [BodyColors]": {
+      "x": 1
+     },
+     "Head [Part]": {
+      "x": 1
+     },
+     "Humanoid [Humanoid]": {
+      "x": 1
+     },
+     "HumanoidRootPart [Part]": {
+      "x": 1
+     },
+     "Left Arm [Part]": {
+      "x": 1
+     },
+     "Left Leg [Part]": {
+      "x": 1
+     },
+     "Right Arm [Part]": {
+      "x": 1
+     },
+     "Right Leg [Part]": {
+      "x": 1
+     },
+     "Torso [Part]": {
+      "x": 1
+     }
+    },
+    "x": 1
+   },
+   "StarterCharacterScripts [StarterCharacterScripts]": {
+    "x": 1
+   },
+   "StarterPlayerScripts [StarterPlayerScripts]": {
+    "x": 1
+   }
+  },
+  "Workspace": {
+   "<PLAYER> [Model]": {
+    "k": {
+     "ALBUS-GRAHAM NO. 4 [Tool]": {
+      "x": 2
+     },
+     "Animate [LocalScript]": {
+      "f": "*",
+      "x": 64
+     },
+     "BANDAGES [Tool]": {
+      "x": 1
+     },
+     "BARTON MODEL 10 [Tool]": {
+      "x": 2
+     },
+     "BERSERKER [IntValue]": {
+      "x": 1
+     },
+     "Body Colors [BodyColors]": {
+      "x": 64
+     },
+     "BrowPlate [Model]": {
+      "x": 2
+     },
+     "BurnAnimation [LocalScript]": {
+      "f": "*",
+      "x": 64
+     },
+     "CLUB [Tool]": {
+      "x": 1
+     },
+     "COOLHEADED [IntValue]": {
+      "x": 4
+     },
+     "CameraBlock [Part]": {
+      "x": 1
+     },
+     "CameraBobbing [LocalScript]": {
+      "f": "*",
+      "x": 64
+     },
+     "CameraSystem [LocalScript]": {
+      "f": "*",
+      "x": 64
+     },
+     "CharacterHair [Accessory]": {
+      "x": 53
+     },
+     "CivilGuard10Pants [Pants]": {
+      "x": 2
+     },
+     "CivilGuard10Shirt [Shirt]": {
+      "x": 2
+     },
+     "CivilGuard1Pants [Pants]": {
+      "x": 2
+     },
+     "CivilGuard1Shirt [Shirt]": {
+      "x": 2
+     },
+     "CivilGuard4Pants [Pants]": {
+      "x": 2
+     },
+     "CivilGuard4Shirt [Shirt]": {
+      "x": 2
+     },
+     "CivilGuardHat2 [Model]": {
+      "x": 1
+     },
+     "CivilGuardHat3 [Model]": {
+      "x": 1
+     },
+     "CivilGuardHat5 [Model]": {
+      "x": 1
+     },
+     "CivilGuardHat8 [Model]": {
+      "x": 1
+     },
+     "CivilGuardPoliceBelt [Model]": {
+      "x": 2
+     },
+     "CivilGuardPoliceCap [Model]": {
+      "x": 2
+     },
+     "CivilGuardWebbing1 [Model]": {
+      "x": 1
+     },
+     "CivilGuardWebbing3 [Model]": {
+      "x": 2
+     },
+     "CivilGuardWebbing5 [Model]": {
+      "x": 1
+     },
+     "ClassGiven [StringValue]": {
+      "x": 53
+     },
+     "DECIMA SHOTGUN [Tool]": {
+      "x": 2
+     },
+     "DYNAMITE [Tool]": {
+      "x": 1
+     },
+     "DamageResistanceMultiplier [IntValue]": {
+      "x": 64
+     },
+     "E/I AT RIFLE [Tool]": {
+      "x": 2
+     },
+     "E/VIII RIFLE BAYONET [Tool]": {
+      "x": 7
+     },
+     "E/VIII RIFLE [Tool]": {
+      "x": 1
+     },
+     "E/XV AUTOMATIC [Tool]": {
+      "x": 4
+     },
+     "ENE AERA RIFLE [Tool]": {
+      "x": 5
+     },
+     "FIGHT-OR-FLIGHT [BoolValue]": {
+      "x": 6
+     },
+     "FallDamage [Script]": {
+      "f": "*",
+      "x": 64
+     },
+     "Head [Part]": {
+      "x": 64
+     },
+     "HeadFaceDirt [Model]": {
+      "x": 53
+     },
+     "HeadTurn [LocalScript]": {
+      "f": "*",
+      "x": 64
+     },
+     "Health [Script]": {
+      "f": "*",
+      "x": 64
+     },
+     "Helmet [Model]": {
+      "x": 43
+     },
+     "Humanoid [Humanoid]": {
+      "x": 64
+     },
+     "HumanoidHandler [LocalScript]": {
+      "f": "*",
+      "x": 64
+     },
+     "HumanoidRootPart [Part]": {
+      "x": 64
+     },
+     "HumanoidStatesHandler [LocalScript]": {
+      "f": "*",
+      "x": 64
+     },
+     "JumpCooldown [LocalScript]": {
+      "f": "*",
+      "x": 64
+     },
+     "Left Arm [Part]": {
+      "x": 64
+     },
+     "Left Leg [Part]": {
+      "x": 64
+     },
+     "LocalFootsteps [LocalScript]": {
+      "f": "*",
+      "x": 64
+     },
+     "M12 AT RIFLE [Tool]": {
+      "x": 2
+     },
+     "M12 SMG [Tool]": {
+      "x": 4
+     },
+     "M1889 LA RIFLE BAYONET [Tool]": {
+      "x": 2
+     },
+     "M4 REVOLVER [Tool]": {
+      "x": 1
+     },
+     "M99 RIFLE BAYONET [Tool]": {
+      "x": 10
+     },
+     "M99 RIFLE [Tool]": {
+      "x": 1
+     },
+     "MODELO 1898 RIFLE BAYONET [Tool]": {
+      "x": 1
+     },
+     "MORTAR [Tool]": {
+      "x": 2
+     },
+     "Medic1912Pants [Pants]": {
+      "x": 3
+     },
+     "Medic1912Shirt [Shirt]": {
+      "x": 3
+     },
+     "MovementSpeedHandler [LocalScript]": {
+      "f": "*",
+      "x": 64
+     },
+     "Officer1912Pants [Pants]": {
+      "x": 2
+     },
+     "Officer1912Shirt [Shirt]": {
+      "x": 2
+     },
+     "OfficerBelt1912 [Model]": {
+      "x": 2
+     },
+     "OfficerCap [Model]": {
+      "x": 2
+     },
+     "OfficerCap1912 [Model]": {
+      "x": 2
+     },
+     "OfficerPants [Pants]": {
+      "x": 2
+     },
+     "OfficerShirt [Shirt]": {
+      "x": 2
+     },
+     "PlaceablesHandler [LocalScript]": {
+      "f": "*",
+      "x": 64
+     },
+     "Rig [Model]": {
+      "x": 23
+     },
+     "Rig1912 [Model]": {
+      "x": 22
+     },
+     "Right Arm [Part]": {
+      "x": 64
+     },
+     "Right Leg [Part]": {
+      "x": 64
+     },
+     "SUB E/XCV SL [Tool]": {
+      "x": 2
+     },
+     "SmoothWalkLean [LocalScript]": {
+      "f": "*",
+      "x": 64
+     },
+     "Sound [Script]": {
+      "f": "*",
+      "x": 64
+     },
+     "Standard1912Pants [Pants]": {
+      "x": 19
+     },
+     "Standard1912Shirt [Shirt]": {
+      "x": 19
+     },
+     "StandardPants [Pants]": {
+      "x": 21
+     },
+     "StandardShirt [Shirt]": {
+      "x": 21
+     },
+     "TREKLocal [LocalScript]": {
+      "f": "*",
+      "x": 64
+     },
+     "TeamIndicator [LocalScript]": {
+      "f": "*",
+      "x": 64
+     },
+     "Torso [Part]": {
+      "x": 64
+     },
+     "UPARMORED [IntValue]": {
+      "x": 2
+     },
+     "ViewmodelHandler [LocalScript]": {
+      "f": "*",
+      "x": 64
+     },
+     "Voicelines [Script]": {
+      "f": "*",
+      "x": 64
+     }
+    },
+    "x": 64
+   },
+   "AirburstMortarExplosion [Explosion]": {
+    "x": 1
+   },
+   "AirburstMortarExplosionEffectPart [Part]": {
+    "x": 1
+   },
+   "BloodCache [Folder]": {
+    "k": {
+     "BloodPart [Part]": {
+      "x": 108
+     }
+    },
+    "x": 1
+   },
+   "Camera [Camera]": {
+    "x": 1
+   },
+   "Grenades [Folder]": {
+    "k": {
+     "Grenade [Part]": {
+      "x": 1
+     }
+    },
+    "x": 1
+   },
+   "IgnoreList [Folder]": {
+    "k": {
+     "Bullets [Folder]": {
+      "x": 1
+     },
+     "MapParts [Folder]": {
+      "x": 1
+     },
+     "PlayingZone [Folder]": {
+      "x": 1
+     },
+     "Tracers [Folder]": {
+      "x": 1
+     },
+     "VehicleHitboxes [Folder]": {
+      "x": 1
+     }
+    },
+    "x": 1
+   },
+   "JOB_ID [StringValue]": {
+    "x": 1
+   },
+   "LobbyRoom [Folder]": {
+    "k": {
+     "LobbyRoom [Model]": {
+      "x": 1
+     },
+     "LobbySpawns [Folder]": {
+      "x": 1
+     }
+    },
+    "x": 1
+   },
+   "Map [Folder]": {
+    "k": {
+     "Map [Folder]": {
+      "x": 1
+     }
+    },
+    "x": 1
+   },
+   "MortarShrapnelImpact [Part]": {
+    "x": 143
+   },
+   "MortarWhistle [Part]": {
+    "x": 9
+   },
+   "PLACE_VERSION [StringValue]": {
+    "x": 1
+   },
+   "Placeables [Folder]": {
+    "x": 1
+   },
+   "Previews [Folder]": {
+    "x": 1
+   },
+   "Sounds [Folder]": {
+    "k": {
+     "BattleEnd [Sound]": {
+      "x": 1
+     },
+     "BulletWhiz [Sound]": {
+      "x": 1
+     },
+     "Click [Sound]": {
+      "x": 1
+     },
+     "Click2 [Sound]": {
+      "x": 1
+     },
+     "FlamethrowerIgnition [Sound]": {
+      "x": 1
+     },
+     "KillConfirmed [Sound]": {
+      "x": 1
+     },
+     "Morse [Folder]": {
+      "x": 1
+     },
+     "Music [Folder]": {
+      "x": 1
+     },
+     "OceanWavesAmbience [Sound]": {
+      "x": 1
+     },
+     "PianoImpact [Sound]": {
+      "x": 1
+     },
+     "PointCaptured [Sound]": {
+      "x": 1
+     },
+     "RadioCrackle [Sound]": {
+      "x": 1
+     },
+     "RankUp [Sound]": {
+      "x": 1
+     },
+     "TrenchWhistle [Sound]": {
+      "x": 1
+     }
+    },
+    "x": 1
+   },
+   "Terrain [Terrain]": {
+    "x": 1
+   },
+   "VehicleExplosionEffectPart [Part]": {
+    "x": 1
+   },
+   "VehicleWeaponTargets [Folder]": {
+    "k": {
+     "Vehicle [ObjectValue]": {
+      "x": 3
+     }
+    },
+    "x": 1
+   }
+  }
+ }
+}

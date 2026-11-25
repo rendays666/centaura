@@ -1,0 +1,39 @@
+{
+  "_doc": "Aturan klasifikasi remote. Edit file ini (bukan kode) untuk mengubah kategori. Urutan penting: aturan pertama yang cocok menang. Regex Python, dicocokkan ke NAMA remote (category) atau PATH ternormalisasi (scope).",
+  "version": 1,
+  "scope": [
+    ["roblox_internal", "^RobloxReplicatedStorage\\."],
+    ["roblox_internal", "IntegrityCheckProcessorKey"],
+    ["roblox_internal", "^ReplicatedStorage\\.DefaultSoundEvents\\."],
+    ["roblox_internal", "^ReplicatedStorage\\.LoadLibrary\\."],
+    ["tool", "^(Players|Workspace)\\.<PLAYER>\\."]
+  ],
+  "scope_default": "game",
+  "category": [
+    ["admin_security", "Admin|Kick|Ban$|Votekick|Handshake|^VK$|^__FUNCTION$|^[0-9a-f]{8}-[0-9a-f]{4}-"],
+    ["economy", "Shop|Purchase|Equipment|Perk"],
+    ["match_flow", "Team|Class|Intermission|LoadCharacter|OutOfBounds|ServerList|JoinServer|UpdateServers|RankUp"],
+    ["ui_feedback", "Notification|Chat|Voiceline|Blood|Tween|Sound|Toast|feed|Feed"],
+    ["combat", "Bullet|Damage|Damager|Kill|Heal|Grenade|Detonate|Mortar|Artillery|Helmet|Concussion|Flash|Reload|PenRemote|Deploy|PlaceObject|WhistleCharge|RemoveWire|RemoveGripWeld|Aircraft"]
+  ],
+  "category_default": "uncategorized",
+  "category_for_scope": {"roblox_internal": "roblox_platform"},
+  "value_groups": [
+    ["votekick", "^ReplicatedStorage\\.VotekickValues"],
+    ["map", "^Workspace\\.Map\\."],
+    ["per_player", "^(Workspace|Players)\\.<PLAYER>\\."],
+    ["match_state", "^ReplicatedStorage\\."],
+    ["other", ".*"]
+  ],
+  "known_dump_types": {
+    "ai_brief": "ringkasan AI (terpotong 15k char) — redundan, hanya signature remote",
+    "config": "VALUES + ATTRIBUTES",
+    "full": "gabungan smart+mechanics+remotes+tree+config — redundan bila file atomik ada",
+    "index": "daftar script + status (readable/empty/obf)",
+    "mechanics": "analisis mekanik: API surface, handler, modul, konstanta",
+    "paths": "path semua script (redundan dengan index)",
+    "remotes": "semua RemoteEvent/RemoteFunction",
+    "smart": "snapshot config + UI buttons + log FireServer/InvokeServer + diagnostik",
+    "tree": "pohon struktur game"
+  }
+}

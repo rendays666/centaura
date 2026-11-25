@@ -1,0 +1,2180 @@
+{
+ "attributes": {
+  "Afoc_8aXD.CameraSystem": {
+   "CameraHeight": {
+    "ex": [
+     "0.5"
+    ],
+    "max": 0.5,
+    "min": 0.5,
+    "n": 1
+   },
+   "CameraStiffness": {
+    "ex": [
+     "1.2"
+    ],
+    "max": 1.2,
+    "min": 1.2,
+    "n": 1
+   }
+  },
+  "Afoc_8aXD.Head": {
+   "Bloodable": {
+    "ex": [
+     "true"
+    ],
+    "max": null,
+    "min": null,
+    "n": 1,
+    "nonnum": true
+   }
+  },
+  "Afoc_8aXD.Left Arm": {
+   "Bloodable": {
+    "ex": [
+     "true"
+    ],
+    "max": null,
+    "min": null,
+    "n": 1,
+    "nonnum": true
+   }
+  },
+  "Afoc_8aXD.Left Leg": {
+   "Bloodable": {
+    "ex": [
+     "true"
+    ],
+    "max": null,
+    "min": null,
+    "n": 1,
+    "nonnum": true
+   }
+  },
+  "Afoc_8aXD.Right Arm": {
+   "Bloodable": {
+    "ex": [
+     "true"
+    ],
+    "max": null,
+    "min": null,
+    "n": 1,
+    "nonnum": true
+   }
+  },
+  "Afoc_8aXD.Right Leg": {
+   "Bloodable": {
+    "ex": [
+     "true"
+    ],
+    "max": null,
+    "min": null,
+    "n": 1,
+    "nonnum": true
+   }
+  },
+  "Afoc_8aXD.Torso": {
+   "Bloodable": {
+    "ex": [
+     "true"
+    ],
+    "max": null,
+    "min": null,
+    "n": 1,
+    "nonnum": true
+   }
+  },
+  "BulletPart": {
+   "BulletOwner": {
+    "ex": [
+     "Antares",
+     "Aquila"
+    ],
+    "max": null,
+    "min": null,
+    "n": 19,
+    "nonnum": true
+   },
+   "EndPosition": {
+    "ex": [
+     "856.383056640625, 19.449661254882812, 61.01387405395508",
+     "977.384765625, 32.6124153137207, 172.9041748046875",
+     "968.917724609375, 36.64370346069336, -83.60474395751953",
+     "972.6448974609375, 35.86922836303711, -63.69036102294922"
+    ],
+    "max": null,
+    "min": null,
+    "n": 19,
+    "nonnum": true
+   },
+   "StartPosition": {
+    "ex": [
+     "665.234619140625, 33.7478141784668, -50.755767822265625",
+     "977.3464965820312, 32.3151741027832, 171.84548950195312",
+     "983.4739990234375, 30.997377395629883, 159.7171173095703",
+     "1103.9276123046875, 36.06614685058594, 129.75132751464844"
+    ],
+    "max": null,
+    "min": null,
+    "n": 19,
+    "nonnum": true
+   },
+   "Suppression": {
+    "ex": [
+     "5",
+     "2",
+     "3",
+     "8"
+    ],
+    "max": 8.0,
+    "min": 2.0,
+    "n": 19
+   }
+  },
+  "Cwcoolboy1.CameraSystem": {
+   "CameraHeight": {
+    "ex": [
+     "0.5"
+    ],
+    "max": 0.5,
+    "min": 0.5,
+    "n": 1
+   },
+   "CameraStiffness": {
+    "ex": [
+     "1.2"
+    ],
+    "max": 1.2,
+    "min": 1.2,
+    "n": 1
+   }
+  },
+  "Cwcoolboy1.Head": {
+   "Bloodable": {
+    "ex": [
+     "true"
+    ],
+    "max": null,
+    "min": null,
+    "n": 1,
+    "nonnum": true
+   }
+  },
+  "Cwcoolboy1.Left Arm": {
+   "Bloodable": {
+    "ex": [
+     "true"
+    ],
+    "max": null,
+    "min": null,
+    "n": 1,
+    "nonnum": true
+   }
+  },
+  "Cwcoolboy1.Left Leg": {
+   "Bloodable": {
+    "ex": [
+     "true"
+    ],
+    "max": null,
+    "min": null,
+    "n": 1,
+    "nonnum": true
+   }
+  },
+  "Cwcoolboy1.Right Arm": {
+   "Bloodable": {
+    "ex": [
+     "true"
+    ],
+    "max": null,
+    "min": null,
+    "n": 1,
+    "nonnum": true
+   }
+  },
+  "Cwcoolboy1.Right Leg": {
+   "Bloodable": {
+    "ex": [
+     "true"
+    ],
+    "max": null,
+    "min": null,
+    "n": 1,
+    "nonnum": true
+   }
+  },
+  "Cwcoolboy1.Torso": {
+   "Bloodable": {
+    "ex": [
+     "true"
+    ],
+    "max": null,
+    "min": null,
+    "n": 1,
+    "nonnum": true
+   }
+  },
+  "Workspace.<PLAYER>.BrowPlate.Plate.Armored": {
+   "NoProtection": {
+    "ex": [
+     "true"
+    ],
+    "max": null,
+    "min": null,
+    "n": 4,
+    "nonnum": true
+   }
+  },
+  "Workspace.<PLAYER>.CameraSystem": {
+   "CameraHeight": {
+    "ex": [
+     "0.5"
+    ],
+    "max": 0.5,
+    "min": 0.5,
+    "n": 128
+   },
+   "CameraStiffness": {
+    "ex": [
+     "1.2"
+    ],
+    "max": 1.2,
+    "min": 1.2,
+    "n": 128
+   }
+  },
+  "Workspace.<PLAYER>.Head": {
+   "Bloodable": {
+    "ex": [
+     "true"
+    ],
+    "max": null,
+    "min": null,
+    "n": 128,
+    "nonnum": true
+   }
+  },
+  "Workspace.<PLAYER>.Left Arm": {
+   "Bloodable": {
+    "ex": [
+     "true"
+    ],
+    "max": null,
+    "min": null,
+    "n": 128,
+    "nonnum": true
+   }
+  },
+  "Workspace.<PLAYER>.Left Leg": {
+   "Bloodable": {
+    "ex": [
+     "true"
+    ],
+    "max": null,
+    "min": null,
+    "n": 128,
+    "nonnum": true
+   }
+  },
+  "Workspace.<PLAYER>.Right Arm": {
+   "Bloodable": {
+    "ex": [
+     "true"
+    ],
+    "max": null,
+    "min": null,
+    "n": 128,
+    "nonnum": true
+   }
+  },
+  "Workspace.<PLAYER>.Right Leg": {
+   "Bloodable": {
+    "ex": [
+     "true"
+    ],
+    "max": null,
+    "min": null,
+    "n": 128,
+    "nonnum": true
+   }
+  },
+  "Workspace.<PLAYER>.Torso": {
+   "Bloodable": {
+    "ex": [
+     "true"
+    ],
+    "max": null,
+    "min": null,
+    "n": 128,
+    "nonnum": true
+   }
+  },
+  "Workspace.IgnoreList.Bullets.BulletPart": {
+   "BulletOwner": {
+    "ex": [
+     "Antares",
+     "Aquila"
+    ],
+    "max": null,
+    "min": null,
+    "n": 14,
+    "nonnum": true
+   },
+   "EndPosition": {
+    "ex": [
+     "963.6568603515625, 39.56916809082031, -87.36878204345703",
+     "827.6248168945312, 19.98249053955078, 62.234561920166016",
+     "798.056640625, 18.284442901611328, 58.894981384277344",
+     "815.6163330078125, 17.996551513671875, 58.61878204345703"
+    ],
+    "max": null,
+    "min": null,
+    "n": 14,
+    "nonnum": true
+   },
+   "StartPosition": {
+    "ex": [
+     "857.5084228515625, 38.420108795166016, -94.95709991455078",
+     "676.7545166015625, 38.48947525024414, -58.15524673461914",
+     "747.8212890625, 48.04496383666992, -89.29467010498047",
+     "679.7459106445312, 38.89658737182617, -58.55110168457031"
+    ],
+    "max": null,
+    "min": null,
+    "n": 14,
+    "nonnum": true
+   },
+   "Suppression": {
+    "ex": [
+     "3",
+     "2",
+     "5",
+     "8"
+    ],
+    "max": 8.0,
+    "min": 2.0,
+    "n": 14
+   }
+  },
+  "Workspace.Map.Map.PointStatuses.PointAStatus": {
+   "Locked": {
+    "ex": [
+     "true"
+    ],
+    "max": null,
+    "min": null,
+    "n": 2,
+    "nonnum": true
+   }
+  },
+  "Workspace.Map.Map.PointStatuses.PointBStatus": {
+   "Locked": {
+    "ex": [
+     "true"
+    ],
+    "max": null,
+    "min": null,
+    "n": 2,
+    "nonnum": true
+   }
+  },
+  "Workspace.VehicleWeaponTargets.Vehicle": {
+   "Team": {
+    "ex": [
+     "Antares",
+     "Aquila"
+    ],
+    "max": null,
+    "min": null,
+    "n": 6,
+    "nonnum": true
+   }
+  }
+ },
+ "schema": 2,
+ "values": {
+  "Creator": {
+   "c": "ObjectValue",
+   "n": 1,
+   "v": [
+    "Players.<PLAYER>"
+   ]
+  },
+  "Imperial_Italy2.Animate.ScaleDampeningPercent": {
+   "c": "NumberValue",
+   "n": 1,
+   "v": [
+    "1"
+   ]
+  },
+  "Imperial_Italy2.Animate.climb": {
+   "c": "StringValue",
+   "n": 1,
+   "v": [
+    "\"\""
+   ]
+  },
+  "Imperial_Italy2.Animate.fall": {
+   "c": "StringValue",
+   "n": 1,
+   "v": [
+    "\"\""
+   ]
+  },
+  "Imperial_Italy2.Animate.idle": {
+   "c": "StringValue",
+   "n": 1,
+   "v": [
+    "\"\""
+   ]
+  },
+  "Imperial_Italy2.Animate.idle.Animation1.Weight": {
+   "c": "NumberValue",
+   "n": 1,
+   "v": [
+    "9"
+   ]
+  },
+  "Imperial_Italy2.Animate.idle.Animation2.Weight": {
+   "c": "NumberValue",
+   "n": 1,
+   "v": [
+    "1"
+   ]
+  },
+  "Imperial_Italy2.Animate.jump": {
+   "c": "StringValue",
+   "n": 1,
+   "v": [
+    "\"\""
+   ]
+  },
+  "Imperial_Italy2.Animate.run": {
+   "c": "StringValue",
+   "n": 1,
+   "v": [
+    "\"\""
+   ]
+  },
+  "Imperial_Italy2.Animate.sit": {
+   "c": "StringValue",
+   "n": 1,
+   "v": [
+    "\"\""
+   ]
+  },
+  "Imperial_Italy2.Animate.toolnone": {
+   "c": "StringValue",
+   "n": 1,
+   "v": [
+    "\"\""
+   ]
+  },
+  "Imperial_Italy2.Animate.walk": {
+   "c": "StringValue",
+   "n": 1,
+   "v": [
+    "\"\""
+   ]
+  },
+  "Imperial_Italy2.CharacterHair.Handle.AvatarPartScaleType": {
+   "c": "StringValue",
+   "n": 1,
+   "v": [
+    "\"Classic\""
+   ]
+  },
+  "Imperial_Italy2.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget": {
+   "c": "ObjectValue",
+   "n": 1,
+   "v": [
+    "<PLAYER>.CharacterHair.Handle"
+   ]
+  },
+  "Imperial_Italy2.ClassGiven": {
+   "c": "StringValue",
+   "n": 1,
+   "v": [
+    "\"Rifleman\""
+   ]
+  },
+  "Imperial_Italy2.DamageResistanceMultiplier": {
+   "c": "IntValue",
+   "n": 1,
+   "v": [
+    "100"
+   ]
+  },
+  "Imperial_Italy2.FIGHT-OR-FLIGHT": {
+   "c": "BoolValue",
+   "n": 1,
+   "v": [
+    "false"
+   ]
+  },
+  "Imperial_Italy2.Humanoid.AssistTag": {
+   "c": "ObjectValue",
+   "n": 2,
+   "v": [
+    "Players.<PLAYER>"
+   ]
+  },
+  "Players.<PLAYER>.Backpack.ALBUS-GRAHAM NO. 4.CustomAnims": {
+   "c": "BoolValue",
+   "n": 1,
+   "v": [
+    "false"
+   ]
+  },
+  "Players.<PLAYER>.Backpack.E/XV AUTOMATIC.CustomAnims": {
+   "c": "BoolValue",
+   "n": 1,
+   "v": [
+    "false"
+   ]
+  },
+  "Players.<PLAYER>.Backpack.M12 SMG.CustomAnims": {
+   "c": "BoolValue",
+   "n": 1,
+   "v": [
+    "false"
+   ]
+  },
+  "Players.<PLAYER>.Backpack.M1889 LA RIFLE BAYONET.CustomAnims": {
+   "c": "BoolValue",
+   "n": 1,
+   "v": [
+    "false"
+   ]
+  },
+  "Players.<PLAYER>.Backpack.M99 RIFLE BAYONET.CustomAnims": {
+   "c": "BoolValue",
+   "n": 1,
+   "v": [
+    "false"
+   ]
+  },
+  "Players.<PLAYER>.Backpack.MORTAR.CustomAnims": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "false"
+   ]
+  },
+  "Players.<PLAYER>.Backpack.PATTERN 1900 CUTLASS.CustomAnims": {
+   "c": "BoolValue",
+   "n": 1,
+   "v": [
+    "false"
+   ]
+  },
+  "Players.<PLAYER>.Backpack.SOUTHERN ENSIS.CustomAnims": {
+   "c": "BoolValue",
+   "n": 1,
+   "v": [
+    "false"
+   ]
+  },
+  "Players.<PLAYER>.Backpack.WHISTLE.CustomAnims": {
+   "c": "BoolValue",
+   "n": 1,
+   "v": [
+    "false"
+   ]
+  },
+  "ReplicatedStorage.AutoTeamBalance": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "true"
+   ]
+  },
+  "ReplicatedStorage.BoundariesEnabled": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "true"
+   ]
+  },
+  "ReplicatedStorage.CUSTOM_ArtilleryDisabled": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "false"
+   ]
+  },
+  "ReplicatedStorage.CUSTOM_ManualMatchStart": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "false"
+   ]
+  },
+  "ReplicatedStorage.CUSTOM_MapRotationDisabled": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "false"
+   ]
+  },
+  "ReplicatedStorage.CUSTOM_PointGainDisabled": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "false"
+   ]
+  },
+  "ReplicatedStorage.CUSTOM_VehiclesDisabled": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "false"
+   ]
+  },
+  "ReplicatedStorage.CurrentMap": {
+   "c": "StringValue",
+   "n": 2,
+   "v": [
+    "\"AquilaOutskirts\""
+   ]
+  },
+  "ReplicatedStorage.CurrentYear": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "1914"
+   ]
+  },
+  "ReplicatedStorage.Deaths": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "1256",
+    "1250",
+    "1251",
+    "1247"
+   ]
+  },
+  "ReplicatedStorage.GAME_FirstLoad": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "false"
+   ]
+  },
+  "ReplicatedStorage.GAME_MapLoaded": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "false"
+   ]
+  },
+  "ReplicatedStorage.InMatch": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "true"
+   ]
+  },
+  "ReplicatedStorage.InTransition": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "false"
+   ]
+  },
+  "ReplicatedStorage.Intermission": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "false"
+   ]
+  },
+  "ReplicatedStorage.LOCAL_CameraAngle": {
+   "c": "NumberValue",
+   "n": 2,
+   "v": [
+    "90"
+   ]
+  },
+  "ReplicatedStorage.LOCAL_InStartMenu": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "false"
+   ]
+  },
+  "ReplicatedStorage.LOCAL_PlayerBackpackEnabled": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "true"
+   ]
+  },
+  "ReplicatedStorage.LOCAL_SelectedClass": {
+   "c": "StringValue",
+   "n": 2,
+   "v": [
+    "\"AntiTank\""
+   ]
+  },
+  "ReplicatedStorage.MapLoaded": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "true"
+   ]
+  },
+  "ReplicatedStorage.RoundClock": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "1581",
+    "1565",
+    "1571",
+    "1574",
+    "1562"
+   ]
+  },
+  "ReplicatedStorage.Status": {
+   "c": "StringValue",
+   "n": 2,
+   "v": [
+    "\"0\""
+   ]
+  },
+  "ReplicatedStorage.TREKStorage.Medkit.Config": {
+   "c": "ObjectValue",
+   "n": 2,
+   "v": [
+    "nil"
+   ]
+  },
+  "ReplicatedStorage.TREKStorage.Medkit.Team": {
+   "c": "ObjectValue",
+   "n": 2,
+   "v": [
+    "nil"
+   ]
+  },
+  "ReplicatedStorage.Team1": {
+   "c": "ObjectValue",
+   "n": 2,
+   "v": [
+    "Teams.Antares"
+   ]
+  },
+  "ReplicatedStorage.Team2": {
+   "c": "ObjectValue",
+   "n": 2,
+   "v": [
+    "Teams.Aquila"
+   ]
+  },
+  "ReplicatedStorage.Victor": {
+   "c": "StringValue",
+   "n": 2,
+   "v": [
+    "\"ANTARES\""
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.1234_Dregq": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.1notalexander4": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.1ubybyggzk": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.3e3e3yirtjil": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.59goated1": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.Aarav_Eggo": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.Afoc_8aXD": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.Ahimigatito": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.BluZombie208": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.COVARACHO78": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.Cocaferia0": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.Cwcoolboy1": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.DaniloW50": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.Dustmover112": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.ElCapoMessi1812": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.FEARDAFFYBADUSERNAME": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.Galaxy_noodles123": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.Gavinroi24": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.Iheartspace03": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.Imperial_Italy2": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.JULIO2005e": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.KINGbob01094": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.Mrs_OfTheLily": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.PuroTheGreat21": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.Raxtusv": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.Robloxremix14": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.Sadbooyz13": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.Sandviper_th3": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.Skeletalistic": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.Stanley4510": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.TYTTRkl": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.Thiago3a1ioe": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.TideBraker": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.TinyScrub": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.Veneno818718": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.WesternEastNorth": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.angelon123xdd": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.anuelnoob": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.atgamer37": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.banana_chum7": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.bobmaniscoolpoop": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.borrega247": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.brandonbarberertioc": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.coolcookieboss12345": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.darthnihilus_66": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.dratlast": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.dudelegand98": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.dylanspiderss": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.frnxster": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.gerson8352": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.hamstermannster": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.josevar7987": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.matexd809": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.memo1117872": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.renrenhu6": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.roblox_user_1416249619": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.samirch08": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.sammy868792": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.shadownan_2008": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.skeletonbud20113": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.skyguy1451": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.tengonovia_248": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.traincrash2007": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.turtle23874": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.xXxPIMBLOxXx": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.xxn00bslayerxxx7": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.VotekickValues.zhaul2016": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "ReplicatedStorage.ZonePlusReference": {
+   "c": "ObjectValue",
+   "n": 2,
+   "v": [
+    "ReplicatedStorage.Zone"
+   ]
+  },
+  "ReplicatedStorage.ZonePlusReference.Client": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "true"
+   ]
+  },
+  "StarterPlayer.StarterCharacter.Animate.ScaleDampeningPercent": {
+   "c": "NumberValue",
+   "n": 2,
+   "v": [
+    "1"
+   ]
+  },
+  "StarterPlayer.StarterCharacter.Animate.climb": {
+   "c": "StringValue",
+   "n": 2,
+   "v": [
+    "\"\""
+   ]
+  },
+  "StarterPlayer.StarterCharacter.Animate.fall": {
+   "c": "StringValue",
+   "n": 2,
+   "v": [
+    "\"\""
+   ]
+  },
+  "StarterPlayer.StarterCharacter.Animate.idle": {
+   "c": "StringValue",
+   "n": 2,
+   "v": [
+    "\"\""
+   ]
+  },
+  "StarterPlayer.StarterCharacter.Animate.idle.Animation1.Weight": {
+   "c": "NumberValue",
+   "n": 2,
+   "v": [
+    "9"
+   ]
+  },
+  "StarterPlayer.StarterCharacter.Animate.idle.Animation2.Weight": {
+   "c": "NumberValue",
+   "n": 2,
+   "v": [
+    "1"
+   ]
+  },
+  "StarterPlayer.StarterCharacter.Animate.jump": {
+   "c": "StringValue",
+   "n": 2,
+   "v": [
+    "\"\""
+   ]
+  },
+  "StarterPlayer.StarterCharacter.Animate.run": {
+   "c": "StringValue",
+   "n": 2,
+   "v": [
+    "\"\""
+   ]
+  },
+  "StarterPlayer.StarterCharacter.Animate.sit": {
+   "c": "StringValue",
+   "n": 2,
+   "v": [
+    "\"\""
+   ]
+  },
+  "StarterPlayer.StarterCharacter.Animate.toolnone": {
+   "c": "StringValue",
+   "n": 2,
+   "v": [
+    "\"\""
+   ]
+  },
+  "StarterPlayer.StarterCharacter.Animate.walk": {
+   "c": "StringValue",
+   "n": 2,
+   "v": [
+    "\"\""
+   ]
+  },
+  "Vehicle": {
+   "c": "ObjectValue",
+   "n": 1,
+   "v": [
+    "Workspace.Map.Map.Vehicles.AquilaTank1914.Vehicle"
+   ]
+  },
+  "Workspace.<PLAYER>.ALBUS-GRAHAM NO. 4.CustomAnims": {
+   "c": "BoolValue",
+   "n": 4,
+   "v": [
+    "false"
+   ]
+  },
+  "Workspace.<PLAYER>.Animate.ScaleDampeningPercent": {
+   "c": "NumberValue",
+   "n": 127,
+   "v": [
+    "1"
+   ]
+  },
+  "Workspace.<PLAYER>.Animate.climb": {
+   "c": "StringValue",
+   "n": 127,
+   "v": [
+    "\"\""
+   ]
+  },
+  "Workspace.<PLAYER>.Animate.fall": {
+   "c": "StringValue",
+   "n": 127,
+   "v": [
+    "\"\""
+   ]
+  },
+  "Workspace.<PLAYER>.Animate.idle": {
+   "c": "StringValue",
+   "n": 127,
+   "v": [
+    "\"\""
+   ]
+  },
+  "Workspace.<PLAYER>.Animate.idle.Animation1.Weight": {
+   "c": "NumberValue",
+   "n": 127,
+   "v": [
+    "9"
+   ]
+  },
+  "Workspace.<PLAYER>.Animate.idle.Animation2.Weight": {
+   "c": "NumberValue",
+   "n": 127,
+   "v": [
+    "1"
+   ]
+  },
+  "Workspace.<PLAYER>.Animate.jump": {
+   "c": "StringValue",
+   "n": 127,
+   "v": [
+    "\"\""
+   ]
+  },
+  "Workspace.<PLAYER>.Animate.run": {
+   "c": "StringValue",
+   "n": 127,
+   "v": [
+    "\"\""
+   ]
+  },
+  "Workspace.<PLAYER>.Animate.sit": {
+   "c": "StringValue",
+   "n": 127,
+   "v": [
+    "\"\""
+   ]
+  },
+  "Workspace.<PLAYER>.Animate.toolnone": {
+   "c": "StringValue",
+   "n": 127,
+   "v": [
+    "\"\""
+   ]
+  },
+  "Workspace.<PLAYER>.Animate.walk": {
+   "c": "StringValue",
+   "n": 127,
+   "v": [
+    "\"\""
+   ]
+  },
+  "Workspace.<PLAYER>.BARTON MODEL 10.CustomAnims": {
+   "c": "BoolValue",
+   "n": 3,
+   "v": [
+    "false"
+   ]
+  },
+  "Workspace.<PLAYER>.BERSERKER": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "Workspace.<PLAYER>.BrowPlate.Plate.Antares": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "false"
+   ]
+  },
+  "Workspace.<PLAYER>.BrowPlate.Plate.Aquila": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "false"
+   ]
+  },
+  "Workspace.<PLAYER>.BrowPlate.Plate.Armored": {
+   "c": "BoolValue",
+   "n": 4,
+   "v": [
+    "false"
+   ]
+  },
+  "Workspace.<PLAYER>.BrowPlate.Plate.Plate.NoPenetration": {
+   "c": "NumberValue",
+   "n": 4,
+   "v": [
+    "1.5"
+   ]
+  },
+  "Workspace.<PLAYER>.CLUB.CustomAnims": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "false"
+   ]
+  },
+  "Workspace.<PLAYER>.COOLHEADED": {
+   "c": "IntValue",
+   "n": 6,
+   "v": [
+    "0"
+   ]
+  },
+  "Workspace.<PLAYER>.CharacterHair.Handle.AvatarPartScaleType": {
+   "c": "StringValue",
+   "n": 42,
+   "v": [
+    "\"Classic\""
+   ]
+  },
+  "Workspace.<PLAYER>.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget": {
+   "c": "ObjectValue",
+   "n": 42,
+   "v": [
+    "Workspace.<PLAYER>.CharacterHair.Handle"
+   ]
+  },
+  "Workspace.<PLAYER>.CivilGuardHat3.Handle.AvatarPartScaleType": {
+   "c": "StringValue",
+   "n": 1,
+   "v": [
+    "\"Classic\""
+   ]
+  },
+  "Workspace.<PLAYER>.CivilGuardHat8.Handle.AvatarPartScaleType": {
+   "c": "StringValue",
+   "n": 2,
+   "v": [
+    "\"Classic\""
+   ]
+  },
+  "Workspace.<PLAYER>.ClassGiven": {
+   "c": "StringValue",
+   "n": 100,
+   "v": [
+    "\"Rifleman\"",
+    "\"Assault\"",
+    "\"Officer\"",
+    "\"AntiTank\"",
+    "\"Mortarman\"",
+    "\"Medic\"",
+    "\"Grenadier\""
+   ]
+  },
+  "Workspace.<PLAYER>.DECIMA SHOTGUN.CustomAnims": {
+   "c": "BoolValue",
+   "n": 4,
+   "v": [
+    "false"
+   ]
+  },
+  "Workspace.<PLAYER>.DYNAMITE.CurrentBomb": {
+   "c": "ObjectValue",
+   "n": 2,
+   "v": [
+    "nil"
+   ]
+  },
+  "Workspace.<PLAYER>.DYNAMITE.CustomAnims": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "false"
+   ]
+  },
+  "Workspace.<PLAYER>.DamageResistanceMultiplier": {
+   "c": "IntValue",
+   "n": 127,
+   "v": [
+    "100"
+   ]
+  },
+  "Workspace.<PLAYER>.E/I AT RIFLE.CustomAnims": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "false"
+   ]
+  },
+  "Workspace.<PLAYER>.E/VIII RIFLE BAYONET.CustomAnims": {
+   "c": "BoolValue",
+   "n": 15,
+   "v": [
+    "false"
+   ]
+  },
+  "Workspace.<PLAYER>.E/VIII RIFLE.CustomAnims": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "false"
+   ]
+  },
+  "Workspace.<PLAYER>.E/XV AUTOMATIC.CustomAnims": {
+   "c": "BoolValue",
+   "n": 7,
+   "v": [
+    "false"
+   ]
+  },
+  "Workspace.<PLAYER>.ENE AERA RIFLE.CustomAnims": {
+   "c": "BoolValue",
+   "n": 5,
+   "v": [
+    "false"
+   ]
+  },
+  "Workspace.<PLAYER>.FIGHT-OR-FLIGHT": {
+   "c": "BoolValue",
+   "n": 5,
+   "v": [
+    "false"
+   ]
+  },
+  "Workspace.<PLAYER>.Humanoid.AssistTag": {
+   "c": "ObjectValue",
+   "n": 14,
+   "v": [
+    "Players.<PLAYER>"
+   ]
+  },
+  "Workspace.<PLAYER>.M12 AT RIFLE.CustomAnims": {
+   "c": "BoolValue",
+   "n": 4,
+   "v": [
+    "false"
+   ]
+  },
+  "Workspace.<PLAYER>.M12 SMG.CustomAnims": {
+   "c": "BoolValue",
+   "n": 7,
+   "v": [
+    "false"
+   ]
+  },
+  "Workspace.<PLAYER>.M1889 LA RIFLE BAYONET.CustomAnims": {
+   "c": "BoolValue",
+   "n": 4,
+   "v": [
+    "false"
+   ]
+  },
+  "Workspace.<PLAYER>.M4 REVOLVER.CustomAnims": {
+   "c": "BoolValue",
+   "n": 1,
+   "v": [
+    "false"
+   ]
+  },
+  "Workspace.<PLAYER>.M99 RIFLE BAYONET.CustomAnims": {
+   "c": "BoolValue",
+   "n": 19,
+   "v": [
+    "false"
+   ]
+  },
+  "Workspace.<PLAYER>.M99 RIFLE.CustomAnims": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "false"
+   ]
+  },
+  "Workspace.<PLAYER>.MODELO 1898 RIFLE BAYONET.CustomAnims": {
+   "c": "BoolValue",
+   "n": 1,
+   "v": [
+    "false"
+   ]
+  },
+  "Workspace.<PLAYER>.MORTAR.CustomAnims": {
+   "c": "BoolValue",
+   "n": 1,
+   "v": [
+    "false"
+   ]
+  },
+  "Workspace.<PLAYER>.PATTERN 1900 CUTLASS.CustomAnims": {
+   "c": "BoolValue",
+   "n": 1,
+   "v": [
+    "false"
+   ]
+  },
+  "Workspace.<PLAYER>.SOUTHERN ENSIS.CustomAnims": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "false"
+   ]
+  },
+  "Workspace.<PLAYER>.SUB E/XCV SL.CustomAnims": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "false"
+   ]
+  },
+  "Workspace.<PLAYER>.UPARMORED": {
+   "c": "IntValue",
+   "n": 4,
+   "v": [
+    "0"
+   ]
+  },
+  "Workspace.Grenades.Grenade.Creator": {
+   "c": "ObjectValue",
+   "n": 4,
+   "v": [
+    "Players.<PLAYER>"
+   ]
+  },
+  "Workspace.JOB_ID": {
+   "c": "StringValue",
+   "n": 2,
+   "v": [
+    "\"7ac20f01-f0d2-4255-89dc-c8f7a0177597\""
+   ]
+  },
+  "Workspace.Map.Map.AntaresVehicle1Deployed": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "true"
+   ]
+  },
+  "Workspace.Map.Map.AntaresVehicle2Deployed": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "true"
+   ]
+  },
+  "Workspace.Map.Map.AquilaVehicle1Deployed": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "false",
+    "true"
+   ]
+  },
+  "Workspace.Map.Map.AquilaVehicle2Deployed": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "true"
+   ]
+  },
+  "Workspace.Map.Map.Berm1Cleared": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "true"
+   ]
+  },
+  "Workspace.Map.Map.Berm2Cleared": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "true"
+   ]
+  },
+  "Workspace.Map.Map.Ditch1Filled": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "true"
+   ]
+  },
+  "Workspace.Map.Map.Ditch2Filled": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "true"
+   ]
+  },
+  "Workspace.Map.Map.Objective.AntaresVehiclesLeft": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "12"
+   ]
+  },
+  "Workspace.Map.Map.PointStatuses.PointAStatus": {
+   "c": "StringValue",
+   "n": 2,
+   "v": [
+    "\"Antares\""
+   ]
+  },
+  "Workspace.Map.Map.PointStatuses.PointBStatus": {
+   "c": "StringValue",
+   "n": 2,
+   "v": [
+    "\"Antares\""
+   ]
+  },
+  "Workspace.Map.Map.PointStatuses.PointCStatus": {
+   "c": "StringValue",
+   "n": 2,
+   "v": [
+    "\"Contested\""
+   ]
+  },
+  "Workspace.Map.Map.PointStatuses.PointDStatus": {
+   "c": "StringValue",
+   "n": 2,
+   "v": [
+    "\"Aquila\""
+   ]
+  },
+  "Workspace.Map.Map.PointStatuses.PointEStatus": {
+   "c": "StringValue",
+   "n": 2,
+   "v": [
+    "\"Aquila\""
+   ]
+  },
+  "Workspace.Map.Map.TeamClasses.Antares.AntiTank": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "Workspace.Map.Map.TeamClasses.Antares.Assault": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "Workspace.Map.Map.TeamClasses.Antares.Grenadier": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "Workspace.Map.Map.TeamClasses.Antares.Medic": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "Workspace.Map.Map.TeamClasses.Antares.Mortarman": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "Workspace.Map.Map.TeamClasses.Antares.Officer": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "Workspace.Map.Map.TeamClasses.Antares.Rifleman": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "Workspace.Map.Map.TeamClasses.Aquila.AntiTank": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "Workspace.Map.Map.TeamClasses.Aquila.Assault": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "Workspace.Map.Map.TeamClasses.Aquila.Grenadier": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "Workspace.Map.Map.TeamClasses.Aquila.Medic": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "Workspace.Map.Map.TeamClasses.Aquila.Mortarman": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "Workspace.Map.Map.TeamClasses.Aquila.Officer": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "Workspace.Map.Map.TeamClasses.Aquila.Rifleman": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "0"
+   ]
+  },
+  "Workspace.Map.Map.Uniforms_CivilGuard": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "true"
+   ]
+  },
+  "Workspace.Map.Map.Vehicles.AntaresFemaleTank1912.Vehicle.Antares": {
+   "c": "BoolValue",
+   "n": 4,
+   "v": [
+    "true"
+   ]
+  },
+  "Workspace.Map.Map.Vehicles.AntaresFemaleTank1912.Vehicle.Armored": {
+   "c": "BoolValue",
+   "n": 4,
+   "v": [
+    "true"
+   ]
+  },
+  "Workspace.Map.Map.Vehicles.AntaresFemaleTank1912.Vehicle.VehicleNumber": {
+   "c": "IntValue",
+   "n": 4,
+   "v": [
+    "2",
+    "1"
+   ]
+  },
+  "Workspace.Map.Map.Vehicles.AntaresTank1912.Vehicle.Antares": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "true"
+   ]
+  },
+  "Workspace.Map.Map.Vehicles.AntaresTank1912.Vehicle.Armored": {
+   "c": "BoolValue",
+   "n": 2,
+   "v": [
+    "true"
+   ]
+  },
+  "Workspace.Map.Map.Vehicles.AntaresTank1912.Vehicle.VehicleNumber": {
+   "c": "IntValue",
+   "n": 2,
+   "v": [
+    "2"
+   ]
+  },
+  "Workspace.Map.Map.Vehicles.AquilaTank1914.Vehicle.Aquila": {
+   "c": "BoolValue",
+   "n": 4,
+   "v": [
+    "true"
+   ]
+  },
+  "Workspace.Map.Map.Vehicles.AquilaTank1914.Vehicle.Armored": {
+   "c": "BoolValue",
+   "n": 4,
+   "v": [
+    "true"
+   ]
+  },
+  "Workspace.Map.Map.Vehicles.AquilaTank1914.Vehicle.VehicleNumber": {
+   "c": "IntValue",
+   "n": 4,
+   "v": [
+    "1",
+    "2"
+   ]
+  },
+  "Workspace.PLACE_VERSION": {
+   "c": "StringValue",
+   "n": 2,
+   "v": [
+    "\"479\""
+   ]
+  },
+  "Workspace.VehicleWeaponTargets.Vehicle": {
+   "c": "ObjectValue",
+   "n": 6,
+   "v": [
+    "Workspace.Map.Map.Vehicles.AntaresFemaleTank1912.Vehicle",
+    "Workspace.Map.Map.Vehicles.AquilaTank1914.Vehicle",
+    "Workspace.Map.Map.Vehicles.AntaresTank1912.Vehicle"
+   ]
+  },
+  "dratlast.Animate.ScaleDampeningPercent": {
+   "c": "NumberValue",
+   "n": 1,
+   "v": [
+    "1"
+   ]
+  },
+  "dratlast.Animate.climb": {
+   "c": "StringValue",
+   "n": 1,
+   "v": [
+    "\"\""
+   ]
+  },
+  "dratlast.Animate.fall": {
+   "c": "StringValue",
+   "n": 1,
+   "v": [
+    "\"\""
+   ]
+  },
+  "dratlast.Animate.idle": {
+   "c": "StringValue",
+   "n": 1,
+   "v": [
+    "\"\""
+   ]
+  },
+  "dratlast.Animate.idle.Animation1.Weight": {
+   "c": "NumberValue",
+   "n": 1,
+   "v": [
+    "9"
+   ]
+  },
+  "dratlast.Animate.idle.Animation2.Weight": {
+   "c": "NumberValue",
+   "n": 1,
+   "v": [
+    "1"
+   ]
+  },
+  "dratlast.Animate.jump": {
+   "c": "StringValue",
+   "n": 1,
+   "v": [
+    "\"\""
+   ]
+  },
+  "dratlast.Animate.run": {
+   "c": "StringValue",
+   "n": 1,
+   "v": [
+    "\"\""
+   ]
+  },
+  "dratlast.Animate.sit": {
+   "c": "StringValue",
+   "n": 1,
+   "v": [
+    "\"\""
+   ]
+  },
+  "dratlast.Animate.toolnone": {
+   "c": "StringValue",
+   "n": 1,
+   "v": [
+    "\"\""
+   ]
+  },
+  "dratlast.Animate.walk": {
+   "c": "StringValue",
+   "n": 1,
+   "v": [
+    "\"\""
+   ]
+  },
+  "dratlast.DamageResistanceMultiplier": {
+   "c": "IntValue",
+   "n": 1,
+   "v": [
+    "100"
+   ]
+  },
+  "tengonovia_248.Animate.ScaleDampeningPercent": {
+   "c": "NumberValue",
+   "n": 1,
+   "v": [
+    "1"
+   ]
+  },
+  "tengonovia_248.Animate.climb": {
+   "c": "StringValue",
+   "n": 1,
+   "v": [
+    "\"\""
+   ]
+  },
+  "tengonovia_248.Animate.fall": {
+   "c": "StringValue",
+   "n": 1,
+   "v": [
+    "\"\""
+   ]
+  },
+  "tengonovia_248.Animate.idle": {
+   "c": "StringValue",
+   "n": 1,
+   "v": [
+    "\"\""
+   ]
+  },
+  "tengonovia_248.Animate.idle.Animation1.Weight": {
+   "c": "NumberValue",
+   "n": 1,
+   "v": [
+    "9"
+   ]
+  },
+  "tengonovia_248.Animate.idle.Animation2.Weight": {
+   "c": "NumberValue",
+   "n": 1,
+   "v": [
+    "1"
+   ]
+  },
+  "tengonovia_248.Animate.jump": {
+   "c": "StringValue",
+   "n": 1,
+   "v": [
+    "\"\""
+   ]
+  },
+  "tengonovia_248.Animate.run": {
+   "c": "StringValue",
+   "n": 1,
+   "v": [
+    "\"\""
+   ]
+  },
+  "tengonovia_248.Animate.sit": {
+   "c": "StringValue",
+   "n": 1,
+   "v": [
+    "\"\""
+   ]
+  },
+  "tengonovia_248.Animate.toolnone": {
+   "c": "StringValue",
+   "n": 1,
+   "v": [
+    "\"\""
+   ]
+  },
+  "tengonovia_248.Animate.walk": {
+   "c": "StringValue",
+   "n": 1,
+   "v": [
+    "\"\""
+   ]
+  },
+  "tengonovia_248.ClassGiven": {
+   "c": "StringValue",
+   "n": 1,
+   "v": [
+    "\"Rifleman\""
+   ]
+  },
+  "tengonovia_248.DamageResistanceMultiplier": {
+   "c": "IntValue",
+   "n": 1,
+   "v": [
+    "100"
+   ]
+  },
+  "tengonovia_248.FIGHT-OR-FLIGHT": {
+   "c": "BoolValue",
+   "n": 1,
+   "v": [
+    "false"
+   ]
+  },
+  "tengonovia_248.Humanoid.AssistTag": {
+   "c": "ObjectValue",
+   "n": 1,
+   "v": [
+    "Players.<PLAYER>"
+   ]
+  }
+ }
+}

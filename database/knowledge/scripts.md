@@ -1,0 +1,379 @@
+# Inventaris script — CENTAURA
+
+> Dibuat otomatis oleh `database/tools/sort_dumps.py` dari `memory/*.json`. JANGAN edit manual. Batch terakhir: `20261125_083600`.
+
+Batch `20261125_083600`: total 1192 · readable 0 · empty 1192 · unik 371
+
+> **Source belum terbaca** — semua script kosong di dump. Aktifkan *Decompile fallback (DC)* di Scan options dumper lalu dump ulang.
+
+- `<PLAYER>.BurnAnimation` — LocalScript — empty ×12
+- `<PLAYER>.CameraBobbing` — LocalScript — empty ×12
+- `<PLAYER>.CameraSystem` — LocalScript — empty ×12
+- `<PLAYER>.FallDamage` — Script — empty ×12
+- `<PLAYER>.HeadTurn` — LocalScript — empty ×12
+- `<PLAYER>.HumanoidHandler` — LocalScript — empty ×12
+- `<PLAYER>.HumanoidStatesHandler` — LocalScript — empty ×12
+- `<PLAYER>.JumpCooldown` — LocalScript — empty ×12
+- `<PLAYER>.LocalFootsteps` — LocalScript — empty ×12
+- `<PLAYER>.MovementSpeedHandler` — LocalScript — empty ×12
+- `<PLAYER>.PlaceablesHandler` — LocalScript — empty ×12
+- `<PLAYER>.SmoothWalkLean` — LocalScript — empty ×12
+- `<PLAYER>.TREKLocal` — LocalScript — empty ×12
+- `<PLAYER>.TeamIndicator` — LocalScript — empty ×12
+- `<PLAYER>.ViewmodelHandler` — LocalScript — empty ×12
+- `<PLAYER>.Voicelines` — Script — empty ×12
+- `BurnAnimation` — LocalScript — empty
+- `CameraBobbing` — LocalScript — empty
+- `CameraSystem` — LocalScript — empty
+- `FallDamage` — Script — empty
+- `GrenadeScript` — Script — empty ×6
+- `Gun` — LocalScript — empty ×15
+- `HeadTurn` — LocalScript — empty
+- `HumanoidHandler` — LocalScript — empty
+- `HumanoidStatesHandler` — LocalScript — empty
+- `JumpCooldown` — LocalScript — empty
+- `LocalFootsteps` — LocalScript — empty
+- `LocalScript` — LocalScript — empty ×4
+- `MovementSpeedHandler` — LocalScript — empty
+- `PlaceablesHandler` — LocalScript — empty
+- `Players.<PLAYER>.Backpack.BANDAGES.LocalScript` — LocalScript — empty ×2
+- `Players.<PLAYER>.Backpack.BANDAGES.Script` — Script — empty ×2
+- `Players.<PLAYER>.Backpack.CLUB.Gun` — LocalScript — empty ×36
+- `Players.<PLAYER>.Backpack.DYNAMITE.DynamiteHandler` — Script — empty ×2
+- `Players.<PLAYER>.Backpack.DYNAMITE.LocalScript` — LocalScript — empty ×2
+- `Players.<PLAYER>.Backpack.E/VIII RIFLE.Gun` — LocalScript — empty
+- `Players.<PLAYER>.Backpack.E/XV AUTOMATIC.Gun` — LocalScript — empty
+- `Players.<PLAYER>.Backpack.GRENADE.LocalScript` — LocalScript — empty ×18
+- `Players.<PLAYER>.Backpack.GRENADE.Script` — Script — empty ×18
+- `Players.<PLAYER>.Backpack.GRENADE.Script.GrenadeScript` — Script — empty ×18
+- `Players.<PLAYER>.Backpack.HATCHET.Gun` — LocalScript — empty ×7
+- `Players.<PLAYER>.Backpack.M4 REVOLVER.Gun` — LocalScript — empty
+- `Players.<PLAYER>.Backpack.MORTAR.GripSetter` — Script — empty
+- `Players.<PLAYER>.Backpack.MORTAR.LocalScript` — LocalScript — empty
+- `Players.<PLAYER>.Backpack.PATTERN 1900 CUTLASS.Gun` — LocalScript — empty ×2
+- `Players.<PLAYER>.Backpack.SOUTHERN ENSIS.Gun` — LocalScript — empty
+- `Players.<PLAYER>.Backpack.SPARKBOMB.LocalScript` — LocalScript — empty
+- `Players.<PLAYER>.Backpack.SPARKBOMB.Script` — Script — empty
+- `Players.<PLAYER>.Backpack.SPARKBOMB.Script.GrenadeScript` — Script — empty
+- `Players.<PLAYER>.Backpack.SUB E/XCV SL.Gun` — LocalScript — empty
+- `Players.<PLAYER>.Backpack.T05 RIFLE BAYONET.Gun` — LocalScript — empty
+- `Players.<PLAYER>.Backpack.TRENCH SHIELD.ClientHandler` — LocalScript — empty
+- `Players.<PLAYER>.Backpack.TRENCH SHIELD.ServerHandler` — Script — empty
+- `Players.<PLAYER>.Backpack.TRIPWIRE BOMB.Client` — LocalScript — empty ×2
+- `Players.<PLAYER>.Backpack.TRIPWIRE BOMB.Server` — Script — empty ×2
+- `Players.<PLAYER>.Backpack.WIRE CUTTERS.ToolHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.AmbientTexture.LocalScript` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.AttentivePerkUI.IndicatorHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.CustomEquipmentShopUI.Closer` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.CustomEquipmentShopUI.ShopMenu.ShopButtonManager` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.CustomEquipmentShopUI.ShopMenu.ShopButtonManager.TweenModule` — ModuleScript — empty
+- `Players.<PLAYER>.PlayerGui.CustomInventory.InventoryHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.DamageGui.DamageIndicatorHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.DamageGui.Red.LocalScript` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.DeathCounter.DeathHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.DeathScreen.DeathHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.DeathScreen.DeathHandlerSAVE` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.EquipmentShopUI.Closer` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.EquipmentShopUI.ShopMenu.ShopButtonManager` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.EquipmentShopUI.ShopMenu.ShopButtonManager.TweenModule` — ModuleScript — empty
+- `Players.<PLAYER>.PlayerGui.FreecamDetector.Handler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.MapObjectiveUI.StatsHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.MapObjectiveUI.TimeHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.PlayerNametags.1ubybyggzk.TagHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.PlayerNametags.3e3e3yirtjil.TagHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.PlayerNametags.59goated1.TagHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.PlayerNametags.Ahimigatito.TagHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.PlayerNametags.Cocaferia0.TagHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.PlayerNametags.Cwcoolboy1.TagHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.PlayerNametags.ElCapoMessi1812.TagHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.PlayerNametags.FEARDAFFYBADUSERNAME.TagHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.PlayerNametags.Gavinroi24.TagHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.PlayerNametags.Imperial_Italy2.TagHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.PlayerNametags.JULIO2005e.TagHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.PlayerNametags.Sandviper_th3.TagHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.PlayerNametags.Stanley4510.TagHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.PlayerNametags.Thiago3a1ioe.TagHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.PlayerNametags.TideBraker.TagHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.PlayerNametags.TinyScrub.TagHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.PlayerNametags.Veneno818718.TagHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.PlayerNametags.angelon123xdd.TagHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.PlayerNametags.anuelnoob.TagHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.PlayerNametags.atgamer37.TagHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.PlayerNametags.borrega247.TagHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.PlayerNametags.coolcookieboss12345.TagHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.PlayerNametags.frnxster.TagHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.PlayerNametags.hamstermannster.TagHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.PlayerNametags.matexd809.TagHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.PlayerNametags.samirch08.TagHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.PlayerNametags.sammy868792.TagHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.PlayerNametags.shadownan_2008.TagHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.PlayerNametags.skeletonbud20113.TagHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.PlayerNametags.skyguy1451.TagHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.PlayerNametags.zhaul2016.TagHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.RankUpUI.RankUpHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.ReturnToCombatZone.BoundaryHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.SpawnMenuUI.ClassSelectionMenu.ClassSelectionHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.SpawnMenuUI.MenuHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.TREKHud.HUDHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.Tense.ScreenEffectsHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.TopBar.ButtonManager` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.TopBar.ButtonManager.TweenModule` — ModuleScript — empty
+- `Players.<PLAYER>.PlayerGui.TopBar.ServerBrowserHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.TopBar.ServerMenu.JobID.LocalScript` — LocalScript — empty
+- `Players.<PLAYER>.PlayerGui.UniqueMapEffects.UniqueMapEffects` — LocalScript — empty
+- `Players.<PLAYER>.PlayerScripts.BloodEffects` — LocalScript — empty
+- `Players.<PLAYER>.PlayerScripts.ChatFunctions` — LocalScript — empty
+- `Players.<PLAYER>.PlayerScripts.DisableCoreUI` — LocalScript — empty
+- `Players.<PLAYER>.PlayerScripts.DisorientationHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerScripts.Effects` — LocalScript — empty
+- `Players.<PLAYER>.PlayerScripts.Effects.ArtilleryTracers` — ModuleScript — empty
+- `Players.<PLAYER>.PlayerScripts.Effects.ArtilleryTracersSAVE` — ModuleScript — empty
+- `Players.<PLAYER>.PlayerScripts.LensFlare` — LocalScript — empty
+- `Players.<PLAYER>.PlayerScripts.LensFlare.LensFlare2024Fix` — LocalScript — empty
+- `Players.<PLAYER>.PlayerScripts.MouseIconHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerScripts.PlayerScriptsLoader` — LocalScript — empty
+- `Players.<PLAYER>.PlayerScripts.PlayerTagLabels` — LocalScript — empty
+- `Players.<PLAYER>.PlayerScripts.PlayerTagLabels.PlayerNameTag.TagHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerScripts.ProximityPromptGui` — LocalScript — empty
+- `Players.<PLAYER>.PlayerScripts.RbxCharacterSounds` — LocalScript — empty
+- `Players.<PLAYER>.PlayerScripts.ReplicatedTweeningClient` — LocalScript — empty
+- `Players.<PLAYER>.PlayerScripts.Reverb` — LocalScript — empty
+- `Players.<PLAYER>.PlayerScripts.ShellAirTrail` — LocalScript — empty
+- `Players.<PLAYER>.PlayerScripts.SystemChatHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerScripts.TREKEffects` — LocalScript — empty
+- `Players.<PLAYER>.PlayerScripts.TREKLocalValueHandler` — LocalScript — empty
+- `Players.<PLAYER>.PlayerScripts.Tilt` — LocalScript — empty
+- `Players.<PLAYER>.PlayerScripts.ToolFollowArms` — LocalScript — empty
+- `ReplicatedStorage.CameraShaker` — ModuleScript — empty
+- `ReplicatedStorage.CameraShaker.CameraShakeInstance` — ModuleScript — empty
+- `ReplicatedStorage.CameraShaker.CameraShakePresets` — ModuleScript — empty
+- `ReplicatedStorage.ClassSelectionMenu.ClassSelectionHandler` — LocalScript — empty
+- `ReplicatedStorage.CustomEquipmentDictionary` — ModuleScript — empty
+- `ReplicatedStorage.CustomEquipmentDictionarySAVE` — ModuleScript — empty
+- `ReplicatedStorage.CustomInventoryAssets.BackpackView` — ModuleScript — empty
+- `ReplicatedStorage.CustomInventoryAssets.BackpackView.StyleSheet` — ModuleScript — empty
+- `ReplicatedStorage.CutsceneAssets` — ModuleScript — empty
+- `ReplicatedStorage.CutsceneModule` — ModuleScript — empty
+- `ReplicatedStorage.DynamiteStick.DynamiteHandler` — Script — empty
+- `ReplicatedStorage.LoadLibrary.RbxGui` — ModuleScript — empty
+- `ReplicatedStorage.LoadLibrary.RbxStamper` — ModuleScript — empty
+- `ReplicatedStorage.LoadLibrary.RbxUtility` — ModuleScript — empty
+- `ReplicatedStorage.MouseOverModule` — ModuleScript — empty
+- `ReplicatedStorage.NotificationAssets` — ModuleScript — empty
+- `ReplicatedStorage.PerksDictionary` — ModuleScript — empty
+- `ReplicatedStorage.RaycastHitboxModule` — ModuleScript — empty
+- `ReplicatedStorage.RaycastHitboxModule.GoodSignal` — ModuleScript — empty
+- `ReplicatedStorage.RaycastHitboxModule.HitboxCaster` — ModuleScript — empty
+- `ReplicatedStorage.RaycastHitboxModule.Solvers.Attachment` — ModuleScript — empty
+- `ReplicatedStorage.RaycastHitboxModule.Solvers.Bone` — ModuleScript — empty
+- `ReplicatedStorage.RaycastHitboxModule.Solvers.LinkAttachments` — ModuleScript — empty
+- `ReplicatedStorage.RaycastHitboxModule.Solvers.Vector3` — ModuleScript — empty
+- `ReplicatedStorage.RaycastHitboxModule.VisualizerCache` — ModuleScript — empty
+- `ReplicatedStorage.RemoteFloodCheck` — ModuleScript — empty
+- `ReplicatedStorage.ReplicatedTweening` — ModuleScript — empty
+- `ReplicatedStorage.ShopItemDictionary` — ModuleScript — empty
+- `ReplicatedStorage.SpringModule` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GlobalSettings` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.ALBUS-GRAHAM NO. 4` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.ANTIBLINDAGEM 1 RIFLE` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.BARTON MODEL 10` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.CLUB` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.DECIMA SHOTGUN` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.DOUBLE BARREL SHOTGUN` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.E/I AT RIFLE` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.E/VIII RIFLE` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.E/VIII RIFLE BAYONET` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.E/XI KARRAS` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.E/XV AUTOMATIC` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.EASTERN SABRE` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.ENE AERA RIFLE` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.ENE MARS CARBINE` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.FLAMETHROWER` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.HATCHET` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.M12 AT RIFLE` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.M12 SMG` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.M1889 LA RIFLE` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.M1889 LA RIFLE BAYONET` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.M1890 REVOLVER` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.M1909 SMG` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.M4 REVOLVER` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.M88 SHOTGUN` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.M99 RIFLE` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.M99 RIFLE BAYONET` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.MALLEUS REVOLVER` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.MARMOTA PISTOL` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.MODELO 11 TOURO` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.MODELO 13 SMG` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.MODELO 1892 SHOTGUN` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.MODELO 1898 RIFLE` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.MODELO 1898 RIFLE BAYONET` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.PATTERN 1900 CUTLASS` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.SABRE` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.SHAKER SHOTGUN` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.SHORTBLADE` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.SOUTHERN ENSIS` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.SUB E/XCV` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.SUB E/XCV SL` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.T05 RIFLE` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.T05 RIFLE BAYONET` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.T09 SMG` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.TemplateModule` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.GunSettings.WESTERN ENSIS` — ModuleScript — empty
+- `ReplicatedStorage.TREKModules.TweenModule` — ModuleScript — empty
+- `ReplicatedStorage.TREKScripts.Gun` — LocalScript — empty
+- `ReplicatedStorage.TREKScripts.GunSAVE` — LocalScript — empty
+- `ReplicatedStorage.TREKScripts.Gun_` — LocalScript — empty
+- `ReplicatedStorage.TREKStorage.Medkit.Healing` — Script — empty
+- `ReplicatedStorage.TREKStorage.Medkit.weld` — Script — empty
+- `ReplicatedStorage.TweenModule` — ModuleScript — empty
+- `ReplicatedStorage.Zone` — ModuleScript — empty
+- `ReplicatedStorage.Zone.Enum` — ModuleScript — empty
+- `ReplicatedStorage.Zone.Enum.Accuracy` — ModuleScript — empty
+- `ReplicatedStorage.Zone.Enum.Detection` — ModuleScript — empty
+- `ReplicatedStorage.Zone.Janitor` — ModuleScript — empty
+- `ReplicatedStorage.Zone.OldSignal` — ModuleScript — empty
+- `ReplicatedStorage.Zone.Signal` — ModuleScript — empty
+- `ReplicatedStorage.Zone.VERSION` — ModuleScript — empty
+- `ReplicatedStorage.Zone.ZoneController` — ModuleScript — empty
+- `ReplicatedStorage.Zone.ZoneController.CollectiveWorldModel` — ModuleScript — empty
+- `ReplicatedStorage.Zone.ZoneController.Tracker` — ModuleScript — empty
+- `ReplicatedStorage.Zone.ZonePlusReference` — ModuleScript — empty
+- `Script` — Script — empty ×4
+- `SmoothWalkLean` — LocalScript — empty
+- `StarterGui.AmbientTexture.LocalScript` — LocalScript — empty
+- `StarterGui.AttentivePerkUI.IndicatorHandler` — LocalScript — empty
+- `StarterGui.ChangelogGUI.Frame.Changelog` — LocalScript — empty
+- `StarterGui.ChangelogGUI.Frame.CloseButton.LocalScript` — LocalScript — empty
+- `StarterGui.ChangelogGUI.Frame.CloseButton.LocalScript.TweenModule` — ModuleScript — empty
+- `StarterGui.ChangelogGUI.Frame.PlaceVersion.LocalScript` — LocalScript — empty
+- `StarterGui.CustomEquipmentShopUI.Closer` — LocalScript — empty
+- `StarterGui.CustomEquipmentShopUI.ShopMenu.ShopButtonManager` — LocalScript — empty
+- `StarterGui.CustomEquipmentShopUI.ShopMenu.ShopButtonManager.TweenModule` — ModuleScript — empty
+- `StarterGui.CustomInventory.InventoryHandler` — LocalScript — empty
+- `StarterGui.DamageGui.DamageIndicatorHandler` — LocalScript — empty
+- `StarterGui.DamageGui.Red.LocalScript` — LocalScript — empty
+- `StarterGui.DeathCounter.DeathHandler` — LocalScript — empty
+- `StarterGui.DeathScreen.DeathHandler` — LocalScript — empty
+- `StarterGui.DeathScreen.DeathHandlerSAVE` — LocalScript — empty
+- `StarterGui.EquipmentShopUI.Closer` — LocalScript — empty
+- `StarterGui.EquipmentShopUI.ShopMenu.ShopButtonManager` — LocalScript — empty
+- `StarterGui.EquipmentShopUI.ShopMenu.ShopButtonManager.TweenModule` — ModuleScript — empty
+- `StarterGui.FreecamDetector.Handler` — LocalScript — empty
+- `StarterGui.PlayerListGui.Init` — LocalScript — empty
+- `StarterGui.RankUpUI.RankUpHandler` — LocalScript — empty
+- `StarterGui.ReturnToCombatZone.BoundaryHandler` — LocalScript — empty
+- `StarterGui.SpawnMenuUI.MenuHandler` — LocalScript — empty
+- `StarterGui.TREKHud.HUDHandler` — LocalScript — empty
+- `StarterGui.Tense.ScreenEffectsHandler` — LocalScript — empty
+- `StarterGui.TopBar.ButtonManager` — LocalScript — empty
+- `StarterGui.TopBar.ButtonManager.TweenModule` — ModuleScript — empty
+- `StarterGui.TopBar.ServerBrowserHandler` — LocalScript — empty
+- `StarterGui.TopBar.ServerMenu.JobID.LocalScript` — LocalScript — empty
+- `StarterPlayer.StarterCharacterScripts.BurnAnimation` — LocalScript — empty
+- `StarterPlayer.StarterCharacterScripts.CameraBobbing` — LocalScript — empty
+- `StarterPlayer.StarterCharacterScripts.CameraSystem` — LocalScript — empty
+- `StarterPlayer.StarterCharacterScripts.FallDamage` — Script — empty
+- `StarterPlayer.StarterCharacterScripts.HeadTurn` — LocalScript — empty
+- `StarterPlayer.StarterCharacterScripts.HumanoidHandler` — LocalScript — empty
+- `StarterPlayer.StarterCharacterScripts.HumanoidStatesHandler` — LocalScript — empty
+- `StarterPlayer.StarterCharacterScripts.JumpCooldown` — LocalScript — empty
+- `StarterPlayer.StarterCharacterScripts.LocalFootsteps` — LocalScript — empty
+- `StarterPlayer.StarterCharacterScripts.MovementSpeedHandler` — LocalScript — empty
+- `StarterPlayer.StarterCharacterScripts.PlaceablesHandler` — LocalScript — empty
+- `StarterPlayer.StarterCharacterScripts.SmoothWalkLean` — LocalScript — empty
+- `StarterPlayer.StarterCharacterScripts.TREKLocal` — LocalScript — empty
+- `StarterPlayer.StarterCharacterScripts.TeamIndicator` — LocalScript — empty
+- `StarterPlayer.StarterCharacterScripts.ViewmodelHandler` — LocalScript — empty
+- `StarterPlayer.StarterCharacterScripts.Voicelines` — Script — empty
+- `StarterPlayer.StarterPlayerScripts.BloodEffects` — LocalScript — empty
+- `StarterPlayer.StarterPlayerScripts.ChatFunctions` — LocalScript — empty
+- `StarterPlayer.StarterPlayerScripts.DisableCoreUI` — LocalScript — empty
+- `StarterPlayer.StarterPlayerScripts.DisorientationHandler` — LocalScript — empty
+- `StarterPlayer.StarterPlayerScripts.Effects` — LocalScript — empty
+- `StarterPlayer.StarterPlayerScripts.Effects.ArtilleryTracers` — ModuleScript — empty
+- `StarterPlayer.StarterPlayerScripts.Effects.ArtilleryTracersSAVE` — ModuleScript — empty
+- `StarterPlayer.StarterPlayerScripts.LensFlare` — LocalScript — empty
+- `StarterPlayer.StarterPlayerScripts.LensFlare.LensFlare2024Fix` — LocalScript — empty
+- `StarterPlayer.StarterPlayerScripts.MouseIconHandler` — LocalScript — empty
+- `StarterPlayer.StarterPlayerScripts.PlayerScriptsLoader` — LocalScript — empty
+- `StarterPlayer.StarterPlayerScripts.PlayerTagLabels` — LocalScript — empty
+- `StarterPlayer.StarterPlayerScripts.PlayerTagLabels.PlayerNameTag.TagHandler` — LocalScript — empty
+- `StarterPlayer.StarterPlayerScripts.ProximityPromptGui` — LocalScript — empty
+- `StarterPlayer.StarterPlayerScripts.RbxCharacterSounds` — LocalScript — empty
+- `StarterPlayer.StarterPlayerScripts.ReplicatedTweeningClient` — LocalScript — empty
+- `StarterPlayer.StarterPlayerScripts.Reverb` — LocalScript — empty
+- `StarterPlayer.StarterPlayerScripts.ShellAirTrail` — LocalScript — empty
+- `StarterPlayer.StarterPlayerScripts.SystemChatHandler` — LocalScript — empty
+- `StarterPlayer.StarterPlayerScripts.TREKEffects` — LocalScript — empty
+- `StarterPlayer.StarterPlayerScripts.TREKLocalValueHandler` — LocalScript — empty
+- `StarterPlayer.StarterPlayerScripts.Tilt` — LocalScript — empty
+- `StarterPlayer.StarterPlayerScripts.ToolFollowArms` — LocalScript — empty
+- `TREKLocal` — LocalScript — empty
+- `TeamIndicator` — LocalScript — empty
+- `ViewmodelHandler` — LocalScript — empty
+- `Voicelines` — Script — empty
+- `Workspace.<PLAYER>.BANDAGES.LocalScript` — LocalScript — empty
+- `Workspace.<PLAYER>.BANDAGES.Script` — Script — empty
+- `Workspace.<PLAYER>.BrowPlate.Plate.ArmorHandler` — Script — empty
+- `Workspace.<PLAYER>.BurnAnimation` — LocalScript — empty ×12
+- `Workspace.<PLAYER>.CLUB.Gun` — LocalScript — empty
+- `Workspace.<PLAYER>.CameraBobbing` — LocalScript — empty ×12
+- `Workspace.<PLAYER>.CameraSystem` — LocalScript — empty ×12
+- `Workspace.<PLAYER>.E/I AT RIFLE.Gun` — LocalScript — empty
+- `Workspace.<PLAYER>.E/VIII RIFLE BAYONET.Gun` — LocalScript — empty ×3
+- `Workspace.<PLAYER>.ENE AERA RIFLE.Gun` — LocalScript — empty
+- `Workspace.<PLAYER>.FallDamage` — Script — empty ×12
+- `Workspace.<PLAYER>.GRENADE.LocalScript` — LocalScript — empty
+- `Workspace.<PLAYER>.GRENADE.Script` — Script — empty
+- `Workspace.<PLAYER>.GRENADE.Script.GrenadeScript` — Script — empty
+- `Workspace.<PLAYER>.HeadTurn` — LocalScript — empty ×12
+- `Workspace.<PLAYER>.HumanoidHandler` — LocalScript — empty ×12
+- `Workspace.<PLAYER>.HumanoidStatesHandler` — LocalScript — empty ×12
+- `Workspace.<PLAYER>.JumpCooldown` — LocalScript — empty ×12
+- `Workspace.<PLAYER>.LocalFootsteps` — LocalScript — empty ×12
+- `Workspace.<PLAYER>.M12 AT RIFLE.Gun` — LocalScript — empty
+- `Workspace.<PLAYER>.M1889 LA RIFLE BAYONET.Gun` — LocalScript — empty
+- `Workspace.<PLAYER>.M4 REVOLVER.Gun` — LocalScript — empty
+- `Workspace.<PLAYER>.M99 RIFLE BAYONET.Gun` — LocalScript — empty ×3
+- `Workspace.<PLAYER>.M99 RIFLE.Gun` — LocalScript — empty
+- `Workspace.<PLAYER>.MovementSpeedHandler` — LocalScript — empty ×12
+- `Workspace.<PLAYER>.PlaceablesHandler` — LocalScript — empty ×12
+- `Workspace.<PLAYER>.SmoothWalkLean` — LocalScript — empty ×12
+- `Workspace.<PLAYER>.TREKLocal` — LocalScript — empty ×13
+- `Workspace.<PLAYER>.TeamIndicator` — LocalScript — empty ×13
+- `Workspace.<PLAYER>.ViewmodelHandler` — LocalScript — empty ×12
+- `Workspace.<PLAYER>.Voicelines` — Script — empty ×12
+- `Workspace.JOB_ID.Script` — Script — empty
+- `Workspace.Map.Map.BackgroundArtilleryTracers.EffectHandler` — Script — empty ×5
+- `Workspace.Map.Map.BarbedWireHandler` — Script — empty
+- `Workspace.Map.Map.BreakableWindowsHandler` — Script — empty
+- `Workspace.Map.Map.BreakableWindowsHandler.GlassBreakHandler` — Script — empty
+- `Workspace.Map.Map.Bunker1.DestructionHandler` — Script — empty
+- `Workspace.Map.Map.Bunker2.DestructionHandler` — Script — empty
+- `Workspace.Map.Map.ClassDescriptions` — ModuleScript — empty
+- `Workspace.Map.Map.Door.BreakableGlass_Model.GlassBreakHandler` — Script — empty ×4
+- `Workspace.Map.Map.Landmines.LandmineModel.ExplosiveHandler` — Script — empty ×139
+- `Workspace.Map.Map.Landmines.LandminesHandler` — Script — empty
+- `Workspace.Map.Map.Landmines.LandminesHandler.ExplosiveHandler` — Script — empty
+- `Workspace.Map.Map.ManualEndMatch` — ModuleScript — empty
+- `Workspace.Map.Map.MapBattleHandler` — Script — empty
+- `Workspace.Map.Map.MapEffectsHandler` — Script — empty
+- `Workspace.Map.Map.MapEffectsHandler.UniqueMapEffects` — LocalScript — empty
+- `Workspace.Map.Map.Model.Door.BreakableGlass_Model.GlassBreakHandler` — Script — empty ×2
+- `Workspace.Map.Map.Model.Model.Door.BreakableGlass_Model.GlassBreakHandler` — Script — empty ×4
+- `Workspace.Map.Map.Model.Model.Window.BreakableGlass_Model.GlassBreakHandler` — Script — empty ×20
+- `Workspace.Map.Map.Model.Window.BreakableGlass_Model.GlassBreakHandler` — Script — empty ×126
+- `Workspace.Map.Map.Points.PointA.CaptureHandler` — Script — empty
+- `Workspace.Map.Map.Points.PointB.CaptureHandler` — Script — empty
+- `Workspace.Map.Map.Points.PointC.CaptureHandler` — Script — empty
+- `Workspace.Map.Map.Points.PointD.CaptureHandler` — Script — empty
+- `Workspace.Map.Map.Points.PointE.CaptureHandler` — Script — empty
+- `Workspace.Map.Map.SpawnCameraAngles` — ModuleScript — empty
+- `Workspace.Map.Map.VehiclePaths` — ModuleScript — empty
+- `Workspace.Map.Map.Vehicles.AntaresFemaleTank1912.Vehicle.VehicleAIHandler` — Script — empty ×2
+- `Workspace.Map.Map.Vehicles.AntaresFemaleTank1912.Vehicle.Weld` — Script — empty ×2
+- `Workspace.Map.Map.Vehicles.AquilaTank1914.Vehicle.VehicleAIHandler` — Script — empty ×2
+- `Workspace.Map.Map.Vehicles.AquilaTank1914.Vehicle.Weld` — Script — empty ×2
+- `Workspace.Map.Map.Window.BreakableGlass_Model.GlassBreakHandler` — Script — empty ×43
+- `Workspace.PLACE_VERSION.Script` — Script — empty
+- `Workspace.Placeables.traincrash2007_TripwireBomb.BombHandler` — Script — empty

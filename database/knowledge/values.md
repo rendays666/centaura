@@ -1,0 +1,337 @@
+# Value & atribut — CENTAURA
+
+> Dibuat otomatis oleh `database/tools/sort_dumps.py` dari `memory/*.json`. JANGAN edit manual. Batch terakhir: `20261125_083600`.
+> Nilai = yang terlihat di dump; beberapa nilai berubah tiap ronde.
+
+## map (38)
+
+- `Workspace.Map.Map.AntaresVehicle1Deployed` [BoolValue] = true ×2
+- `Workspace.Map.Map.AntaresVehicle2Deployed` [BoolValue] = true ×2
+- `Workspace.Map.Map.AquilaVehicle1Deployed` [BoolValue] = false | true ×2
+- `Workspace.Map.Map.AquilaVehicle2Deployed` [BoolValue] = true ×2
+- `Workspace.Map.Map.Berm1Cleared` [BoolValue] = true ×2
+- `Workspace.Map.Map.Berm2Cleared` [BoolValue] = true ×2
+- `Workspace.Map.Map.Ditch1Filled` [BoolValue] = true ×2
+- `Workspace.Map.Map.Ditch2Filled` [BoolValue] = true ×2
+- `Workspace.Map.Map.Objective.AntaresVehiclesLeft` [IntValue] = 12 ×2
+- `Workspace.Map.Map.PointStatuses.PointAStatus` [StringValue] = "Antares" ×2
+- `Workspace.Map.Map.PointStatuses.PointBStatus` [StringValue] = "Antares" ×2
+- `Workspace.Map.Map.PointStatuses.PointCStatus` [StringValue] = "Contested" ×2
+- `Workspace.Map.Map.PointStatuses.PointDStatus` [StringValue] = "Aquila" ×2
+- `Workspace.Map.Map.PointStatuses.PointEStatus` [StringValue] = "Aquila" ×2
+- `Workspace.Map.Map.TeamClasses.Antares.AntiTank` [IntValue] = 0 ×2
+- `Workspace.Map.Map.TeamClasses.Antares.Assault` [IntValue] = 0 ×2
+- `Workspace.Map.Map.TeamClasses.Antares.Grenadier` [IntValue] = 0 ×2
+- `Workspace.Map.Map.TeamClasses.Antares.Medic` [IntValue] = 0 ×2
+- `Workspace.Map.Map.TeamClasses.Antares.Mortarman` [IntValue] = 0 ×2
+- `Workspace.Map.Map.TeamClasses.Antares.Officer` [IntValue] = 0 ×2
+- `Workspace.Map.Map.TeamClasses.Antares.Rifleman` [IntValue] = 0 ×2
+- `Workspace.Map.Map.TeamClasses.Aquila.AntiTank` [IntValue] = 0 ×2
+- `Workspace.Map.Map.TeamClasses.Aquila.Assault` [IntValue] = 0 ×2
+- `Workspace.Map.Map.TeamClasses.Aquila.Grenadier` [IntValue] = 0 ×2
+- `Workspace.Map.Map.TeamClasses.Aquila.Medic` [IntValue] = 0 ×2
+- `Workspace.Map.Map.TeamClasses.Aquila.Mortarman` [IntValue] = 0 ×2
+- `Workspace.Map.Map.TeamClasses.Aquila.Officer` [IntValue] = 0 ×2
+- `Workspace.Map.Map.TeamClasses.Aquila.Rifleman` [IntValue] = 0 ×2
+- `Workspace.Map.Map.Uniforms_CivilGuard` [BoolValue] = true ×2
+- `Workspace.Map.Map.Vehicles.AntaresFemaleTank1912.Vehicle.Antares` [BoolValue] = true ×4
+- `Workspace.Map.Map.Vehicles.AntaresFemaleTank1912.Vehicle.Armored` [BoolValue] = true ×4
+- `Workspace.Map.Map.Vehicles.AntaresFemaleTank1912.Vehicle.VehicleNumber` [IntValue] = 2 | 1 ×4
+- `Workspace.Map.Map.Vehicles.AntaresTank1912.Vehicle.Antares` [BoolValue] = true ×2
+- `Workspace.Map.Map.Vehicles.AntaresTank1912.Vehicle.Armored` [BoolValue] = true ×2
+- `Workspace.Map.Map.Vehicles.AntaresTank1912.Vehicle.VehicleNumber` [IntValue] = 2 ×2
+- `Workspace.Map.Map.Vehicles.AquilaTank1914.Vehicle.Aquila` [BoolValue] = true ×4
+- `Workspace.Map.Map.Vehicles.AquilaTank1914.Vehicle.Armored` [BoolValue] = true ×4
+- `Workspace.Map.Map.Vehicles.AquilaTank1914.Vehicle.VehicleNumber` [IntValue] = 1 | 2 ×4
+
+## match_state (29)
+
+- `ReplicatedStorage.AutoTeamBalance` [BoolValue] = true ×2
+- `ReplicatedStorage.BoundariesEnabled` [BoolValue] = true ×2
+- `ReplicatedStorage.CUSTOM_ArtilleryDisabled` [BoolValue] = false ×2
+- `ReplicatedStorage.CUSTOM_ManualMatchStart` [BoolValue] = false ×2
+- `ReplicatedStorage.CUSTOM_MapRotationDisabled` [BoolValue] = false ×2
+- `ReplicatedStorage.CUSTOM_PointGainDisabled` [BoolValue] = false ×2
+- `ReplicatedStorage.CUSTOM_VehiclesDisabled` [BoolValue] = false ×2
+- `ReplicatedStorage.CurrentMap` [StringValue] = "AquilaOutskirts" ×2
+- `ReplicatedStorage.CurrentYear` [IntValue] = 1914 ×2
+- `ReplicatedStorage.Deaths` [IntValue] = 1256 | 1250 | 1251 | 1247 ×2
+- `ReplicatedStorage.GAME_FirstLoad` [BoolValue] = false ×2
+- `ReplicatedStorage.GAME_MapLoaded` [BoolValue] = false ×2
+- `ReplicatedStorage.InMatch` [BoolValue] = true ×2
+- `ReplicatedStorage.InTransition` [BoolValue] = false ×2
+- `ReplicatedStorage.Intermission` [BoolValue] = false ×2
+- `ReplicatedStorage.LOCAL_CameraAngle` [NumberValue] = 90 ×2
+- `ReplicatedStorage.LOCAL_InStartMenu` [BoolValue] = false ×2
+- `ReplicatedStorage.LOCAL_PlayerBackpackEnabled` [BoolValue] = true ×2
+- `ReplicatedStorage.LOCAL_SelectedClass` [StringValue] = "AntiTank" ×2
+- `ReplicatedStorage.MapLoaded` [BoolValue] = true ×2
+- `ReplicatedStorage.RoundClock` [IntValue] = 1581 | 1565 | 1571 | 1574 (+1) ×2
+- `ReplicatedStorage.Status` [StringValue] = "0" ×2
+- `ReplicatedStorage.TREKStorage.Medkit.Config` [ObjectValue] = nil ×2
+- `ReplicatedStorage.TREKStorage.Medkit.Team` [ObjectValue] = nil ×2
+- `ReplicatedStorage.Team1` [ObjectValue] = Teams.Antares ×2
+- `ReplicatedStorage.Team2` [ObjectValue] = Teams.Aquila ×2
+- `ReplicatedStorage.Victor` [StringValue] = "ANTARES" ×2
+- `ReplicatedStorage.ZonePlusReference` [ObjectValue] = ReplicatedStorage.Zone ×2
+- `ReplicatedStorage.ZonePlusReference.Client` [BoolValue] = true ×2
+
+## other (61)
+
+- `Creator` [ObjectValue] = Players.<PLAYER>
+- `Imperial_Italy2.Animate.ScaleDampeningPercent` [NumberValue] = 1
+- `Imperial_Italy2.Animate.climb` [StringValue] = ""
+- `Imperial_Italy2.Animate.fall` [StringValue] = ""
+- `Imperial_Italy2.Animate.idle` [StringValue] = ""
+- `Imperial_Italy2.Animate.idle.Animation1.Weight` [NumberValue] = 9
+- `Imperial_Italy2.Animate.idle.Animation2.Weight` [NumberValue] = 1
+- `Imperial_Italy2.Animate.jump` [StringValue] = ""
+- `Imperial_Italy2.Animate.run` [StringValue] = ""
+- `Imperial_Italy2.Animate.sit` [StringValue] = ""
+- `Imperial_Italy2.Animate.toolnone` [StringValue] = ""
+- `Imperial_Italy2.Animate.walk` [StringValue] = ""
+- `Imperial_Italy2.CharacterHair.Handle.AvatarPartScaleType` [StringValue] = "Classic"
+- `Imperial_Italy2.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget` [ObjectValue] = <PLAYER>.CharacterHair.Handle
+- `Imperial_Italy2.ClassGiven` [StringValue] = "Rifleman"
+- `Imperial_Italy2.DamageResistanceMultiplier` [IntValue] = 100
+- `Imperial_Italy2.FIGHT-OR-FLIGHT` [BoolValue] = false
+- `Imperial_Italy2.Humanoid.AssistTag` [ObjectValue] = Players.<PLAYER> ×2
+- `StarterPlayer.StarterCharacter.Animate.ScaleDampeningPercent` [NumberValue] = 1 ×2
+- `StarterPlayer.StarterCharacter.Animate.climb` [StringValue] = "" ×2
+- `StarterPlayer.StarterCharacter.Animate.fall` [StringValue] = "" ×2
+- `StarterPlayer.StarterCharacter.Animate.idle` [StringValue] = "" ×2
+- `StarterPlayer.StarterCharacter.Animate.idle.Animation1.Weight` [NumberValue] = 9 ×2
+- `StarterPlayer.StarterCharacter.Animate.idle.Animation2.Weight` [NumberValue] = 1 ×2
+- `StarterPlayer.StarterCharacter.Animate.jump` [StringValue] = "" ×2
+- `StarterPlayer.StarterCharacter.Animate.run` [StringValue] = "" ×2
+- `StarterPlayer.StarterCharacter.Animate.sit` [StringValue] = "" ×2
+- `StarterPlayer.StarterCharacter.Animate.toolnone` [StringValue] = "" ×2
+- `StarterPlayer.StarterCharacter.Animate.walk` [StringValue] = "" ×2
+- `Vehicle` [ObjectValue] = Workspace.Map.Map.Vehicles.AquilaTank1914.Vehicle
+- `Workspace.Grenades.Grenade.Creator` [ObjectValue] = Players.<PLAYER> ×4
+- `Workspace.JOB_ID` [StringValue] = "7ac20f01-f0d2-4255-89dc-c8f7a0177597" ×2
+- `Workspace.PLACE_VERSION` [StringValue] = "479" ×2
+- `Workspace.VehicleWeaponTargets.Vehicle` [ObjectValue] = Workspace.Map.Map.Vehicles.AntaresFemaleTank1912.Vehicle | Workspace.Map.Map.Vehicles.AquilaTank1914.Vehicle | Workspace.Map.Map.Vehicles.AntaresTank1912.Vehicle ×6
+- `dratlast.Animate.ScaleDampeningPercent` [NumberValue] = 1
+- `dratlast.Animate.climb` [StringValue] = ""
+- `dratlast.Animate.fall` [StringValue] = ""
+- `dratlast.Animate.idle` [StringValue] = ""
+- `dratlast.Animate.idle.Animation1.Weight` [NumberValue] = 9
+- `dratlast.Animate.idle.Animation2.Weight` [NumberValue] = 1
+- `dratlast.Animate.jump` [StringValue] = ""
+- `dratlast.Animate.run` [StringValue] = ""
+- `dratlast.Animate.sit` [StringValue] = ""
+- `dratlast.Animate.toolnone` [StringValue] = ""
+- `dratlast.Animate.walk` [StringValue] = ""
+- `dratlast.DamageResistanceMultiplier` [IntValue] = 100
+- `tengonovia_248.Animate.ScaleDampeningPercent` [NumberValue] = 1
+- `tengonovia_248.Animate.climb` [StringValue] = ""
+- `tengonovia_248.Animate.fall` [StringValue] = ""
+- `tengonovia_248.Animate.idle` [StringValue] = ""
+- `tengonovia_248.Animate.idle.Animation1.Weight` [NumberValue] = 9
+- `tengonovia_248.Animate.idle.Animation2.Weight` [NumberValue] = 1
+- `tengonovia_248.Animate.jump` [StringValue] = ""
+- `tengonovia_248.Animate.run` [StringValue] = ""
+- `tengonovia_248.Animate.sit` [StringValue] = ""
+- `tengonovia_248.Animate.toolnone` [StringValue] = ""
+- `tengonovia_248.Animate.walk` [StringValue] = ""
+- `tengonovia_248.ClassGiven` [StringValue] = "Rifleman"
+- `tengonovia_248.DamageResistanceMultiplier` [IntValue] = 100
+- `tengonovia_248.FIGHT-OR-FLIGHT` [BoolValue] = false
+- `tengonovia_248.Humanoid.AssistTag` [ObjectValue] = Players.<PLAYER>
+
+## per_player (57)
+
+- `Players.<PLAYER>.Backpack.ALBUS-GRAHAM NO. 4.CustomAnims` [BoolValue] = false
+- `Players.<PLAYER>.Backpack.E/XV AUTOMATIC.CustomAnims` [BoolValue] = false
+- `Players.<PLAYER>.Backpack.M12 SMG.CustomAnims` [BoolValue] = false
+- `Players.<PLAYER>.Backpack.M1889 LA RIFLE BAYONET.CustomAnims` [BoolValue] = false
+- `Players.<PLAYER>.Backpack.M99 RIFLE BAYONET.CustomAnims` [BoolValue] = false
+- `Players.<PLAYER>.Backpack.MORTAR.CustomAnims` [BoolValue] = false ×2
+- `Players.<PLAYER>.Backpack.PATTERN 1900 CUTLASS.CustomAnims` [BoolValue] = false
+- `Players.<PLAYER>.Backpack.SOUTHERN ENSIS.CustomAnims` [BoolValue] = false
+- `Players.<PLAYER>.Backpack.WHISTLE.CustomAnims` [BoolValue] = false
+- `Workspace.<PLAYER>.ALBUS-GRAHAM NO. 4.CustomAnims` [BoolValue] = false ×4
+- `Workspace.<PLAYER>.Animate.ScaleDampeningPercent` [NumberValue] = 1 ×127
+- `Workspace.<PLAYER>.Animate.climb` [StringValue] = "" ×127
+- `Workspace.<PLAYER>.Animate.fall` [StringValue] = "" ×127
+- `Workspace.<PLAYER>.Animate.idle` [StringValue] = "" ×127
+- `Workspace.<PLAYER>.Animate.idle.Animation1.Weight` [NumberValue] = 9 ×127
+- `Workspace.<PLAYER>.Animate.idle.Animation2.Weight` [NumberValue] = 1 ×127
+- `Workspace.<PLAYER>.Animate.jump` [StringValue] = "" ×127
+- `Workspace.<PLAYER>.Animate.run` [StringValue] = "" ×127
+- `Workspace.<PLAYER>.Animate.sit` [StringValue] = "" ×127
+- `Workspace.<PLAYER>.Animate.toolnone` [StringValue] = "" ×127
+- `Workspace.<PLAYER>.Animate.walk` [StringValue] = "" ×127
+- `Workspace.<PLAYER>.BARTON MODEL 10.CustomAnims` [BoolValue] = false ×3
+- `Workspace.<PLAYER>.BERSERKER` [IntValue] = 0 ×2
+- `Workspace.<PLAYER>.BrowPlate.Plate.Antares` [BoolValue] = false ×2
+- `Workspace.<PLAYER>.BrowPlate.Plate.Aquila` [BoolValue] = false ×2
+- `Workspace.<PLAYER>.BrowPlate.Plate.Armored` [BoolValue] = false ×4
+- `Workspace.<PLAYER>.BrowPlate.Plate.Plate.NoPenetration` [NumberValue] = 1.5 ×4
+- `Workspace.<PLAYER>.CLUB.CustomAnims` [BoolValue] = false ×2
+- `Workspace.<PLAYER>.COOLHEADED` [IntValue] = 0 ×6
+- `Workspace.<PLAYER>.CharacterHair.Handle.AvatarPartScaleType` [StringValue] = "Classic" ×42
+- `Workspace.<PLAYER>.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget` [ObjectValue] = Workspace.<PLAYER>.CharacterHair.Handle ×42
+- `Workspace.<PLAYER>.CivilGuardHat3.Handle.AvatarPartScaleType` [StringValue] = "Classic"
+- `Workspace.<PLAYER>.CivilGuardHat8.Handle.AvatarPartScaleType` [StringValue] = "Classic" ×2
+- `Workspace.<PLAYER>.ClassGiven` [StringValue] = "Rifleman" | "Assault" | "Officer" | "AntiTank" (+3) ×100
+- `Workspace.<PLAYER>.DECIMA SHOTGUN.CustomAnims` [BoolValue] = false ×4
+- `Workspace.<PLAYER>.DYNAMITE.CurrentBomb` [ObjectValue] = nil ×2
+- `Workspace.<PLAYER>.DYNAMITE.CustomAnims` [BoolValue] = false ×2
+- `Workspace.<PLAYER>.DamageResistanceMultiplier` [IntValue] = 100 ×127
+- `Workspace.<PLAYER>.E/I AT RIFLE.CustomAnims` [BoolValue] = false ×2
+- `Workspace.<PLAYER>.E/VIII RIFLE BAYONET.CustomAnims` [BoolValue] = false ×15
+- `Workspace.<PLAYER>.E/VIII RIFLE.CustomAnims` [BoolValue] = false ×2
+- `Workspace.<PLAYER>.E/XV AUTOMATIC.CustomAnims` [BoolValue] = false ×7
+- `Workspace.<PLAYER>.ENE AERA RIFLE.CustomAnims` [BoolValue] = false ×5
+- `Workspace.<PLAYER>.FIGHT-OR-FLIGHT` [BoolValue] = false ×5
+- `Workspace.<PLAYER>.Humanoid.AssistTag` [ObjectValue] = Players.<PLAYER> ×14
+- `Workspace.<PLAYER>.M12 AT RIFLE.CustomAnims` [BoolValue] = false ×4
+- `Workspace.<PLAYER>.M12 SMG.CustomAnims` [BoolValue] = false ×7
+- `Workspace.<PLAYER>.M1889 LA RIFLE BAYONET.CustomAnims` [BoolValue] = false ×4
+- `Workspace.<PLAYER>.M4 REVOLVER.CustomAnims` [BoolValue] = false
+- `Workspace.<PLAYER>.M99 RIFLE BAYONET.CustomAnims` [BoolValue] = false ×19
+- `Workspace.<PLAYER>.M99 RIFLE.CustomAnims` [BoolValue] = false ×2
+- `Workspace.<PLAYER>.MODELO 1898 RIFLE BAYONET.CustomAnims` [BoolValue] = false
+- `Workspace.<PLAYER>.MORTAR.CustomAnims` [BoolValue] = false
+- `Workspace.<PLAYER>.PATTERN 1900 CUTLASS.CustomAnims` [BoolValue] = false
+- `Workspace.<PLAYER>.SOUTHERN ENSIS.CustomAnims` [BoolValue] = false ×2
+- `Workspace.<PLAYER>.SUB E/XCV SL.CustomAnims` [BoolValue] = false ×2
+- `Workspace.<PLAYER>.UPARMORED` [IntValue] = 0 ×4
+
+## votekick (67)
+
+- `ReplicatedStorage.VotekickValues.1234_Dregq` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.1notalexander4` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.1ubybyggzk` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.3e3e3yirtjil` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.59goated1` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.Aarav_Eggo` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.Afoc_8aXD` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.Ahimigatito` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.BluZombie208` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.COVARACHO78` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.Cocaferia0` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.Cwcoolboy1` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.DaniloW50` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.Dustmover112` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.ElCapoMessi1812` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.FEARDAFFYBADUSERNAME` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.Galaxy_noodles123` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.Gavinroi24` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.Iheartspace03` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.Imperial_Italy2` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.JULIO2005e` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.KINGbob01094` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.Mrs_OfTheLily` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.PuroTheGreat21` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.Raxtusv` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.Robloxremix14` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.Sadbooyz13` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.Sandviper_th3` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.Skeletalistic` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.Stanley4510` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.TYTTRkl` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.Thiago3a1ioe` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.TideBraker` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.TinyScrub` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.Veneno818718` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.WesternEastNorth` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.angelon123xdd` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.anuelnoob` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.atgamer37` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.banana_chum7` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.bobmaniscoolpoop` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.borrega247` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.brandonbarberertioc` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.coolcookieboss12345` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.darthnihilus_66` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.dratlast` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.dudelegand98` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.dylanspiderss` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.frnxster` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.gerson8352` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.hamstermannster` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.josevar7987` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.matexd809` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.memo1117872` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.renrenhu6` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.roblox_user_1416249619` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.samirch08` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.sammy868792` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.shadownan_2008` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.skeletonbud20113` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.skyguy1451` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.tengonovia_248` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.traincrash2007` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.turtle23874` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.xXxPIMBLOxXx` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.xxn00bslayerxxx7` [IntValue] = 0 ×2
+- `ReplicatedStorage.VotekickValues.zhaul2016` [IntValue] = 0 ×2
+
+## Atribut
+
+- `Afoc_8aXD.CameraSystem`
+  - CameraHeight: 0.5 (rentang 0.5..0.5)
+  - CameraStiffness: 1.2 (rentang 1.2..1.2)
+- `Afoc_8aXD.Head`
+  - Bloodable: true
+- `Afoc_8aXD.Left Arm`
+  - Bloodable: true
+- `Afoc_8aXD.Left Leg`
+  - Bloodable: true
+- `Afoc_8aXD.Right Arm`
+  - Bloodable: true
+- `Afoc_8aXD.Right Leg`
+  - Bloodable: true
+- `Afoc_8aXD.Torso`
+  - Bloodable: true
+- `BulletPart`
+  - BulletOwner: Antares, Aquila
+  - EndPosition: 856.383056640625, 19.449661254882812, 61.01387405395508, 977.384765625, 32.6124153137207, 172.9041748046875, 968.917724609375, 36.64370346069336, -83.60474395751953, 972.6448974609375, 35.86922836303711, -63.69036102294922
+  - StartPosition: 665.234619140625, 33.7478141784668, -50.755767822265625, 977.3464965820312, 32.3151741027832, 171.84548950195312, 983.4739990234375, 30.997377395629883, 159.7171173095703, 1103.9276123046875, 36.06614685058594, 129.75132751464844
+  - Suppression: 5, 2, 3, 8 (rentang 2..8)
+- `Cwcoolboy1.CameraSystem`
+  - CameraHeight: 0.5 (rentang 0.5..0.5)
+  - CameraStiffness: 1.2 (rentang 1.2..1.2)
+- `Cwcoolboy1.Head`
+  - Bloodable: true
+- `Cwcoolboy1.Left Arm`
+  - Bloodable: true
+- `Cwcoolboy1.Left Leg`
+  - Bloodable: true
+- `Cwcoolboy1.Right Arm`
+  - Bloodable: true
+- `Cwcoolboy1.Right Leg`
+  - Bloodable: true
+- `Cwcoolboy1.Torso`
+  - Bloodable: true
+- `Workspace.<PLAYER>.BrowPlate.Plate.Armored`
+  - NoProtection: true
+- `Workspace.<PLAYER>.CameraSystem`
+  - CameraHeight: 0.5 (rentang 0.5..0.5)
+  - CameraStiffness: 1.2 (rentang 1.2..1.2)
+- `Workspace.<PLAYER>.Head`
+  - Bloodable: true
+- `Workspace.<PLAYER>.Left Arm`
+  - Bloodable: true
+- `Workspace.<PLAYER>.Left Leg`
+  - Bloodable: true
+- `Workspace.<PLAYER>.Right Arm`
+  - Bloodable: true
+- `Workspace.<PLAYER>.Right Leg`
+  - Bloodable: true
+- `Workspace.<PLAYER>.Torso`
+  - Bloodable: true
+- `Workspace.IgnoreList.Bullets.BulletPart`
+  - BulletOwner: Antares, Aquila
+  - EndPosition: 963.6568603515625, 39.56916809082031, -87.36878204345703, 827.6248168945312, 19.98249053955078, 62.234561920166016, 798.056640625, 18.284442901611328, 58.894981384277344, 815.6163330078125, 17.996551513671875, 58.61878204345703
+  - StartPosition: 857.5084228515625, 38.420108795166016, -94.95709991455078, 676.7545166015625, 38.48947525024414, -58.15524673461914, 747.8212890625, 48.04496383666992, -89.29467010498047, 679.7459106445312, 38.89658737182617, -58.55110168457031
+  - Suppression: 3, 2, 5, 8 (rentang 2..8)
+- `Workspace.Map.Map.PointStatuses.PointAStatus`
+  - Locked: true
+- `Workspace.Map.Map.PointStatuses.PointBStatus`
+  - Locked: true
+- `Workspace.VehicleWeaponTargets.Vehicle`
+  - Team: Antares, Aquila

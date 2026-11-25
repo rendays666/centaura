@@ -1,0 +1,2978 @@
+{
+ "schema": 2,
+ "scripts": {
+  "<PLAYER>.BurnAnimation": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 12,
+   "s": [
+    "empty"
+   ]
+  },
+  "<PLAYER>.CameraBobbing": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 12,
+   "s": [
+    "empty"
+   ]
+  },
+  "<PLAYER>.CameraSystem": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 12,
+   "s": [
+    "empty"
+   ]
+  },
+  "<PLAYER>.FallDamage": {
+   "b": 0,
+   "c": "Script",
+   "n": 12,
+   "s": [
+    "empty"
+   ]
+  },
+  "<PLAYER>.HeadTurn": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 12,
+   "s": [
+    "empty"
+   ]
+  },
+  "<PLAYER>.HumanoidHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 12,
+   "s": [
+    "empty"
+   ]
+  },
+  "<PLAYER>.HumanoidStatesHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 12,
+   "s": [
+    "empty"
+   ]
+  },
+  "<PLAYER>.JumpCooldown": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 12,
+   "s": [
+    "empty"
+   ]
+  },
+  "<PLAYER>.LocalFootsteps": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 12,
+   "s": [
+    "empty"
+   ]
+  },
+  "<PLAYER>.MovementSpeedHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 12,
+   "s": [
+    "empty"
+   ]
+  },
+  "<PLAYER>.PlaceablesHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 12,
+   "s": [
+    "empty"
+   ]
+  },
+  "<PLAYER>.SmoothWalkLean": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 12,
+   "s": [
+    "empty"
+   ]
+  },
+  "<PLAYER>.TREKLocal": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 12,
+   "s": [
+    "empty"
+   ]
+  },
+  "<PLAYER>.TeamIndicator": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 12,
+   "s": [
+    "empty"
+   ]
+  },
+  "<PLAYER>.ViewmodelHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 12,
+   "s": [
+    "empty"
+   ]
+  },
+  "<PLAYER>.Voicelines": {
+   "b": 0,
+   "c": "Script",
+   "n": 12,
+   "s": [
+    "empty"
+   ]
+  },
+  "BurnAnimation": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "CameraBobbing": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "CameraSystem": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "FallDamage": {
+   "b": 0,
+   "c": "Script",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "GrenadeScript": {
+   "b": 0,
+   "c": "Script",
+   "n": 6,
+   "s": [
+    "empty"
+   ]
+  },
+  "Gun": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 15,
+   "s": [
+    "empty"
+   ]
+  },
+  "HeadTurn": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "HumanoidHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "HumanoidStatesHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "JumpCooldown": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "LocalFootsteps": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "LocalScript": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 4,
+   "s": [
+    "empty"
+   ]
+  },
+  "MovementSpeedHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "PlaceablesHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.Backpack.BANDAGES.LocalScript": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 2,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.Backpack.BANDAGES.Script": {
+   "b": 0,
+   "c": "Script",
+   "n": 2,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.Backpack.CLUB.Gun": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 36,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.Backpack.DYNAMITE.DynamiteHandler": {
+   "b": 0,
+   "c": "Script",
+   "n": 2,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.Backpack.DYNAMITE.LocalScript": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 2,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.Backpack.E/VIII RIFLE.Gun": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.Backpack.E/XV AUTOMATIC.Gun": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.Backpack.GRENADE.LocalScript": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 18,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.Backpack.GRENADE.Script": {
+   "b": 0,
+   "c": "Script",
+   "n": 18,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.Backpack.GRENADE.Script.GrenadeScript": {
+   "b": 0,
+   "c": "Script",
+   "n": 18,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.Backpack.HATCHET.Gun": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 7,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.Backpack.M4 REVOLVER.Gun": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.Backpack.MORTAR.GripSetter": {
+   "b": 0,
+   "c": "Script",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.Backpack.MORTAR.LocalScript": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.Backpack.PATTERN 1900 CUTLASS.Gun": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 2,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.Backpack.SOUTHERN ENSIS.Gun": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.Backpack.SPARKBOMB.LocalScript": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.Backpack.SPARKBOMB.Script": {
+   "b": 0,
+   "c": "Script",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.Backpack.SPARKBOMB.Script.GrenadeScript": {
+   "b": 0,
+   "c": "Script",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.Backpack.SUB E/XCV SL.Gun": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.Backpack.T05 RIFLE BAYONET.Gun": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.Backpack.TRENCH SHIELD.ClientHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.Backpack.TRENCH SHIELD.ServerHandler": {
+   "b": 0,
+   "c": "Script",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.Backpack.TRIPWIRE BOMB.Client": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 2,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.Backpack.TRIPWIRE BOMB.Server": {
+   "b": 0,
+   "c": "Script",
+   "n": 2,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.Backpack.WIRE CUTTERS.ToolHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.AmbientTexture.LocalScript": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.AttentivePerkUI.IndicatorHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.CustomEquipmentShopUI.Closer": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.CustomEquipmentShopUI.ShopMenu.ShopButtonManager": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.CustomEquipmentShopUI.ShopMenu.ShopButtonManager.TweenModule": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.CustomInventory.InventoryHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.DamageGui.DamageIndicatorHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.DamageGui.Red.LocalScript": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.DeathCounter.DeathHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.DeathScreen.DeathHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.DeathScreen.DeathHandlerSAVE": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.EquipmentShopUI.Closer": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.EquipmentShopUI.ShopMenu.ShopButtonManager": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.EquipmentShopUI.ShopMenu.ShopButtonManager.TweenModule": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.FreecamDetector.Handler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.MapObjectiveUI.StatsHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.MapObjectiveUI.TimeHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.PlayerNametags.1ubybyggzk.TagHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.PlayerNametags.3e3e3yirtjil.TagHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.PlayerNametags.59goated1.TagHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.PlayerNametags.Ahimigatito.TagHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.PlayerNametags.Cocaferia0.TagHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.PlayerNametags.Cwcoolboy1.TagHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.PlayerNametags.ElCapoMessi1812.TagHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.PlayerNametags.FEARDAFFYBADUSERNAME.TagHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.PlayerNametags.Gavinroi24.TagHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.PlayerNametags.Imperial_Italy2.TagHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.PlayerNametags.JULIO2005e.TagHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.PlayerNametags.Sandviper_th3.TagHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.PlayerNametags.Stanley4510.TagHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.PlayerNametags.Thiago3a1ioe.TagHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.PlayerNametags.TideBraker.TagHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.PlayerNametags.TinyScrub.TagHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.PlayerNametags.Veneno818718.TagHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.PlayerNametags.angelon123xdd.TagHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.PlayerNametags.anuelnoob.TagHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.PlayerNametags.atgamer37.TagHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.PlayerNametags.borrega247.TagHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.PlayerNametags.coolcookieboss12345.TagHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.PlayerNametags.frnxster.TagHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.PlayerNametags.hamstermannster.TagHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.PlayerNametags.matexd809.TagHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.PlayerNametags.samirch08.TagHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.PlayerNametags.sammy868792.TagHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.PlayerNametags.shadownan_2008.TagHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.PlayerNametags.skeletonbud20113.TagHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.PlayerNametags.skyguy1451.TagHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.PlayerNametags.zhaul2016.TagHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.RankUpUI.RankUpHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.ReturnToCombatZone.BoundaryHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.SpawnMenuUI.ClassSelectionMenu.ClassSelectionHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.SpawnMenuUI.MenuHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.TREKHud.HUDHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.Tense.ScreenEffectsHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.TopBar.ButtonManager": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.TopBar.ButtonManager.TweenModule": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.TopBar.ServerBrowserHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.TopBar.ServerMenu.JobID.LocalScript": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerGui.UniqueMapEffects.UniqueMapEffects": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerScripts.BloodEffects": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerScripts.ChatFunctions": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerScripts.DisableCoreUI": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerScripts.DisorientationHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerScripts.Effects": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerScripts.Effects.ArtilleryTracers": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerScripts.Effects.ArtilleryTracersSAVE": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerScripts.LensFlare": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerScripts.LensFlare.LensFlare2024Fix": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerScripts.MouseIconHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerScripts.PlayerScriptsLoader": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerScripts.PlayerTagLabels": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerScripts.PlayerTagLabels.PlayerNameTag.TagHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerScripts.ProximityPromptGui": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerScripts.RbxCharacterSounds": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerScripts.ReplicatedTweeningClient": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerScripts.Reverb": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerScripts.ShellAirTrail": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerScripts.SystemChatHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerScripts.TREKEffects": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerScripts.TREKLocalValueHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerScripts.Tilt": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Players.<PLAYER>.PlayerScripts.ToolFollowArms": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.CameraShaker": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.CameraShaker.CameraShakeInstance": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.CameraShaker.CameraShakePresets": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.ClassSelectionMenu.ClassSelectionHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.CustomEquipmentDictionary": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.CustomEquipmentDictionarySAVE": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.CustomInventoryAssets.BackpackView": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.CustomInventoryAssets.BackpackView.StyleSheet": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.CutsceneAssets": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.CutsceneModule": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.DynamiteStick.DynamiteHandler": {
+   "b": 0,
+   "c": "Script",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.LoadLibrary.RbxGui": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.LoadLibrary.RbxStamper": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.LoadLibrary.RbxUtility": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.MouseOverModule": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.NotificationAssets": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.PerksDictionary": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.RaycastHitboxModule": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.RaycastHitboxModule.GoodSignal": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.RaycastHitboxModule.HitboxCaster": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.RaycastHitboxModule.Solvers.Attachment": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.RaycastHitboxModule.Solvers.Bone": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.RaycastHitboxModule.Solvers.LinkAttachments": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.RaycastHitboxModule.Solvers.Vector3": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.RaycastHitboxModule.VisualizerCache": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.RemoteFloodCheck": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.ReplicatedTweening": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.ShopItemDictionary": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.SpringModule": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GlobalSettings": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.ALBUS-GRAHAM NO. 4": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.ANTIBLINDAGEM 1 RIFLE": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.BARTON MODEL 10": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.CLUB": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.DECIMA SHOTGUN": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.DOUBLE BARREL SHOTGUN": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.E/I AT RIFLE": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.E/VIII RIFLE": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.E/VIII RIFLE BAYONET": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.E/XI KARRAS": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.E/XV AUTOMATIC": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.EASTERN SABRE": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.ENE AERA RIFLE": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.ENE MARS CARBINE": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.FLAMETHROWER": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.HATCHET": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.M12 AT RIFLE": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.M12 SMG": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.M1889 LA RIFLE": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.M1889 LA RIFLE BAYONET": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.M1890 REVOLVER": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.M1909 SMG": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.M4 REVOLVER": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.M88 SHOTGUN": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.M99 RIFLE": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.M99 RIFLE BAYONET": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.MALLEUS REVOLVER": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.MARMOTA PISTOL": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.MODELO 11 TOURO": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.MODELO 13 SMG": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.MODELO 1892 SHOTGUN": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.MODELO 1898 RIFLE": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.MODELO 1898 RIFLE BAYONET": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.PATTERN 1900 CUTLASS": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.SABRE": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.SHAKER SHOTGUN": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.SHORTBLADE": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.SOUTHERN ENSIS": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.SUB E/XCV": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.SUB E/XCV SL": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.T05 RIFLE": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.T05 RIFLE BAYONET": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.T09 SMG": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.TemplateModule": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.GunSettings.WESTERN ENSIS": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKModules.TweenModule": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKScripts.Gun": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKScripts.GunSAVE": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKScripts.Gun_": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKStorage.Medkit.Healing": {
+   "b": 0,
+   "c": "Script",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TREKStorage.Medkit.weld": {
+   "b": 0,
+   "c": "Script",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.TweenModule": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.Zone": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.Zone.Enum": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.Zone.Enum.Accuracy": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.Zone.Enum.Detection": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.Zone.Janitor": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.Zone.OldSignal": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.Zone.Signal": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.Zone.VERSION": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.Zone.ZoneController": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.Zone.ZoneController.CollectiveWorldModel": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.Zone.ZoneController.Tracker": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ReplicatedStorage.Zone.ZonePlusReference": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Script": {
+   "b": 0,
+   "c": "Script",
+   "n": 4,
+   "s": [
+    "empty"
+   ]
+  },
+  "SmoothWalkLean": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterGui.AmbientTexture.LocalScript": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterGui.AttentivePerkUI.IndicatorHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterGui.ChangelogGUI.Frame.Changelog": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterGui.ChangelogGUI.Frame.CloseButton.LocalScript": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterGui.ChangelogGUI.Frame.CloseButton.LocalScript.TweenModule": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterGui.ChangelogGUI.Frame.PlaceVersion.LocalScript": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterGui.CustomEquipmentShopUI.Closer": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterGui.CustomEquipmentShopUI.ShopMenu.ShopButtonManager": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterGui.CustomEquipmentShopUI.ShopMenu.ShopButtonManager.TweenModule": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterGui.CustomInventory.InventoryHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterGui.DamageGui.DamageIndicatorHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterGui.DamageGui.Red.LocalScript": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterGui.DeathCounter.DeathHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterGui.DeathScreen.DeathHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterGui.DeathScreen.DeathHandlerSAVE": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterGui.EquipmentShopUI.Closer": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterGui.EquipmentShopUI.ShopMenu.ShopButtonManager": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterGui.EquipmentShopUI.ShopMenu.ShopButtonManager.TweenModule": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterGui.FreecamDetector.Handler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterGui.PlayerListGui.Init": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterGui.RankUpUI.RankUpHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterGui.ReturnToCombatZone.BoundaryHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterGui.SpawnMenuUI.MenuHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterGui.TREKHud.HUDHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterGui.Tense.ScreenEffectsHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterGui.TopBar.ButtonManager": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterGui.TopBar.ButtonManager.TweenModule": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterGui.TopBar.ServerBrowserHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterGui.TopBar.ServerMenu.JobID.LocalScript": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterCharacterScripts.BurnAnimation": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterCharacterScripts.CameraBobbing": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterCharacterScripts.CameraSystem": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterCharacterScripts.FallDamage": {
+   "b": 0,
+   "c": "Script",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterCharacterScripts.HeadTurn": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterCharacterScripts.HumanoidHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterCharacterScripts.HumanoidStatesHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterCharacterScripts.JumpCooldown": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterCharacterScripts.LocalFootsteps": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterCharacterScripts.MovementSpeedHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterCharacterScripts.PlaceablesHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterCharacterScripts.SmoothWalkLean": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterCharacterScripts.TREKLocal": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterCharacterScripts.TeamIndicator": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterCharacterScripts.ViewmodelHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterCharacterScripts.Voicelines": {
+   "b": 0,
+   "c": "Script",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterPlayerScripts.BloodEffects": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterPlayerScripts.ChatFunctions": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterPlayerScripts.DisableCoreUI": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterPlayerScripts.DisorientationHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterPlayerScripts.Effects": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterPlayerScripts.Effects.ArtilleryTracers": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterPlayerScripts.Effects.ArtilleryTracersSAVE": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterPlayerScripts.LensFlare": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterPlayerScripts.LensFlare.LensFlare2024Fix": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterPlayerScripts.MouseIconHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterPlayerScripts.PlayerScriptsLoader": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterPlayerScripts.PlayerTagLabels": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterPlayerScripts.PlayerTagLabels.PlayerNameTag.TagHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterPlayerScripts.ProximityPromptGui": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterPlayerScripts.RbxCharacterSounds": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterPlayerScripts.ReplicatedTweeningClient": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterPlayerScripts.Reverb": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterPlayerScripts.ShellAirTrail": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterPlayerScripts.SystemChatHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterPlayerScripts.TREKEffects": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterPlayerScripts.TREKLocalValueHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterPlayerScripts.Tilt": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "StarterPlayer.StarterPlayerScripts.ToolFollowArms": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "TREKLocal": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "TeamIndicator": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "ViewmodelHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Voicelines": {
+   "b": 0,
+   "c": "Script",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.<PLAYER>.BANDAGES.LocalScript": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.<PLAYER>.BANDAGES.Script": {
+   "b": 0,
+   "c": "Script",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.<PLAYER>.BrowPlate.Plate.ArmorHandler": {
+   "b": 0,
+   "c": "Script",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.<PLAYER>.BurnAnimation": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 12,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.<PLAYER>.CLUB.Gun": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.<PLAYER>.CameraBobbing": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 12,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.<PLAYER>.CameraSystem": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 12,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.<PLAYER>.E/I AT RIFLE.Gun": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.<PLAYER>.E/VIII RIFLE BAYONET.Gun": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 3,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.<PLAYER>.ENE AERA RIFLE.Gun": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.<PLAYER>.FallDamage": {
+   "b": 0,
+   "c": "Script",
+   "n": 12,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.<PLAYER>.GRENADE.LocalScript": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.<PLAYER>.GRENADE.Script": {
+   "b": 0,
+   "c": "Script",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.<PLAYER>.GRENADE.Script.GrenadeScript": {
+   "b": 0,
+   "c": "Script",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.<PLAYER>.HeadTurn": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 12,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.<PLAYER>.HumanoidHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 12,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.<PLAYER>.HumanoidStatesHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 12,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.<PLAYER>.JumpCooldown": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 12,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.<PLAYER>.LocalFootsteps": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 12,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.<PLAYER>.M12 AT RIFLE.Gun": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.<PLAYER>.M1889 LA RIFLE BAYONET.Gun": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.<PLAYER>.M4 REVOLVER.Gun": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.<PLAYER>.M99 RIFLE BAYONET.Gun": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 3,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.<PLAYER>.M99 RIFLE.Gun": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.<PLAYER>.MovementSpeedHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 12,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.<PLAYER>.PlaceablesHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 12,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.<PLAYER>.SmoothWalkLean": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 12,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.<PLAYER>.TREKLocal": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 13,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.<PLAYER>.TeamIndicator": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 13,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.<PLAYER>.ViewmodelHandler": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 12,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.<PLAYER>.Voicelines": {
+   "b": 0,
+   "c": "Script",
+   "n": 12,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.JOB_ID.Script": {
+   "b": 0,
+   "c": "Script",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.Map.Map.BackgroundArtilleryTracers.EffectHandler": {
+   "b": 0,
+   "c": "Script",
+   "n": 5,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.Map.Map.BarbedWireHandler": {
+   "b": 0,
+   "c": "Script",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.Map.Map.BreakableWindowsHandler": {
+   "b": 0,
+   "c": "Script",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.Map.Map.BreakableWindowsHandler.GlassBreakHandler": {
+   "b": 0,
+   "c": "Script",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.Map.Map.Bunker1.DestructionHandler": {
+   "b": 0,
+   "c": "Script",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.Map.Map.Bunker2.DestructionHandler": {
+   "b": 0,
+   "c": "Script",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.Map.Map.ClassDescriptions": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.Map.Map.Door.BreakableGlass_Model.GlassBreakHandler": {
+   "b": 0,
+   "c": "Script",
+   "n": 4,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.Map.Map.Landmines.LandmineModel.ExplosiveHandler": {
+   "b": 0,
+   "c": "Script",
+   "n": 139,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.Map.Map.Landmines.LandminesHandler": {
+   "b": 0,
+   "c": "Script",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.Map.Map.Landmines.LandminesHandler.ExplosiveHandler": {
+   "b": 0,
+   "c": "Script",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.Map.Map.ManualEndMatch": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.Map.Map.MapBattleHandler": {
+   "b": 0,
+   "c": "Script",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.Map.Map.MapEffectsHandler": {
+   "b": 0,
+   "c": "Script",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.Map.Map.MapEffectsHandler.UniqueMapEffects": {
+   "b": 0,
+   "c": "LocalScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.Map.Map.Model.Door.BreakableGlass_Model.GlassBreakHandler": {
+   "b": 0,
+   "c": "Script",
+   "n": 2,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.Map.Map.Model.Model.Door.BreakableGlass_Model.GlassBreakHandler": {
+   "b": 0,
+   "c": "Script",
+   "n": 4,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.Map.Map.Model.Model.Window.BreakableGlass_Model.GlassBreakHandler": {
+   "b": 0,
+   "c": "Script",
+   "n": 20,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.Map.Map.Model.Window.BreakableGlass_Model.GlassBreakHandler": {
+   "b": 0,
+   "c": "Script",
+   "n": 126,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.Map.Map.Points.PointA.CaptureHandler": {
+   "b": 0,
+   "c": "Script",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.Map.Map.Points.PointB.CaptureHandler": {
+   "b": 0,
+   "c": "Script",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.Map.Map.Points.PointC.CaptureHandler": {
+   "b": 0,
+   "c": "Script",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.Map.Map.Points.PointD.CaptureHandler": {
+   "b": 0,
+   "c": "Script",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.Map.Map.Points.PointE.CaptureHandler": {
+   "b": 0,
+   "c": "Script",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.Map.Map.SpawnCameraAngles": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.Map.Map.VehiclePaths": {
+   "b": 0,
+   "c": "ModuleScript",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.Map.Map.Vehicles.AntaresFemaleTank1912.Vehicle.VehicleAIHandler": {
+   "b": 0,
+   "c": "Script",
+   "n": 2,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.Map.Map.Vehicles.AntaresFemaleTank1912.Vehicle.Weld": {
+   "b": 0,
+   "c": "Script",
+   "n": 2,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.Map.Map.Vehicles.AquilaTank1914.Vehicle.VehicleAIHandler": {
+   "b": 0,
+   "c": "Script",
+   "n": 2,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.Map.Map.Vehicles.AquilaTank1914.Vehicle.Weld": {
+   "b": 0,
+   "c": "Script",
+   "n": 2,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.Map.Map.Window.BreakableGlass_Model.GlassBreakHandler": {
+   "b": 0,
+   "c": "Script",
+   "n": 43,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.PLACE_VERSION.Script": {
+   "b": 0,
+   "c": "Script",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  },
+  "Workspace.Placeables.traincrash2007_TripwireBomb.BombHandler": {
+   "b": 0,
+   "c": "Script",
+   "n": 1,
+   "s": [
+    "empty"
+   ]
+  }
+ },
+ "summary": {
+  "batch": "20261125_083600",
+  "empty": 1192,
+  "total": 1192
+ }
+}
