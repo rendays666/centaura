@@ -56,6 +56,7 @@ function M.setup(ctx)
         ctx.medicHumanize = not ctx.medicHumanize
         humBtn.BackgroundColor3 = ctx.medicHumanize and Color3.fromRGB(0, 160, 120) or Color3.fromRGB(40, 40, 58)
         humBtn.Text = "Humanize  [" .. (ctx.medicHumanize and "ON" or "OFF") .. "]"
+        if ctx.requestSave then ctx.requestSave() end
     end)
 end
 return M

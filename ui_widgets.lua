@@ -47,6 +47,7 @@ function M.setup(ctx)
                 for k in pairs(ctx.pending) do ctx.pending[k] = nil end
             end
             if onChange then onChange(opts[key]) end
+            if ctx.requestSave then ctx.requestSave() end
         end)
     end
 end

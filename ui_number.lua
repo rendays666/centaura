@@ -65,6 +65,7 @@ function M.setup(ctx)
             currentVal = newVal
             valLabel.Text = fmt(currentVal)
             callback(currentVal)
+            if ctx.requestSave then ctx.requestSave() end
         end
         valLabel.Text = fmt(currentVal)
         callback(currentVal)

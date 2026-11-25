@@ -9,15 +9,13 @@ function M.setup(ctx)
     ctx.newToggle(p, "No Reload", "NoReload")
     ctx.newToggle(p, "One Hit Kill", "OneHit")
     ctx.newSection(p, "TANK / VEHICLE")
-    ctx.newToggle(p, "Auto Damage Tank", "DamageArmor")
-    ctx.newNumber(p, "Armor Damage", ctx.CONFIG.ArmorDamage, 100, 999999, 100, 0, function(v)
-        ctx.CONFIG.ArmorDamage = v
+    ctx.newToggle(p, "Auto Pull Tank", "PullTanks")
+    ctx.newNumber(p, "Pull Distance", ctx.pullDistance, 5, 50, 1, 0, function(v)
+        ctx.pullDistance = v
+        ctx.CONFIG.PullDistance = v
     end)
-    ctx.newNumber(p, "Max Dist (m)", ctx.CONFIG.MaxArmorDistance, 50, 2000, 50, 0, function(v)
+    ctx.newNumber(p, "Armor ESP Dist (m)", ctx.CONFIG.MaxArmorDistance, 50, 2000, 50, 0, function(v)
         ctx.CONFIG.MaxArmorDistance = v
-    end)
-    ctx.newNumber(p, "Scan Rate (s)", ctx.CONFIG.ArmorScanInterval, 0.2, 5, 0.1, 1, function(v)
-        ctx.CONFIG.ArmorScanInterval = v
     end)
     ctx.newSection(p, "ACTIONS")
     local b = Instance.new("TextButton")

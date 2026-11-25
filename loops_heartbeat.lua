@@ -1,4 +1,4 @@
--- purpose: heartbeat auto-kill (vehicle damage runs in armor_damage.lua)
+-- purpose: heartbeat auto-kill (tank pulling runs in autopull tank.lua)
 local M = {}
 function M.setup(ctx)
     local Run = ctx.Run

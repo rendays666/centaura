@@ -8,7 +8,7 @@ Modular Roblox Lua script for **RENRENHUB CENTAURA**. Entry point is `main.lua`,
 - **Aim**: auto-aim, FOV, smoothness, aim part selection
 - **ESP**: player names, HP, distance
 - **Medic**: heal/teleport helper with humanized timing
-- **Armor**: armor detection and armor damage
+- **Armor**: armor detection, vehicle ESP, and client-side tank pulling
 - **UI**: window, tabs, widgets, number inputs
 - **Loops**: render, heartbeat, task loops
 - **Services / State / Rate / Config / Log**: shared infrastructure
@@ -19,6 +19,8 @@ Edit `config.lua` to change:
 - UI tabs and title
 - combat, aim, ESP, medic, and armor options
 - derived runtime values
+
+Runtime changes made in the GUI are auto-saved to `centaura_config.json` and reloaded on the next execute.
 
 ## Usage
 

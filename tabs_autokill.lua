@@ -40,6 +40,7 @@ function M.setup(ctx)
         ctx.lastTargeted = nil
         nBtn.BackgroundColor3 = Color3.fromRGB(0, 160, 120)
         qBtn.BackgroundColor3 = Color3.fromRGB(40, 40, 58)
+        if ctx.requestSave then ctx.requestSave() end
     end)
     qBtn.Activated:Connect(function()
         ctx.targetMode = "Queue"
@@ -47,6 +48,7 @@ function M.setup(ctx)
         ctx.lastTargeted = nil
         nBtn.BackgroundColor3 = Color3.fromRGB(40, 40, 58)
         qBtn.BackgroundColor3 = Color3.fromRGB(0, 160, 120)
+        if ctx.requestSave then ctx.requestSave() end
     end)
     ctx.newSection(p, "KILL VALUES")
     ctx.newNumber(p, "Cooldown (s)", ctx.autoKillCooldown, 0.15, 60, 0.1, 1, function(v) ctx.autoKillCooldown = v end)

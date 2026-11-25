@@ -130,14 +130,11 @@ function M.setup(ctx)
         MedicPositionMode= "Below",
         MedicHumanize    = true,
 
-        DamageArmor        = true,
+        PullTanks          = false,
+        PullDistance       = 15,
         ArmorESP           = true,
         ArmorESPShowDist   = true,
-        ArmorDamage        = 50000,
-        ArmorScanInterval  = 0.5,
         MaxArmorDistance   = 400,
-        ArmorFireInterval  = 0.1,
-        BypassArmorLocal   = true,
     }
 
     ctx.opts = {
@@ -158,7 +155,7 @@ function M.setup(ctx)
         ESPShowHP    = ctx.CONFIG.ESPShowHP,
         ESPShowDist  = ctx.CONFIG.ESPShowDist,
         MedicEnabled = ctx.CONFIG.MedicEnabled,
-        DamageArmor  = ctx.CONFIG.DamageArmor,
+        PullTanks    = ctx.CONFIG.PullTanks,
         ArmorESP     = ctx.CONFIG.ArmorESP,
         ArmorESPShowDist = ctx.CONFIG.ArmorESPShowDist,
     }
@@ -176,6 +173,7 @@ function M.setup(ctx)
     ctx.medicPositionMode = ctx.CONFIG.MedicPositionMode
     ctx.medicHumanize     = ctx.CONFIG.MedicHumanize
     ctx.targetMode        = ctx.CONFIG.TargetMode
+    ctx.pullDistance      = ctx.CONFIG.PullDistance
 
     ctx.T_COMBAT   = ctx.CONFIG.Tabs[1] or "Combat"
     ctx.T_AUTOKILL = ctx.CONFIG.Tabs[2] or "AutoKill"
@@ -223,6 +221,110 @@ function M.setup(ctx)
     ctx.medicStateStart = 0
     ctx.medicLastScan = 0
     ctx.medicInitialPatientHP = 0
+end
+return M
+end)()
+
+__modules['autosave'] = (function()
+-- purpose: persist user settings to executor file and auto-load them on execute
+local M = {}
+function M.setup(ctx)
+    local PATH = "centaura_config.json"
+    local HttpService = game:GetService("HttpService")
+    local canFS = type(writefile) == "function" and type(readfile) == "function" and type(isfile) == "function"
+    ctx.CONFIG_PATH = PATH
+
+    local SCALARS = {
+        "autoKillCooldown", "autoKillDamage", "minHP", "maxFiresPerSec",
+        "aimEspDistance", "fovRadius", "aimSmoothness",
+        "medicHPThreshold", "medicBelowStuds", "medicTeleportWait",
+        "medicPositionMode", "medicHumanize", "targetMode", "pullDistance",
+    }
+    local MIRROR = {
+        autoKillCooldown = "AutoKillCooldown",
+        autoKillDamage = "AutoKillDamage",
+        minHP = "SekaratMinHP",
+        maxFiresPerSec = "MaxFiresPerSec",
+        aimEspDistance = "AimEspDistance",
+        fovRadius = "FOVRadius",
+        aimSmoothness = "AimSmoothness",
+        medicHPThreshold = "MedicHPThreshold",
+        medicBelowStuds = "MedicBelowStuds",
+        medicTeleportWait = "MedicTeleportWait",
+        medicPositionMode = "MedicPositionMode",
+        medicHumanize = "MedicHumanize",
+        targetMode = "TargetMode",
+        pullDistance = "PullDistance",
+    }
+
+    local dirty = false
+
+    local function syncOpts()
+        for k, v in pairs(ctx.opts) do
+            if ctx.CONFIG[k] ~= nil then ctx.opts[k] = ctx.CONFIG[k] end
+        end
+    end
+
+    ctx.saveConfig = function()
+        if not canFS then return false end
+        local data = { CONFIG = ctx.CONFIG, opts = ctx.opts, scalars = {} }
+        for _, k in ipairs(SCALARS) do data.scalars[k] = ctx[k] end
+        local ok, raw = pcall(function() return HttpService:JSONEncode(data) end)
+        if not ok then return false end
+        return pcall(writefile, PATH, raw)
+    end
+
+    ctx.loadConfig = function()
+        if not canFS then return false end
+        local okFile, exists = pcall(isfile, PATH)
+        if not okFile or not exists then return false end
+        local okRead, raw = pcall(readfile, PATH)
+        if not okRead or type(raw) ~= "string" or raw == "" then return false end
+        local okDec, data = pcall(function() return HttpService:JSONDecode(raw) end)
+        if not okDec or type(data) ~= "table" then return false end
+
+        if type(data.CONFIG) == "table" then
+            for k, v in pairs(data.CONFIG) do
+                if ctx.CONFIG[k] ~= nil then ctx.CONFIG[k] = v end
+            end
+        end
+        if type(data.opts) == "table" then
+            for k, v in pairs(data.opts) do
+                if ctx.opts[k] ~= nil then
+                    ctx.opts[k] = v
+                    if ctx.CONFIG[k] ~= nil then ctx.CONFIG[k] = v end
+                end
+            end
+        end
+        if type(data.scalars) == "table" then
+            for _, k in ipairs(SCALARS) do
+                local v = data.scalars[k]
+                if v ~= nil then
+                    ctx[k] = v
+                    local ck = MIRROR[k]
+                    if ck and ctx.CONFIG[ck] ~= nil then ctx.CONFIG[ck] = v end
+                end
+            end
+        end
+        syncOpts()
+        return true
+    end
+
+    ctx.requestSave = function()
+        dirty = true
+    end
+
+    pcall(ctx.loadConfig)
+
+    task.spawn(function()
+        while not (ctx.gui and not ctx.gui.Parent) do
+            task.wait(1)
+            if dirty then
+                dirty = false
+                pcall(ctx.saveConfig)
+            end
+        end
+    end)
 end
 return M
 end)()
@@ -373,24 +475,31 @@ function M.setup(ctx)
     end
 end
 return M
-
 end)()
 
-__modules['armor_damage'] = (function()
--- purpose: dynamic vehicle damage via DamagerRemote (no hardcoded tank/weapon names)
+__modules['autopull tank'] = (function()
+-- purpose: client-side tank pulling + wreck cleanup (replaces auto damage tank)
 local M = {}
 function M.setup(ctx)
     local LP = ctx.LP
     local workspace = ctx.workspace
 
-    -- workspace.Map.Map.Vehicles holds the tank/armored-car models.
     local function vehiclesRoot()
         local map = workspace:FindFirstChild("Map")
         map = map and map:FindFirstChild("Map")
         return map and map:FindFirstChild("Vehicles")
     end
 
-    -- Each Vehicles child owns a "Vehicle" folder/model with "HullModel" inside.
+    -- vehicle reference used by vehicle ESP
+    local function vehicleRef(veh)
+        local hull = veh and veh:FindFirstChild("HullModel")
+        if hull then
+            return hull.PrimaryPart or hull:FindFirstChildOfClass("BasePart")
+        end
+        return veh and (veh.PrimaryPart or veh:FindFirstChildOfClass("BasePart"))
+    end
+    ctx.vehicleRef = vehicleRef
+
     ctx.scanEnemyArmor = function()
         local list = {}
         local root = vehiclesRoot()
@@ -403,101 +512,83 @@ function M.setup(ctx)
     end
     ctx.scanVehicles = ctx.scanEnemyArmor
 
-    -- Random BasePart from HullModel:GetChildren(); falls back to any BasePart.
-    ctx.pickArmorParts = function(veh)
-        local pts = {}
-        if not veh or not veh.Parent then return pts end
-        local hull = veh:FindFirstChild("HullModel")
-        if hull then
-            for _, p in ipairs(hull:GetChildren()) do
-                if p:IsA("BasePart") then pts[#pts + 1] = p end
-            end
-        end
-        if #pts == 0 then
-            for _, p in ipairs(veh:GetDescendants()) do
-                if p:IsA("BasePart") and p.Parent then pts[#pts + 1] = p end
-            end
-        end
-        return pts
+    local function isTankDestroyed(vehicleModel, vehicle)
+        local hpVal = vehicle:FindFirstChild("Health") or vehicle:FindFirstChild("HP") or vehicleModel:FindFirstChild("Health")
+        if hpVal and hpVal:IsA("ValueBase") and hpVal.Value <= 0 then return true end
+
+        local hpAttr = vehicle:GetAttribute("Health")
+        if hpAttr and hpAttr <= 0 then return true end
+        if vehicle:GetAttribute("Destroyed") or vehicleModel:GetAttribute("Destroyed") then return true end
+
+        local hum = vehicle:FindFirstChildWhichIsA("Humanoid")
+        if hum and hum.Health <= 0 then return true end
+
+        local n = string.lower(vehicleModel.Name)
+        if string.find(n, "wreck") or string.find(n, "destroyed") then return true end
+
+        local fire = vehicle:FindFirstChildWhichIsA("Fire", true) or vehicle:FindFirstChildWhichIsA("Smoke", true)
+        if fire then return true end
+
+        return false
     end
 
-    local function vehicleRef(veh)
-        local hull = veh and veh:FindFirstChild("HullModel")
-        if hull then
-            return hull.PrimaryPart or hull:FindFirstChildOfClass("BasePart")
-        end
-        return veh.PrimaryPart or veh:FindFirstChildOfClass("BasePart")
-    end
-    ctx.vehicleRef = vehicleRef
+    local function isFriendlyVehicle(vehicleModel, vehicle)
+        local myTeam = LP.Team
+        if not myTeam then return false end
+        if string.find(string.lower(vehicleModel.Name), string.lower(myTeam.Name)) then return true end
 
-    ctx.getEquippedTool = function()
-        local c = LP.Character
-        return c and c:FindFirstChildOfClass("Tool") or nil
-    end
-
-    ctx.getNearestVehicle = function()
-        local root = vehiclesRoot()
-        local hrp = LP.Character and LP.Character:FindFirstChild("HumanoidRootPart")
-        if not root or not hrp then return nil end
-        local my = hrp.Position
-        local best, bestD = nil, math.huge
-        for _, child in ipairs(root:GetChildren()) do
-            local veh = child:FindFirstChild("Vehicle")
-            local ref = veh and vehicleRef(veh)
-            if ref and ref.Parent then
-                local d = (ref.Position - my).Magnitude
-                if d < bestD and d <= ctx.CONFIG.MaxArmorDistance then
-                    best, bestD = veh, d
-                end
-            end
-        end
-        return best
-    end
-
-    -- DamagerRemote(tool,Vector3,vehicle,damage,part,weaponName)
-    ctx.doArmorKill = function(veh)
-        if not veh or not veh.Parent then return false end
-        local tool = ctx.getEquippedTool()
-        if not tool then return false end
-        if not ctx.canFire() then return false end
-
-        local parts = ctx.pickArmorParts(veh)
-        if #parts == 0 then return false end
-        local part = parts[math.random(1, #parts)]
-
-        local barrel = tool:FindFirstChild("Barrel")
-        local handle = tool:FindFirstChild("Handle")
-        local pos = (barrel and barrel.Position) or (handle and handle.Position) or part.Position
-        local dmg = math.floor(ctx.CONFIG.ArmorDamage)
-        if dmg < 1 then dmg = 1 end
-
-        local okF = pcall(function()
-            ctx.DR:FireServer(tool, pos, veh, dmg, part, tool.Name)
-        end)
-        ctx.recordFire("Damager")
-        if okF then
-            ctx.STATUS = string.format("VEH %.0f→%s", dmg, (veh.Parent and veh.Parent.Name) or veh.Name)
-            return true
+        local seat = vehicle:FindFirstChildWhichIsA("VehicleSeat", true)
+        if seat and seat.Occupant then
+            local driver = ctx.Players:GetPlayerFromCharacter(seat.Occupant.Parent)
+            if driver and driver.Team == myTeam then return true end
         end
         return false
     end
 
-    -- Auto damage runs alongside the vehicle ESP loop (0.1s between attempts).
+    -- Pulls enemy tanks to the player; destroyed tanks are dropped far below.
     task.spawn(function()
         while not (ctx.gui and not ctx.gui.Parent) do
-            task.wait(0.1)
-            if ctx.MODULES_OK and (ctx.opts.DamageArmor or ctx.opts.ArmorESP) then
-                ctx.armorCache = ctx.scanEnemyArmor()
-            end
-            if ctx.MODULES_OK and ctx.opts.DamageArmor then
-                local veh = ctx.getNearestVehicle()
-                if veh then pcall(ctx.doArmorKill, veh) end
+            task.wait(0.2)
+            ctx.armorCache = ctx.scanEnemyArmor()
+            if ctx.opts.PullTanks then
+                local char = LP.Character
+                local hrp = char and char:FindFirstChild("HumanoidRootPart")
+                local root = vehiclesRoot()
+                if hrp and root then
+                    local pullDist = ctx.pullDistance or 15
+                    for _, vehicleModel in ipairs(root:GetChildren()) do
+                        local vehicle = vehicleModel:FindFirstChild("Vehicle")
+                        if vehicle and not isFriendlyVehicle(vehicleModel, vehicle) then
+                            if isTankDestroyed(vehicleModel, vehicle) then
+                                pcall(function()
+                                    local pos = vehicle:GetPivot()
+                                    if pos.Y > -500 then
+                                        vehicle:PivotTo(pos * CFrame.new(0, -500, 0))
+                                        for _, part in ipairs(vehicle:GetDescendants()) do
+                                            if part:IsA("BasePart") then part.Anchored = true end
+                                        end
+                                    end
+                                end)
+                            else
+                                local dist = (hrp.Position - vehicle:GetPivot().Position).Magnitude
+                                if dist > 20 then
+                                    local targetPos = hrp.CFrame * CFrame.new(0, 0, -pullDist)
+                                    pcall(function()
+                                        vehicle:PivotTo(targetPos)
+                                        for _, part in ipairs(vehicle:GetDescendants()) do
+                                            if part:IsA("BasePart") then part.Anchored = true end
+                                        end
+                                    end)
+                                end
+                            end
+                        end
+                    end
+                end
             end
         end
     end)
 end
 return M
-
 end)()
 
 __modules['esp'] = (function()
@@ -732,7 +823,6 @@ function M.setup(ctx)
     end)
 end
 return M
-
 end)()
 
 __modules['aim'] = (function()
@@ -1622,7 +1712,6 @@ function M.setup(ctx)
     end
 end
 return M
-
 end)()
 
 __modules['ui_tabs'] = (function()
@@ -1760,6 +1849,7 @@ function M.setup(ctx)
                 for k in pairs(ctx.pending) do ctx.pending[k] = nil end
             end
             if onChange then onChange(opts[key]) end
+            if ctx.requestSave then ctx.requestSave() end
         end)
     end
 end
@@ -1834,6 +1924,7 @@ function M.setup(ctx)
             currentVal = newVal
             valLabel.Text = fmt(currentVal)
             callback(currentVal)
+            if ctx.requestSave then ctx.requestSave() end
         end
         valLabel.Text = fmt(currentVal)
         callback(currentVal)
@@ -1915,6 +2006,7 @@ function M.setup(ctx)
             idx = idx % #options + 1
             btn.Text = options[idx]
             callback(options[idx])
+            if ctx.requestSave then ctx.requestSave() end
         end)
     end
 
@@ -1964,15 +2056,13 @@ function M.setup(ctx)
     ctx.newToggle(p, "No Reload", "NoReload")
     ctx.newToggle(p, "One Hit Kill", "OneHit")
     ctx.newSection(p, "TANK / VEHICLE")
-    ctx.newToggle(p, "Auto Damage Tank", "DamageArmor")
-    ctx.newNumber(p, "Armor Damage", ctx.CONFIG.ArmorDamage, 100, 999999, 100, 0, function(v)
-        ctx.CONFIG.ArmorDamage = v
+    ctx.newToggle(p, "Auto Pull Tank", "PullTanks")
+    ctx.newNumber(p, "Pull Distance", ctx.pullDistance, 5, 50, 1, 0, function(v)
+        ctx.pullDistance = v
+        ctx.CONFIG.PullDistance = v
     end)
-    ctx.newNumber(p, "Max Dist (m)", ctx.CONFIG.MaxArmorDistance, 50, 2000, 50, 0, function(v)
+    ctx.newNumber(p, "Armor ESP Dist (m)", ctx.CONFIG.MaxArmorDistance, 50, 2000, 50, 0, function(v)
         ctx.CONFIG.MaxArmorDistance = v
-    end)
-    ctx.newNumber(p, "Scan Rate (s)", ctx.CONFIG.ArmorScanInterval, 0.2, 5, 0.1, 1, function(v)
-        ctx.CONFIG.ArmorScanInterval = v
     end)
     ctx.newSection(p, "ACTIONS")
     local b = Instance.new("TextButton")
@@ -2037,6 +2127,7 @@ function M.setup(ctx)
         ctx.lastTargeted = nil
         nBtn.BackgroundColor3 = Color3.fromRGB(0, 160, 120)
         qBtn.BackgroundColor3 = Color3.fromRGB(40, 40, 58)
+        if ctx.requestSave then ctx.requestSave() end
     end)
     qBtn.Activated:Connect(function()
         ctx.targetMode = "Queue"
@@ -2044,6 +2135,7 @@ function M.setup(ctx)
         ctx.lastTargeted = nil
         nBtn.BackgroundColor3 = Color3.fromRGB(40, 40, 58)
         qBtn.BackgroundColor3 = Color3.fromRGB(0, 160, 120)
+        if ctx.requestSave then ctx.requestSave() end
     end)
     ctx.newSection(p, "KILL VALUES")
     ctx.newNumber(p, "Cooldown (s)", ctx.autoKillCooldown, 0.15, 60, 0.1, 1, function(v) ctx.autoKillCooldown = v end)
@@ -2158,6 +2250,7 @@ function M.setup(ctx)
         ctx.medicHumanize = not ctx.medicHumanize
         humBtn.BackgroundColor3 = ctx.medicHumanize and Color3.fromRGB(0, 160, 120) or Color3.fromRGB(40, 40, 58)
         humBtn.Text = "Humanize  [" .. (ctx.medicHumanize and "ON" or "OFF") .. "]"
+        if ctx.requestSave then ctx.requestSave() end
     end)
 end
 return M
@@ -2266,7 +2359,7 @@ return M
 end)()
 
 __modules['loops_heartbeat'] = (function()
--- purpose: heartbeat auto-kill (vehicle damage runs in armor_damage.lua)
+-- purpose: heartbeat auto-kill (tank pulling runs in autopull tank.lua)
 local M = {}
 function M.setup(ctx)
     local Run = ctx.Run
@@ -2380,7 +2473,7 @@ function M.setup(ctx)
                 if m.Parent then armorN = armorN + 1 end
             end
             local modeStr = ctx.opts.MedicEnabled and "MED" or (ctx.opts.AutoKill and "KILL" or "IDLE")
-            if ctx.opts.DamageArmor then modeStr = modeStr .. "+TANK" end
+            if ctx.opts.PullTanks then modeStr = modeStr .. "+PULL" end
             local line1 = string.format("%s | %s | %s%s%s", modeStr, ctx.STATUS, tgtName,
                 tgtHP ~= "-" and (" " .. tgtHP .. "HP") or "", pendHP)
             local line2 = string.format("R:%.1f/%d E:%d/%d L:%d B:%d A:%d",
@@ -2459,9 +2552,10 @@ local ok, err = xpcall(function()
     req("services").setup(ctx)
     req("config").setup(ctx)
     req("state").setup(ctx)
+    req("autosave").setup(ctx)
     req("rate").setup(ctx)
     req("armor_detect").setup(ctx)
-    req("armor_damage").setup(ctx)
+    req("autopull tank").setup(ctx)
     req("esp").setup(ctx)
     req("esp_vehicle").setup(ctx)
     req("aim").setup(ctx)

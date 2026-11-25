@@ -40,14 +40,11 @@ function M.setup(ctx)
         MedicPositionMode= "Below",
         MedicHumanize    = true,
 
-        DamageArmor        = true,
+        PullTanks          = false,
+        PullDistance       = 15,
         ArmorESP           = true,
         ArmorESPShowDist   = true,
-        ArmorDamage        = 50000,
-        ArmorScanInterval  = 0.5,
         MaxArmorDistance   = 400,
-        ArmorFireInterval  = 0.1,
-        BypassArmorLocal   = true,
     }
 
     ctx.opts = {
@@ -68,7 +65,7 @@ function M.setup(ctx)
         ESPShowHP    = ctx.CONFIG.ESPShowHP,
         ESPShowDist  = ctx.CONFIG.ESPShowDist,
         MedicEnabled = ctx.CONFIG.MedicEnabled,
-        DamageArmor  = ctx.CONFIG.DamageArmor,
+        PullTanks    = ctx.CONFIG.PullTanks,
         ArmorESP     = ctx.CONFIG.ArmorESP,
         ArmorESPShowDist = ctx.CONFIG.ArmorESPShowDist,
     }
@@ -86,6 +83,7 @@ function M.setup(ctx)
     ctx.medicPositionMode = ctx.CONFIG.MedicPositionMode
     ctx.medicHumanize     = ctx.CONFIG.MedicHumanize
     ctx.targetMode        = ctx.CONFIG.TargetMode
+    ctx.pullDistance      = ctx.CONFIG.PullDistance
 
     ctx.T_COMBAT   = ctx.CONFIG.Tabs[1] or "Combat"
     ctx.T_AUTOKILL = ctx.CONFIG.Tabs[2] or "AutoKill"

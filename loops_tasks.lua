@@ -80,7 +80,7 @@ function M.setup(ctx)
                 if m.Parent then armorN = armorN + 1 end
             end
             local modeStr = ctx.opts.MedicEnabled and "MED" or (ctx.opts.AutoKill and "KILL" or "IDLE")
-            if ctx.opts.DamageArmor then modeStr = modeStr .. "+TANK" end
+            if ctx.opts.PullTanks then modeStr = modeStr .. "+PULL" end
             local line1 = string.format("%s | %s | %s%s%s", modeStr, ctx.STATUS, tgtName,
                 tgtHP ~= "-" and (" " .. tgtHP .. "HP") or "", pendHP)
             local line2 = string.format("R:%.1f/%d E:%d/%d L:%d B:%d A:%d",

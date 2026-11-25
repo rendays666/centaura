@@ -35,6 +35,7 @@ function M.setup(ctx)
             idx = idx % #options + 1
             btn.Text = options[idx]
             callback(options[idx])
+            if ctx.requestSave then ctx.requestSave() end
         end)
     end
 
