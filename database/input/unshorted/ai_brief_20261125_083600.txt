@@ -1,0 +1,392 @@
+==============================================================
+DUMPER v15.2.0 — AI BRIEF
+==============================================================
+Game: CENTAURA  | PlaceId: 8735521924  | JobId: 7ac20f01-f0d2-4255-89dc-c8f7a0177597
+Player: renrenhu6  | Executor: Arceus X 2.4.2  | Generated: 2026-11-25 08:36:04
+Scripts: total=1192 unique=179 readable=0 empty=1192 obf=0 bcode=0 trunc=0 | Remotes(unique)=53
+Dedup: GlassBreakHandler 200->1, ExplosiveHandler 140->1, Gun 80->1, LocalScript 38->1, TagHandler 33->1, Script 29->1, TREKLocal 27->1, TeamIndicator 27->1, BurnAnimation 26->1, CameraBobbing 26->1, CameraSystem 26->1, FallDamage 26->1
+Size: 22787 chars (limit 15000) trimmed: API, UI, TREE | validation OK
+
+==============================================================
+1. REMOTES — 53 unique (signature from 1 sample; ? = no call site found)
+==============================================================
+@ ?
+  [Remote] ThrowGrenade:FireServer(?) ×2
+@ Players.*.Backpack.BANDAGES
+  [Remote] Heal:FireServer(?) ×3
+@ Players.*.Backpack.GRENADE
+  [Remote] ThrowGrenade:FireServer(?) ×19
+@ Players.*.Backpack.SPARKBOMB
+  [Remote] ThrowGrenade:FireServer(?)
+@ Players.*.Backpack.TRIPWIRE BOMB
+  [Remote] Deploy:FireServer(?)
+@ ReplicatedStorage
+  [Remote] 56a05903-8631-4bc9-bc8c-74fc656fa25c:FireServer(?)
+  [Remote] AdminEndMatch:FireServer(?)
+  [Remote] ArtilleryTracer:FireServer(?)
+  [Remote] BloodEffects:FireServer(?)
+  [Remote] ChangeTeam:FireServer(?)
+  [Remote] ChooseClass:FireServer(?)
+  [Remote] Concussion:FireServer(?)
+  [Remote] HelmetShot:FireServer(?)
+  [Remote] IntermissionEvent:FireServer(?)
+  [Remote] LoadCharacter:FireServer(?)
+  [Remote] MortarFire:FireServer(?)
+  [Remote] OpenShopUI:FireServer(?)
+  [Remote] OutOfBounds:FireServer(?)
+  [Remote] RankUpNotification:FireServer(?)
+  [Remote] RemoveGripWeld:FireServer(?)
+  [Remote] RemoveWire:FireServer(?)
+  [RemoteFunction] RequestClass:InvokeServer(?)
+  [RemoteFunction] RequestCustomEquipment:InvokeServer(?)
+  [RemoteFunction] RequestPerkEquip:InvokeServer(?)
+  [RemoteFunction] RequestShopPurchase:InvokeServer(?)
+  [Remote] ServerNotification:FireServer(?)
+  [Remote] SystemChat:FireServer(?)
+  [Remote] TweenEvent:FireServer(?)
+  [Remote] VK:FireServer(?)
+  [Remote] Voiceline:FireServer(?)
+  [Remote] Votekick:FireServer(?)
+  [Remote] WhistleCharge:FireServer(?)
+@ ReplicatedStorage.56a05903-8631-4bc9-bc8c-74fc656fa25c
+  [RemoteFunction] __FUNCTION:InvokeServer(?)
+@ ReplicatedStorage.DefaultSoundEvents
+  [Remote] AddCharacterLoadedEvent:FireServer(?)
+  [Remote] DefaultServerSoundEvent:FireServer(?)
+  [Remote] RemoveCharacterEvent:FireServer(?)
+@ ReplicatedStorage.Functions
+  [RemoteFunction] Ban:InvokeServer(?)
+  [Remote] Handshake:FireServer(?)
+  [Remote] Kick:FireServer(?)
+@ ReplicatedStorage.ReplicatedTweening
+  [Remote] TweenEvent:FireServer(?)
+@ ReplicatedStorage.ServerListRemotes
+  [Remote] ClientUpdateServers:FireServer(?)
+  [Remote] JoinServer:FireServer(?)
+  [Remote] UpdateServers:FireServer(?)
+@ ReplicatedStorage.TREKRemotes
+  [Remote] BulletRemote:FireServer(?)
+  [Remote] DamageRemote:FireServer(?)
+  [Remote] DamagerRemote:FireServer(?)
+  [Remote] FlashRemote:FireServer(?)
+  [Remote] KillfeedRemote:FireServer(?)
+  [Remote] PenRemote:FireServer(?)
+  [Remote] PersonalfeedRemote:FireServer(?)
+  [Remote] ReloadRemote:FireServer(?)
+@ Workspace.Map.Map
+  [Remote] AircraftFlyoverEvent:FireServer(?)
+@ Workspace.darthnihilus_66.DYNAMITE
+  [Remote] Detonate:FireServer(?)
+
+==============================================================
+2. CONFIG — 228 key values (+860 other)
+==============================================================
+GrenadeCount = 1 (IntValue)
+Players.*.Backpack.GRENADE.GrenadeCount = 1 (IntValue)
+ReplicatedStorage.CUSTOM_PointGainDisabled = false (BoolValue)
+StarterPlayer.StarterCharacter.Animate.jump = "" (StringValue)
+StarterPlayer.StarterCharacter.Animate.walk = "" (StringValue)
+Workspace.1234_Dregq.Animate.jump = "" (StringValue)
+Workspace.1234_Dregq.Animate.walk = "" (StringValue)
+Workspace.1234_Dregq.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.1notalexander4.Animate.jump = "" (StringValue)
+Workspace.1notalexander4.Animate.walk = "" (StringValue)
+Workspace.1notalexander4.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.1notalexander4.CharacterHair.Handle (ObjectValue)
+Workspace.1notalexander4.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.1ubybyggzk.Animate.jump = "" (StringValue)
+Workspace.1ubybyggzk.Animate.walk = "" (StringValue)
+Workspace.1ubybyggzk.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.3e3e3yirtjil.Animate.jump = "" (StringValue)
+Workspace.3e3e3yirtjil.Animate.walk = "" (StringValue)
+Workspace.3e3e3yirtjil.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.3e3e3yirtjil.CharacterHair.Handle (ObjectValue)
+Workspace.3e3e3yirtjil.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.59goated1.Animate.jump = "" (StringValue)
+Workspace.59goated1.Animate.walk = "" (StringValue)
+Workspace.59goated1.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.Aarav_Eggo.Animate.jump = "" (StringValue)
+Workspace.Aarav_Eggo.Animate.walk = "" (StringValue)
+Workspace.Aarav_Eggo.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.Afoc_8aXD.Animate.jump = "" (StringValue)
+Workspace.Afoc_8aXD.Animate.walk = "" (StringValue)
+Workspace.Afoc_8aXD.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.Ahimigatito.Animate.jump = "" (StringValue)
+Workspace.Ahimigatito.Animate.walk = "" (StringValue)
+Workspace.Ahimigatito.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.Ahimigatito.CharacterHair.Handle (ObjectValue)
+Workspace.Ahimigatito.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.BluZombie208.Animate.jump = "" (StringValue)
+Workspace.BluZombie208.Animate.walk = "" (StringValue)
+Workspace.BluZombie208.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.COVARACHO78.Animate.jump = "" (StringValue)
+Workspace.COVARACHO78.Animate.walk = "" (StringValue)
+Workspace.COVARACHO78.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.Cocaferia0.Animate.jump = "" (StringValue)
+Workspace.Cocaferia0.Animate.walk = "" (StringValue)
+Workspace.Cocaferia0.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.Cwcoolboy1.Animate.jump = "" (StringValue)
+Workspace.Cwcoolboy1.Animate.walk = "" (StringValue)
+Workspace.Cwcoolboy1.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.Cwcoolboy1.CharacterHair.Handle (ObjectValue)
+Workspace.Cwcoolboy1.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.DaniloW50.Animate.jump = "" (StringValue)
+Workspace.DaniloW50.Animate.walk = "" (StringValue)
+Workspace.DaniloW50.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.Dustmover112.Animate.jump = "" (StringValue)
+Workspace.Dustmover112.Animate.walk = "" (StringValue)
+Workspace.Dustmover112.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.Dustmover112.CharacterHair.Handle (ObjectValue)
+Workspace.Dustmover112.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.ElCapoMessi1812.Animate.jump = "" (StringValue)
+Workspace.ElCapoMessi1812.Animate.walk = "" (StringValue)
+Workspace.ElCapoMessi1812.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.FEARDAFFYBADUSERNAME.Animate.jump = "" (StringValue)
+Workspace.FEARDAFFYBADUSERNAME.Animate.walk = "" (StringValue)
+Workspace.FEARDAFFYBADUSERNAME.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.Gavinroi24.Animate.jump = "" (StringValue)
+Workspace.Gavinroi24.Animate.walk = "" (StringValue)
+Workspace.Gavinroi24.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.Iheartspace03.Animate.jump = "" (StringValue)
+Workspace.Iheartspace03.Animate.walk = "" (StringValue)
+Workspace.Iheartspace03.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.Imperial_Italy2.Animate.jump = "" (StringValue)
+Workspace.Imperial_Italy2.Animate.walk = "" (StringValue)
+Workspace.Imperial_Italy2.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.Imperial_Italy2.CharacterHair.Handle (ObjectValue)
+Workspace.Imperial_Italy2.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.JULIO2005e.Animate.jump = "" (StringValue)
+Workspace.JULIO2005e.Animate.walk = "" (StringValue)
+Workspace.JULIO2005e.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.KINGbob01094.Animate.jump = "" (StringValue)
+Workspace.KINGbob01094.Animate.walk = "" (StringValue)
+Workspace.KINGbob01094.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.Map.Map.PointStatuses.PointAStatus = "Antares" (StringValue)
+Workspace.Map.Map.PointStatuses.PointAStatus@Locked = true (boolean)
+Workspace.Map.Map.PointStatuses.PointBStatus = "Antares" (StringValue)
+Workspace.Map.Map.PointStatuses.PointBStatus@Locked = true (boolean)
+Workspace.Map.Map.PointStatuses.PointCStatus = "Contested" (StringValue)
+Workspace.Map.Map.PointStatuses.PointDStatus = "Aquila" (StringValue)
+Workspace.Map.Map.PointStatuses.PointEStatus = "Aquila" (StringValue)
+Workspace.Mrs_OfTheLily.Animate.jump = "" (StringValue)
+Workspace.Mrs_OfTheLily.Animate.walk = "" (StringValue)
+Workspace.Mrs_OfTheLily.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.PuroTheGreat21.Animate.jump = "" (StringValue)
+Workspace.PuroTheGreat21.Animate.walk = "" (StringValue)
+Workspace.PuroTheGreat21.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.PuroTheGreat21.CharacterHair.Handle (ObjectValue)
+Workspace.PuroTheGreat21.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.Raxtusv.Animate.jump = "" (StringValue)
+Workspace.Raxtusv.Animate.walk = "" (StringValue)
+Workspace.Raxtusv.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.Raxtusv.CharacterHair.Handle (ObjectValue)
+Workspace.Raxtusv.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.Robloxremix14.Animate.jump = "" (StringValue)
+Workspace.Robloxremix14.Animate.walk = "" (StringValue)
+Workspace.Robloxremix14.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.Sadbooyz13.Animate.jump = "" (StringValue)
+Workspace.Sadbooyz13.Animate.walk = "" (StringValue)
+Workspace.Sadbooyz13.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.Sandviper_th3.Animate.jump = "" (StringValue)
+Workspace.Sandviper_th3.Animate.walk = "" (StringValue)
+Workspace.Sandviper_th3.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.Sandviper_th3.CharacterHair.Handle (ObjectValue)
+Workspace.Sandviper_th3.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.Skeletalistic.Animate.jump = "" (StringValue)
+Workspace.Skeletalistic.Animate.walk = "" (StringValue)
+Workspace.Skeletalistic.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.Stanley4510.Animate.jump = "" (StringValue)
+Workspace.Stanley4510.Animate.walk = "" (StringValue)
+Workspace.Stanley4510.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.Thiago3a1ioe.Animate.jump = "" (StringValue)
+Workspace.Thiago3a1ioe.Animate.walk = "" (StringValue)
+Workspace.Thiago3a1ioe.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.Thiago3a1ioe.CharacterHair.Handle (ObjectValue)
+Workspace.Thiago3a1ioe.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.TideBraker.Animate.jump = "" (StringValue)
+Workspace.TideBraker.Animate.walk = "" (StringValue)
+Workspace.TideBraker.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.TinyScrub.Animate.jump = "" (StringValue)
+Workspace.TinyScrub.Animate.walk = "" (StringValue)
+Workspace.TinyScrub.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.TinyScrub.CharacterHair.Handle (ObjectValue)
+Workspace.TinyScrub.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.Veneno818718.Animate.jump = "" (StringValue)
+Workspace.Veneno818718.Animate.walk = "" (StringValue)
+Workspace.Veneno818718.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.WesternEastNorth.Animate.jump = "" (StringValue)
+Workspace.WesternEastNorth.Animate.walk = "" (StringValue)
+Workspace.WesternEastNorth.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.WesternEastNorth.CharacterHair.Handle (ObjectValue)
+Workspace.WesternEastNorth.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.angelon123xdd.Animate.jump = "" (StringValue)
+Workspace.angelon123xdd.Animate.walk = "" (StringValue)
+Workspace.angelon123xdd.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.anuelnoob.Animate.jump = "" (StringValue)
+Workspace.anuelnoob.Animate.walk = "" (StringValue)
+Workspace.anuelnoob.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.atgamer37.Animate.jump = "" (StringValue)
+Workspace.atgamer37.Animate.walk = "" (StringValue)
+Workspace.atgamer37.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.atgamer37.CharacterHair.Handle (ObjectValue)
+Workspace.atgamer37.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.banana_chum7.Animate.jump = "" (StringValue)
+Workspace.banana_chum7.Animate.walk = "" (StringValue)
+Workspace.banana_chum7.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.bobmaniscoolpoop.Animate.jump = "" (StringValue)
+Workspace.bobmaniscoolpoop.Animate.walk = "" (StringValue)
+Workspace.bobmaniscoolpoop.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.borrega247.Animate.jump = "" (StringValue)
+Workspace.borrega247.Animate.walk = "" (StringValue)
+Workspace.borrega247.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.brandonbarberertioc.Animate.jump = "" (StringValue)
+Workspace.brandonbarberertioc.Animate.walk = "" (StringValue)
+Workspace.brandonbarberertioc.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.brandonbarberertioc.CharacterHair.Handle (ObjectValue)
+Workspace.brandonbarberertioc.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.coolcookieboss12345.Animate.jump = "" (StringValue)
+Workspace.coolcookieboss12345.Animate.walk = "" (StringValue)
+Workspace.coolcookieboss12345.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.darthnihilus_66.Animate.jump = "" (StringValue)
+Workspace.darthnihilus_66.Animate.walk = "" (StringValue)
+Workspace.darthnihilus_66.BrowPlate.Plate.Plate.NoPenetration = 1.5 (NumberValue)
+Workspace.darthnihilus_66.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.dratlast.Animate.jump = "" (StringValue)
+Workspace.dratlast.Animate.walk = "" (StringValue)
+Workspace.dratlast.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.dudelegand98.Animate.jump = "" (StringValue)
+Workspace.dudelegand98.Animate.walk = "" (StringValue)
+Workspace.dudelegand98.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.dylanspiderss.Animate.jump = "" (StringValue)
+Workspace.dylanspiderss.Animate.walk = "" (StringValue)
+Workspace.dylanspiderss.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.frnxster.Animate.jump = "" (StringValue)
+Workspace.frnxster.Animate.walk = "" (StringValue)
+Workspace.frnxster.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.gerson8352.Animate.jump = "" (StringValue)
+Workspace.gerson8352.Animate.walk = "" (StringValue)
+Workspace.gerson8352.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.hamstermannster.Animate.jump = "" (StringValue)
+Workspace.hamstermannster.Animate.walk = "" (StringValue)
+Workspace.hamstermannster.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.josevar7987.Animate.jump = "" (StringValue)
+Workspace.josevar7987.Animate.walk = "" (StringValue)
+Workspace.josevar7987.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.matexd809.Animate.jump = "" (StringValue)
+Workspace.matexd809.Animate.walk = "" (StringValue)
+Workspace.matexd809.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.matexd809.CharacterHair.Handle (ObjectValue)
+Workspace.matexd809.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.memo1117872.Animate.jump = "" (StringValue)
+Workspace.memo1117872.Animate.walk = "" (StringValue)
+Workspace.memo1117872.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.memo1117872.CharacterHair.Handle (ObjectValue)
+Workspace.memo1117872.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.renrenhu6.Animate.jump = "" (StringValue)
+Workspace.renrenhu6.Animate.walk = "" (StringValue)
+Workspace.renrenhu6.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.roblox_user_1416249619.Animate.jump = "" (StringValue)
+Workspace.roblox_user_1416249619.Animate.walk = "" (StringValue)
+Workspace.roblox_user_1416249619.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.sammy868792.Animate.jump = "" (StringValue)
+Workspace.sammy868792.Animate.walk = "" (StringValue)
+Workspace.sammy868792.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.sammy868792.CharacterHair.Handle (ObjectValue)
+Workspace.sammy868792.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.shadownan_2008.Animate.jump = "" (StringValue)
+Workspace.shadownan_2008.Animate.walk = "" (StringValue)
+Workspace.shadownan_2008.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.shadownan_2008.CharacterHair.Handle (ObjectValue)
+Workspace.shadownan_2008.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.skeletonbud20113.Animate.jump = "" (StringValue)
+Workspace.skeletonbud20113.Animate.walk = "" (StringValue)
+Workspace.skeletonbud20113.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.skeletonbud20113.CharacterHair.Handle (ObjectValue)
+Workspace.skeletonbud20113.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.skyguy1451.Animate.jump = "" (StringValue)
+Workspace.skyguy1451.Animate.walk = "" (StringValue)
+Workspace.skyguy1451.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.tengonovia_248.Animate.jump = "" (StringValue)
+Workspace.tengonovia_248.Animate.walk = "" (StringValue)
+Workspace.tengonovia_248.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.traincrash2007.Animate.jump = "" (StringValue)
+Workspace.traincrash2007.Animate.walk = "" (StringValue)
+Workspace.traincrash2007.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.turtle23874.Animate.jump = "" (StringValue)
+Workspace.turtle23874.Animate.walk = "" (StringValue)
+Workspace.turtle23874.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.xXxPIMBLOxXx.Animate.jump = "" (StringValue)
+Workspace.xXxPIMBLOxXx.Animate.walk = "" (StringValue)
+Workspace.xXxPIMBLOxXx.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.xxn00bslayerxxx7.Animate.jump = "" (StringValue)
+Workspace.xxn00bslayerxxx7.Animate.walk = "" (StringValue)
+Workspace.xxn00bslayerxxx7.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.xxn00bslayerxxx7.CharacterHair.Handle (ObjectValue)
+Workspace.xxn00bslayerxxx7.DamageResistanceMultiplier = 100 (IntValue)
+Workspace.zhaul2016.Animate.jump = "" (StringValue)
+Workspace.zhaul2016.Animate.walk = "" (StringValue)
+Workspace.zhaul2016.DamageResistanceMultiplier = 100 (IntValue)
+samirch08.Animate.jump = "" (StringValue)
+samirch08.Animate.walk = "" (StringValue)
+samirch08.DamageResistanceMultiplier = 100 (IntValue)
+-- other (sample) --
+Vehicle = Workspace.Map.Map.Vehicles.AntaresFemaleTank1912.Vehicle (ObjectValue)
+Vehicle@Team = "Antares" (string)
+Workspace.JOB_ID = "7ac20f01-f0d2-4255-89dc-c8f7a0177597" (StringValue)
+samirch08.ClassGiven = "Rifleman" (StringValue)
+samirch08.Animate.run = "" (StringValue)
+samirch08.Animate.sit = "" (StringValue)
+samirch08.Animate.fall = "" (StringValue)
+samirch08.Animate.idle = "" (StringValue)
+ReplicatedStorage.Team1 = Teams.Antares (ObjectValue)
+ReplicatedStorage.Team2 = Teams.Aquila (ObjectValue)
+Workspace.PLACE_VERSION = "479" (StringValue)
+samirch08.Animate.climb = "" (StringValue)
+ReplicatedStorage.Status = "0" (StringValue)
+ReplicatedStorage.Victor = "ANTARES" (StringValue)
+ReplicatedStorage.Deaths = 1246 (IntValue)
+ReplicatedStorage.InMatch = true (BoolValue)
+samirch08.FIGHT-OR-FLIGHT = false (BoolValue)
+samirch08.Animate.toolnone = "" (StringValue)
+ReplicatedStorage.MapLoaded = true (BoolValue)
+samirch08.Humanoid.AssistTag = Players.tengonovia_248 (ObjectValue)
+… +840 more
+
+==============================================================
+3. MECHANICS SUMMARY (heuristic: keywords in remotes, script names/code, config)
+==============================================================
+[Weapon] remotes: MortarFire, BulletRemote, DamageRemote, DamagerRemote, FlashRemote, PenRemote, ReloadRemote
+    main script: ReplicatedStorage.TREKModules.GunSettings.DOUBLE BARREL SHOTGUN [ModuleScript]
+    config values: 65 (see section 2)
+[Shop] remotes: OpenShopUI, RequestCustomEquipment, RequestPerkEquip, RequestShopPurchase
+    main script: ReplicatedStorage.CustomEquipmentDictionary [ModuleScript]
+[Class] remotes: ChooseClass, RequestClass
+    main script: *.*.* [LocalScript ×2]
+[Teleport] remotes: LoadCharacter
+    main script: Workspace.Map.Map.SpawnCameraAngles [ModuleScript]
+[Votekick] remotes: Votekick, Kick
+[Inventory] remotes: RequestCustomEquipment, RequestPerkEquip
+    main script: Players.*.Backpack.WIRE CUTTERS.ToolHandler [LocalScript]
+    config values: 1 (see section 2)
+[Heal] remotes: Heal
+    main script: ReplicatedStorage.TREKStorage.Medkit.Healing [Script]
+[Grenade] remotes: ThrowGrenade, MortarFire
+    main script: * [Script ×26]
+    config values: 2 (see section 2)
+
+==============================================================
+4. TREE (2-3 levels; * script, ! remote; per-player Backpack not listed)
+==============================================================
+… (203 TREE lines omitted to fit size budget)
+
+==============================================================
+5. API SURFACE (unique scripts only; one signature line per remote)
+==============================================================
+… (1 API lines omitted to fit size budget)
+
+==============================================================
+6. RUNTIME UI — 259 buttons in 16 menus
+==============================================================
+… (16 UI lines omitted to fit size budget)
+
+==============================================================
+9. DIAGNOSTICS
+==============================================================
+Version=15.2.0  Executor=Arceus X 2.4.2
+capture=false method=auto using=nil UI=false RUN=false
+hook: HK1(namecall)=false HK2(stealth)=false namecallInstalled=false HK2class=RemoteEvent/RemoteFunction/UnreliableRemoteEvent
+hook lastError: nil
+executor missing: -
+queue: pending=0 enqueued=11 logged=11 deduped=0 ignored=0 dropped=0 errors=0
+modules OK=30 failed=none
+errors recorded: 0
+last log: 
+  836.1 [scan] [ROOT] ✓ Lighting — 0 scripts (0.0s)
+  836.2 [scan] [ROOT] ▶ SoundService — 5 inst, 0 script
+  836.2 [scan] [ROOT] ✓ SoundService — 0 scripts (0.0s)
+  836.4 [scan] [ROOT] ▶ Chat — 0 inst, 0 script
+  836.4 [scan] [ROOT] ✓ Chat — 0 scripts (0.0s)
+  836.5 [scan] [ROOT] ▶ Teams — 2 inst, 0 script
+  836.5 [scan] [ROOT] ✓ Teams — 0 scripts (0.0s)
+  836.5 [scan] [DONE] r=0 e=1192 o=0 bc=0 t=0 skip=266 (55.4s) mem=0.0MB
+==============================================================

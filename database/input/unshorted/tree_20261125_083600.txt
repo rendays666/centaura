@@ -1,0 +1,2957 @@
+=== STRUCTURE TREE ===
+
+[ReplicatedStorage]
+  TweenModule [ModuleScript] *
+  CameraShaker [ModuleScript] *
+  Zone [ModuleScript] *
+  SpringModule [ModuleScript] *
+  ShopItemDictionary [ModuleScript] *
+  CutsceneModule [ModuleScript] *
+  RaycastHitboxModule [ModuleScript] *
+  RemoteFloodCheck [ModuleScript] *
+  CutsceneAssets [ModuleScript] *
+  ReplicatedTweening [ModuleScript] *
+  NotificationAssets [ModuleScript] *
+  MouseOverModule [ModuleScript] *
+  PerksDictionary [ModuleScript] *
+  CustomEquipmentDictionary [ModuleScript] *
+  CustomEquipmentDictionarySAVE [ModuleScript] *
+  GAME_FirstLoad [BoolValue]
+  56a05903-8631-4bc9-bc8c-74fc656fa25c [RemoteEvent] !
+  DefaultSoundEvents [Folder]
+    SoundDispatcher [BindableEvent]
+    RemoveCharacterEvent [RemoteEvent] !
+    AddCharacterLoadedEvent [RemoteEvent] !
+    DefaultServerSoundEvent [RemoteEvent] !
+  SystemChat [RemoteEvent] !
+  LoadLibrary [Folder]
+    RbxGui [ModuleScript] *
+    RbxStamper [ModuleScript] *
+    RbxUtility [ModuleScript] *
+  TREKModules [Folder]
+    TweenModule [ModuleScript] *
+    GlobalSettings [ModuleScript] *
+    MeleeHit [Sound]
+    GunSettings [Folder]
+  TREKRemotes [Folder]
+    BulletRemote [RemoteEvent] !
+    KillfeedRemote [RemoteEvent] !
+    PersonalfeedRemote [RemoteEvent] !
+    FlashRemote [RemoteEvent] !
+    PenBind [BindableEvent]
+    FlashBind [BindableEvent]
+    ReloadRemote [RemoteEvent] !
+    PenRemote [RemoteEvent] !
+    BulletBind [BindableEvent]
+    DamageRemote [UnreliableRemoteEvent]
+    DamagerRemote [RemoteEvent] !
+  TREKScripts [Folder]
+    Gun_ [LocalScript] *
+    Gun [LocalScript] *
+    GunSAVE [LocalScript] *
+  TREKStorage [Folder]
+    BulletGlow [BillboardGui]
+    Medkit [Model]
+    Roll [Animation]
+    Crouch [Animation]
+    Walk [Animation]
+    Run [Animation]
+    Charge [Animation]
+    Particles [Part]
+    BulletTemp [Part]
+    ParticlesOLD [Part]
+  LoadCharacter [RemoteEvent] !
+  OutOfBounds [RemoteEvent] !
+  Concussion [RemoteEvent] !
+  MortarFire [RemoteEvent] !
+  ChangeTeam [RemoteEvent] !
+  ServerNotification [RemoteEvent] !
+  RemoveGripWeld [RemoteEvent] !
+  IntermissionEvent [RemoteEvent] !
+  HelmetShot [RemoteEvent] !
+  LOCAL_CameraAngle [NumberValue]
+  Daze [BindableEvent]
+  Suppression [BindableEvent]
+  Voiceline [RemoteEvent] !
+  Voicelines [Folder]
+    WarCries [Folder]
+    ExplosionDeathScreams [Folder]
+    MaskLoudener [CompressorSoundEffect]
+    MaskMuffle [EqualizerSoundEffect]
+    English [Folder]
+    Portuguese [Folder]
+  GrenadeThrow [Animation]
+  BloodSplatter [BindableEvent]
+  BeginIntermission [BindableEvent]
+  WhistleCharge [RemoteEvent] !
+  ChooseClass [RemoteEvent] !
+  LOCAL_SelectedClass [StringValue]
+  RequestClass [RemoteFunction] !
+  ClientNotification [BindableEvent]
+  DynamiteStick [Model]
+    DynamiteHandler [Script] *
+    Humanoid [Humanoid]
+    Detonate [BindableEvent]
+    DynamiteStick [MeshPart]
+  RequestShopPurchase [RemoteFunction] !
+  OpenShopUI [RemoteEvent] !
+  UpdateSettings [BindableEvent]
+  RemoveWire [RemoteEvent] !
+  Votekick [RemoteEvent] !
+  MortarAssets [Folder]
+    MortarAimIndicatorOLD [Model]
+    MortarAimIndicator [Model]
+    ReticlesFolder [Folder]
+    ReticleDot [Part]
+  AdminEndMatch [RemoteEvent] !
+  Functions [Folder]
+    Kick [RemoteEvent] !
+    Ban [RemoteFunction] !
+    Handshake [RemoteEvent] !
+  TweenEvent [RemoteEvent] !
+  BloodEffects [RemoteEvent] !
+  CUSTOM_PointGainDisabled [BoolValue]
+  CUSTOM_ArtilleryDisabled [BoolValue]
+  CUSTOM_VehiclesDisabled [BoolValue]
+  CustomInventoryAssets [Folder]
+    BackpackView [ModuleScript] *
+    InventoryInstances [Folder]
+  LOCAL_PlayerBackpackEnabled [BoolValue]
+  ClientVehicleHitboxes [Folder]
+    AntaresArmoredCar [Model]
+    CetusArmoredCar [Model]
+    CorvusArmoredCar [Model]
+  AutoTeamBalance [BoolValue]
+  ArtilleryTracer [RemoteEvent] !
+  LOCAL_InStartMenu [BoolValue]
+  RankUpNotification [RemoteEvent] !
+  MovementSounds [Folder]
+    Sounds [Folder]
+    MaterialSounds [Folder]
+  ServerListRemotes [Folder]
+    UpdateServers [RemoteEvent] !
+    JoinServer [RemoteEvent] !
+    ClientUpdateServers [RemoteEvent] !
+  RequestCustomEquipment [RemoteFunction] !
+  CUSTOM_ManualMatchStart [BoolValue]
+  ManualMatchStart [BindableEvent]
+  CUSTOM_MapRotationDisabled [BoolValue]
+  PlaceablesPreviews [Folder]
+    TrenchShieldPreview [Model]
+  Click [ImageButton]
+  Viewmodel [Model]
+    AnimationController [AnimationController]
+    HeadWeld [Weld]
+    Torso [Part]
+    HumanoidRootPart [Part]
+  ViewmodelSAVE [Model]
+    AnimationController [AnimationController]
+    HeadWeld [Weld]
+    Left Arm [Part]
+    Torso [Part]
+    Head [Part]
+    Right Arm [Part]
+    HumanoidRootPart [Part]
+  RequestPerkEquip [RemoteFunction] !
+  VK [RemoteEvent] !
+  GAME_MapLoaded [BoolValue]
+  BoundariesEnabled [BoolValue]
+  ClassSelectionMenu [Frame]
+  CurrentMap [StringValue]
+  CurrentYear [IntValue]
+  Status [StringValue]
+  InTransition [BoolValue]
+  Victor [StringValue]
+  MapLoaded [BoolValue]
+  Team1 [ObjectValue]
+  Team2 [ObjectValue]
+  InMatch [BoolValue]
+  Intermission [BoolValue]
+  SunFlareColor [Color3Value]
+  RoundClock [IntValue]
+  VotekickValues [Folder]
+    1notalexander4 [IntValue]
+    matexd809 [IntValue]
+    dratlast [IntValue]
+    Ahimigatito [IntValue]
+    angelon123xdd [IntValue]
+    bobmaniscoolpoop [IntValue]
+    Afoc_8aXD [IntValue]
+    turtle23874 [IntValue]
+    Cwcoolboy1 [IntValue]
+    Thiago3a1ioe [IntValue]
+    xXxPIMBLOxXx [IntValue]
+    FEARDAFFYBADUSERNAME [IntValue]
+    WesternEastNorth [IntValue]
+    frnxster [IntValue]
+    JULIO2005e [IntValue]
+    brandonbarberertioc [IntValue]
+    traincrash2007 [IntValue]
+    TideBraker [IntValue]
+    samirch08 [IntValue]
+    zhaul2016 [IntValue]
+    gerson8352 [IntValue]
+    Robloxremix14 [IntValue]
+    Dustmover112 [IntValue]
+    Raxtusv [IntValue]
+    KINGbob01094 [IntValue]
+    darthnihilus_66 [IntValue]
+    1ubybyggzk [IntValue]
+    COVARACHO78 [IntValue]
+    1234_Dregq [IntValue]
+    Iheartspace03 [IntValue]
+    skeletonbud20113 [IntValue]
+    renrenhu6 [IntValue]
+    dudelegand98 [IntValue]
+    59goated1 [IntValue]
+    borrega247 [IntValue]
+    Sadbooyz13 [IntValue]
+    skyguy1451 [IntValue]
+    PuroTheGreat21 [IntValue]
+    Gavinroi24 [IntValue]
+    Mrs_OfTheLily [IntValue]
+    Galaxy_noodles123 [IntValue]
+    Sandviper_th3 [IntValue]
+    Skeletalistic [IntValue]
+    tengonovia_248 [IntValue]
+    banana_chum7 [IntValue]
+    anuelnoob [IntValue]
+    shadownan_2008 [IntValue]
+    sammy868792 [IntValue]
+    3e3e3yirtjil [IntValue]
+    Imperial_Italy2 [IntValue]
+    roblox_user_1416249619 [IntValue]
+    atgamer37 [IntValue]
+    ElCapoMessi1812 [IntValue]
+    josevar7987 [IntValue]
+    xxn00bslayerxxx7 [IntValue]
+    dylanspiderss [IntValue]
+    BluZombie208 [IntValue]
+    memo1117872 [IntValue]
+    Stanley4510 [IntValue]
+    coolcookieboss12345 [IntValue]
+    TinyScrub [IntValue]
+    Veneno818718 [IntValue]
+    Aarav_Eggo [IntValue]
+    DaniloW50 [IntValue]
+    hamstermannster [IntValue]
+    Cocaferia0 [IntValue]
+  Deaths [IntValue]
+  Gib [UnionOperation]
+  ViewmodelBox [Part]
+  ZonePlusReference [ObjectValue]
+
+[ReplicatedFirst]
+
+[StarterPlayer]
+  StarterPlayerScripts [StarterPlayerScripts]
+  StarterCharacterScripts [StarterCharacterScripts]
+  StarterCharacter [Model]
+    Animate [LocalScript] *
+    Body Colors [BodyColors]
+    Humanoid [Humanoid]
+    Left Arm [Part]
+    Right Arm [Part]
+    Torso [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    HumanoidRootPart [Part]
+    Head [Part]
+
+[StarterGui]
+  TREKHud [ScreenGui]
+  Tense [ScreenGui]
+  ReturnToCombatZone [ScreenGui]
+  DamageGui [ScreenGui]
+  MobileUI [ScreenGui]
+  DeathCounter [ScreenGui]
+  DeathScreen [ScreenGui]
+  PlayerListGui [ScreenGui]
+  Disorientation [ScreenGui]
+  ChangelogGUI [ScreenGui]
+  PlayerNametags [ScreenGui]
+  EquipmentShopUI [ScreenGui]
+  TopBar [ScreenGui]
+  SpawnMenuUI [ScreenGui]
+  AmbientTexture [ScreenGui]
+  CustomInventory [ScreenGui]
+  RankUpUI [ScreenGui]
+  UniqueMapEffects [ScreenGui]
+  CustomEquipmentShopUI [ScreenGui]
+  FreecamDetector [ScreenGui]
+  AttentivePerkUI [ScreenGui]
+
+[Workspace]
+  Camera [Camera]
+  Map [Folder]
+    Map [Folder]
+  IgnoreList [Folder]
+    Bullets [Folder]
+    MapParts [Folder]
+    PlayingZone [Folder]
+    Tracers [Folder]
+    VehicleHitboxes [Folder]
+  LobbyRoom [Folder]
+    LobbySpawns [Folder]
+    LobbyRoom [Model]
+  JOB_ID [StringValue]
+  Previews [Folder]
+  PLACE_VERSION [StringValue]
+  Placeables [Folder]
+  Sounds [Folder]
+    BattleEnd [Sound]
+    FlamethrowerIgnition [Sound]
+    OceanWavesAmbience [Sound]
+    RadioCrackle [Sound]
+    PianoImpact [Sound]
+    TrenchWhistle [Sound]
+    Click2 [Sound]
+    Click [Sound]
+    BulletWhiz [Sound]
+    KillConfirmed [Sound]
+    PointCaptured [Sound]
+    RankUp [Sound]
+    Morse [Folder]
+    Music [Folder]
+  VehicleWeaponTargets [Folder]
+    Vehicle [ObjectValue]
+    Vehicle [ObjectValue]
+    Vehicle [ObjectValue]
+  Grenades [Folder]
+  MortarWhistle [Part]
+  tengonovia_248 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig1912 [Model]
+    Standard1912Shirt [Shirt]
+    Standard1912Pants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    E/I AT RIFLE [Tool]
+  MortarWhistle [Part]
+  Robloxremix14 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig1912 [Model]
+    Standard1912Shirt [Shirt]
+    Standard1912Pants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    ENE AERA RIFLE [Tool]
+  MortarWhistle [Part]
+  MortarWhistle [Part]
+  Terrain [Terrain]
+  MortarWhistle [Part]
+  MortarWhistle [Part]
+  MortarWhistle [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  Sandviper_th3 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    CivilGuard1Shirt [Shirt]
+    CivilGuard1Pants [Pants]
+    CivilGuardPoliceCap [Model]
+    CivilGuardPoliceBelt [Model]
+    COOLHEADED [IntValue]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    ALBUS-GRAHAM NO. 4 [Tool]
+  JULIO2005e [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig [Model]
+    StandardShirt [Shirt]
+    StandardPants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    M99 RIFLE BAYONET [Tool]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  hamstermannster [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    CivilGuard4Shirt [Shirt]
+    CivilGuard4Pants [Pants]
+    CivilGuardHat8 [Model]
+    CivilGuardWebbing5 [Model]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    ENE AERA RIFLE [Tool]
+  Veneno818718 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig [Model]
+    StandardShirt [Shirt]
+    StandardPants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    M99 RIFLE BAYONET [Tool]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  turtle23874 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig1912 [Model]
+    Standard1912Shirt [Shirt]
+    Standard1912Pants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    FIGHT-OR-FLIGHT [BoolValue]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  Cwcoolboy1 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig [Model]
+    StandardShirt [Shirt]
+    StandardPants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    M99 RIFLE BAYONET [Tool]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  renrenhu6 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    CameraBlock [Part]
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig [Model]
+    StandardShirt [Shirt]
+    StandardPants [Pants]
+    COOLHEADED [IntValue]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    M12 AT RIFLE [Tool]
+  Dustmover112 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig1912 [Model]
+    Standard1912Shirt [Shirt]
+    Standard1912Pants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    E/XV AUTOMATIC [Tool]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  COVARACHO78 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  BluZombie208 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+  shadownan_2008 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig [Model]
+    StandardShirt [Shirt]
+    StandardPants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    M12 SMG [Tool]
+  matexd809 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig [Model]
+    StandardShirt [Shirt]
+    StandardPants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    M12 SMG [Tool]
+    FIGHT-OR-FLIGHT [BoolValue]
+  bobmaniscoolpoop [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig1912 [Model]
+    Standard1912Shirt [Shirt]
+    Standard1912Pants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    E/VIII RIFLE BAYONET [Tool]
+  MortarShrapnelImpact [Part]
+  dudelegand98 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig1912 [Model]
+    Standard1912Shirt [Shirt]
+    Standard1912Pants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    CLUB [Tool]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  BloodCache [Folder]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+    BloodPart [Part]
+  MortarShrapnelImpact [Part]
+  gerson8352 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  Aarav_Eggo [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig1912 [Model]
+    Standard1912Shirt [Shirt]
+    Standard1912Pants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    E/VIII RIFLE BAYONET [Tool]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  josevar7987 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  3e3e3yirtjil [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig [Model]
+    StandardShirt [Shirt]
+    StandardPants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    M99 RIFLE BAYONET [Tool]
+    FIGHT-OR-FLIGHT [BoolValue]
+  1notalexander4 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig1912 [Model]
+    Standard1912Shirt [Shirt]
+    Standard1912Pants [Pants]
+    COOLHEADED [IntValue]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    E/XV AUTOMATIC [Tool]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  ElCapoMessi1812 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    CivilGuard10Shirt [Shirt]
+    CivilGuard10Pants [Pants]
+    CivilGuardHat2 [Model]
+    CivilGuardWebbing3 [Model]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    ALBUS-GRAHAM NO. 4 [Tool]
+  MortarShrapnelImpact [Part]
+  TinyScrub [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig [Model]
+    StandardShirt [Shirt]
+    StandardPants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    M99 RIFLE BAYONET [Tool]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  memo1117872 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    OfficerCap1912 [Model]
+    OfficerBelt1912 [Model]
+    Officer1912Shirt [Shirt]
+    Officer1912Pants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    SUB E/XCV SL [Tool]
+  atgamer37 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig [Model]
+    StandardShirt [Shirt]
+    StandardPants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    ENE AERA RIFLE [Tool]
+  xxn00bslayerxxx7 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    OfficerCap1912 [Model]
+    OfficerBelt1912 [Model]
+    Officer1912Shirt [Shirt]
+    Officer1912Pants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    SUB E/XCV SL [Tool]
+  MortarShrapnelImpact [Part]
+  1234_Dregq [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  Mrs_OfTheLily [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+  borrega247 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig [Model]
+    StandardShirt [Shirt]
+    StandardPants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    M1889 LA RIFLE BAYONET [Tool]
+  MortarShrapnelImpact [Part]
+  angelon123xdd [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig [Model]
+    StandardShirt [Shirt]
+    StandardPants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    M12 SMG [Tool]
+  MortarShrapnelImpact [Part]
+  DaniloW50 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig1912 [Model]
+    Standard1912Shirt [Shirt]
+    Standard1912Pants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    E/VIII RIFLE BAYONET [Tool]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  Afoc_8aXD [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig1912 [Model]
+    Standard1912Shirt [Shirt]
+    Standard1912Pants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    FIGHT-OR-FLIGHT [BoolValue]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  1ubybyggzk [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig [Model]
+    StandardShirt [Shirt]
+    StandardPants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    M12 SMG [Tool]
+  darthnihilus_66 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    BrowPlate [Model]
+    Rig1912 [Model]
+    Standard1912Shirt [Shirt]
+    Standard1912Pants [Pants]
+    UPARMORED [IntValue]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    DYNAMITE [Tool]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  Stanley4510 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig [Model]
+    StandardShirt [Shirt]
+    StandardPants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    M12 AT RIFLE [Tool]
+  Cocaferia0 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig [Model]
+    StandardShirt [Shirt]
+    StandardPants [Pants]
+    COOLHEADED [IntValue]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    ENE AERA RIFLE [Tool]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  Imperial_Italy2 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig [Model]
+    StandardShirt [Shirt]
+    StandardPants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    FIGHT-OR-FLIGHT [BoolValue]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  Sadbooyz13 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig1912 [Model]
+    Standard1912Shirt [Shirt]
+    Standard1912Pants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    E/VIII RIFLE BAYONET [Tool]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  banana_chum7 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig1912 [Model]
+    Medic1912Shirt [Shirt]
+    Medic1912Pants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    BANDAGES [Tool]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  59goated1 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+  Thiago3a1ioe [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig [Model]
+    StandardShirt [Shirt]
+    StandardPants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  PuroTheGreat21 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig1912 [Model]
+    Medic1912Shirt [Shirt]
+    Medic1912Pants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    FIGHT-OR-FLIGHT [BoolValue]
+  MortarShrapnelImpact [Part]
+  traincrash2007 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig1912 [Model]
+    Medic1912Shirt [Shirt]
+    Medic1912Pants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    ENE AERA RIFLE [Tool]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  FEARDAFFYBADUSERNAME [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig [Model]
+    StandardShirt [Shirt]
+    StandardPants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    M99 RIFLE BAYONET [Tool]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  samirch08 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    CivilGuard4Shirt [Shirt]
+    CivilGuard4Pants [Pants]
+    CivilGuardHat5 [Model]
+    CivilGuardWebbing1 [Model]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    DECIMA SHOTGUN [Tool]
+  zhaul2016 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    BrowPlate [Model]
+    Rig [Model]
+    StandardShirt [Shirt]
+    StandardPants [Pants]
+    BERSERKER [IntValue]
+    UPARMORED [IntValue]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    M1889 LA RIFLE BAYONET [Tool]
+  xXxPIMBLOxXx [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+  MortarShrapnelImpact [Part]
+  skeletonbud20113 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig [Model]
+    StandardShirt [Shirt]
+    StandardPants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    M99 RIFLE BAYONET [Tool]
+  Raxtusv [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig1912 [Model]
+    Standard1912Shirt [Shirt]
+    Standard1912Pants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    E/I AT RIFLE [Tool]
+  MortarShrapnelImpact [Part]
+  Skeletalistic [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig1912 [Model]
+    Standard1912Shirt [Shirt]
+    Standard1912Pants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    MODELO 1898 RIFLE BAYONET [Tool]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  dylanspiderss [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig1912 [Model]
+    Standard1912Shirt [Shirt]
+    Standard1912Pants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    E/VIII RIFLE BAYONET [Tool]
+  roblox_user_1416249619 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  WesternEastNorth [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig1912 [Model]
+    Standard1912Shirt [Shirt]
+    Standard1912Pants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    E/VIII RIFLE BAYONET [Tool]
+  MortarShrapnelImpact [Part]
+  TideBraker [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    CivilGuard1Shirt [Shirt]
+    CivilGuard1Pants [Pants]
+    CivilGuardPoliceCap [Model]
+    CivilGuardPoliceBelt [Model]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    DECIMA SHOTGUN [Tool]
+  MortarShrapnelImpact [Part]
+  frnxster [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    OfficerCap [Model]
+    Rig [Model]
+    OfficerShirt [Shirt]
+    OfficerPants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    M4 REVOLVER [Tool]
+  Ahimigatito [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig [Model]
+    StandardShirt [Shirt]
+    StandardPants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    M99 RIFLE BAYONET [Tool]
+  MortarShrapnelImpact [Part]
+  coolcookieboss12345 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    CivilGuard10Shirt [Shirt]
+    CivilGuard10Pants [Pants]
+    CivilGuardHat3 [Model]
+    CivilGuardWebbing3 [Model]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    BARTON MODEL 10 [Tool]
+  sammy868792 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig [Model]
+    StandardShirt [Shirt]
+    StandardPants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    M99 RIFLE [Tool]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  MortarShrapnelImpact [Part]
+  AirburstMortarExplosionEffectPart [Part]
+  brandonbarberertioc [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig1912 [Model]
+    Standard1912Shirt [Shirt]
+    Standard1912Pants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    E/VIII RIFLE BAYONET [Tool]
+  MortarShrapnelImpact [Part]
+  Iheartspace03 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig1912 [Model]
+    Standard1912Shirt [Shirt]
+    Standard1912Pants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+  MortarShrapnelImpact [Part]
+  KINGbob01094 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    Helmet [Model]
+    Rig1912 [Model]
+    Standard1912Shirt [Shirt]
+    Standard1912Pants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+    E/XV AUTOMATIC [Tool]
+  skyguy1451 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+    ClassGiven [StringValue]
+    OfficerCap [Model]
+    Rig [Model]
+    OfficerShirt [Shirt]
+    OfficerPants [Pants]
+    CharacterHair [Accessory]
+    HeadFaceDirt [Model]
+  Gavinroi24 [Model]
+    Head [Part]
+    Torso [Part]
+    Left Arm [Part]
+    Right Arm [Part]
+    Left Leg [Part]
+    Right Leg [Part]
+    Humanoid [Humanoid]
+    HumanoidRootPart [Part]
+    Body Colors [BodyColors]
+    TeamIndicator [LocalScript] *
+    TREKLocal [LocalScript] *
+    CameraBobbing [LocalScript] *
+    BurnAnimation [LocalScript] *
+    Voicelines [Script] *
+    JumpCooldown [LocalScript] *
+    LocalFootsteps [LocalScript] *
+    CameraSystem [LocalScript] *
+    HeadTurn [LocalScript] *
+    Sound [Script] *
+    HumanoidStatesHandler [LocalScript] *
+    Health [Script] *
+    PlaceablesHandler [LocalScript] *
+    ViewmodelHandler [LocalScript] *
+    SmoothWalkLean [LocalScript] *
+    MovementSpeedHandler [LocalScript] *
+    HumanoidHandler [LocalScript] *
+    FallDamage [Script] *
+    Animate [LocalScript] *
+    DamageResistanceMultiplier [IntValue]
+
+[Players]
+  renrenhu6 [Player]
+  banana_chum7 [Player]
+  KINGbob01094 [Player]
+  59goated1 [Player]
+  darthnihilus_66 [Player]
+  zhaul2016 [Player]
+  Mrs_OfTheLily [Player]
+  Robloxremix14 [Player]
+  gerson8352 [Player]
+  1ubybyggzk [Player]
+  Gavinroi24 [Player]
+  roblox_user_1416249619 [Player]
+  DaniloW50 [Player]
+  shadownan_2008 [Player]
+  josevar7987 [Player]
+  1notalexander4 [Player]
+  WesternEastNorth [Player]
+  sammy868792 [Player]
+  Skeletalistic [Player]
+  FEARDAFFYBADUSERNAME [Player]
+  PuroTheGreat21 [Player]
+  coolcookieboss12345 [Player]
+  Aarav_Eggo [Player]
+  Thiago3a1ioe [Player]
+  frnxster [Player]
+  dudelegand98 [Player]
+  angelon123xdd [Player]
+  Afoc_8aXD [Player]
+  skeletonbud20113 [Player]
+  Dustmover112 [Player]
+  3e3e3yirtjil [Player]
+  xxn00bslayerxxx7 [Player]
+  1234_Dregq [Player]
+  memo1117872 [Player]
+  skyguy1451 [Player]
+  Veneno818718 [Player]
+  Sadbooyz13 [Player]
+  dylanspiderss [Player]
+  turtle23874 [Player]
+  atgamer37 [Player]
+  Imperial_Italy2 [Player]
+  matexd809 [Player]
+  Cwcoolboy1 [Player]
+  COVARACHO78 [Player]
+  JULIO2005e [Player]
+  hamstermannster [Player]
+  brandonbarberertioc [Player]
+  tengonovia_248 [Player]
+  bobmaniscoolpoop [Player]
+  ElCapoMessi1812 [Player]
+  TinyScrub [Player]
+  xXxPIMBLOxXx [Player]
+  borrega247 [Player]
+  samirch08 [Player]
+  Stanley4510 [Player]
+  traincrash2007 [Player]
+  Iheartspace03 [Player]
+  BluZombie208 [Player]
+  Raxtusv [Player]
+  Sandviper_th3 [Player]
+  Cocaferia0 [Player]
+  Ahimigatito [Player]
+  TideBraker [Player]
+
+[Lighting]
+  Atmosphere [Atmosphere]
+  ColorCorrection [ColorCorrectionEffect]
+  SunRays [SunRaysEffect]
+  Sky [Sky]
+  SuppressionBlurEffect [BlurEffect]
+  ExplosionBlur [BlurEffect]
+  ConcussionFilter [ColorCorrectionEffect]
+
+Legend: * = script, ! = remote

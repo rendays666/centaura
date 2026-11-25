@@ -1,0 +1,2544 @@
+==============================================================
+DUMPER v15.2.0 — CONFIG SNAPSHOT (untuk AI analyst)
+==============================================================
+Game      : CENTAURA
+PlaceId   : 8735521924
+JobId     : 7ac20f01-f0d2-4255-89dc-c8f7a0177597
+Player    : renrenhu6
+Executor  : Arceus X 2.4.2
+Generated : 2026-11-25 08:36:05
+
+──────────────────────────────────────────
+MEKANISME DUMPER (baca dulu):
+──────────────────────────────────────────
+1. SCAN         → baca .Source semua script dari root yang ON
+                  (bukan runtime, hanya snapshot statis dari kode)
+2. SMART/FULL   → build analisis pakai hasil scan
+3. Record game actions / on-screen buttons → rekam data RUNTIME terpisah dari scan
+4. Scan places  → pilih root mana yang di-scan (Scan tab)
+5. Scan options → decompile/bytecode/core (default OFF untuk anti-crash)
+6. Bagian DIAGNOSTICS di akhir file = status hook, error, log terakhir
+
+──────────────────────────────────────────
+ROOT SCAN (Scan places):
+──────────────────────────────────────────
+  [ON ] RS  ReplicatedStorage  — Shared remotes and modules.
+  [ON ] RF  ReplicatedFirst    — Loading scripts.
+  [ON ] SP  StarterPlayer      — Player scripts (movement, camera, input).
+  [ON ] SG  StarterGui         — UI templates and their scripts.
+  [ON ] WS  Workspace          — Map, models, NPCs, tools.
+  [ON ] PL  Players            — Scripts that are actually running for you.
+  [ON ] LT  Lighting           — Visual effects and sky.
+  [ON ] SS  SoundService       — Sound groups.
+  [ON ] CH  Chat               — Chat system.
+  [ON ] TM  Teams              — Team objects.
+
+──────────────────────────────────────────
+OPSI SCAN:
+──────────────────────────────────────────
+  [OFF] DC  Decompile fallback (LAMBAT, crash-prone)
+  [OFF] BC  Bytecode dump (SANGAT besar, tak terbaca)
+  [OFF] RC  Read Roblox core (PlayerModule/CameraModule dkk)
+
+──────────────────────────────────────────
+RUNTIME CAPTURE:
+──────────────────────────────────────────
+  [OFF] UI  Record on-screen buttons (PlayerGui)
+  [OFF] REC Record game actions FireServer/InvokeServer (method: auto)
+  [OFF] RUN Listen to server messages (LogService + OnClientEvent)
+
+──────────────────────────────────────────
+BUTTON LIST:
+──────────────────────────────────────────
+  SCAN  — Reads the code of every script in the selected places.
+  SMART — Snapshot + captured data + game mechanics + diagnostics, saved as a .txt file.
+  FULL  — Everything in Smart plus index, remotes, tree and config values.
+  MECH  — Game mechanics summary (damage, shop, quests...). Copied to clipboard.
+  INDEX — List of scripts and whether they are readable, empty or obfuscated.
+  PATHS — Full path of every scanned script.
+  REMOTES — All RemoteEvents / RemoteFunctions found in the game.
+  CONFIG — Value objects and attributes (prices, cooldowns, ratios).
+  TREE  — Folder structure of the main services (2-3 levels).
+
+──────────────────────────────────────────
+STATISTIK DATA:
+──────────────────────────────────────────
+  Scripts total      : 1192 (readable=0 empty=1192 obf=0 bcode=0 trunc=0)
+  Runtime UI         : 259 tombol tercatat
+  Runtime FireServer : 11 call tercatat
+  Runtime LogService : 0 pesan
+
+──────────────────────────────────────────
+DATA APA YANG TERSEDIA DI FILE INI:
+──────────────────────────────────────────
+  ✅ Script source   : 0 readable script
+  ✅ Mechanics pack  : API/Handlers/Modules/Constants
+  ✅ Remotes         : RemoteEvent/RemoteFunction list
+  ✅ Runtime UI      : 259 tombol
+  ✅ Runtime FS      : 11 call
+
+──────────────────────────────────────────
+INSTRUKSI UNTUK AI LAIN:
+──────────────────────────────────────────
+  - Cek daftar ON/OFF di atas sebelum analisis
+  - Data yang ditandai ❌ = tidak ada di file ini
+  - Kalau FS kosong padahal recording ON: lihat DIAGNOSTICS (hook terpasang? queue? error?)
+  - Kalau butuh data yang OFF, minta user:
+      • untuk PlayerModule → aktifkan 'Include Roblox core scripts' + re-SCAN
+      • untuk tombol runtime → aktifkan 'Record on-screen buttons', buka menu/match, baru capture
+      • untuk argumen remote → aktifkan 'Record game actions' (coba metode Stealth/Namecall), lakukan aksi sekali
+  - Runtime capture TIDAK butuh SCAN ulang, cukup aktifkan perekamannya
+  - Saran 'penting saja': Script logic → RS + SP; Runtime UI → Record buttons on; Argumen remote → Record actions on
+==============================================================
+
+==============================================================
+RUNTIME CAPTURE
+==============================================================
+
+## UI — 259 tombol (ImageButton/TextButton)
+[1] Players.renrenhu6.PlayerGui.TouchGui.TouchControlFrame.JumpButton [ImageButton]
+     pos=633, 212 size=70, 70 visible=true
+     image=rbxasset://textures/ui/Input/TouchControlsSheetV2.png
+[2] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.WeaponSelectList.Item [TextButton]
+     pos=155.830063, 7.53259277 size=88.6209183, 25.1828289 visible=true
+     text="M1889 LA RIFLE"
+[3] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.WeaponSelectList.Item [TextButton]
+     pos=155.830063, 37.7154236 size=88.6209183, 25.1828289 visible=true
+     text="M1909 SMG"
+[4] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.WeaponSelectList.Item [TextButton]
+     pos=155.830063, 67.8982544 size=88.6209183, 25.1828289 visible=true
+     text="T05 RIFLE"
+[5] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.WeaponSelectList.Item [TextButton]
+     pos=155.830063, 98.0810852 size=88.6209183, 25.1828289 visible=true
+     text="T09 SMG"
+[6] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.WeaponSelectList.Item [TextButton]
+     pos=155.830063, 128.263916 size=88.6209183, 25.1828289 visible=true
+     text="DOUBLE BARREL SHOTGUN"
+[7] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.WeaponSelectList.Item [TextButton]
+     pos=155.830063, 158.446732 size=88.6209183, 25.1828289 visible=true
+     text="E/VIII RIFLE"
+[8] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.WeaponSelectList.Item [TextButton]
+     pos=155.830063, 188.629562 size=88.6209183, 25.1828289 visible=true
+     text="E/XV AUTOMATIC"
+[9] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.WeaponSelectList.Item [TextButton]
+     pos=155.830063, 218.812378 size=88.6209183, 25.1828289 visible=true
+     text="M99 RIFLE"
+[10] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.WeaponSelectList.Item [TextButton]
+     pos=155.830063, 248.995239 size=88.6209183, 25.1828289 visible=true
+     text="M12 SMG"
+[11] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.WeaponSelectList.Item [TextButton]
+     pos=155.830063, 279.17804 size=88.6209183, 25.1828289 visible=true
+     text="MODELO 1898 RIFLE"
+[12] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.WeaponSelectList.Item [TextButton]
+     pos=155.830063, 309.36087 size=88.6209183, 25.1828289 visible=true
+     text="MODELO 13 SMG"
+[13] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.WeaponSelectList.Item [TextButton]
+     pos=155.830063, 339.543701 size=88.6209183, 25.1828289 visible=true
+     text="BARTON MODEL 10"
+[14] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.WeaponSelectList.Item [TextButton]
+     pos=155.830063, 369.726532 size=88.6209183, 25.1828289 visible=true
+     text="ALBUS-GRAHAM NO. 4"
+[15] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.WeaponSelectList.Item [TextButton]
+     pos=155.830063, 399.909363 size=88.6209183, 25.1828289 visible=true
+     text="DECIMA SHOTGUN"
+[16] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.WeaponSelectList.Item [TextButton]
+     pos=155.830063, 430.092194 size=88.6209183, 25.1828289 visible=true
+     text="ENE AERA RIFLE"
+[17] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.WeaponSelectList.Item [TextButton]
+     pos=155.830063, 460.275024 size=88.6209183, 25.1828289 visible=true
+     text="ENE MARS CARBINE"
+[18] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.ShopButtonManager.ItemTemplate [TextButton]
+     pos=-36, -58 size=0, 0 visible=true
+     text="WEAPON"
+[19] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.WeaponItemInfo.EquipButton [TextButton]
+     pos=253.967346, 199.265503 size=89.2156906, 28.6168518 visible=true
+     text="EQUIP"
+[20] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.CloseButton [ImageButton]
+     pos=578.117615, 7.53259277 size=22.8934822, 22.8934822 visible=true
+     image=http://www.roblox.com/asset/?id=5198838744
+[21] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.PerksTab [TextButton]
+     pos=368.163391, -15.3608856 size=204.006546, 22.8934822 visible=true
+     text="PERKS"
+[22] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.WeaponsTab [TextButton]
+     pos=155.830078, -15.3608856 size=204.006546, 22.8934822 visible=true
+     text="WEAPONS"
+[23] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.PerkItemInfo.EquipButton [TextButton]
+     pos=253.967346, 199.265503 size=89.2156906, 28.6168518 visible=true
+     text="EQUIP"
+[24] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.PerksSelectList.Perk [TextButton]
+     pos=155.830063, 7.53259277 size=88.6209183, 25.1828289 visible=true
+     text="UNTANGLER"
+[25] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.PerksSelectList.Perk [TextButton]
+     pos=155.830063, 37.7154236 size=88.6209183, 25.1828289 visible=true
+     text="THICK SKULL"
+[26] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.PerksSelectList.Perk [TextButton]
+     pos=155.830063, 67.8982544 size=88.6209183, 25.1828289 visible=true
+     text="PAIN TOLERANCE"
+[27] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.PerksSelectList.Perk [TextButton]
+     pos=155.830063, 98.0810852 size=88.6209183, 25.1828289 visible=true
+     text="CHARGER"
+[28] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.PerksSelectList.Perk [TextButton]
+     pos=155.830063, 128.263916 size=88.6209183, 25.1828289 visible=true
+     text="SHARPSHOOTER"
+[29] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.PerksSelectList.Perk [TextButton]
+     pos=155.830063, 158.446732 size=88.6209183, 25.1828289 visible=true
+     text="LIGHTWEIGHT"
+[30] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.PerksSelectList.Perk [TextButton]
+     pos=155.830063, 188.629562 size=88.6209183, 25.1828289 visible=true
+     text="FOCUSED"
+[31] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.PerksSelectList.Perk [TextButton]
+     pos=155.830063, 218.812378 size=88.6209183, 25.1828289 visible=true
+     text="STRONG ARM"
+[32] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.PerksSelectList.Perk [TextButton]
+     pos=155.830063, 248.995239 size=88.6209183, 25.1828289 visible=true
+     text="STURDY"
+[33] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.PerksSelectList.Perk [TextButton]
+     pos=155.830063, 279.17804 size=88.6209183, 25.1828289 visible=true
+     text="FIGHT-OR-FLIGHT"
+[34] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.PerksSelectList.Perk [TextButton]
+     pos=155.830063, 309.36087 size=88.6209183, 25.1828289 visible=true
+     text="SHORT FUSE"
+[35] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.PerksSelectList.Perk [TextButton]
+     pos=155.830063, 339.543701 size=88.6209183, 25.1828289 visible=true
+     text="EFFICIENT HEALING"
+[36] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.PerksSelectList.Perk [TextButton]
+     pos=155.830063, 369.726532 size=88.6209183, 25.1828289 visible=true
+     text="CAUTIOUS"
+[37] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.PerksSelectList.Perk [TextButton]
+     pos=155.830063, 399.909363 size=88.6209183, 25.1828289 visible=true
+     text="RISK-TAKER"
+[38] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.PerksSelectList.Perk [TextButton]
+     pos=155.830063, 430.092194 size=88.6209183, 25.1828289 visible=true
+     text="WIRING PARTY"
+[39] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.PerksSelectList.Perk [TextButton]
+     pos=155.830063, 460.275024 size=88.6209183, 25.1828289 visible=true
+     text="ATTENTIVE"
+[40] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.PerksSelectList.Perk [TextButton]
+     pos=155.830063, 490.457886 size=88.6209183, 25.1828289 visible=true
+     text="STOPPING POWER"
+[41] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.PerksSelectList.Perk [TextButton]
+     pos=155.830063, 520.640686 size=88.6209183, 25.1828289 visible=true
+     text="HARDENED CORE"
+[42] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.PerksSelectList.Perk [TextButton]
+     pos=155.830063, 550.823486 size=88.6209183, 25.1828289 visible=true
+     text="SURPLUS"
+[43] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.PerksSelectList.Perk [TextButton]
+     pos=155.830063, 581.006287 size=88.6209183, 25.1828289 visible=true
+     text="COOLHEADED"
+[44] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.PerksSelectList.Perk [TextButton]
+     pos=155.830063, 611.189087 size=88.6209183, 25.1828289 visible=true
+     text="BERSERKER"
+[45] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.ShopMenu.PerksSelectList.Perk [TextButton]
+     pos=155.830063, 641.371887 size=88.6209183, 25.1828289 visible=true
+     text="UPARMORED"
+[46] Players.renrenhu6.PlayerGui.CustomEquipmentShopUI.Modal [TextButton]
+     pos=0, -58 size=0, 0 visible=true
+     text=" "
+[47] Players.renrenhu6.PlayerGui.MobileUI.MobileButtons.ReloadButton [ImageButton]
+     pos=664.980835, 138.757629 size=52.0992012, 52.1999969 visible=true
+     image=http://www.roblox.com/asset/?id=6256840888
+[48] Players.renrenhu6.PlayerGui.MobileUI.MobileButtons.AimButton [ImageButton]
+     pos=673.208923, 86 size=32.9511223, 33.1199989 visible=true
+     image=http://www.roblox.com/asset/?id=6256840888
+[49] Players.renrenhu6.PlayerGui.MobileUI.MobileButtons.FireButton [ImageButton]
+     pos=568.640015, 122 size=72, 72 visible=false
+     image=http://www.roblox.com/asset/?id=6256840888
+[50] Players.renrenhu6.PlayerGui.MobileUI.MobileButtons.CrouchButton [ImageButton]
+     pos=588.540833, 212 size=52.0992012, 52.1999969 visible=true
+     image=http://www.roblox.com/asset/?id=6256840888
+[51] Players.renrenhu6.PlayerGui.MobileUI.MobileButtons.SprintButton [ImageButton]
+     pos=515.639954, 212 size=52.1999969, 52.1999969 visible=true
+     image=http://www.roblox.com/asset/?id=6256840888
+[52] Players.renrenhu6.PlayerGui.MobileUI.MobileButtons.AutofireToggleButton [ImageButton]
+     pos=673.208923, 50.0000076 size=32.9511223, 33.1199989 visible=true
+     image=http://www.roblox.com/asset/?id=6256840888
+[53] Players.renrenhu6.PlayerGui.MobileUI.MobileButtons.BayonetButton [ImageButton]
+     pos=612, 75.1999969 size=43.2000008, 43.2000008 visible=false
+     image=http://www.roblox.com/asset/?id=6256840888
+[54] Players.renrenhu6.PlayerGui.EquipmentShopUI.ShopMenu.EquipmentSelectList.Item [TextButton]
+     pos=155.830063, 7.53259277 size=88.6209183, 25.1828289 visible=true
+     text="GRENADE"
+[55] Players.renrenhu6.PlayerGui.EquipmentShopUI.ShopMenu.EquipmentSelectList.Item [TextButton]
+     pos=155.830063, 37.7154236 size=88.6209183, 25.1828289 visible=true
+     text="WIRE CUTTERS"
+[56] Players.renrenhu6.PlayerGui.EquipmentShopUI.ShopMenu.EquipmentSelectList.Item [TextButton]
+     pos=155.830063, 67.8982544 size=88.6209183, 25.1828289 visible=true
+     text="SMOKE GRENADE"
+[57] Players.renrenhu6.PlayerGui.EquipmentShopUI.ShopMenu.EquipmentSelectList.Item [TextButton]
+     pos=155.830063, 98.0810852 size=88.6209183, 25.1828289 visible=true
+     text="TRENCH SHIELD"
+[58] Players.renrenhu6.PlayerGui.EquipmentShopUI.ShopMenu.EquipmentSelectList.Item [TextButton]
+     pos=155.830063, 128.263916 size=88.6209183, 25.1828289 visible=true
+     text="SPARKBOMB"
+[59] Players.renrenhu6.PlayerGui.EquipmentShopUI.ShopMenu.EquipmentSelectList.Item [TextButton]
+     pos=155.830063, 158.446732 size=88.6209183, 25.1828289 visible=true
+     text="TRIPWIRE BOMB"
+[60] Players.renrenhu6.PlayerGui.EquipmentShopUI.ShopMenu.EquipmentSelectList.Item [TextButton]
+     pos=155.830063, 188.629562 size=88.6209183, 25.1828289 visible=true
+     text="DYNAMITE"
+[61] Players.renrenhu6.PlayerGui.EquipmentShopUI.ShopMenu.ShopButtonManager.ItemTemplate [TextButton]
+     pos=-36, -58 size=0, 0 visible=true
+     text="WEAPON"
+[62] Players.renrenhu6.PlayerGui.EquipmentShopUI.ShopMenu.ItemInfo.PurchaseButton [TextButton]
+     pos=253.967346, 199.265503 size=89.2156906, 28.6168518 visible=true
+     text="PURCHASE"
+[63] Players.renrenhu6.PlayerGui.EquipmentShopUI.ShopMenu.CloseButton [ImageButton]
+     pos=578.117615, 7.53259277 size=22.8934822, 22.8934822 visible=true
+     image=http://www.roblox.com/asset/?id=5198838744
+[64] Players.renrenhu6.PlayerGui.EquipmentShopUI.Modal [TextButton]
+     pos=0, -58 size=0, 0 visible=true
+     text=" "
+[65] Players.renrenhu6.PlayerGui.TopBar.ToggleMainMenu [ImageButton]
+     pos=200, -54 size=32, 32 visible=true
+     image=rbxassetid://16800635228
+[66] Players.renrenhu6.PlayerGui.TopBar.ButtonManager.PlayerOption [TextButton]
+     pos=-36, -58 size=0, 35 visible=true
+[67] Players.renrenhu6.PlayerGui.TopBar.SettingsMenu.ScrollingFrame.DamageCounterToggle [TextButton]
+     pos=289, 9.5 size=150, 25 visible=true
+     text="DAMAGE COUNTERS"
+[68] Players.renrenhu6.PlayerGui.TopBar.SettingsMenu.ScrollingFrame.KillfeedToggle [TextButton]
+     pos=289, 39.4499969 size=150, 25 visible=true
+     text="KILLFEED"
+[69] Players.renrenhu6.PlayerGui.TopBar.SettingsMenu.ScrollingFrame.SprintToggle [TextButton]
+     pos=289, 99.3500061 size=150, 25 visible=true
+     text="SPRINT TOGGLE"
+[70] Players.renrenhu6.PlayerGui.TopBar.SettingsMenu.ScrollingFrame.TinnitusToggle [TextButton]
+     pos=289, 69.3999939 size=150, 25 visible=true
+     text="TINNITUS"
+[71] Players.renrenhu6.PlayerGui.TopBar.SettingsMenu.Modal [TextButton]
+     pos=264, -5.5 size=0, 0 visible=true
+     text=" "
+[72] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.1notalexander4 [TextButton]
+     pos=244, 9.5 size=240, 35 visible=true
+[73] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.matexd809 [TextButton]
+     pos=244, 46.5 size=240, 35 visible=true
+[74] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.dratlast [TextButton]
+     pos=244, 2414.5 size=240, 35 visible=true
+[75] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.sucoofingball [TextButton]
+     pos=244, 83.5 size=240, 35 visible=true
+[76] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.angelon123xdd [TextButton]
+     pos=244, 120.5 size=240, 35 visible=true
+[77] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.bobmaniscoolpoop [TextButton]
+     pos=244, 2007.5 size=240, 35 visible=true
+[78] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Afoc_8aXD [TextButton]
+     pos=244, 157.5 size=240, 35 visible=true
+[79] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.turtle23874 [TextButton]
+     pos=244, 194.5 size=240, 35 visible=true
+[80] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Cwcoolboy1 [TextButton]
+     pos=244, 2451.5 size=240, 35 visible=true
+[81] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Thiago3a1ioe [TextButton]
+     pos=244, 231.5 size=240, 35 visible=true
+[82] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.xXxPIMBLOxXx [TextButton]
+     pos=244, 268.5 size=240, 35 visible=true
+[83] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.FEARDAFFYBADUSERNAME [TextButton]
+     pos=244, 305.5 size=240, 35 visible=true
+[84] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.ghost751333 [TextButton]
+     pos=244, 342.5 size=240, 35 visible=true
+[85] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.frnxster [TextButton]
+     pos=244, 379.5 size=240, 35 visible=true
+[86] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.JULIO2005e [TextButton]
+     pos=244, 416.5 size=240, 35 visible=true
+[87] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.brandonbarberertioc [TextButton]
+     pos=244, 453.5 size=240, 35 visible=true
+[88] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.traincrash2007 [TextButton]
+     pos=244, 490.5 size=240, 35 visible=true
+[89] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.OWNPLASMA303 [TextButton]
+     pos=244, 527.5 size=240, 35 visible=true
+[90] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.samirch08 [TextButton]
+     pos=244, 564.5 size=240, 35 visible=true
+[91] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.zhaul2016 [TextButton]
+     pos=244, 601.5 size=240, 35 visible=true
+[92] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.gerson8352 [TextButton]
+     pos=244, 638.5 size=240, 35 visible=true
+[93] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.fastcoaster [TextButton]
+     pos=244, 675.5 size=240, 35 visible=true
+[94] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Dustmover112 [TextButton]
+     pos=244, 712.5 size=240, 35 visible=true
+[95] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Raxtusv [TextButton]
+     pos=244, 1896.5 size=240, 35 visible=true
+[96] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.KINGbob01094 [TextButton]
+     pos=244, 2488.5 size=240, 35 visible=true
+[97] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.darthnihilus_66 [TextButton]
+     pos=244, 749.5 size=240, 35 visible=true
+[98] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.potati46980 [TextButton]
+     pos=244, 786.5 size=240, 35 visible=true
+[99] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.COVARACHO78 [TextButton]
+     pos=244, 1859.5 size=240, 35 visible=true
+[100] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.1234_Dregq [TextButton]
+     pos=244, 823.5 size=240, 35 visible=true
+[101] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Iheartspace03 [TextButton]
+     pos=244, 860.5 size=240, 35 visible=true
+[102] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.skeletonbud20113 [TextButton]
+     pos=244, 1711.5 size=240, 35 visible=true
+[103] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.renrenhu6 [TextButton]
+     pos=244, 897.5 size=240, 35 visible=true
+[104] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.dudelegand98 [TextButton]
+     pos=244, 934.5 size=240, 35 visible=true
+[105] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.59goated1 [TextButton]
+     pos=244, 1637.5 size=240, 35 visible=true
+[106] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.borrega247 [TextButton]
+     pos=244, 971.5 size=240, 35 visible=true
+[107] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Sadbooyz13 [TextButton]
+     pos=244, 2229.5 size=240, 35 visible=true
+[108] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.skyguy1451 [TextButton]
+     pos=244, 1822.5 size=240, 35 visible=true
+[109] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.PuroTheGreat21 [TextButton]
+     pos=244, 1008.5 size=240, 35 visible=true
+[110] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Gavinroi24 [TextButton]
+     pos=244, 1045.5 size=240, 35 visible=true
+[111] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Mrs_OfTheLily [TextButton]
+     pos=244, 2081.5 size=240, 35 visible=true
+[112] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Galaxy_noodles123 [TextButton]
+     pos=244, 2192.5 size=240, 35 visible=true
+[113] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Gigachad124664 [TextButton]
+     pos=244, 1082.5 size=240, 35 visible=true
+[114] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Skeletalistic [TextButton]
+     pos=244, 1119.5 size=240, 35 visible=true
+[115] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.tengonovia_248 [TextButton]
+     pos=244, 1156.5 size=240, 35 visible=true
+[116] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.banana_chum7 [TextButton]
+     pos=244, 1674.5 size=240, 35 visible=true
+[117] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.LeaveE18 [TextButton]
+     pos=244, 1933.5 size=240, 35 visible=true
+[118] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.shadownan_2008 [TextButton]
+     pos=244, 1193.5 size=240, 35 visible=true
+[119] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.SScp096101 [TextButton]
+     pos=244, 1748.5 size=240, 35 visible=true
+[120] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.3e3e3yirtjil [TextButton]
+     pos=244, 1230.5 size=240, 35 visible=true
+[121] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Imperial_Italy2 [TextButton]
+     pos=244, 1267.5 size=240, 35 visible=true
+[122] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Batronicboy [TextButton]
+     pos=244, 2044.5 size=240, 35 visible=true
+[123] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.atgamer37 [TextButton]
+     pos=244, 1304.5 size=240, 35 visible=true
+[124] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.ElCapoMessi1812 [TextButton]
+     pos=244, 1341.5 size=240, 35 visible=true
+[125] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Christmas14700 [TextButton]
+     pos=244, 2377.5 size=240, 35 visible=true
+[126] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.xxn00bslayerxxx7 [TextButton]
+     pos=244, 1378.5 size=240, 35 visible=true
+[127] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.dylanspiderss [TextButton]
+     pos=244, 1785.5 size=240, 35 visible=true
+[128] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.BluZombie208 [TextButton]
+     pos=244, 2155.5 size=240, 35 visible=true
+[129] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.memo1117872 [TextButton]
+     pos=244, 1415.5 size=240, 35 visible=true
+[130] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Stanley4510 [TextButton]
+     pos=244, 1452.5 size=240, 35 visible=true
+[131] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.coolcookieboss12345 [TextButton]
+     pos=244, 1489.5 size=240, 35 visible=true
+[132] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.TinyScrub [TextButton]
+     pos=244, 1526.5 size=240, 35 visible=true
+[133] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Veneno818718 [TextButton]
+     pos=244, 1563.5 size=240, 35 visible=true
+[134] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Aarav_Eggo [TextButton]
+     pos=244, 1970.5 size=240, 35 visible=true
+[135] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.DaniloW50 [TextButton]
+     pos=244, 1600.5 size=240, 35 visible=true
+[136] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.hamstermannster [TextButton]
+     pos=244, 2118.5 size=240, 35 visible=true
+[137] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.1234013643E [TextButton]
+     pos=244, 2266.5 size=240, 35 visible=true
+[138] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.ItzMeMr [TextButton]
+     pos=244, 2303.5 size=240, 35 visible=true
+[139] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Sandviper_th3 [TextButton]
+     pos=244, 2340.5 size=240, 35 visible=true
+[140] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.Modal [TextButton]
+     pos=214, -5.5 size=0, 0 visible=true
+     text=" "
+[141] Players.renrenhu6.PlayerGui.TopBar.ControlsMenu.Modal [TextButton]
+     pos=214, -5.5 size=0, 0 visible=true
+     text=" "
+[142] Players.renrenhu6.PlayerGui.TopBar.MainMenu.ScrollingFrame.ManageSettings [TextButton]
+     pos=289, 9.5 size=150, 25 visible=true
+     text="SETTINGS"
+[143] Players.renrenhu6.PlayerGui.TopBar.MainMenu.ScrollingFrame.ShowControls [TextButton]
+     pos=289, 37.0500031 size=150, 25 visible=true
+     text="CONTROLS"
+[144] Players.renrenhu6.PlayerGui.TopBar.MainMenu.ScrollingFrame.ShowVotekickMenu [TextButton]
+     pos=289, 64.6000061 size=150, 25 visible=true
+     text="VOTEKICK"
+[145] Players.renrenhu6.PlayerGui.TopBar.MainMenu.ScrollingFrame.ChangeTeam [TextButton]
+     pos=289, 92.1499939 size=150, 25 visible=true
+     text="SWITCH TEAMS"
+[146] Players.renrenhu6.PlayerGui.TopBar.MainMenu.ScrollingFrame.ServerList [TextButton]
+     pos=289, 119.700012 size=150, 25 visible=true
+     text="SERVER LIST"
+[147] Players.renrenhu6.PlayerGui.TopBar.MainMenu.Modal [TextButton]
+     pos=264, -5.5 size=0, 0 visible=true
+     text=" "
+[148] Players.renrenhu6.PlayerGui.TopBar.ServerBrowserHandler.Template.TextButton [TextButton]
+     pos=-36, -58 size=0, 0 visible=true
+     text=" "
+[149] Players.renrenhu6.PlayerGui.TopBar.ServerMenu.Modal [TextButton]
+     pos=164, -5.5 size=0, 0 visible=true
+     text=" "
+[150] Players.renrenhu6.PlayerGui.TopBar.ServerMenu.RefreshButton [ImageButton]
+     pos=574, -5.5 size=40, 40 visible=true
+     image=http://www.roblox.com/asset/?id=6023565901
+[151] Players.renrenhu6.PlayerGui.SpawnMenuUI.OpenEquipmentShop [ImageButton]
+     pos=50.9599991, 86 size=42.9252777, 42.9252777 visible=false
+     image=http://www.roblox.com/asset/?id=13488848250
+[152] Players.renrenhu6.PlayerGui.SpawnMenuUI.OpenWeaponShop [ImageButton]
+     pos=50.9599991, 32 size=42.9252777, 42.9252777 visible=false
+     image=rbxassetid://17027886019
+[153] Players.renrenhu6.PlayerGui.SpawnMenuUI.ClassSelectionMenu.ClassButtonsFrame.Rifleman.ClickDetector [TextButton]
+     pos=79.2000046, 167 size=72.8000031, 90 visible=true
+     text="Button"
+[154] Players.renrenhu6.PlayerGui.SpawnMenuUI.ClassSelectionMenu.ClassButtonsFrame.Assault.ClickDetector [TextButton]
+     pos=162.000031, 167 size=72.8000031, 90 visible=true
+     text="Button"
+[155] Players.renrenhu6.PlayerGui.SpawnMenuUI.ClassSelectionMenu.ClassButtonsFrame.Grenadier.ClickDetector [TextButton]
+     pos=244.800018, 167 size=72.8000031, 90 visible=true
+     text="Button"
+[156] Players.renrenhu6.PlayerGui.SpawnMenuUI.ClassSelectionMenu.ClassButtonsFrame.Medic.ClickDetector [TextButton]
+     pos=327.600037, 167 size=72.8000031, 90 visible=true
+     text="Button"
+[157] Players.renrenhu6.PlayerGui.SpawnMenuUI.ClassSelectionMenu.ClassButtonsFrame.Flametrooper.ClickDetector [TextButton]
+     pos=182, 167 size=72.8000031, 90 visible=true
+     text="Button"
+[158] Players.renrenhu6.PlayerGui.SpawnMenuUI.ClassSelectionMenu.ClassButtonsFrame.Mortarman.ClickDetector [TextButton]
+     pos=493.200012, 167 size=72.8000031, 90 visible=true
+     text="Button"
+[159] Players.renrenhu6.PlayerGui.SpawnMenuUI.ClassSelectionMenu.ClassButtonsFrame.Officer.ClickDetector [TextButton]
+     pos=410.400024, 167 size=72.8000031, 90 visible=true
+     text="Button"
+[160] Players.renrenhu6.PlayerGui.SpawnMenuUI.ClassSelectionMenu.ClassButtonsFrame.AntiTank.ClickDetector [TextButton]
+     pos=576, 167 size=72.8000031, 90 visible=true
+     text="Button"
+[161] Players.renrenhu6.PlayerGui.SpawnMenuUI.ClassSelectionMenu.ClassButtonsFrame.Sweeper.ClickDetector [TextButton]
+     pos=182, 167 size=72.8000031, 90 visible=true
+     text="Button"
+[162] Players.renrenhu6.PlayerGui.SpawnMenuUI.ClassSelectionMenu.ClassButtonsFrame.Gunner.ClickDetector [TextButton]
+     pos=182, 167 size=72.8000031, 90 visible=true
+     text="Button"
+[163] Players.renrenhu6.PlayerGui.SpawnMenuUI.TeleportMenu.AquilaActual [TextButton]
+     pos=554.702698, 71.6915741 size=28.6168556, 28.6168518 visible=true
+[164] Players.renrenhu6.PlayerGui.SpawnMenuUI.TeleportMenu.Antares [TextButton]
+     pos=144.68045, 71.6915741 size=28.6168556, 28.6168518 visible=true
+[165] Players.renrenhu6.PlayerGui.SpawnMenuUI.TeleportMenu.PointA [TextButton]
+     pos=213.017502, 71.6915741 size=28.6168556, 28.6168518 visible=true
+     text="A"
+[166] Players.renrenhu6.PlayerGui.SpawnMenuUI.TeleportMenu.PointB [TextButton]
+     pos=281.354523, 71.6915741 size=28.6168556, 28.6168518 visible=true
+     text="B"
+[167] Players.renrenhu6.PlayerGui.SpawnMenuUI.TeleportMenu.PointC [TextButton]
+     pos=349.691559, 71.6915741 size=28.6168556, 28.6168518 visible=true
+     text="C"
+[168] Players.renrenhu6.PlayerGui.SpawnMenuUI.TeleportMenu.PointD [TextButton]
+     pos=418.028625, 71.6915741 size=28.6168556, 28.6168518 visible=true
+     text="D"
+[169] Players.renrenhu6.PlayerGui.SpawnMenuUI.TeleportMenu.PointE [TextButton]
+     pos=486.365662, 71.6915741 size=28.6168556, 28.6168518 visible=true
+     text="E"
+[170] Players.renrenhu6.PlayerGui.CustomInventory.Backpack.OpenInventory [ImageButton]
+     pos=352, 197 size=24, 24 visible=false
+     image=rbxasset://textures/ui/Backpack/ScrollUpArrow.png
+[171] Players.renrenhu6.PlayerGui.CustomInventory.Backpack.Inventory.InventoryModal [ImageButton]
+     pos=19, 223 size=677, 336 visible=true
+[172] Players.renrenhu6.PlayerGui.CustomInventory.Backpack.Inventory.InventoryModal.Search.X [TextButton]
+     pos=481, 203 size=20, 20 visible=false
+[173] Players.renrenhu6.PlayerGui.CustomInventory.Backpack.Inventory.InventoryModal.Search._MODAL [TextButton]
+     pos=481, 233 size=20, 20 visible=true
+[174] Players.renrenhu6.PlayerGui.CustomInventory.Backpack.Hotbar.1 [TextButton]
+     pos=301, 235 size=60, 60 visible=true
+[175] Players.renrenhu6.PlayerGui.CustomInventory.Backpack.Hotbar.2 [TextButton]
+     pos=368, 235 size=60, 60 visible=true
+[176] Players.renrenhu6.PlayerGui.CustomInventory.Backpack.Hotbar.3 [TextButton]
+     pos=31, 233 size=60, 60 visible=false
+[177] Players.renrenhu6.PlayerGui.CustomInventory.Backpack.Hotbar.4 [TextButton]
+     pos=31, 233 size=60, 60 visible=false
+[178] Players.renrenhu6.PlayerGui.CustomInventory.Backpack.Hotbar.5 [TextButton]
+     pos=31, 233 size=60, 60 visible=false
+[179] Players.renrenhu6.PlayerGui.CustomInventory.Backpack.Hotbar.6 [TextButton]
+     pos=31, 233 size=60, 60 visible=false
+[180] Players.renrenhu6.PlayerGui.CustomInventory.Backpack.Hotbar.7 [TextButton]
+     pos=31, 233 size=60, 60 visible=false
+[181] Players.renrenhu6.PlayerGui.CustomInventory.Backpack.Hotbar.8 [TextButton]
+     pos=31, 233 size=60, 60 visible=false
+[182] Players.renrenhu6.PlayerGui.CustomInventory.Backpack.Hotbar.9 [TextButton]
+     pos=31, 233 size=60, 60 visible=false
+[183] Players.renrenhu6.PlayerGui.CustomInventory.Backpack.Hotbar.10 [TextButton]
+     pos=31, 233 size=60, 60 visible=false
+[184] Players.renrenhu6.PlayerGui.TREK_LB.Frame.Frame.TextButton [TextButton]
+     pos=229, 14 size=18, 18 visible=true
+     text="X"
+[185] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.TextButton [TextButton]
+     pos=695, -56 size=20, 20 visible=true
+     text="+"
+[186] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.TextButton [TextButton]
+     pos=482, -34 size=76, 20 visible=true
+     text="Combat"
+[187] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.TextButton [TextButton]
+     pos=560, -34 size=76, 20 visible=true
+     text="AutoKill"
+[188] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.TextButton [TextButton]
+     pos=638, -34 size=76, 20 visible=true
+     text="Aim"
+[189] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.TextButton [TextButton]
+     pos=482, -12 size=76, 20 visible=true
+     text="ESP"
+[190] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.TextButton [TextButton]
+     pos=560, -12 size=76, 20 visible=true
+     text="Medic"
+[191] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.TextButton [TextButton]
+     pos=638, -12 size=76, 20 visible=true
+     text="Display"
+[192] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.TextButton [TextButton]
+     pos=482, -63 size=234, 28 visible=true
+     text="No Recoil  [ON]"
+[193] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.TextButton [TextButton]
+     pos=482, -32 size=234, 28 visible=true
+     text="No Spread  [ON]"
+[194] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.TextButton [TextButton]
+     pos=482, -1 size=234, 28 visible=true
+     text="No Cooldown  [OFF]"
+[195] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.TextButton [TextButton]
+     pos=482, 30 size=234, 28 visible=true
+     text="No Reload  [OFF]"
+[196] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.TextButton [TextButton]
+     pos=482, 61 size=234, 28 visible=true
+     text="One Hit Kill  [OFF]"
+[197] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.TextButton [TextButton]
+     pos=482, 111 size=234, 28 visible=true
+     text="Auto Damage Tank  [OFF]"
+[198] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.Frame.TextButton [TextButton]
+     pos=572, 144 size=30, 28 visible=true
+     text="−"
+[199] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.Frame.TextButton [TextButton]
+     pos=680, 144 size=30, 28 visible=true
+     text="+"
+[200] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.Frame.TextButton [TextButton]
+     pos=572, 179 size=30, 28 visible=true
+     text="−"
+[201] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.Frame.TextButton [TextButton]
+     pos=680, 179 size=30, 28 visible=true
+     text="+"
+[202] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.Frame.TextButton [TextButton]
+     pos=572, 214 size=30, 28 visible=true
+     text="−"
+[203] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.Frame.TextButton [TextButton]
+     pos=680, 214 size=30, 28 visible=true
+     text="+"
+[204] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.TextButton [TextButton]
+     pos=482, 266 size=234, 28 visible=true
+     text="Reapply Mods"
+[205] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.TextButton [TextButton]
+     pos=482, 31 size=234, 28 visible=true
+     text="Auto Kill  [OFF]"
+[206] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.TextButton [TextButton]
+     pos=482, 62 size=234, 28 visible=true
+     text="Sekarat Mode  [OFF]"
+[207] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.Frame.TextButton [TextButton]
+     pos=482, 112 size=115, 28 visible=true
+     text="Nearest"
+[208] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.Frame.TextButton [TextButton]
+     pos=601, 112 size=115, 28 visible=true
+     text="Queue"
+[209] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.Frame.TextButton [TextButton]
+     pos=572, 164 size=30, 28 visible=true
+     text="−"
+[210] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.Frame.TextButton [TextButton]
+     pos=680, 164 size=30, 28 visible=true
+     text="+"
+[211] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.Frame.TextButton [TextButton]
+     pos=572, 199 size=30, 28 visible=true
+     text="−"
+[212] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.Frame.TextButton [TextButton]
+     pos=680, 199 size=30, 28 visible=true
+     text="+"
+[213] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.Frame.TextButton [TextButton]
+     pos=572, 234 size=30, 28 visible=true
+     text="−"
+[214] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.Frame.TextButton [TextButton]
+     pos=680, 234 size=30, 28 visible=true
+     text="+"
+[215] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.Frame.TextButton [TextButton]
+     pos=572, 269 size=30, 28 visible=true
+     text="−"
+[216] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.Frame.TextButton [TextButton]
+     pos=680, 269 size=30, 28 visible=true
+     text="+"
+[217] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.Frame.TextButton [TextButton]
+     pos=482, 321 size=115, 28 visible=true
+     text="Reset Queue"
+[218] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.Frame.TextButton [TextButton]
+     pos=601, 321 size=115, 28 visible=true
+     text="Clear Blacklist"
+[219] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.TextButton [TextButton]
+     pos=482, 12 size=234, 28 visible=true
+     text="Auto Aim  [OFF]"
+[220] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.TextButton [TextButton]
+     pos=482, 43 size=234, 28 visible=true
+     text="FOV Circle  [OFF]"
+[221] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.Frame.TextButton [TextButton]
+     pos=584.960022, 76 size=131.039993, 26 visible=true
+     text="Smooth"
+[222] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.Frame.TextButton [TextButton]
+     pos=584.960022, 109 size=131.039993, 26 visible=true
+     text="Nearest"
+[223] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.Frame.TextButton [TextButton]
+     pos=584.960022, 142 size=131.039993, 26 visible=true
+     text="Head"
+[224] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.Frame.TextButton [TextButton]
+     pos=572, 194 size=30, 28 visible=true
+     text="−"
+[225] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.Frame.TextButton [TextButton]
+     pos=680, 194 size=30, 28 visible=true
+     text="+"
+[226] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.Frame.TextButton [TextButton]
+     pos=572, 229 size=30, 28 visible=true
+     text="−"
+[227] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.Frame.TextButton [TextButton]
+     pos=680, 229 size=30, 28 visible=true
+     text="+"
+[228] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.Frame.TextButton [TextButton]
+     pos=572, 264 size=30, 28 visible=true
+     text="−"
+[229] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.Frame.TextButton [TextButton]
+     pos=680, 264 size=30, 28 visible=true
+     text="+"
+[230] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.TextButton [TextButton]
+     pos=482, 31 size=234, 28 visible=true
+     text="Player ESP  [ON]"
+[231] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.TextButton [TextButton]
+     pos=482, 62 size=234, 28 visible=true
+     text="Show Names  [ON]"
+[232] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.TextButton [TextButton]
+     pos=482, 93 size=234, 28 visible=true
+     text="Show HP  [ON]"
+[233] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.TextButton [TextButton]
+     pos=482, 124 size=234, 28 visible=true
+     text="Show Distance  [ON]"
+[234] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.TextButton [TextButton]
+     pos=482, 174 size=234, 28 visible=true
+     text="Tank/Armor ESP  [OFF]"
+[235] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.TextButton [TextButton]
+     pos=482, 205 size=234, 28 visible=true
+     text="Armor Distance  [OFF]"
+[236] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.TextButton [TextButton]
+     pos=482, 97 size=234, 28 visible=true
+     text="Medic Enabled  [OFF]"
+[237] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.Frame.TextButton [TextButton]
+     pos=572, 149 size=30, 28 visible=true
+     text="−"
+[238] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.Frame.TextButton [TextButton]
+     pos=680, 149 size=30, 28 visible=true
+     text="+"
+[239] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.Frame.TextButton [TextButton]
+     pos=572, 184 size=30, 28 visible=true
+     text="−"
+[240] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.Frame.TextButton [TextButton]
+     pos=680, 184 size=30, 28 visible=true
+     text="+"
+[241] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.Frame.TextButton [TextButton]
+     pos=572, 219 size=30, 28 visible=true
+     text="−"
+[242] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.Frame.TextButton [TextButton]
+     pos=680, 219 size=30, 28 visible=true
+     text="+"
+[243] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.Frame.TextButton [TextButton]
+     pos=584.960022, 254 size=131.039993, 26 visible=true
+     text="Below"
+[244] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.TextButton [TextButton]
+     pos=482, 285 size=234, 28 visible=true
+     text="Humanize  [ON]"
+[245] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.TextButton [TextButton]
+     pos=482, 31 size=234, 28 visible=true
+     text="Leaderboard  [OFF]"
+[246] Players.renrenhu6.PlayerGui.TREK_Combined.Frame.Frame.ScrollingFrame.TextButton [TextButton]
+     pos=482, 81 size=234, 28 visible=true
+     text="Copy Error Log"
+[247] Players.renrenhu6.PlayerGui.TREK_Combined.TextButton [TextButton]
+     pos=682, 105 size=34, 34 visible=true
+     text="T"
+[248] Players.renrenhu6.PlayerGui.TREKHud.Cursor.Cursor.ImageButton [ImageButton]
+     pos=395.601257, 98.0295868 size=0, 0 visible=true
+     image=rbxassetid://5784632465
+[249] Players.renrenhu6.PlayerGui.TREKHud.Cursor.Cursor.ImageButton [ImageButton]
+     pos=395.601257, 98.0295868 size=0, 0 visible=true
+     image=rbxassetid://4127970660
+[250] Players.renrenhu6.PlayerGui.TREKHud.Cursor.Cursor.ImageButton [ImageButton]
+     pos=395.601257, 98.0295868 size=0, 0 visible=true
+     image=rbxassetid://4586653091
+[251] Players.renrenhu6.PlayerGui.TREKHud.Cursor.Cursor.ImageButton [ImageButton]
+     pos=395.601257, 98.0295868 size=0, 0 visible=true
+     image=rbxassetid://4127964114
+[252] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.SchoolieC [TextButton]
+     pos=244, 2451.5 size=240, 35 visible=true
+[253] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.WesternEastNorth [TextButton]
+     pos=244, 2451.5 size=240, 35 visible=true
+[254] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.sammy868792 [TextButton]
+     pos=244, 2488.5 size=240, 35 visible=true
+[255] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.anuelnoob [TextButton]
+     pos=244, 2525.5 size=240, 35 visible=true
+[256] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.Ahimigatito [TextButton]
+     pos=244, 2562.5 size=240, 35 visible=true
+[257] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.TYTTRkl [TextButton]
+     pos=244, 2599.5 size=240, 35 visible=true
+[258] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.1ubybyggzk [TextButton]
+     pos=244, 2599.5 size=240, 35 visible=true
+[259] Players.renrenhu6.PlayerGui.TopBar.VotekickMenu.ScrollingFrame.roblox_user_1416249619 [TextButton]
+     pos=244, 2636.5 size=240, 35 visible=true
+
+## FireServer/InvokeServer — 11 call
+  Format: [n] Method Remote(args) — arg tipe+isi
+[1] FireServer Workspace()
+[2] InvokeServer Workspace()
+[3] FireServer ReplicatedStorage.56a05903-8631-4bc9-bc8c-74fc656fa25c(table[5], "!^\000^B\"]H[", table[2], "373ddc92-da88-4dd0-bc77-d44353")
+[4] FireServer Workspace()
+[5] InvokeServer Workspace()
+[6] FireServer Workspace()
+[7] InvokeServer Workspace()
+[8] FireServer Workspace()
+[9] InvokeServer Workspace()
+[10] FireServer Workspace()
+[11] InvokeServer Workspace()
+
+  💡 Analisis: argumen Vector3/CFrame = posisi/arah, string = nama aksi/item.
+==============================================================
+
+============================================================
+GAME MECHANICS ANALYSIS
+============================================================
+Game      : CENTAURA
+PlaceId   : 8735521924
+JobId     : 7ac20f01-f0d2-4255-89dc-c8f7a0177597
+Player    : renrenhu6
+UserId    : 11938387198
+Generated : 2026-11-25 08:36:05
+Scripts   : 1192 (readable=0 empty=1192 obf=0 bcode=0 trunc=0)
+
+============================================================
+## 1. API SURFACE
+============================================================
+
+
+─── Total: 0 remote calls ───
+
+============================================================
+## 2. CLIENT HANDLERS
+============================================================
+
+
+─── Total: 0 handler ───
+
+============================================================
+## 3. MODULES
+============================================================
+
+─── Total: 0 modules ───
+
+============================================================
+## 4. CONSTANTS
+============================================================
+
+=== VALUES ===
+[BoolValue] ReplicatedStorage.GAME_FirstLoad = false
+[ObjectValue] ReplicatedStorage.TREKStorage.Medkit.Team = nil
+[ObjectValue] ReplicatedStorage.TREKStorage.Medkit.Config = nil
+[NumberValue] ReplicatedStorage.LOCAL_CameraAngle = 90
+[StringValue] ReplicatedStorage.LOCAL_SelectedClass = "AntiTank"
+[BoolValue] ReplicatedStorage.CUSTOM_PointGainDisabled = false
+[BoolValue] ReplicatedStorage.CUSTOM_ArtilleryDisabled = false
+[BoolValue] ReplicatedStorage.CUSTOM_VehiclesDisabled = false
+[BoolValue] ReplicatedStorage.LOCAL_PlayerBackpackEnabled = true
+[BoolValue] ReplicatedStorage.AutoTeamBalance = true
+[BoolValue] ReplicatedStorage.LOCAL_InStartMenu = false
+[BoolValue] ReplicatedStorage.CUSTOM_ManualMatchStart = false
+[BoolValue] ReplicatedStorage.CUSTOM_MapRotationDisabled = false
+[BoolValue] ReplicatedStorage.GAME_MapLoaded = false
+[BoolValue] ReplicatedStorage.BoundariesEnabled = true
+[StringValue] ReplicatedStorage.CurrentMap = "AquilaOutskirts"
+[IntValue] ReplicatedStorage.CurrentYear = 1914
+[StringValue] ReplicatedStorage.Status = "0"
+[BoolValue] ReplicatedStorage.InTransition = false
+[StringValue] ReplicatedStorage.Victor = "ANTARES"
+[BoolValue] ReplicatedStorage.MapLoaded = true
+[ObjectValue] ReplicatedStorage.Team1 = Teams.Antares
+[ObjectValue] ReplicatedStorage.Team2 = Teams.Aquila
+[BoolValue] ReplicatedStorage.InMatch = true
+[BoolValue] ReplicatedStorage.Intermission = false
+[IntValue] ReplicatedStorage.RoundClock = 1562
+[IntValue] ReplicatedStorage.VotekickValues.1notalexander4 = 0
+[IntValue] ReplicatedStorage.VotekickValues.matexd809 = 0
+[IntValue] ReplicatedStorage.VotekickValues.dratlast = 0
+[IntValue] ReplicatedStorage.VotekickValues.Ahimigatito = 0
+[IntValue] ReplicatedStorage.VotekickValues.angelon123xdd = 0
+[IntValue] ReplicatedStorage.VotekickValues.bobmaniscoolpoop = 0
+[IntValue] ReplicatedStorage.VotekickValues.Afoc_8aXD = 0
+[IntValue] ReplicatedStorage.VotekickValues.turtle23874 = 0
+[IntValue] ReplicatedStorage.VotekickValues.Cwcoolboy1 = 0
+[IntValue] ReplicatedStorage.VotekickValues.Thiago3a1ioe = 0
+[IntValue] ReplicatedStorage.VotekickValues.xXxPIMBLOxXx = 0
+[IntValue] ReplicatedStorage.VotekickValues.FEARDAFFYBADUSERNAME = 0
+[IntValue] ReplicatedStorage.VotekickValues.TYTTRkl = 0
+[IntValue] ReplicatedStorage.VotekickValues.frnxster = 0
+[IntValue] ReplicatedStorage.VotekickValues.JULIO2005e = 0
+[IntValue] ReplicatedStorage.VotekickValues.brandonbarberertioc = 0
+[IntValue] ReplicatedStorage.VotekickValues.traincrash2007 = 0
+[IntValue] ReplicatedStorage.VotekickValues.TideBraker = 0
+[IntValue] ReplicatedStorage.VotekickValues.samirch08 = 0
+[IntValue] ReplicatedStorage.VotekickValues.zhaul2016 = 0
+[IntValue] ReplicatedStorage.VotekickValues.gerson8352 = 0
+[IntValue] ReplicatedStorage.VotekickValues.Robloxremix14 = 0
+[IntValue] ReplicatedStorage.VotekickValues.Dustmover112 = 0
+[IntValue] ReplicatedStorage.VotekickValues.Raxtusv = 0
+[IntValue] ReplicatedStorage.VotekickValues.KINGbob01094 = 0
+[IntValue] ReplicatedStorage.VotekickValues.darthnihilus_66 = 0
+[IntValue] ReplicatedStorage.VotekickValues.1ubybyggzk = 0
+[IntValue] ReplicatedStorage.VotekickValues.COVARACHO78 = 0
+[IntValue] ReplicatedStorage.VotekickValues.1234_Dregq = 0
+[IntValue] ReplicatedStorage.VotekickValues.Iheartspace03 = 0
+[IntValue] ReplicatedStorage.VotekickValues.skeletonbud20113 = 0
+[IntValue] ReplicatedStorage.VotekickValues.renrenhu6 = 0
+[IntValue] ReplicatedStorage.VotekickValues.dudelegand98 = 0
+[IntValue] ReplicatedStorage.VotekickValues.59goated1 = 0
+[IntValue] ReplicatedStorage.VotekickValues.borrega247 = 0
+[IntValue] ReplicatedStorage.VotekickValues.Sadbooyz13 = 0
+[IntValue] ReplicatedStorage.VotekickValues.skyguy1451 = 0
+[IntValue] ReplicatedStorage.VotekickValues.PuroTheGreat21 = 0
+[IntValue] ReplicatedStorage.VotekickValues.Gavinroi24 = 0
+[IntValue] ReplicatedStorage.VotekickValues.Mrs_OfTheLily = 0
+[IntValue] ReplicatedStorage.VotekickValues.Galaxy_noodles123 = 0
+[IntValue] ReplicatedStorage.VotekickValues.Sandviper_th3 = 0
+[IntValue] ReplicatedStorage.VotekickValues.Skeletalistic = 0
+[IntValue] ReplicatedStorage.VotekickValues.tengonovia_248 = 0
+[IntValue] ReplicatedStorage.VotekickValues.banana_chum7 = 0
+[IntValue] ReplicatedStorage.VotekickValues.anuelnoob = 0
+[IntValue] ReplicatedStorage.VotekickValues.shadownan_2008 = 0
+[IntValue] ReplicatedStorage.VotekickValues.sammy868792 = 0
+[IntValue] ReplicatedStorage.VotekickValues.3e3e3yirtjil = 0
+[IntValue] ReplicatedStorage.VotekickValues.Imperial_Italy2 = 0
+[IntValue] ReplicatedStorage.VotekickValues.roblox_user_1416249619 = 0
+[IntValue] ReplicatedStorage.VotekickValues.atgamer37 = 0
+[IntValue] ReplicatedStorage.VotekickValues.ElCapoMessi1812 = 0
+[IntValue] ReplicatedStorage.VotekickValues.josevar7987 = 0
+[IntValue] ReplicatedStorage.VotekickValues.xxn00bslayerxxx7 = 0
+[IntValue] ReplicatedStorage.VotekickValues.dylanspiderss = 0
+[IntValue] ReplicatedStorage.VotekickValues.BluZombie208 = 0
+[IntValue] ReplicatedStorage.VotekickValues.memo1117872 = 0
+[IntValue] ReplicatedStorage.VotekickValues.Stanley4510 = 0
+[IntValue] ReplicatedStorage.VotekickValues.coolcookieboss12345 = 0
+[IntValue] ReplicatedStorage.VotekickValues.TinyScrub = 0
+[IntValue] ReplicatedStorage.VotekickValues.Veneno818718 = 0
+[IntValue] ReplicatedStorage.VotekickValues.Aarav_Eggo = 0
+[IntValue] ReplicatedStorage.VotekickValues.DaniloW50 = 0
+[IntValue] ReplicatedStorage.VotekickValues.hamstermannster = 0
+[IntValue] ReplicatedStorage.VotekickValues.Cocaferia0 = 0
+[IntValue] ReplicatedStorage.VotekickValues.WesternEastNorth = 0
+[IntValue] ReplicatedStorage.Deaths = 1247
+[ObjectValue] ReplicatedStorage.ZonePlusReference = ReplicatedStorage.Zone
+[BoolValue] ReplicatedStorage.ZonePlusReference.Client = true
+[IntValue] Workspace.Map.Map.TeamClasses.Aquila.Medic = 0
+[IntValue] Workspace.Map.Map.TeamClasses.Aquila.Grenadier = 0
+[IntValue] Workspace.Map.Map.TeamClasses.Aquila.Rifleman = 0
+[IntValue] Workspace.Map.Map.TeamClasses.Aquila.Assault = 0
+[IntValue] Workspace.Map.Map.TeamClasses.Aquila.Officer = 0
+[IntValue] Workspace.Map.Map.TeamClasses.Aquila.Mortarman = 0
+[IntValue] Workspace.Map.Map.TeamClasses.Aquila.AntiTank = 0
+[IntValue] Workspace.Map.Map.TeamClasses.Antares.Medic = 0
+[IntValue] Workspace.Map.Map.TeamClasses.Antares.Grenadier = 0
+[IntValue] Workspace.Map.Map.TeamClasses.Antares.Rifleman = 0
+[IntValue] Workspace.Map.Map.TeamClasses.Antares.Assault = 0
+[IntValue] Workspace.Map.Map.TeamClasses.Antares.Officer = 0
+[IntValue] Workspace.Map.Map.TeamClasses.Antares.Mortarman = 0
+[IntValue] Workspace.Map.Map.TeamClasses.Antares.AntiTank = 0
+[StringValue] Workspace.Map.Map.PointStatuses.PointDStatus = "Aquila"
+[StringValue] Workspace.Map.Map.PointStatuses.PointEStatus = "Aquila"
+[StringValue] Workspace.Map.Map.PointStatuses.PointCStatus = "Contested"
+[StringValue] Workspace.Map.Map.PointStatuses.PointAStatus = "Antares"
+[StringValue] Workspace.Map.Map.PointStatuses.PointBStatus = "Antares"
+[IntValue] Workspace.Map.Map.Objective.AntaresVehiclesLeft = 12
+[BoolValue] Workspace.Map.Map.AquilaVehicle1Deployed = true
+[BoolValue] Workspace.Map.Map.AquilaVehicle2Deployed = true
+[BoolValue] Workspace.Map.Map.Uniforms_CivilGuard = true
+[BoolValue] Workspace.Map.Map.AntaresVehicle2Deployed = true
+[BoolValue] Workspace.Map.Map.Berm1Cleared = true
+[BoolValue] Workspace.Map.Map.AntaresVehicle1Deployed = true
+[BoolValue] Workspace.Map.Map.Vehicles.AquilaTank1914.Vehicle.Aquila = true
+[BoolValue] Workspace.Map.Map.Vehicles.AquilaTank1914.Vehicle.Armored = true
+[IntValue] Workspace.Map.Map.Vehicles.AquilaTank1914.Vehicle.VehicleNumber = 1
+[BoolValue] Workspace.Map.Map.Vehicles.AntaresFemaleTank1912.Vehicle.Antares = true
+[BoolValue] Workspace.Map.Map.Vehicles.AntaresFemaleTank1912.Vehicle.Armored = true
+[IntValue] Workspace.Map.Map.Vehicles.AntaresFemaleTank1912.Vehicle.VehicleNumber = 2
+[BoolValue] Workspace.Map.Map.Vehicles.AntaresFemaleTank1912.Vehicle.Antares = true
+[BoolValue] Workspace.Map.Map.Vehicles.AntaresFemaleTank1912.Vehicle.Armored = true
+[IntValue] Workspace.Map.Map.Vehicles.AntaresFemaleTank1912.Vehicle.VehicleNumber = 1
+[BoolValue] Workspace.Map.Map.Vehicles.AquilaTank1914.Vehicle.Aquila = true
+[BoolValue] Workspace.Map.Map.Vehicles.AquilaTank1914.Vehicle.Armored = true
+[IntValue] Workspace.Map.Map.Vehicles.AquilaTank1914.Vehicle.VehicleNumber = 2
+[BoolValue] Workspace.Map.Map.Vehicles.AntaresTank1912.Vehicle.Antares = true
+[BoolValue] Workspace.Map.Map.Vehicles.AntaresTank1912.Vehicle.Armored = true
+[IntValue] Workspace.Map.Map.Vehicles.AntaresTank1912.Vehicle.VehicleNumber = 2
+[BoolValue] Workspace.Map.Map.Ditch1Filled = true
+[BoolValue] Workspace.Map.Map.Ditch2Filled = true
+[BoolValue] Workspace.Map.Map.Berm2Cleared = true
+[StringValue] Workspace.JOB_ID = "7ac20f01-f0d2-4255-89dc-c8f7a0177597"
+[StringValue] Workspace.PLACE_VERSION = "479"
+[ObjectValue] Workspace.VehicleWeaponTargets.Vehicle = Workspace.Map.Map.Vehicles.AquilaTank1914.Vehicle
+[ObjectValue] Workspace.VehicleWeaponTargets.Vehicle = Workspace.Map.Map.Vehicles.AntaresFemaleTank1912.Vehicle
+[ObjectValue] Workspace.VehicleWeaponTargets.Vehicle = Workspace.Map.Map.Vehicles.AquilaTank1914.Vehicle
+[ObjectValue] Workspace.VehicleWeaponTargets.Vehicle = Workspace.Map.Map.Vehicles.AntaresTank1912.Vehicle
+[ObjectValue] Workspace.Grenades.Grenade.Creator = Players.1notalexander4
+[ObjectValue] Workspace.Grenades.Grenade.Creator = Players.1notalexander4
+[ObjectValue] Workspace.Grenades.Grenade.Creator = Players.matexd809
+[StringValue] Workspace.Robloxremix14.Animate.idle = ""
+[NumberValue] Workspace.Robloxremix14.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.Robloxremix14.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.Robloxremix14.Animate.walk = ""
+[StringValue] Workspace.Robloxremix14.Animate.run = ""
+[StringValue] Workspace.Robloxremix14.Animate.jump = ""
+[StringValue] Workspace.Robloxremix14.Animate.climb = ""
+[StringValue] Workspace.Robloxremix14.Animate.toolnone = ""
+[StringValue] Workspace.Robloxremix14.Animate.fall = ""
+[StringValue] Workspace.Robloxremix14.Animate.sit = ""
+[NumberValue] Workspace.Robloxremix14.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.Robloxremix14.DamageResistanceMultiplier = 100
+[StringValue] Workspace.Sandviper_th3.Animate.idle = ""
+[NumberValue] Workspace.Sandviper_th3.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.Sandviper_th3.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.Sandviper_th3.Animate.walk = ""
+[StringValue] Workspace.Sandviper_th3.Animate.run = ""
+[StringValue] Workspace.Sandviper_th3.Animate.jump = ""
+[StringValue] Workspace.Sandviper_th3.Animate.climb = ""
+[StringValue] Workspace.Sandviper_th3.Animate.toolnone = ""
+[StringValue] Workspace.Sandviper_th3.Animate.fall = ""
+[StringValue] Workspace.Sandviper_th3.Animate.sit = ""
+[NumberValue] Workspace.Sandviper_th3.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.Sandviper_th3.DamageResistanceMultiplier = 100
+[StringValue] Workspace.Sandviper_th3.ClassGiven = "Rifleman"
+[IntValue] Workspace.Sandviper_th3.COOLHEADED = 0
+[StringValue] Workspace.Sandviper_th3.CharacterHair.Handle.AvatarPartScaleType = "Classic"
+[ObjectValue] Workspace.Sandviper_th3.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.Sandviper_th3.CharacterHair.Handle
+[BoolValue] Workspace.Sandviper_th3.ALBUS-GRAHAM NO. 4.CustomAnims = false
+[StringValue] Workspace.JULIO2005e.Animate.idle = ""
+[NumberValue] Workspace.JULIO2005e.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.JULIO2005e.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.JULIO2005e.Animate.walk = ""
+[StringValue] Workspace.JULIO2005e.Animate.run = ""
+[StringValue] Workspace.JULIO2005e.Animate.jump = ""
+[StringValue] Workspace.JULIO2005e.Animate.climb = ""
+[StringValue] Workspace.JULIO2005e.Animate.toolnone = ""
+[StringValue] Workspace.JULIO2005e.Animate.fall = ""
+[StringValue] Workspace.JULIO2005e.Animate.sit = ""
+[NumberValue] Workspace.JULIO2005e.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.JULIO2005e.DamageResistanceMultiplier = 100
+[StringValue] Workspace.JULIO2005e.ClassGiven = "Rifleman"
+[BoolValue] Workspace.JULIO2005e.M99 RIFLE BAYONET.CustomAnims = false
+[StringValue] Workspace.hamstermannster.Animate.idle = ""
+[NumberValue] Workspace.hamstermannster.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.hamstermannster.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.hamstermannster.Animate.walk = ""
+[StringValue] Workspace.hamstermannster.Animate.run = ""
+[StringValue] Workspace.hamstermannster.Animate.jump = ""
+[StringValue] Workspace.hamstermannster.Animate.climb = ""
+[StringValue] Workspace.hamstermannster.Animate.toolnone = ""
+[StringValue] Workspace.hamstermannster.Animate.fall = ""
+[StringValue] Workspace.hamstermannster.Animate.sit = ""
+[NumberValue] Workspace.hamstermannster.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.hamstermannster.DamageResistanceMultiplier = 100
+[StringValue] Workspace.hamstermannster.ClassGiven = "Rifleman"
+[StringValue] Workspace.hamstermannster.CivilGuardHat8.Handle.AvatarPartScaleType = "Classic"
+[BoolValue] Workspace.hamstermannster.ENE AERA RIFLE.CustomAnims = false
+[StringValue] Workspace.Veneno818718.Animate.idle = ""
+[NumberValue] Workspace.Veneno818718.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.Veneno818718.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.Veneno818718.Animate.walk = ""
+[StringValue] Workspace.Veneno818718.Animate.run = ""
+[StringValue] Workspace.Veneno818718.Animate.jump = ""
+[StringValue] Workspace.Veneno818718.Animate.climb = ""
+[StringValue] Workspace.Veneno818718.Animate.toolnone = ""
+[StringValue] Workspace.Veneno818718.Animate.fall = ""
+[StringValue] Workspace.Veneno818718.Animate.sit = ""
+[NumberValue] Workspace.Veneno818718.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.Veneno818718.DamageResistanceMultiplier = 100
+[StringValue] Workspace.Veneno818718.ClassGiven = "Rifleman"
+[BoolValue] Workspace.Veneno818718.M99 RIFLE BAYONET.CustomAnims = false
+[StringValue] Workspace.turtle23874.Animate.idle = ""
+[NumberValue] Workspace.turtle23874.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.turtle23874.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.turtle23874.Animate.walk = ""
+[StringValue] Workspace.turtle23874.Animate.run = ""
+[StringValue] Workspace.turtle23874.Animate.jump = ""
+[StringValue] Workspace.turtle23874.Animate.climb = ""
+[StringValue] Workspace.turtle23874.Animate.toolnone = ""
+[StringValue] Workspace.turtle23874.Animate.fall = ""
+[StringValue] Workspace.turtle23874.Animate.sit = ""
+[NumberValue] Workspace.turtle23874.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.turtle23874.DamageResistanceMultiplier = 100
+[StringValue] Workspace.turtle23874.ClassGiven = "Rifleman"
+[BoolValue] Workspace.turtle23874.E/VIII RIFLE BAYONET.CustomAnims = false
+[StringValue] Workspace.renrenhu6.Animate.idle = ""
+[NumberValue] Workspace.renrenhu6.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.renrenhu6.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.renrenhu6.Animate.walk = ""
+[StringValue] Workspace.renrenhu6.Animate.run = ""
+[StringValue] Workspace.renrenhu6.Animate.jump = ""
+[StringValue] Workspace.renrenhu6.Animate.climb = ""
+[StringValue] Workspace.renrenhu6.Animate.toolnone = ""
+[StringValue] Workspace.renrenhu6.Animate.fall = ""
+[StringValue] Workspace.renrenhu6.Animate.sit = ""
+[NumberValue] Workspace.renrenhu6.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.renrenhu6.DamageResistanceMultiplier = 100
+[StringValue] Workspace.renrenhu6.ClassGiven = "AntiTank"
+[IntValue] Workspace.renrenhu6.COOLHEADED = 0
+[BoolValue] Workspace.renrenhu6.M12 AT RIFLE.CustomAnims = false
+[StringValue] Workspace.Dustmover112.Animate.idle = ""
+[NumberValue] Workspace.Dustmover112.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.Dustmover112.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.Dustmover112.Animate.walk = ""
+[StringValue] Workspace.Dustmover112.Animate.run = ""
+[StringValue] Workspace.Dustmover112.Animate.jump = ""
+[StringValue] Workspace.Dustmover112.Animate.climb = ""
+[StringValue] Workspace.Dustmover112.Animate.toolnone = ""
+[StringValue] Workspace.Dustmover112.Animate.fall = ""
+[StringValue] Workspace.Dustmover112.Animate.sit = ""
+[NumberValue] Workspace.Dustmover112.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.Dustmover112.DamageResistanceMultiplier = 100
+[StringValue] Workspace.Dustmover112.ClassGiven = "Assault"
+[StringValue] Workspace.Dustmover112.CharacterHair.Handle.AvatarPartScaleType = "Classic"
+[ObjectValue] Workspace.Dustmover112.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.Dustmover112.CharacterHair.Handle
+[BoolValue] Workspace.Dustmover112.E/XV AUTOMATIC.CustomAnims = false
+[ObjectValue] Workspace.Cwcoolboy1.Humanoid.AssistTag = Players.bobmaniscoolpoop
+[StringValue] Workspace.Cwcoolboy1.Animate.idle = ""
+[NumberValue] Workspace.Cwcoolboy1.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.Cwcoolboy1.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.Cwcoolboy1.Animate.walk = ""
+[StringValue] Workspace.Cwcoolboy1.Animate.run = ""
+[StringValue] Workspace.Cwcoolboy1.Animate.jump = ""
+[StringValue] Workspace.Cwcoolboy1.Animate.climb = ""
+[StringValue] Workspace.Cwcoolboy1.Animate.toolnone = ""
+[StringValue] Workspace.Cwcoolboy1.Animate.fall = ""
+[StringValue] Workspace.Cwcoolboy1.Animate.sit = ""
+[NumberValue] Workspace.Cwcoolboy1.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.Cwcoolboy1.DamageResistanceMultiplier = 100
+[StringValue] Workspace.Cwcoolboy1.ClassGiven = "Rifleman"
+[StringValue] Workspace.Cwcoolboy1.CharacterHair.Handle.AvatarPartScaleType = "Classic"
+[ObjectValue] Workspace.Cwcoolboy1.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.Cwcoolboy1.CharacterHair.Handle
+[BoolValue] Workspace.Cwcoolboy1.FIGHT-OR-FLIGHT = false
+[StringValue] Workspace.traincrash2007.Animate.idle = ""
+[NumberValue] Workspace.traincrash2007.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.traincrash2007.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.traincrash2007.Animate.walk = ""
+[StringValue] Workspace.traincrash2007.Animate.run = ""
+[StringValue] Workspace.traincrash2007.Animate.jump = ""
+[StringValue] Workspace.traincrash2007.Animate.climb = ""
+[StringValue] Workspace.traincrash2007.Animate.toolnone = ""
+[StringValue] Workspace.traincrash2007.Animate.fall = ""
+[StringValue] Workspace.traincrash2007.Animate.sit = ""
+[NumberValue] Workspace.traincrash2007.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.traincrash2007.DamageResistanceMultiplier = 100
+[StringValue] Workspace.traincrash2007.ClassGiven = "Medic"
+[BoolValue] Workspace.traincrash2007.ENE AERA RIFLE.CustomAnims = false
+[StringValue] Workspace.BluZombie208.Animate.idle = ""
+[NumberValue] Workspace.BluZombie208.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.BluZombie208.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.BluZombie208.Animate.walk = ""
+[StringValue] Workspace.BluZombie208.Animate.run = ""
+[StringValue] Workspace.BluZombie208.Animate.jump = ""
+[StringValue] Workspace.BluZombie208.Animate.climb = ""
+[StringValue] Workspace.BluZombie208.Animate.toolnone = ""
+[StringValue] Workspace.BluZombie208.Animate.fall = ""
+[StringValue] Workspace.BluZombie208.Animate.sit = ""
+[NumberValue] Workspace.BluZombie208.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.BluZombie208.DamageResistanceMultiplier = 100
+[StringValue] Workspace.shadownan_2008.Animate.idle = ""
+[NumberValue] Workspace.shadownan_2008.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.shadownan_2008.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.shadownan_2008.Animate.walk = ""
+[StringValue] Workspace.shadownan_2008.Animate.run = ""
+[StringValue] Workspace.shadownan_2008.Animate.jump = ""
+[StringValue] Workspace.shadownan_2008.Animate.climb = ""
+[StringValue] Workspace.shadownan_2008.Animate.toolnone = ""
+[StringValue] Workspace.shadownan_2008.Animate.fall = ""
+[StringValue] Workspace.shadownan_2008.Animate.sit = ""
+[NumberValue] Workspace.shadownan_2008.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.shadownan_2008.DamageResistanceMultiplier = 100
+[StringValue] Workspace.shadownan_2008.ClassGiven = "Assault"
+[StringValue] Workspace.shadownan_2008.CharacterHair.Handle.AvatarPartScaleType = "Classic"
+[ObjectValue] Workspace.shadownan_2008.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.shadownan_2008.CharacterHair.Handle
+[BoolValue] Workspace.shadownan_2008.M12 SMG.CustomAnims = false
+[StringValue] Workspace.matexd809.Animate.idle = ""
+[NumberValue] Workspace.matexd809.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.matexd809.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.matexd809.Animate.walk = ""
+[StringValue] Workspace.matexd809.Animate.run = ""
+[StringValue] Workspace.matexd809.Animate.jump = ""
+[StringValue] Workspace.matexd809.Animate.climb = ""
+[StringValue] Workspace.matexd809.Animate.toolnone = ""
+[StringValue] Workspace.matexd809.Animate.fall = ""
+[StringValue] Workspace.matexd809.Animate.sit = ""
+[NumberValue] Workspace.matexd809.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.matexd809.DamageResistanceMultiplier = 100
+[StringValue] Workspace.matexd809.ClassGiven = "Assault"
+[StringValue] Workspace.matexd809.CharacterHair.Handle.AvatarPartScaleType = "Classic"
+[ObjectValue] Workspace.matexd809.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.matexd809.CharacterHair.Handle
+[BoolValue] Workspace.matexd809.M12 SMG.CustomAnims = false
+[StringValue] Workspace.bobmaniscoolpoop.Animate.idle = ""
+[NumberValue] Workspace.bobmaniscoolpoop.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.bobmaniscoolpoop.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.bobmaniscoolpoop.Animate.walk = ""
+[StringValue] Workspace.bobmaniscoolpoop.Animate.run = ""
+[StringValue] Workspace.bobmaniscoolpoop.Animate.jump = ""
+[StringValue] Workspace.bobmaniscoolpoop.Animate.climb = ""
+[StringValue] Workspace.bobmaniscoolpoop.Animate.toolnone = ""
+[StringValue] Workspace.bobmaniscoolpoop.Animate.fall = ""
+[StringValue] Workspace.bobmaniscoolpoop.Animate.sit = ""
+[NumberValue] Workspace.bobmaniscoolpoop.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.bobmaniscoolpoop.DamageResistanceMultiplier = 100
+[StringValue] Workspace.bobmaniscoolpoop.ClassGiven = "Rifleman"
+[BoolValue] Workspace.bobmaniscoolpoop.E/VIII RIFLE BAYONET.CustomAnims = false
+[StringValue] Workspace.dudelegand98.Animate.idle = ""
+[NumberValue] Workspace.dudelegand98.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.dudelegand98.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.dudelegand98.Animate.walk = ""
+[StringValue] Workspace.dudelegand98.Animate.run = ""
+[StringValue] Workspace.dudelegand98.Animate.jump = ""
+[StringValue] Workspace.dudelegand98.Animate.climb = ""
+[StringValue] Workspace.dudelegand98.Animate.toolnone = ""
+[StringValue] Workspace.dudelegand98.Animate.fall = ""
+[StringValue] Workspace.dudelegand98.Animate.sit = ""
+[NumberValue] Workspace.dudelegand98.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.dudelegand98.DamageResistanceMultiplier = 100
+[StringValue] Workspace.dudelegand98.ClassGiven = "Mortarman"
+[BoolValue] Workspace.dudelegand98.CLUB.CustomAnims = false
+[StringValue] Workspace.gerson8352.Animate.idle = ""
+[NumberValue] Workspace.gerson8352.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.gerson8352.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.gerson8352.Animate.walk = ""
+[StringValue] Workspace.gerson8352.Animate.run = ""
+[StringValue] Workspace.gerson8352.Animate.jump = ""
+[StringValue] Workspace.gerson8352.Animate.climb = ""
+[StringValue] Workspace.gerson8352.Animate.toolnone = ""
+[StringValue] Workspace.gerson8352.Animate.fall = ""
+[StringValue] Workspace.gerson8352.Animate.sit = ""
+[NumberValue] Workspace.gerson8352.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.gerson8352.DamageResistanceMultiplier = 100
+[StringValue] Workspace.Aarav_Eggo.Animate.idle = ""
+[NumberValue] Workspace.Aarav_Eggo.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.Aarav_Eggo.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.Aarav_Eggo.Animate.walk = ""
+[StringValue] Workspace.Aarav_Eggo.Animate.run = ""
+[StringValue] Workspace.Aarav_Eggo.Animate.jump = ""
+[StringValue] Workspace.Aarav_Eggo.Animate.climb = ""
+[StringValue] Workspace.Aarav_Eggo.Animate.toolnone = ""
+[StringValue] Workspace.Aarav_Eggo.Animate.fall = ""
+[StringValue] Workspace.Aarav_Eggo.Animate.sit = ""
+[NumberValue] Workspace.Aarav_Eggo.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.Aarav_Eggo.DamageResistanceMultiplier = 100
+[StringValue] Workspace.Aarav_Eggo.ClassGiven = "Rifleman"
+[BoolValue] Workspace.Aarav_Eggo.E/VIII RIFLE BAYONET.CustomAnims = false
+[StringValue] Workspace.josevar7987.Animate.idle = ""
+[NumberValue] Workspace.josevar7987.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.josevar7987.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.josevar7987.Animate.walk = ""
+[StringValue] Workspace.josevar7987.Animate.run = ""
+[StringValue] Workspace.josevar7987.Animate.jump = ""
+[StringValue] Workspace.josevar7987.Animate.climb = ""
+[StringValue] Workspace.josevar7987.Animate.toolnone = ""
+[StringValue] Workspace.josevar7987.Animate.fall = ""
+[StringValue] Workspace.josevar7987.Animate.sit = ""
+[NumberValue] Workspace.josevar7987.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.josevar7987.DamageResistanceMultiplier = 100
+[StringValue] Workspace.3e3e3yirtjil.Animate.idle = ""
+[NumberValue] Workspace.3e3e3yirtjil.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.3e3e3yirtjil.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.3e3e3yirtjil.Animate.walk = ""
+[StringValue] Workspace.3e3e3yirtjil.Animate.run = ""
+[StringValue] Workspace.3e3e3yirtjil.Animate.jump = ""
+[StringValue] Workspace.3e3e3yirtjil.Animate.climb = ""
+[StringValue] Workspace.3e3e3yirtjil.Animate.toolnone = ""
+[StringValue] Workspace.3e3e3yirtjil.Animate.fall = ""
+[StringValue] Workspace.3e3e3yirtjil.Animate.sit = ""
+[NumberValue] Workspace.3e3e3yirtjil.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.3e3e3yirtjil.DamageResistanceMultiplier = 100
+[StringValue] Workspace.3e3e3yirtjil.ClassGiven = "Rifleman"
+[StringValue] Workspace.3e3e3yirtjil.CharacterHair.Handle.AvatarPartScaleType = "Classic"
+[ObjectValue] Workspace.3e3e3yirtjil.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.3e3e3yirtjil.CharacterHair.Handle
+[BoolValue] Workspace.3e3e3yirtjil.M99 RIFLE BAYONET.CustomAnims = false
+[StringValue] Workspace.Gavinroi24.Animate.idle = ""
+[NumberValue] Workspace.Gavinroi24.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.Gavinroi24.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.Gavinroi24.Animate.walk = ""
+[StringValue] Workspace.Gavinroi24.Animate.run = ""
+[StringValue] Workspace.Gavinroi24.Animate.jump = ""
+[StringValue] Workspace.Gavinroi24.Animate.climb = ""
+[StringValue] Workspace.Gavinroi24.Animate.toolnone = ""
+[StringValue] Workspace.Gavinroi24.Animate.fall = ""
+[StringValue] Workspace.Gavinroi24.Animate.sit = ""
+[NumberValue] Workspace.Gavinroi24.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.Gavinroi24.DamageResistanceMultiplier = 100
+[StringValue] Workspace.Gavinroi24.ClassGiven = "Rifleman"
+[BoolValue] Workspace.Gavinroi24.M99 RIFLE BAYONET.CustomAnims = false
+[StringValue] Workspace.ElCapoMessi1812.Animate.idle = ""
+[NumberValue] Workspace.ElCapoMessi1812.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.ElCapoMessi1812.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.ElCapoMessi1812.Animate.walk = ""
+[StringValue] Workspace.ElCapoMessi1812.Animate.run = ""
+[StringValue] Workspace.ElCapoMessi1812.Animate.jump = ""
+[StringValue] Workspace.ElCapoMessi1812.Animate.climb = ""
+[StringValue] Workspace.ElCapoMessi1812.Animate.toolnone = ""
+[StringValue] Workspace.ElCapoMessi1812.Animate.fall = ""
+[StringValue] Workspace.ElCapoMessi1812.Animate.sit = ""
+[NumberValue] Workspace.ElCapoMessi1812.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.ElCapoMessi1812.DamageResistanceMultiplier = 100
+[StringValue] Workspace.ElCapoMessi1812.ClassGiven = "Rifleman"
+[BoolValue] Workspace.ElCapoMessi1812.ALBUS-GRAHAM NO. 4.CustomAnims = false
+[StringValue] Workspace.TinyScrub.Animate.idle = ""
+[NumberValue] Workspace.TinyScrub.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.TinyScrub.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.TinyScrub.Animate.walk = ""
+[StringValue] Workspace.TinyScrub.Animate.run = ""
+[StringValue] Workspace.TinyScrub.Animate.jump = ""
+[StringValue] Workspace.TinyScrub.Animate.climb = ""
+[StringValue] Workspace.TinyScrub.Animate.toolnone = ""
+[StringValue] Workspace.TinyScrub.Animate.fall = ""
+[StringValue] Workspace.TinyScrub.Animate.sit = ""
+[NumberValue] Workspace.TinyScrub.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.TinyScrub.DamageResistanceMultiplier = 100
+[StringValue] Workspace.TinyScrub.ClassGiven = "Rifleman"
+[StringValue] Workspace.TinyScrub.CharacterHair.Handle.AvatarPartScaleType = "Classic"
+[ObjectValue] Workspace.TinyScrub.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.TinyScrub.CharacterHair.Handle
+[BoolValue] Workspace.TinyScrub.M99 RIFLE BAYONET.CustomAnims = false
+[StringValue] Workspace.memo1117872.Animate.idle = ""
+[NumberValue] Workspace.memo1117872.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.memo1117872.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.memo1117872.Animate.walk = ""
+[StringValue] Workspace.memo1117872.Animate.run = ""
+[StringValue] Workspace.memo1117872.Animate.jump = ""
+[StringValue] Workspace.memo1117872.Animate.climb = ""
+[StringValue] Workspace.memo1117872.Animate.toolnone = ""
+[StringValue] Workspace.memo1117872.Animate.fall = ""
+[StringValue] Workspace.memo1117872.Animate.sit = ""
+[NumberValue] Workspace.memo1117872.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.memo1117872.DamageResistanceMultiplier = 100
+[StringValue] Workspace.memo1117872.ClassGiven = "Officer"
+[StringValue] Workspace.memo1117872.CharacterHair.Handle.AvatarPartScaleType = "Classic"
+[ObjectValue] Workspace.memo1117872.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.memo1117872.CharacterHair.Handle
+[BoolValue] Workspace.memo1117872.SOUTHERN ENSIS.CustomAnims = false
+[ObjectValue] Workspace.atgamer37.Humanoid.AssistTag = Players.dudelegand98
+[StringValue] Workspace.atgamer37.Animate.idle = ""
+[NumberValue] Workspace.atgamer37.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.atgamer37.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.atgamer37.Animate.walk = ""
+[StringValue] Workspace.atgamer37.Animate.run = ""
+[StringValue] Workspace.atgamer37.Animate.jump = ""
+[StringValue] Workspace.atgamer37.Animate.climb = ""
+[StringValue] Workspace.atgamer37.Animate.toolnone = ""
+[StringValue] Workspace.atgamer37.Animate.fall = ""
+[StringValue] Workspace.atgamer37.Animate.sit = ""
+[NumberValue] Workspace.atgamer37.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.atgamer37.DamageResistanceMultiplier = 100
+[StringValue] Workspace.atgamer37.ClassGiven = "Grenadier"
+[StringValue] Workspace.atgamer37.CharacterHair.Handle.AvatarPartScaleType = "Classic"
+[ObjectValue] Workspace.atgamer37.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.atgamer37.CharacterHair.Handle
+[BoolValue] Workspace.atgamer37.ENE AERA RIFLE.CustomAnims = false
+[StringValue] Workspace.xxn00bslayerxxx7.Animate.idle = ""
+[NumberValue] Workspace.xxn00bslayerxxx7.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.xxn00bslayerxxx7.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.xxn00bslayerxxx7.Animate.walk = ""
+[StringValue] Workspace.xxn00bslayerxxx7.Animate.run = ""
+[StringValue] Workspace.xxn00bslayerxxx7.Animate.jump = ""
+[StringValue] Workspace.xxn00bslayerxxx7.Animate.climb = ""
+[StringValue] Workspace.xxn00bslayerxxx7.Animate.toolnone = ""
+[StringValue] Workspace.xxn00bslayerxxx7.Animate.fall = ""
+[StringValue] Workspace.xxn00bslayerxxx7.Animate.sit = ""
+[NumberValue] Workspace.xxn00bslayerxxx7.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.xxn00bslayerxxx7.DamageResistanceMultiplier = 100
+[StringValue] Workspace.xxn00bslayerxxx7.ClassGiven = "Officer"
+[StringValue] Workspace.xxn00bslayerxxx7.CharacterHair.Handle.AvatarPartScaleType = "Classic"
+[ObjectValue] Workspace.xxn00bslayerxxx7.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.xxn00bslayerxxx7.CharacterHair.Handle
+[BoolValue] Workspace.xxn00bslayerxxx7.SOUTHERN ENSIS.CustomAnims = false
+[StringValue] Workspace.1234_Dregq.Animate.idle = ""
+[NumberValue] Workspace.1234_Dregq.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.1234_Dregq.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.1234_Dregq.Animate.walk = ""
+[StringValue] Workspace.1234_Dregq.Animate.run = ""
+[StringValue] Workspace.1234_Dregq.Animate.jump = ""
+[StringValue] Workspace.1234_Dregq.Animate.climb = ""
+[StringValue] Workspace.1234_Dregq.Animate.toolnone = ""
+[StringValue] Workspace.1234_Dregq.Animate.fall = ""
+[StringValue] Workspace.1234_Dregq.Animate.sit = ""
+[NumberValue] Workspace.1234_Dregq.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.1234_Dregq.DamageResistanceMultiplier = 100
+[StringValue] Workspace.Mrs_OfTheLily.Animate.idle = ""
+[NumberValue] Workspace.Mrs_OfTheLily.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.Mrs_OfTheLily.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.Mrs_OfTheLily.Animate.walk = ""
+[StringValue] Workspace.Mrs_OfTheLily.Animate.run = ""
+[StringValue] Workspace.Mrs_OfTheLily.Animate.jump = ""
+[StringValue] Workspace.Mrs_OfTheLily.Animate.climb = ""
+[StringValue] Workspace.Mrs_OfTheLily.Animate.toolnone = ""
+[StringValue] Workspace.Mrs_OfTheLily.Animate.fall = ""
+[StringValue] Workspace.Mrs_OfTheLily.Animate.sit = ""
+[NumberValue] Workspace.Mrs_OfTheLily.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.Mrs_OfTheLily.DamageResistanceMultiplier = 100
+[StringValue] Workspace.borrega247.Animate.idle = ""
+[NumberValue] Workspace.borrega247.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.borrega247.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.borrega247.Animate.walk = ""
+[StringValue] Workspace.borrega247.Animate.run = ""
+[StringValue] Workspace.borrega247.Animate.jump = ""
+[StringValue] Workspace.borrega247.Animate.climb = ""
+[StringValue] Workspace.borrega247.Animate.toolnone = ""
+[StringValue] Workspace.borrega247.Animate.fall = ""
+[StringValue] Workspace.borrega247.Animate.sit = ""
+[NumberValue] Workspace.borrega247.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.borrega247.DamageResistanceMultiplier = 100
+[StringValue] Workspace.borrega247.ClassGiven = "Rifleman"
+[BoolValue] Workspace.borrega247.M1889 LA RIFLE BAYONET.CustomAnims = false
+[StringValue] Workspace.angelon123xdd.Animate.idle = ""
+[NumberValue] Workspace.angelon123xdd.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.angelon123xdd.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.angelon123xdd.Animate.walk = ""
+[StringValue] Workspace.angelon123xdd.Animate.run = ""
+[StringValue] Workspace.angelon123xdd.Animate.jump = ""
+[StringValue] Workspace.angelon123xdd.Animate.climb = ""
+[StringValue] Workspace.angelon123xdd.Animate.toolnone = ""
+[StringValue] Workspace.angelon123xdd.Animate.fall = ""
+[StringValue] Workspace.angelon123xdd.Animate.sit = ""
+[NumberValue] Workspace.angelon123xdd.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.angelon123xdd.DamageResistanceMultiplier = 100
+[StringValue] Workspace.DaniloW50.Animate.idle = ""
+[NumberValue] Workspace.DaniloW50.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.DaniloW50.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.DaniloW50.Animate.walk = ""
+[StringValue] Workspace.DaniloW50.Animate.run = ""
+[StringValue] Workspace.DaniloW50.Animate.jump = ""
+[StringValue] Workspace.DaniloW50.Animate.climb = ""
+[StringValue] Workspace.DaniloW50.Animate.toolnone = ""
+[StringValue] Workspace.DaniloW50.Animate.fall = ""
+[StringValue] Workspace.DaniloW50.Animate.sit = ""
+[NumberValue] Workspace.DaniloW50.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.DaniloW50.DamageResistanceMultiplier = 100
+[StringValue] Workspace.DaniloW50.ClassGiven = "Rifleman"
+[BoolValue] Workspace.DaniloW50.E/VIII RIFLE BAYONET.CustomAnims = false
+[StringValue] Workspace.Afoc_8aXD.Animate.idle = ""
+[NumberValue] Workspace.Afoc_8aXD.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.Afoc_8aXD.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.Afoc_8aXD.Animate.walk = ""
+[StringValue] Workspace.Afoc_8aXD.Animate.run = ""
+[StringValue] Workspace.Afoc_8aXD.Animate.jump = ""
+[StringValue] Workspace.Afoc_8aXD.Animate.climb = ""
+[StringValue] Workspace.Afoc_8aXD.Animate.toolnone = ""
+[StringValue] Workspace.Afoc_8aXD.Animate.fall = ""
+[StringValue] Workspace.Afoc_8aXD.Animate.sit = ""
+[NumberValue] Workspace.Afoc_8aXD.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.Afoc_8aXD.DamageResistanceMultiplier = 100
+[StringValue] Workspace.Afoc_8aXD.ClassGiven = "Assault"
+[BoolValue] Workspace.Afoc_8aXD.E/XV AUTOMATIC.CustomAnims = false
+[StringValue] Workspace.1ubybyggzk.Animate.idle = ""
+[NumberValue] Workspace.1ubybyggzk.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.1ubybyggzk.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.1ubybyggzk.Animate.walk = ""
+[StringValue] Workspace.1ubybyggzk.Animate.run = ""
+[StringValue] Workspace.1ubybyggzk.Animate.jump = ""
+[StringValue] Workspace.1ubybyggzk.Animate.climb = ""
+[StringValue] Workspace.1ubybyggzk.Animate.toolnone = ""
+[StringValue] Workspace.1ubybyggzk.Animate.fall = ""
+[StringValue] Workspace.1ubybyggzk.Animate.sit = ""
+[NumberValue] Workspace.1ubybyggzk.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.1ubybyggzk.DamageResistanceMultiplier = 100
+[StringValue] Workspace.1ubybyggzk.ClassGiven = "Assault"
+[BoolValue] Workspace.1ubybyggzk.M12 SMG.CustomAnims = false
+[StringValue] Workspace.darthnihilus_66.Animate.idle = ""
+[NumberValue] Workspace.darthnihilus_66.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.darthnihilus_66.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.darthnihilus_66.Animate.walk = ""
+[StringValue] Workspace.darthnihilus_66.Animate.run = ""
+[StringValue] Workspace.darthnihilus_66.Animate.jump = ""
+[StringValue] Workspace.darthnihilus_66.Animate.climb = ""
+[StringValue] Workspace.darthnihilus_66.Animate.toolnone = ""
+[StringValue] Workspace.darthnihilus_66.Animate.fall = ""
+[StringValue] Workspace.darthnihilus_66.Animate.sit = ""
+[NumberValue] Workspace.darthnihilus_66.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.darthnihilus_66.DamageResistanceMultiplier = 100
+[StringValue] Workspace.darthnihilus_66.ClassGiven = "Rifleman"
+[BoolValue] Workspace.darthnihilus_66.BrowPlate.Plate.Antares = false
+[BoolValue] Workspace.darthnihilus_66.BrowPlate.Plate.Armored = false
+[NumberValue] Workspace.darthnihilus_66.BrowPlate.Plate.Plate.NoPenetration = 1.5
+[IntValue] Workspace.darthnihilus_66.UPARMORED = 0
+[BoolValue] Workspace.darthnihilus_66.DYNAMITE.CustomAnims = false
+[ObjectValue] Workspace.darthnihilus_66.DYNAMITE.CurrentBomb = nil
+[ObjectValue] Workspace.Stanley4510.Humanoid.AssistTag = Players.Raxtusv
+[StringValue] Workspace.Stanley4510.Animate.idle = ""
+[NumberValue] Workspace.Stanley4510.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.Stanley4510.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.Stanley4510.Animate.walk = ""
+[StringValue] Workspace.Stanley4510.Animate.run = ""
+[StringValue] Workspace.Stanley4510.Animate.jump = ""
+[StringValue] Workspace.Stanley4510.Animate.climb = ""
+[StringValue] Workspace.Stanley4510.Animate.toolnone = ""
+[StringValue] Workspace.Stanley4510.Animate.fall = ""
+[StringValue] Workspace.Stanley4510.Animate.sit = ""
+[NumberValue] Workspace.Stanley4510.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.Stanley4510.DamageResistanceMultiplier = 100
+[StringValue] Workspace.Stanley4510.ClassGiven = "AntiTank"
+[BoolValue] Workspace.Stanley4510.M12 AT RIFLE.CustomAnims = false
+[StringValue] Workspace.Cocaferia0.Animate.idle = ""
+[NumberValue] Workspace.Cocaferia0.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.Cocaferia0.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.Cocaferia0.Animate.walk = ""
+[StringValue] Workspace.Cocaferia0.Animate.run = ""
+[StringValue] Workspace.Cocaferia0.Animate.jump = ""
+[StringValue] Workspace.Cocaferia0.Animate.climb = ""
+[StringValue] Workspace.Cocaferia0.Animate.toolnone = ""
+[StringValue] Workspace.Cocaferia0.Animate.fall = ""
+[StringValue] Workspace.Cocaferia0.Animate.sit = ""
+[NumberValue] Workspace.Cocaferia0.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.Cocaferia0.DamageResistanceMultiplier = 100
+[ObjectValue] Workspace.Imperial_Italy2.Humanoid.AssistTag = Players.tengonovia_248
+[StringValue] Workspace.Imperial_Italy2.Animate.idle = ""
+[NumberValue] Workspace.Imperial_Italy2.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.Imperial_Italy2.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.Imperial_Italy2.Animate.walk = ""
+[StringValue] Workspace.Imperial_Italy2.Animate.run = ""
+[StringValue] Workspace.Imperial_Italy2.Animate.jump = ""
+[StringValue] Workspace.Imperial_Italy2.Animate.climb = ""
+[StringValue] Workspace.Imperial_Italy2.Animate.toolnone = ""
+[StringValue] Workspace.Imperial_Italy2.Animate.fall = ""
+[StringValue] Workspace.Imperial_Italy2.Animate.sit = ""
+[NumberValue] Workspace.Imperial_Italy2.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.Imperial_Italy2.DamageResistanceMultiplier = 100
+[StringValue] Workspace.Imperial_Italy2.ClassGiven = "Rifleman"
+[StringValue] Workspace.Imperial_Italy2.CharacterHair.Handle.AvatarPartScaleType = "Classic"
+[ObjectValue] Workspace.Imperial_Italy2.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.Imperial_Italy2.CharacterHair.Handle
+[BoolValue] Workspace.Imperial_Italy2.M99 RIFLE BAYONET.CustomAnims = false
+[StringValue] Workspace.Sadbooyz13.Animate.idle = ""
+[NumberValue] Workspace.Sadbooyz13.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.Sadbooyz13.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.Sadbooyz13.Animate.walk = ""
+[StringValue] Workspace.Sadbooyz13.Animate.run = ""
+[StringValue] Workspace.Sadbooyz13.Animate.jump = ""
+[StringValue] Workspace.Sadbooyz13.Animate.climb = ""
+[StringValue] Workspace.Sadbooyz13.Animate.toolnone = ""
+[StringValue] Workspace.Sadbooyz13.Animate.fall = ""
+[StringValue] Workspace.Sadbooyz13.Animate.sit = ""
+[NumberValue] Workspace.Sadbooyz13.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.Sadbooyz13.DamageResistanceMultiplier = 100
+[StringValue] Workspace.Sadbooyz13.ClassGiven = "Rifleman"
+[BoolValue] Workspace.Sadbooyz13.E/VIII RIFLE BAYONET.CustomAnims = false
+[StringValue] Workspace.banana_chum7.Animate.idle = ""
+[NumberValue] Workspace.banana_chum7.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.banana_chum7.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.banana_chum7.Animate.walk = ""
+[StringValue] Workspace.banana_chum7.Animate.run = ""
+[StringValue] Workspace.banana_chum7.Animate.jump = ""
+[StringValue] Workspace.banana_chum7.Animate.climb = ""
+[StringValue] Workspace.banana_chum7.Animate.toolnone = ""
+[StringValue] Workspace.banana_chum7.Animate.fall = ""
+[StringValue] Workspace.banana_chum7.Animate.sit = ""
+[NumberValue] Workspace.banana_chum7.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.banana_chum7.DamageResistanceMultiplier = 100
+[StringValue] Workspace.banana_chum7.ClassGiven = "Medic"
+[BoolValue] Workspace.banana_chum7.BARTON MODEL 10.CustomAnims = false
+[StringValue] Workspace.59goated1.Animate.idle = ""
+[NumberValue] Workspace.59goated1.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.59goated1.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.59goated1.Animate.walk = ""
+[StringValue] Workspace.59goated1.Animate.run = ""
+[StringValue] Workspace.59goated1.Animate.jump = ""
+[StringValue] Workspace.59goated1.Animate.climb = ""
+[StringValue] Workspace.59goated1.Animate.toolnone = ""
+[StringValue] Workspace.59goated1.Animate.fall = ""
+[StringValue] Workspace.59goated1.Animate.sit = ""
+[NumberValue] Workspace.59goated1.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.59goated1.DamageResistanceMultiplier = 100
+[StringValue] Workspace.Thiago3a1ioe.Animate.idle = ""
+[NumberValue] Workspace.Thiago3a1ioe.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.Thiago3a1ioe.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.Thiago3a1ioe.Animate.walk = ""
+[StringValue] Workspace.Thiago3a1ioe.Animate.run = ""
+[StringValue] Workspace.Thiago3a1ioe.Animate.jump = ""
+[StringValue] Workspace.Thiago3a1ioe.Animate.climb = ""
+[StringValue] Workspace.Thiago3a1ioe.Animate.toolnone = ""
+[StringValue] Workspace.Thiago3a1ioe.Animate.fall = ""
+[StringValue] Workspace.Thiago3a1ioe.Animate.sit = ""
+[NumberValue] Workspace.Thiago3a1ioe.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.Thiago3a1ioe.DamageResistanceMultiplier = 100
+[StringValue] Workspace.Thiago3a1ioe.ClassGiven = "Mortarman"
+[StringValue] Workspace.Thiago3a1ioe.CharacterHair.Handle.AvatarPartScaleType = "Classic"
+[ObjectValue] Workspace.Thiago3a1ioe.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.Thiago3a1ioe.CharacterHair.Handle
+[BoolValue] Workspace.Thiago3a1ioe.MORTAR.CustomAnims = false
+[StringValue] Workspace.PuroTheGreat21.Animate.idle = ""
+[NumberValue] Workspace.PuroTheGreat21.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.PuroTheGreat21.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.PuroTheGreat21.Animate.walk = ""
+[StringValue] Workspace.PuroTheGreat21.Animate.run = ""
+[StringValue] Workspace.PuroTheGreat21.Animate.jump = ""
+[StringValue] Workspace.PuroTheGreat21.Animate.climb = ""
+[StringValue] Workspace.PuroTheGreat21.Animate.toolnone = ""
+[StringValue] Workspace.PuroTheGreat21.Animate.fall = ""
+[StringValue] Workspace.PuroTheGreat21.Animate.sit = ""
+[NumberValue] Workspace.PuroTheGreat21.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.PuroTheGreat21.DamageResistanceMultiplier = 100
+[StringValue] Workspace.PuroTheGreat21.ClassGiven = "Medic"
+[StringValue] Workspace.PuroTheGreat21.CharacterHair.Handle.AvatarPartScaleType = "Classic"
+[ObjectValue] Workspace.PuroTheGreat21.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.PuroTheGreat21.CharacterHair.Handle
+[BoolValue] Workspace.PuroTheGreat21.E/VIII RIFLE.CustomAnims = false
+[StringValue] Workspace.FEARDAFFYBADUSERNAME.Animate.idle = ""
+[NumberValue] Workspace.FEARDAFFYBADUSERNAME.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.FEARDAFFYBADUSERNAME.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.FEARDAFFYBADUSERNAME.Animate.walk = ""
+[StringValue] Workspace.FEARDAFFYBADUSERNAME.Animate.run = ""
+[StringValue] Workspace.FEARDAFFYBADUSERNAME.Animate.jump = ""
+[StringValue] Workspace.FEARDAFFYBADUSERNAME.Animate.climb = ""
+[StringValue] Workspace.FEARDAFFYBADUSERNAME.Animate.toolnone = ""
+[StringValue] Workspace.FEARDAFFYBADUSERNAME.Animate.fall = ""
+[StringValue] Workspace.FEARDAFFYBADUSERNAME.Animate.sit = ""
+[NumberValue] Workspace.FEARDAFFYBADUSERNAME.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.FEARDAFFYBADUSERNAME.DamageResistanceMultiplier = 100
+[StringValue] Workspace.FEARDAFFYBADUSERNAME.ClassGiven = "Rifleman"
+[BoolValue] Workspace.FEARDAFFYBADUSERNAME.M99 RIFLE BAYONET.CustomAnims = false
+[ObjectValue] Workspace.anuelnoob.Humanoid.AssistTag = Players.tengonovia_248
+[StringValue] Workspace.anuelnoob.Animate.idle = ""
+[NumberValue] Workspace.anuelnoob.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.anuelnoob.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.anuelnoob.Animate.walk = ""
+[StringValue] Workspace.anuelnoob.Animate.run = ""
+[StringValue] Workspace.anuelnoob.Animate.jump = ""
+[StringValue] Workspace.anuelnoob.Animate.climb = ""
+[StringValue] Workspace.anuelnoob.Animate.toolnone = ""
+[StringValue] Workspace.anuelnoob.Animate.fall = ""
+[StringValue] Workspace.anuelnoob.Animate.sit = ""
+[NumberValue] Workspace.anuelnoob.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.anuelnoob.DamageResistanceMultiplier = 100
+[StringValue] Workspace.anuelnoob.ClassGiven = "Assault"
+[BoolValue] Workspace.anuelnoob.M12 SMG.CustomAnims = false
+[StringValue] Workspace.zhaul2016.Animate.idle = ""
+[NumberValue] Workspace.zhaul2016.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.zhaul2016.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.zhaul2016.Animate.walk = ""
+[StringValue] Workspace.zhaul2016.Animate.run = ""
+[StringValue] Workspace.zhaul2016.Animate.jump = ""
+[StringValue] Workspace.zhaul2016.Animate.climb = ""
+[StringValue] Workspace.zhaul2016.Animate.toolnone = ""
+[StringValue] Workspace.zhaul2016.Animate.fall = ""
+[StringValue] Workspace.zhaul2016.Animate.sit = ""
+[NumberValue] Workspace.zhaul2016.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.zhaul2016.DamageResistanceMultiplier = 100
+[StringValue] Workspace.zhaul2016.ClassGiven = "Rifleman"
+[NumberValue] Workspace.zhaul2016.BrowPlate.Plate.Plate.NoPenetration = 1.5
+[BoolValue] Workspace.zhaul2016.BrowPlate.Plate.Aquila = false
+[BoolValue] Workspace.zhaul2016.BrowPlate.Plate.Armored = false
+[IntValue] Workspace.zhaul2016.BERSERKER = 0
+[IntValue] Workspace.zhaul2016.UPARMORED = 0
+[StringValue] Workspace.xXxPIMBLOxXx.Animate.idle = ""
+[NumberValue] Workspace.xXxPIMBLOxXx.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.xXxPIMBLOxXx.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.xXxPIMBLOxXx.Animate.walk = ""
+[StringValue] Workspace.xXxPIMBLOxXx.Animate.run = ""
+[StringValue] Workspace.xXxPIMBLOxXx.Animate.jump = ""
+[StringValue] Workspace.xXxPIMBLOxXx.Animate.climb = ""
+[StringValue] Workspace.xXxPIMBLOxXx.Animate.toolnone = ""
+[StringValue] Workspace.xXxPIMBLOxXx.Animate.fall = ""
+[StringValue] Workspace.xXxPIMBLOxXx.Animate.sit = ""
+[NumberValue] Workspace.xXxPIMBLOxXx.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.xXxPIMBLOxXx.DamageResistanceMultiplier = 100
+[StringValue] Workspace.skeletonbud20113.Animate.idle = ""
+[NumberValue] Workspace.skeletonbud20113.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.skeletonbud20113.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.skeletonbud20113.Animate.walk = ""
+[StringValue] Workspace.skeletonbud20113.Animate.run = ""
+[StringValue] Workspace.skeletonbud20113.Animate.jump = ""
+[StringValue] Workspace.skeletonbud20113.Animate.climb = ""
+[StringValue] Workspace.skeletonbud20113.Animate.toolnone = ""
+[StringValue] Workspace.skeletonbud20113.Animate.fall = ""
+[StringValue] Workspace.skeletonbud20113.Animate.sit = ""
+[NumberValue] Workspace.skeletonbud20113.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.skeletonbud20113.DamageResistanceMultiplier = 100
+[StringValue] Workspace.skeletonbud20113.ClassGiven = "Rifleman"
+[StringValue] Workspace.skeletonbud20113.CharacterHair.Handle.AvatarPartScaleType = "Classic"
+[ObjectValue] Workspace.skeletonbud20113.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.skeletonbud20113.CharacterHair.Handle
+[BoolValue] Workspace.skeletonbud20113.M99 RIFLE BAYONET.CustomAnims = false
+[StringValue] Workspace.Raxtusv.Animate.idle = ""
+[NumberValue] Workspace.Raxtusv.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.Raxtusv.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.Raxtusv.Animate.walk = ""
+[StringValue] Workspace.Raxtusv.Animate.run = ""
+[StringValue] Workspace.Raxtusv.Animate.jump = ""
+[StringValue] Workspace.Raxtusv.Animate.climb = ""
+[StringValue] Workspace.Raxtusv.Animate.toolnone = ""
+[StringValue] Workspace.Raxtusv.Animate.fall = ""
+[StringValue] Workspace.Raxtusv.Animate.sit = ""
+[NumberValue] Workspace.Raxtusv.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.Raxtusv.DamageResistanceMultiplier = 100
+[StringValue] Workspace.Raxtusv.ClassGiven = "AntiTank"
+[StringValue] Workspace.Raxtusv.CharacterHair.Handle.AvatarPartScaleType = "Classic"
+[ObjectValue] Workspace.Raxtusv.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.Raxtusv.CharacterHair.Handle
+[BoolValue] Workspace.Raxtusv.E/I AT RIFLE.CustomAnims = false
+[StringValue] Workspace.Skeletalistic.Animate.idle = ""
+[NumberValue] Workspace.Skeletalistic.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.Skeletalistic.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.Skeletalistic.Animate.walk = ""
+[StringValue] Workspace.Skeletalistic.Animate.run = ""
+[StringValue] Workspace.Skeletalistic.Animate.jump = ""
+[StringValue] Workspace.Skeletalistic.Animate.climb = ""
+[StringValue] Workspace.Skeletalistic.Animate.toolnone = ""
+[StringValue] Workspace.Skeletalistic.Animate.fall = ""
+[StringValue] Workspace.Skeletalistic.Animate.sit = ""
+[NumberValue] Workspace.Skeletalistic.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.Skeletalistic.DamageResistanceMultiplier = 100
+[StringValue] Workspace.dratlast.Animate.idle = ""
+[NumberValue] Workspace.dratlast.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.dratlast.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.dratlast.Animate.walk = ""
+[StringValue] Workspace.dratlast.Animate.run = ""
+[StringValue] Workspace.dratlast.Animate.jump = ""
+[StringValue] Workspace.dratlast.Animate.climb = ""
+[StringValue] Workspace.dratlast.Animate.toolnone = ""
+[StringValue] Workspace.dratlast.Animate.fall = ""
+[StringValue] Workspace.dratlast.Animate.sit = ""
+[NumberValue] Workspace.dratlast.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.dratlast.DamageResistanceMultiplier = 100
+[StringValue] Workspace.dratlast.ClassGiven = "Grenadier"
+[BoolValue] Workspace.dratlast.E/VIII RIFLE.CustomAnims = false
+[StringValue] Workspace.roblox_user_1416249619.Animate.idle = ""
+[NumberValue] Workspace.roblox_user_1416249619.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.roblox_user_1416249619.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.roblox_user_1416249619.Animate.walk = ""
+[StringValue] Workspace.roblox_user_1416249619.Animate.run = ""
+[StringValue] Workspace.roblox_user_1416249619.Animate.jump = ""
+[StringValue] Workspace.roblox_user_1416249619.Animate.climb = ""
+[StringValue] Workspace.roblox_user_1416249619.Animate.toolnone = ""
+[StringValue] Workspace.roblox_user_1416249619.Animate.fall = ""
+[StringValue] Workspace.roblox_user_1416249619.Animate.sit = ""
+[NumberValue] Workspace.roblox_user_1416249619.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.roblox_user_1416249619.DamageResistanceMultiplier = 100
+[ObjectValue] Workspace.TideBraker.Humanoid.AssistTag = Players.Aarav_Eggo
+[StringValue] Workspace.TideBraker.Animate.idle = ""
+[NumberValue] Workspace.TideBraker.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.TideBraker.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.TideBraker.Animate.walk = ""
+[StringValue] Workspace.TideBraker.Animate.run = ""
+[StringValue] Workspace.TideBraker.Animate.jump = ""
+[StringValue] Workspace.TideBraker.Animate.climb = ""
+[StringValue] Workspace.TideBraker.Animate.toolnone = ""
+[StringValue] Workspace.TideBraker.Animate.fall = ""
+[StringValue] Workspace.TideBraker.Animate.sit = ""
+[NumberValue] Workspace.TideBraker.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.TideBraker.DamageResistanceMultiplier = 100
+[StringValue] Workspace.TideBraker.ClassGiven = "Rifleman"
+[BoolValue] Workspace.TideBraker.DECIMA SHOTGUN.CustomAnims = false
+[StringValue] Workspace.frnxster.Animate.idle = ""
+[NumberValue] Workspace.frnxster.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.frnxster.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.frnxster.Animate.walk = ""
+[StringValue] Workspace.frnxster.Animate.run = ""
+[StringValue] Workspace.frnxster.Animate.jump = ""
+[StringValue] Workspace.frnxster.Animate.climb = ""
+[StringValue] Workspace.frnxster.Animate.toolnone = ""
+[StringValue] Workspace.frnxster.Animate.fall = ""
+[StringValue] Workspace.frnxster.Animate.sit = ""
+[NumberValue] Workspace.frnxster.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.frnxster.DamageResistanceMultiplier = 100
+[StringValue] Workspace.frnxster.ClassGiven = "Officer"
+[BoolValue] Workspace.frnxster.PATTERN 1900 CUTLASS.CustomAnims = false
+[StringValue] Workspace.Ahimigatito.Animate.idle = ""
+[NumberValue] Workspace.Ahimigatito.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.Ahimigatito.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.Ahimigatito.Animate.walk = ""
+[StringValue] Workspace.Ahimigatito.Animate.run = ""
+[StringValue] Workspace.Ahimigatito.Animate.jump = ""
+[StringValue] Workspace.Ahimigatito.Animate.climb = ""
+[StringValue] Workspace.Ahimigatito.Animate.toolnone = ""
+[StringValue] Workspace.Ahimigatito.Animate.fall = ""
+[StringValue] Workspace.Ahimigatito.Animate.sit = ""
+[NumberValue] Workspace.Ahimigatito.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.Ahimigatito.DamageResistanceMultiplier = 100
+[StringValue] Workspace.Ahimigatito.ClassGiven = "Rifleman"
+[StringValue] Workspace.Ahimigatito.CharacterHair.Handle.AvatarPartScaleType = "Classic"
+[ObjectValue] Workspace.Ahimigatito.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.Ahimigatito.CharacterHair.Handle
+[BoolValue] Workspace.Ahimigatito.M99 RIFLE BAYONET.CustomAnims = false
+[StringValue] Workspace.1notalexander4.Animate.idle = ""
+[NumberValue] Workspace.1notalexander4.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.1notalexander4.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.1notalexander4.Animate.walk = ""
+[StringValue] Workspace.1notalexander4.Animate.run = ""
+[StringValue] Workspace.1notalexander4.Animate.jump = ""
+[StringValue] Workspace.1notalexander4.Animate.climb = ""
+[StringValue] Workspace.1notalexander4.Animate.toolnone = ""
+[StringValue] Workspace.1notalexander4.Animate.fall = ""
+[StringValue] Workspace.1notalexander4.Animate.sit = ""
+[NumberValue] Workspace.1notalexander4.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.1notalexander4.DamageResistanceMultiplier = 100
+[StringValue] Workspace.1notalexander4.ClassGiven = "Assault"
+[IntValue] Workspace.1notalexander4.COOLHEADED = 0
+[StringValue] Workspace.1notalexander4.CharacterHair.Handle.AvatarPartScaleType = "Classic"
+[ObjectValue] Workspace.1notalexander4.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.1notalexander4.CharacterHair.Handle
+[BoolValue] Workspace.1notalexander4.FIGHT-OR-FLIGHT = false
+[BoolValue] Players.1notalexander4.Backpack.E/XV AUTOMATIC.CustomAnims = false
+[StringValue] Workspace.sammy868792.Animate.idle = ""
+[NumberValue] Workspace.sammy868792.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.sammy868792.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.sammy868792.Animate.walk = ""
+[StringValue] Workspace.sammy868792.Animate.run = ""
+[StringValue] Workspace.sammy868792.Animate.jump = ""
+[StringValue] Workspace.sammy868792.Animate.climb = ""
+[StringValue] Workspace.sammy868792.Animate.toolnone = ""
+[StringValue] Workspace.sammy868792.Animate.fall = ""
+[StringValue] Workspace.sammy868792.Animate.sit = ""
+[NumberValue] Workspace.sammy868792.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.sammy868792.DamageResistanceMultiplier = 100
+[StringValue] Workspace.sammy868792.ClassGiven = "Grenadier"
+[StringValue] Workspace.sammy868792.CharacterHair.Handle.AvatarPartScaleType = "Classic"
+[ObjectValue] Workspace.sammy868792.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.sammy868792.CharacterHair.Handle
+[BoolValue] Workspace.sammy868792.M99 RIFLE.CustomAnims = false
+[ObjectValue] Workspace.coolcookieboss12345.Humanoid.AssistTag = Players.DaniloW50
+[StringValue] Workspace.coolcookieboss12345.Animate.idle = ""
+[NumberValue] Workspace.coolcookieboss12345.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.coolcookieboss12345.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.coolcookieboss12345.Animate.walk = ""
+[StringValue] Workspace.coolcookieboss12345.Animate.run = ""
+[StringValue] Workspace.coolcookieboss12345.Animate.jump = ""
+[StringValue] Workspace.coolcookieboss12345.Animate.climb = ""
+[StringValue] Workspace.coolcookieboss12345.Animate.toolnone = ""
+[StringValue] Workspace.coolcookieboss12345.Animate.fall = ""
+[StringValue] Workspace.coolcookieboss12345.Animate.sit = ""
+[NumberValue] Workspace.coolcookieboss12345.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.coolcookieboss12345.DamageResistanceMultiplier = 100
+[StringValue] Workspace.coolcookieboss12345.ClassGiven = "Rifleman"
+[BoolValue] Workspace.coolcookieboss12345.FIGHT-OR-FLIGHT = false
+[StringValue] Workspace.brandonbarberertioc.Animate.idle = ""
+[NumberValue] Workspace.brandonbarberertioc.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.brandonbarberertioc.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.brandonbarberertioc.Animate.walk = ""
+[StringValue] Workspace.brandonbarberertioc.Animate.run = ""
+[StringValue] Workspace.brandonbarberertioc.Animate.jump = ""
+[StringValue] Workspace.brandonbarberertioc.Animate.climb = ""
+[StringValue] Workspace.brandonbarberertioc.Animate.toolnone = ""
+[StringValue] Workspace.brandonbarberertioc.Animate.fall = ""
+[StringValue] Workspace.brandonbarberertioc.Animate.sit = ""
+[NumberValue] Workspace.brandonbarberertioc.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.brandonbarberertioc.DamageResistanceMultiplier = 100
+[StringValue] Workspace.brandonbarberertioc.ClassGiven = "Rifleman"
+[StringValue] Workspace.brandonbarberertioc.CharacterHair.Handle.AvatarPartScaleType = "Classic"
+[ObjectValue] Workspace.brandonbarberertioc.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.brandonbarberertioc.CharacterHair.Handle
+[BoolValue] Workspace.brandonbarberertioc.E/VIII RIFLE BAYONET.CustomAnims = false
+[ObjectValue] Workspace.tengonovia_248.Humanoid.AssistTag = Players.Stanley4510
+[StringValue] Workspace.tengonovia_248.Animate.idle = ""
+[NumberValue] Workspace.tengonovia_248.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.tengonovia_248.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.tengonovia_248.Animate.walk = ""
+[StringValue] Workspace.tengonovia_248.Animate.run = ""
+[StringValue] Workspace.tengonovia_248.Animate.jump = ""
+[StringValue] Workspace.tengonovia_248.Animate.climb = ""
+[StringValue] Workspace.tengonovia_248.Animate.toolnone = ""
+[StringValue] Workspace.tengonovia_248.Animate.fall = ""
+[StringValue] Workspace.tengonovia_248.Animate.sit = ""
+[NumberValue] Workspace.tengonovia_248.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.tengonovia_248.DamageResistanceMultiplier = 100
+[StringValue] Workspace.tengonovia_248.ClassGiven = "Rifleman"
+[BoolValue] Workspace.tengonovia_248.FIGHT-OR-FLIGHT = false
+[StringValue] Workspace.Iheartspace03.Animate.idle = ""
+[NumberValue] Workspace.Iheartspace03.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.Iheartspace03.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.Iheartspace03.Animate.walk = ""
+[StringValue] Workspace.Iheartspace03.Animate.run = ""
+[StringValue] Workspace.Iheartspace03.Animate.jump = ""
+[StringValue] Workspace.Iheartspace03.Animate.climb = ""
+[StringValue] Workspace.Iheartspace03.Animate.toolnone = ""
+[StringValue] Workspace.Iheartspace03.Animate.fall = ""
+[StringValue] Workspace.Iheartspace03.Animate.sit = ""
+[NumberValue] Workspace.Iheartspace03.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.Iheartspace03.DamageResistanceMultiplier = 100
+[StringValue] Workspace.Iheartspace03.ClassGiven = "Mortarman"
+[StringValue] Workspace.KINGbob01094.Animate.idle = ""
+[NumberValue] Workspace.KINGbob01094.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.KINGbob01094.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.KINGbob01094.Animate.walk = ""
+[StringValue] Workspace.KINGbob01094.Animate.run = ""
+[StringValue] Workspace.KINGbob01094.Animate.jump = ""
+[StringValue] Workspace.KINGbob01094.Animate.climb = ""
+[StringValue] Workspace.KINGbob01094.Animate.toolnone = ""
+[StringValue] Workspace.KINGbob01094.Animate.fall = ""
+[StringValue] Workspace.KINGbob01094.Animate.sit = ""
+[NumberValue] Workspace.KINGbob01094.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.KINGbob01094.DamageResistanceMultiplier = 100
+[StringValue] Workspace.KINGbob01094.ClassGiven = "Assault"
+[BoolValue] Workspace.KINGbob01094.E/XV AUTOMATIC.CustomAnims = false
+[StringValue] Workspace.skyguy1451.Animate.idle = ""
+[NumberValue] Workspace.skyguy1451.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.skyguy1451.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.skyguy1451.Animate.walk = ""
+[StringValue] Workspace.skyguy1451.Animate.run = ""
+[StringValue] Workspace.skyguy1451.Animate.jump = ""
+[StringValue] Workspace.skyguy1451.Animate.climb = ""
+[StringValue] Workspace.skyguy1451.Animate.toolnone = ""
+[StringValue] Workspace.skyguy1451.Animate.fall = ""
+[StringValue] Workspace.skyguy1451.Animate.sit = ""
+[NumberValue] Workspace.skyguy1451.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.skyguy1451.DamageResistanceMultiplier = 100
+[StringValue] Workspace.skyguy1451.ClassGiven = "Officer"
+[StringValue] Workspace.skyguy1451.CharacterHair.Handle.AvatarPartScaleType = "Classic"
+[ObjectValue] Workspace.skyguy1451.CharacterHair.ThumbnailConfiguration.ThumbnailCameraTarget = Workspace.skyguy1451.CharacterHair.Handle
+[BoolValue] Players.skyguy1451.Backpack.WHISTLE.CustomAnims = false
+[StringValue] Workspace.dylanspiderss.Animate.idle = ""
+[NumberValue] Workspace.dylanspiderss.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.dylanspiderss.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.dylanspiderss.Animate.walk = ""
+[StringValue] Workspace.dylanspiderss.Animate.run = ""
+[StringValue] Workspace.dylanspiderss.Animate.jump = ""
+[StringValue] Workspace.dylanspiderss.Animate.climb = ""
+[StringValue] Workspace.dylanspiderss.Animate.toolnone = ""
+[StringValue] Workspace.dylanspiderss.Animate.fall = ""
+[StringValue] Workspace.dylanspiderss.Animate.sit = ""
+[NumberValue] Workspace.dylanspiderss.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.dylanspiderss.DamageResistanceMultiplier = 100
+[StringValue] Workspace.dylanspiderss.ClassGiven = "Rifleman"
+[BoolValue] Workspace.dylanspiderss.E/VIII RIFLE BAYONET.CustomAnims = false
+[StringValue] Workspace.samirch08.Animate.idle = ""
+[NumberValue] Workspace.samirch08.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.samirch08.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.samirch08.Animate.walk = ""
+[StringValue] Workspace.samirch08.Animate.run = ""
+[StringValue] Workspace.samirch08.Animate.jump = ""
+[StringValue] Workspace.samirch08.Animate.climb = ""
+[StringValue] Workspace.samirch08.Animate.toolnone = ""
+[StringValue] Workspace.samirch08.Animate.fall = ""
+[StringValue] Workspace.samirch08.Animate.sit = ""
+[NumberValue] Workspace.samirch08.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.samirch08.DamageResistanceMultiplier = 100
+[StringValue] Workspace.COVARACHO78.Animate.idle = ""
+[NumberValue] Workspace.COVARACHO78.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.COVARACHO78.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.COVARACHO78.Animate.walk = ""
+[StringValue] Workspace.COVARACHO78.Animate.run = ""
+[StringValue] Workspace.COVARACHO78.Animate.jump = ""
+[StringValue] Workspace.COVARACHO78.Animate.climb = ""
+[StringValue] Workspace.COVARACHO78.Animate.toolnone = ""
+[StringValue] Workspace.COVARACHO78.Animate.fall = ""
+[StringValue] Workspace.COVARACHO78.Animate.sit = ""
+[NumberValue] Workspace.COVARACHO78.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.COVARACHO78.DamageResistanceMultiplier = 100
+[StringValue] Workspace.WesternEastNorth.Animate.idle = ""
+[NumberValue] Workspace.WesternEastNorth.Animate.idle.Animation1.Weight = 9
+[NumberValue] Workspace.WesternEastNorth.Animate.idle.Animation2.Weight = 1
+[StringValue] Workspace.WesternEastNorth.Animate.walk = ""
+[StringValue] Workspace.WesternEastNorth.Animate.run = ""
+[StringValue] Workspace.WesternEastNorth.Animate.jump = ""
+[StringValue] Workspace.WesternEastNorth.Animate.climb = ""
+[StringValue] Workspace.WesternEastNorth.Animate.toolnone = ""
+[StringValue] Workspace.WesternEastNorth.Animate.fall = ""
+[StringValue] Workspace.WesternEastNorth.Animate.sit = ""
+[NumberValue] Workspace.WesternEastNorth.Animate.ScaleDampeningPercent = 1
+[IntValue] Workspace.WesternEastNorth.DamageResistanceMultiplier = 100
+[NumberValue] StarterPlayer.StarterCharacter.Animate.ScaleDampeningPercent = 1
+[StringValue] StarterPlayer.StarterCharacter.Animate.climb = ""
+[StringValue] StarterPlayer.StarterCharacter.Animate.idle = ""
+[NumberValue] StarterPlayer.StarterCharacter.Animate.idle.Animation2.Weight = 1
+[NumberValue] StarterPlayer.StarterCharacter.Animate.idle.Animation1.Weight = 9
+[StringValue] StarterPlayer.StarterCharacter.Animate.run = ""
+[StringValue] StarterPlayer.StarterCharacter.Animate.jump = ""
+[StringValue] StarterPlayer.StarterCharacter.Animate.toolnone = ""
+[StringValue] StarterPlayer.StarterCharacter.Animate.walk = ""
+[StringValue] StarterPlayer.StarterCharacter.Animate.sit = ""
+[StringValue] StarterPlayer.StarterCharacter.Animate.fall = ""
+
+=== ATTRIBUTES ===
+[Attr] Workspace.Map.Map.PointStatuses.PointAStatus: {Locked=true}
+[Attr] Workspace.Map.Map.PointStatuses.PointBStatus: {Locked=true}
+[Attr] Workspace.IgnoreList.Bullets.BulletPart: {Suppression=2, EndPosition=802.0263671875, 95.34300231933594, -446.802978515625, BulletOwner=Aquila, StartPosition=1052.9388427734375, 24.400562286376953, 21.557254791259766}
+[Attr] BulletPart: {Suppression=2, EndPosition=632.2686157226562, 27.111637115478516, -53.024871826171875, BulletOwner=Aquila, StartPosition=960.2168579101562, 33.39097213745117, 154.35662841796875}
+[Attr] BulletPart: {Suppression=5, EndPosition=740.5387573242188, 53.575965881347656, -548.5, BulletOwner=Aquila, StartPosition=1026.954833984375, 30.929798126220703, 157.5524444580078}
+[Attr] BulletPart: {Suppression=2, EndPosition=1057.1884765625, 19.10392951965332, 41.806968688964844, BulletOwner=Antares, StartPosition=1004.9004516601562, 37.1001091003418, -65.41769409179688}
+[Attr] BulletPart: {Suppression=2, EndPosition=1066.21630859375, 21.500001907348633, 59.011634826660156, BulletOwner=Antares, StartPosition=1004.7161865234375, 36.64137649536133, -65.06952667236328}
+[Attr] Workspace.IgnoreList.Bullets.BulletPart: {Suppression=2, EndPosition=1002.4085693359375, 36.56236267089844, -68.4070816040039, BulletOwner=Aquila, StartPosition=1052.9736328125, 23.605724334716797, 21.52703857421875}
+[Attr] Workspace.IgnoreList.Bullets.BulletPart: {Suppression=2, EndPosition=1074.09130859375, 21.5, 67.59884643554688, BulletOwner=Antares, StartPosition=1004.101806640625, 36.050777435302734, -64.59100341796875}
+[Attr] Workspace.IgnoreList.Bullets.BulletPart: {Suppression=5, EndPosition=746.0668334960938, 30.62369155883789, -40.51987838745117, StartPosition=795.7382202148438, 28.7360897064209, 74.27176666259766}
+[Attr] Workspace.IgnoreList.Bullets.BulletPart: {Suppression=2, EndPosition=987.7350463867188, 39.010353088378906, -95.29421997070312, BulletOwner=Aquila, StartPosition=1052.842529296875, 24.053035736083984, 21.418668746948242}
+[Attr] Workspace.IgnoreList.Bullets.BulletPart: {Suppression=2, EndPosition=1059.93603515625, 20.662954330444336, 43.217742919921875, BulletOwner=Antares, StartPosition=1002.901123046875, 35.61411666870117, -63.85612487792969}
+[Attr] Workspace.IgnoreList.Bullets.BulletPart: {Suppression=2, EndPosition=750.87548828125, 129.25027465820312, -548.5, BulletOwner=Aquila, StartPosition=1052.9490966796875, 24.39833641052246, 21.5535831451416}
+[Attr] Workspace.IgnoreList.Bullets.BulletPart: {Suppression=5, EndPosition=740.9237060546875, 37.662845611572266, -50.849510192871094, StartPosition=795.7382202148438, 28.7360897064209, 74.27176666259766}
+[Attr] Workspace.IgnoreList.Bullets.BulletPart: {Suppression=5, EndPosition=1005.76025390625, 38.462257385253906, -73.48176574707031, BulletOwner=Aquila, StartPosition=977.2138061523438, 32.166263580322266, 157.71917724609375}
+[Attr] Workspace.IgnoreList.Bullets.BulletPart: {Suppression=2, EndPosition=946.5508422851562, 55.903175354003906, -171.4493865966797, BulletOwner=Aquila, StartPosition=1052.957763671875, 24.394956588745117, 21.54591941833496}
+[Attr] Workspace.IgnoreList.Bullets.BulletPart: {Suppression=2, EndPosition=1002.97802734375, 37.83295822143555, -67.74871826171875, BulletOwner=Aquila, StartPosition=1052.9420166015625, 24.297283172607422, 21.528507232666016}
+[Attr] Workspace.IgnoreList.Bullets.BulletPart: {Suppression=5, EndPosition=746.0098266601562, 34.69169616699219, -51.56466293334961, StartPosition=795.7382202148438, 28.7360897064209, 74.27176666259766}
+[Attr] Workspace.IgnoreList.Bullets.BulletPart: {Suppression=2, EndPosition=736.5028076171875, 105.11557006835938, -548.4999389648438, BulletOwner=Aquila, StartPosition=1052.913330078125, 24.29285430908203, 21.51514434814453}
+[Attr] Workspace.IgnoreList.Bullets.BulletPart: {Suppression=5, EndPosition=1005.6961669921875, 35.89803695678711, -69.89619445800781, BulletOwner=Aquila, StartPosition=982.5089721679688, 32.17344284057617, 167.9389190673828}
+[Attr] Workspace.VehicleWeaponTargets.Vehicle: {Team=Aquila}
+[Attr] Workspace.VehicleWeaponTargets.Vehicle: {Team=Antares}
+[Attr] Workspace.VehicleWeaponTargets.Vehicle: {Team=Aquila}
+[Attr] Workspace.VehicleWeaponTargets.Vehicle: {Team=Antares}
+[Attr] Workspace.Robloxremix14.Head: {Bloodable=true}
+[Attr] Workspace.Robloxremix14.Torso: {Bloodable=true}
+[Attr] Workspace.Robloxremix14.Left Arm: {Bloodable=true}
+[Attr] Workspace.Robloxremix14.Right Arm: {Bloodable=true}
+[Attr] Workspace.Robloxremix14.Left Leg: {Bloodable=true}
+[Attr] Workspace.Robloxremix14.Right Leg: {Bloodable=true}
+[Attr] Workspace.Robloxremix14.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.Sandviper_th3.Head: {Bloodable=true}
+[Attr] Workspace.Sandviper_th3.Torso: {Bloodable=true}
+[Attr] Workspace.Sandviper_th3.Left Arm: {Bloodable=true}
+[Attr] Workspace.Sandviper_th3.Right Arm: {Bloodable=true}
+[Attr] Workspace.Sandviper_th3.Left Leg: {Bloodable=true}
+[Attr] Workspace.Sandviper_th3.Right Leg: {Bloodable=true}
+[Attr] Workspace.Sandviper_th3.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.JULIO2005e.Head: {Bloodable=true}
+[Attr] Workspace.JULIO2005e.Torso: {Bloodable=true}
+[Attr] Workspace.JULIO2005e.Left Arm: {Bloodable=true}
+[Attr] Workspace.JULIO2005e.Right Arm: {Bloodable=true}
+[Attr] Workspace.JULIO2005e.Left Leg: {Bloodable=true}
+[Attr] Workspace.JULIO2005e.Right Leg: {Bloodable=true}
+[Attr] Workspace.JULIO2005e.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.hamstermannster.Head: {Bloodable=true}
+[Attr] Workspace.hamstermannster.Torso: {Bloodable=true}
+[Attr] Workspace.hamstermannster.Left Arm: {Bloodable=true}
+[Attr] Workspace.hamstermannster.Right Arm: {Bloodable=true}
+[Attr] Workspace.hamstermannster.Left Leg: {Bloodable=true}
+[Attr] Workspace.hamstermannster.Right Leg: {Bloodable=true}
+[Attr] Workspace.hamstermannster.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.Veneno818718.Head: {Bloodable=true}
+[Attr] Workspace.Veneno818718.Torso: {Bloodable=true}
+[Attr] Workspace.Veneno818718.Left Arm: {Bloodable=true}
+[Attr] Workspace.Veneno818718.Right Arm: {Bloodable=true}
+[Attr] Workspace.Veneno818718.Left Leg: {Bloodable=true}
+[Attr] Workspace.Veneno818718.Right Leg: {Bloodable=true}
+[Attr] Workspace.Veneno818718.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.turtle23874.Head: {Bloodable=true}
+[Attr] Workspace.turtle23874.Torso: {Bloodable=true}
+[Attr] Workspace.turtle23874.Left Arm: {Bloodable=true}
+[Attr] Workspace.turtle23874.Right Arm: {Bloodable=true}
+[Attr] Workspace.turtle23874.Left Leg: {Bloodable=true}
+[Attr] Workspace.turtle23874.Right Leg: {Bloodable=true}
+[Attr] Workspace.turtle23874.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.renrenhu6.Head: {Bloodable=true}
+[Attr] Workspace.renrenhu6.Torso: {Bloodable=true}
+[Attr] Workspace.renrenhu6.Left Arm: {Bloodable=true}
+[Attr] Workspace.renrenhu6.Right Arm: {Bloodable=true}
+[Attr] Workspace.renrenhu6.Left Leg: {Bloodable=true}
+[Attr] Workspace.renrenhu6.Right Leg: {Bloodable=true}
+[Attr] Workspace.renrenhu6.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.Dustmover112.Head: {Bloodable=true}
+[Attr] Workspace.Dustmover112.Torso: {Bloodable=true}
+[Attr] Workspace.Dustmover112.Left Arm: {Bloodable=true}
+[Attr] Workspace.Dustmover112.Right Arm: {Bloodable=true}
+[Attr] Workspace.Dustmover112.Left Leg: {Bloodable=true}
+[Attr] Workspace.Dustmover112.Right Leg: {Bloodable=true}
+[Attr] Workspace.Dustmover112.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Cwcoolboy1.Head: {Bloodable=true}
+[Attr] Cwcoolboy1.Torso: {Bloodable=true}
+[Attr] Cwcoolboy1.Left Arm: {Bloodable=true}
+[Attr] Cwcoolboy1.Right Arm: {Bloodable=true}
+[Attr] Cwcoolboy1.Left Leg: {Bloodable=true}
+[Attr] Cwcoolboy1.Right Leg: {Bloodable=true}
+[Attr] Cwcoolboy1.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.traincrash2007.Head: {Bloodable=true}
+[Attr] Workspace.traincrash2007.Torso: {Bloodable=true}
+[Attr] Workspace.traincrash2007.Left Arm: {Bloodable=true}
+[Attr] Workspace.traincrash2007.Right Arm: {Bloodable=true}
+[Attr] Workspace.traincrash2007.Left Leg: {Bloodable=true}
+[Attr] Workspace.traincrash2007.Right Leg: {Bloodable=true}
+[Attr] Workspace.traincrash2007.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.BluZombie208.Head: {Bloodable=true}
+[Attr] Workspace.BluZombie208.Torso: {Bloodable=true}
+[Attr] Workspace.BluZombie208.Left Arm: {Bloodable=true}
+[Attr] Workspace.BluZombie208.Right Arm: {Bloodable=true}
+[Attr] Workspace.BluZombie208.Left Leg: {Bloodable=true}
+[Attr] Workspace.BluZombie208.Right Leg: {Bloodable=true}
+[Attr] Workspace.BluZombie208.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.shadownan_2008.Head: {Bloodable=true}
+[Attr] Workspace.shadownan_2008.Torso: {Bloodable=true}
+[Attr] Workspace.shadownan_2008.Left Arm: {Bloodable=true}
+[Attr] Workspace.shadownan_2008.Right Arm: {Bloodable=true}
+[Attr] Workspace.shadownan_2008.Left Leg: {Bloodable=true}
+[Attr] Workspace.shadownan_2008.Right Leg: {Bloodable=true}
+[Attr] Workspace.shadownan_2008.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.matexd809.Head: {Bloodable=true}
+[Attr] Workspace.matexd809.Torso: {Bloodable=true}
+[Attr] Workspace.matexd809.Left Arm: {Bloodable=true}
+[Attr] Workspace.matexd809.Right Arm: {Bloodable=true}
+[Attr] Workspace.matexd809.Left Leg: {Bloodable=true}
+[Attr] Workspace.matexd809.Right Leg: {Bloodable=true}
+[Attr] Workspace.matexd809.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.bobmaniscoolpoop.Head: {Bloodable=true}
+[Attr] Workspace.bobmaniscoolpoop.Torso: {Bloodable=true}
+[Attr] Workspace.bobmaniscoolpoop.Left Arm: {Bloodable=true}
+[Attr] Workspace.bobmaniscoolpoop.Right Arm: {Bloodable=true}
+[Attr] Workspace.bobmaniscoolpoop.Left Leg: {Bloodable=true}
+[Attr] Workspace.bobmaniscoolpoop.Right Leg: {Bloodable=true}
+[Attr] Workspace.bobmaniscoolpoop.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.dudelegand98.Head: {Bloodable=true}
+[Attr] Workspace.dudelegand98.Torso: {Bloodable=true}
+[Attr] Workspace.dudelegand98.Left Arm: {Bloodable=true}
+[Attr] Workspace.dudelegand98.Right Arm: {Bloodable=true}
+[Attr] Workspace.dudelegand98.Left Leg: {Bloodable=true}
+[Attr] Workspace.dudelegand98.Right Leg: {Bloodable=true}
+[Attr] Workspace.dudelegand98.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.gerson8352.Head: {Bloodable=true}
+[Attr] Workspace.gerson8352.Torso: {Bloodable=true}
+[Attr] Workspace.gerson8352.Left Arm: {Bloodable=true}
+[Attr] Workspace.gerson8352.Right Arm: {Bloodable=true}
+[Attr] Workspace.gerson8352.Left Leg: {Bloodable=true}
+[Attr] Workspace.gerson8352.Right Leg: {Bloodable=true}
+[Attr] Workspace.gerson8352.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.Aarav_Eggo.Head: {Bloodable=true}
+[Attr] Workspace.Aarav_Eggo.Torso: {Bloodable=true}
+[Attr] Workspace.Aarav_Eggo.Left Arm: {Bloodable=true}
+[Attr] Workspace.Aarav_Eggo.Right Arm: {Bloodable=true}
+[Attr] Workspace.Aarav_Eggo.Left Leg: {Bloodable=true}
+[Attr] Workspace.Aarav_Eggo.Right Leg: {Bloodable=true}
+[Attr] Workspace.Aarav_Eggo.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.josevar7987.Head: {Bloodable=true}
+[Attr] Workspace.josevar7987.Torso: {Bloodable=true}
+[Attr] Workspace.josevar7987.Left Arm: {Bloodable=true}
+[Attr] Workspace.josevar7987.Right Arm: {Bloodable=true}
+[Attr] Workspace.josevar7987.Left Leg: {Bloodable=true}
+[Attr] Workspace.josevar7987.Right Leg: {Bloodable=true}
+[Attr] Workspace.josevar7987.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.3e3e3yirtjil.Head: {Bloodable=true}
+[Attr] Workspace.3e3e3yirtjil.Torso: {Bloodable=true}
+[Attr] Workspace.3e3e3yirtjil.Left Arm: {Bloodable=true}
+[Attr] Workspace.3e3e3yirtjil.Right Arm: {Bloodable=true}
+[Attr] Workspace.3e3e3yirtjil.Left Leg: {Bloodable=true}
+[Attr] Workspace.3e3e3yirtjil.Right Leg: {Bloodable=true}
+[Attr] Workspace.3e3e3yirtjil.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.Gavinroi24.Head: {Bloodable=true}
+[Attr] Workspace.Gavinroi24.Torso: {Bloodable=true}
+[Attr] Workspace.Gavinroi24.Left Arm: {Bloodable=true}
+[Attr] Workspace.Gavinroi24.Right Arm: {Bloodable=true}
+[Attr] Workspace.Gavinroi24.Left Leg: {Bloodable=true}
+[Attr] Workspace.Gavinroi24.Right Leg: {Bloodable=true}
+[Attr] Workspace.Gavinroi24.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.ElCapoMessi1812.Head: {Bloodable=true}
+[Attr] Workspace.ElCapoMessi1812.Torso: {Bloodable=true}
+[Attr] Workspace.ElCapoMessi1812.Left Arm: {Bloodable=true}
+[Attr] Workspace.ElCapoMessi1812.Right Arm: {Bloodable=true}
+[Attr] Workspace.ElCapoMessi1812.Left Leg: {Bloodable=true}
+[Attr] Workspace.ElCapoMessi1812.Right Leg: {Bloodable=true}
+[Attr] Workspace.ElCapoMessi1812.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.TinyScrub.Head: {Bloodable=true}
+[Attr] Workspace.TinyScrub.Torso: {Bloodable=true}
+[Attr] Workspace.TinyScrub.Left Arm: {Bloodable=true}
+[Attr] Workspace.TinyScrub.Right Arm: {Bloodable=true}
+[Attr] Workspace.TinyScrub.Left Leg: {Bloodable=true}
+[Attr] Workspace.TinyScrub.Right Leg: {Bloodable=true}
+[Attr] Workspace.TinyScrub.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.memo1117872.Head: {Bloodable=true}
+[Attr] Workspace.memo1117872.Torso: {Bloodable=true}
+[Attr] Workspace.memo1117872.Left Arm: {Bloodable=true}
+[Attr] Workspace.memo1117872.Right Arm: {Bloodable=true}
+[Attr] Workspace.memo1117872.Left Leg: {Bloodable=true}
+[Attr] Workspace.memo1117872.Right Leg: {Bloodable=true}
+[Attr] Workspace.memo1117872.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.atgamer37.Head: {Bloodable=true}
+[Attr] Workspace.atgamer37.Torso: {Bloodable=true}
+[Attr] Workspace.atgamer37.Left Arm: {Bloodable=true}
+[Attr] Workspace.atgamer37.Right Arm: {Bloodable=true}
+[Attr] Workspace.atgamer37.Left Leg: {Bloodable=true}
+[Attr] Workspace.atgamer37.Right Leg: {Bloodable=true}
+[Attr] Workspace.atgamer37.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.xxn00bslayerxxx7.Head: {Bloodable=true}
+[Attr] Workspace.xxn00bslayerxxx7.Torso: {Bloodable=true}
+[Attr] Workspace.xxn00bslayerxxx7.Left Arm: {Bloodable=true}
+[Attr] Workspace.xxn00bslayerxxx7.Right Arm: {Bloodable=true}
+[Attr] Workspace.xxn00bslayerxxx7.Left Leg: {Bloodable=true}
+[Attr] Workspace.xxn00bslayerxxx7.Right Leg: {Bloodable=true}
+[Attr] Workspace.xxn00bslayerxxx7.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.1234_Dregq.Head: {Bloodable=true}
+[Attr] Workspace.1234_Dregq.Torso: {Bloodable=true}
+[Attr] Workspace.1234_Dregq.Left Arm: {Bloodable=true}
+[Attr] Workspace.1234_Dregq.Right Arm: {Bloodable=true}
+[Attr] Workspace.1234_Dregq.Left Leg: {Bloodable=true}
+[Attr] Workspace.1234_Dregq.Right Leg: {Bloodable=true}
+[Attr] Workspace.1234_Dregq.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.Mrs_OfTheLily.Head: {Bloodable=true}
+[Attr] Workspace.Mrs_OfTheLily.Torso: {Bloodable=true}
+[Attr] Workspace.Mrs_OfTheLily.Left Arm: {Bloodable=true}
+[Attr] Workspace.Mrs_OfTheLily.Right Arm: {Bloodable=true}
+[Attr] Workspace.Mrs_OfTheLily.Left Leg: {Bloodable=true}
+[Attr] Workspace.Mrs_OfTheLily.Right Leg: {Bloodable=true}
+[Attr] Workspace.Mrs_OfTheLily.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.borrega247.Head: {Bloodable=true}
+[Attr] Workspace.borrega247.Torso: {Bloodable=true}
+[Attr] Workspace.borrega247.Left Arm: {Bloodable=true}
+[Attr] Workspace.borrega247.Right Arm: {Bloodable=true}
+[Attr] Workspace.borrega247.Left Leg: {Bloodable=true}
+[Attr] Workspace.borrega247.Right Leg: {Bloodable=true}
+[Attr] Workspace.borrega247.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.angelon123xdd.Head: {Bloodable=true}
+[Attr] Workspace.angelon123xdd.Torso: {Bloodable=true}
+[Attr] Workspace.angelon123xdd.Left Arm: {Bloodable=true}
+[Attr] Workspace.angelon123xdd.Right Arm: {Bloodable=true}
+[Attr] Workspace.angelon123xdd.Left Leg: {Bloodable=true}
+[Attr] Workspace.angelon123xdd.Right Leg: {Bloodable=true}
+[Attr] Workspace.angelon123xdd.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.DaniloW50.Head: {Bloodable=true}
+[Attr] Workspace.DaniloW50.Torso: {Bloodable=true}
+[Attr] Workspace.DaniloW50.Left Arm: {Bloodable=true}
+[Attr] Workspace.DaniloW50.Right Arm: {Bloodable=true}
+[Attr] Workspace.DaniloW50.Left Leg: {Bloodable=true}
+[Attr] Workspace.DaniloW50.Right Leg: {Bloodable=true}
+[Attr] Workspace.DaniloW50.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.Afoc_8aXD.Head: {Bloodable=true}
+[Attr] Workspace.Afoc_8aXD.Torso: {Bloodable=true}
+[Attr] Workspace.Afoc_8aXD.Left Arm: {Bloodable=true}
+[Attr] Workspace.Afoc_8aXD.Right Arm: {Bloodable=true}
+[Attr] Workspace.Afoc_8aXD.Left Leg: {Bloodable=true}
+[Attr] Workspace.Afoc_8aXD.Right Leg: {Bloodable=true}
+[Attr] Workspace.Afoc_8aXD.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.1ubybyggzk.Head: {Bloodable=true}
+[Attr] Workspace.1ubybyggzk.Torso: {Bloodable=true}
+[Attr] Workspace.1ubybyggzk.Left Arm: {Bloodable=true}
+[Attr] Workspace.1ubybyggzk.Right Arm: {Bloodable=true}
+[Attr] Workspace.1ubybyggzk.Left Leg: {Bloodable=true}
+[Attr] Workspace.1ubybyggzk.Right Leg: {Bloodable=true}
+[Attr] Workspace.1ubybyggzk.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.darthnihilus_66.Head: {Bloodable=true}
+[Attr] Workspace.darthnihilus_66.Torso: {Bloodable=true}
+[Attr] Workspace.darthnihilus_66.Left Arm: {Bloodable=true}
+[Attr] Workspace.darthnihilus_66.Right Arm: {Bloodable=true}
+[Attr] Workspace.darthnihilus_66.Left Leg: {Bloodable=true}
+[Attr] Workspace.darthnihilus_66.Right Leg: {Bloodable=true}
+[Attr] Workspace.darthnihilus_66.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.darthnihilus_66.BrowPlate.Plate.Armored: {NoProtection=true}
+[Attr] Workspace.Stanley4510.Head: {Bloodable=true}
+[Attr] Workspace.Stanley4510.Torso: {Bloodable=true}
+[Attr] Workspace.Stanley4510.Left Arm: {Bloodable=true}
+[Attr] Workspace.Stanley4510.Right Arm: {Bloodable=true}
+[Attr] Workspace.Stanley4510.Left Leg: {Bloodable=true}
+[Attr] Workspace.Stanley4510.Right Leg: {Bloodable=true}
+[Attr] Workspace.Stanley4510.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.Cocaferia0.Head: {Bloodable=true}
+[Attr] Workspace.Cocaferia0.Torso: {Bloodable=true}
+[Attr] Workspace.Cocaferia0.Left Arm: {Bloodable=true}
+[Attr] Workspace.Cocaferia0.Right Arm: {Bloodable=true}
+[Attr] Workspace.Cocaferia0.Left Leg: {Bloodable=true}
+[Attr] Workspace.Cocaferia0.Right Leg: {Bloodable=true}
+[Attr] Workspace.Cocaferia0.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.Imperial_Italy2.Head: {Bloodable=true}
+[Attr] Workspace.Imperial_Italy2.Torso: {Bloodable=true}
+[Attr] Workspace.Imperial_Italy2.Left Arm: {Bloodable=true}
+[Attr] Workspace.Imperial_Italy2.Right Arm: {Bloodable=true}
+[Attr] Workspace.Imperial_Italy2.Left Leg: {Bloodable=true}
+[Attr] Workspace.Imperial_Italy2.Right Leg: {Bloodable=true}
+[Attr] Workspace.Imperial_Italy2.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.Sadbooyz13.Head: {Bloodable=true}
+[Attr] Workspace.Sadbooyz13.Torso: {Bloodable=true}
+[Attr] Workspace.Sadbooyz13.Left Arm: {Bloodable=true}
+[Attr] Workspace.Sadbooyz13.Right Arm: {Bloodable=true}
+[Attr] Workspace.Sadbooyz13.Left Leg: {Bloodable=true}
+[Attr] Workspace.Sadbooyz13.Right Leg: {Bloodable=true}
+[Attr] Workspace.Sadbooyz13.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.banana_chum7.Head: {Bloodable=true}
+[Attr] Workspace.banana_chum7.Torso: {Bloodable=true}
+[Attr] Workspace.banana_chum7.Left Arm: {Bloodable=true}
+[Attr] Workspace.banana_chum7.Right Arm: {Bloodable=true}
+[Attr] Workspace.banana_chum7.Left Leg: {Bloodable=true}
+[Attr] Workspace.banana_chum7.Right Leg: {Bloodable=true}
+[Attr] Workspace.banana_chum7.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.59goated1.Head: {Bloodable=true}
+[Attr] Workspace.59goated1.Torso: {Bloodable=true}
+[Attr] Workspace.59goated1.Left Arm: {Bloodable=true}
+[Attr] Workspace.59goated1.Right Arm: {Bloodable=true}
+[Attr] Workspace.59goated1.Left Leg: {Bloodable=true}
+[Attr] Workspace.59goated1.Right Leg: {Bloodable=true}
+[Attr] Workspace.59goated1.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.Thiago3a1ioe.Head: {Bloodable=true}
+[Attr] Workspace.Thiago3a1ioe.Torso: {Bloodable=true}
+[Attr] Workspace.Thiago3a1ioe.Left Arm: {Bloodable=true}
+[Attr] Workspace.Thiago3a1ioe.Right Arm: {Bloodable=true}
+[Attr] Workspace.Thiago3a1ioe.Left Leg: {Bloodable=true}
+[Attr] Workspace.Thiago3a1ioe.Right Leg: {Bloodable=true}
+[Attr] Workspace.Thiago3a1ioe.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.PuroTheGreat21.Head: {Bloodable=true}
+[Attr] Workspace.PuroTheGreat21.Torso: {Bloodable=true}
+[Attr] Workspace.PuroTheGreat21.Left Arm: {Bloodable=true}
+[Attr] Workspace.PuroTheGreat21.Right Arm: {Bloodable=true}
+[Attr] Workspace.PuroTheGreat21.Left Leg: {Bloodable=true}
+[Attr] Workspace.PuroTheGreat21.Right Leg: {Bloodable=true}
+[Attr] Workspace.PuroTheGreat21.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.FEARDAFFYBADUSERNAME.Head: {Bloodable=true}
+[Attr] Workspace.FEARDAFFYBADUSERNAME.Torso: {Bloodable=true}
+[Attr] Workspace.FEARDAFFYBADUSERNAME.Left Arm: {Bloodable=true}
+[Attr] Workspace.FEARDAFFYBADUSERNAME.Right Arm: {Bloodable=true}
+[Attr] Workspace.FEARDAFFYBADUSERNAME.Left Leg: {Bloodable=true}
+[Attr] Workspace.FEARDAFFYBADUSERNAME.Right Leg: {Bloodable=true}
+[Attr] Workspace.FEARDAFFYBADUSERNAME.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.anuelnoob.Head: {Bloodable=true}
+[Attr] Workspace.anuelnoob.Torso: {Bloodable=true}
+[Attr] Workspace.anuelnoob.Left Arm: {Bloodable=true}
+[Attr] Workspace.anuelnoob.Right Arm: {Bloodable=true}
+[Attr] Workspace.anuelnoob.Left Leg: {Bloodable=true}
+[Attr] Workspace.anuelnoob.Right Leg: {Bloodable=true}
+[Attr] Workspace.anuelnoob.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.zhaul2016.Head: {Bloodable=true}
+[Attr] Workspace.zhaul2016.Torso: {Bloodable=true}
+[Attr] Workspace.zhaul2016.Left Arm: {Bloodable=true}
+[Attr] Workspace.zhaul2016.Right Arm: {Bloodable=true}
+[Attr] Workspace.zhaul2016.Left Leg: {Bloodable=true}
+[Attr] Workspace.zhaul2016.Right Leg: {Bloodable=true}
+[Attr] Workspace.zhaul2016.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.zhaul2016.BrowPlate.Plate.Armored: {NoProtection=true}
+[Attr] Workspace.xXxPIMBLOxXx.Head: {Bloodable=true}
+[Attr] Workspace.xXxPIMBLOxXx.Torso: {Bloodable=true}
+[Attr] Workspace.xXxPIMBLOxXx.Left Arm: {Bloodable=true}
+[Attr] Workspace.xXxPIMBLOxXx.Right Arm: {Bloodable=true}
+[Attr] Workspace.xXxPIMBLOxXx.Left Leg: {Bloodable=true}
+[Attr] Workspace.xXxPIMBLOxXx.Right Leg: {Bloodable=true}
+[Attr] Workspace.xXxPIMBLOxXx.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.skeletonbud20113.Head: {Bloodable=true}
+[Attr] Workspace.skeletonbud20113.Torso: {Bloodable=true}
+[Attr] Workspace.skeletonbud20113.Left Arm: {Bloodable=true}
+[Attr] Workspace.skeletonbud20113.Right Arm: {Bloodable=true}
+[Attr] Workspace.skeletonbud20113.Left Leg: {Bloodable=true}
+[Attr] Workspace.skeletonbud20113.Right Leg: {Bloodable=true}
+[Attr] Workspace.skeletonbud20113.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.Raxtusv.Head: {Bloodable=true}
+[Attr] Workspace.Raxtusv.Torso: {Bloodable=true}
+[Attr] Workspace.Raxtusv.Left Arm: {Bloodable=true}
+[Attr] Workspace.Raxtusv.Right Arm: {Bloodable=true}
+[Attr] Workspace.Raxtusv.Left Leg: {Bloodable=true}
+[Attr] Workspace.Raxtusv.Right Leg: {Bloodable=true}
+[Attr] Workspace.Raxtusv.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.Skeletalistic.Head: {Bloodable=true}
+[Attr] Workspace.Skeletalistic.Torso: {Bloodable=true}
+[Attr] Workspace.Skeletalistic.Left Arm: {Bloodable=true}
+[Attr] Workspace.Skeletalistic.Right Arm: {Bloodable=true}
+[Attr] Workspace.Skeletalistic.Left Leg: {Bloodable=true}
+[Attr] Workspace.Skeletalistic.Right Leg: {Bloodable=true}
+[Attr] Workspace.Skeletalistic.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.dratlast.Head: {Bloodable=true}
+[Attr] Workspace.dratlast.Torso: {Bloodable=true}
+[Attr] Workspace.dratlast.Left Arm: {Bloodable=true}
+[Attr] Workspace.dratlast.Right Arm: {Bloodable=true}
+[Attr] Workspace.dratlast.Left Leg: {Bloodable=true}
+[Attr] Workspace.dratlast.Right Leg: {Bloodable=true}
+[Attr] Workspace.dratlast.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.roblox_user_1416249619.Head: {Bloodable=true}
+[Attr] Workspace.roblox_user_1416249619.Torso: {Bloodable=true}
+[Attr] Workspace.roblox_user_1416249619.Left Arm: {Bloodable=true}
+[Attr] Workspace.roblox_user_1416249619.Right Arm: {Bloodable=true}
+[Attr] Workspace.roblox_user_1416249619.Left Leg: {Bloodable=true}
+[Attr] Workspace.roblox_user_1416249619.Right Leg: {Bloodable=true}
+[Attr] Workspace.roblox_user_1416249619.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.WesternEastNorth.Head: {Bloodable=true}
+[Attr] Workspace.WesternEastNorth.Torso: {Bloodable=true}
+[Attr] Workspace.WesternEastNorth.Left Arm: {Bloodable=true}
+[Attr] Workspace.WesternEastNorth.Right Arm: {Bloodable=true}
+[Attr] Workspace.WesternEastNorth.Left Leg: {Bloodable=true}
+[Attr] Workspace.WesternEastNorth.Right Leg: {Bloodable=true}
+[Attr] Workspace.WesternEastNorth.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.TideBraker.Head: {Bloodable=true}
+[Attr] Workspace.TideBraker.Torso: {Bloodable=true}
+[Attr] Workspace.TideBraker.Left Arm: {Bloodable=true}
+[Attr] Workspace.TideBraker.Right Arm: {Bloodable=true}
+[Attr] Workspace.TideBraker.Left Leg: {Bloodable=true}
+[Attr] Workspace.TideBraker.Right Leg: {Bloodable=true}
+[Attr] Workspace.TideBraker.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.frnxster.Head: {Bloodable=true}
+[Attr] Workspace.frnxster.Torso: {Bloodable=true}
+[Attr] Workspace.frnxster.Left Arm: {Bloodable=true}
+[Attr] Workspace.frnxster.Right Arm: {Bloodable=true}
+[Attr] Workspace.frnxster.Left Leg: {Bloodable=true}
+[Attr] Workspace.frnxster.Right Leg: {Bloodable=true}
+[Attr] Workspace.frnxster.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.Ahimigatito.Head: {Bloodable=true}
+[Attr] Workspace.Ahimigatito.Torso: {Bloodable=true}
+[Attr] Workspace.Ahimigatito.Left Arm: {Bloodable=true}
+[Attr] Workspace.Ahimigatito.Right Arm: {Bloodable=true}
+[Attr] Workspace.Ahimigatito.Left Leg: {Bloodable=true}
+[Attr] Workspace.Ahimigatito.Right Leg: {Bloodable=true}
+[Attr] Workspace.Ahimigatito.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.1notalexander4.Head: {Bloodable=true}
+[Attr] Workspace.1notalexander4.Torso: {Bloodable=true}
+[Attr] Workspace.1notalexander4.Left Arm: {Bloodable=true}
+[Attr] Workspace.1notalexander4.Right Arm: {Bloodable=true}
+[Attr] Workspace.1notalexander4.Left Leg: {Bloodable=true}
+[Attr] Workspace.1notalexander4.Right Leg: {Bloodable=true}
+[Attr] Workspace.1notalexander4.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.sammy868792.Head: {Bloodable=true}
+[Attr] Workspace.sammy868792.Torso: {Bloodable=true}
+[Attr] Workspace.sammy868792.Left Arm: {Bloodable=true}
+[Attr] Workspace.sammy868792.Right Arm: {Bloodable=true}
+[Attr] Workspace.sammy868792.Left Leg: {Bloodable=true}
+[Attr] Workspace.sammy868792.Right Leg: {Bloodable=true}
+[Attr] Workspace.sammy868792.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.coolcookieboss12345.Head: {Bloodable=true}
+[Attr] Workspace.coolcookieboss12345.Torso: {Bloodable=true}
+[Attr] Workspace.coolcookieboss12345.Left Arm: {Bloodable=true}
+[Attr] Workspace.coolcookieboss12345.Right Arm: {Bloodable=true}
+[Attr] Workspace.coolcookieboss12345.Left Leg: {Bloodable=true}
+[Attr] Workspace.coolcookieboss12345.Right Leg: {Bloodable=true}
+[Attr] Workspace.coolcookieboss12345.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.brandonbarberertioc.Head: {Bloodable=true}
+[Attr] Workspace.brandonbarberertioc.Torso: {Bloodable=true}
+[Attr] Workspace.brandonbarberertioc.Left Arm: {Bloodable=true}
+[Attr] Workspace.brandonbarberertioc.Right Arm: {Bloodable=true}
+[Attr] Workspace.brandonbarberertioc.Left Leg: {Bloodable=true}
+[Attr] Workspace.brandonbarberertioc.Right Leg: {Bloodable=true}
+[Attr] Workspace.brandonbarberertioc.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.tengonovia_248.Head: {Bloodable=true}
+[Attr] Workspace.tengonovia_248.Torso: {Bloodable=true}
+[Attr] Workspace.tengonovia_248.Left Arm: {Bloodable=true}
+[Attr] Workspace.tengonovia_248.Right Arm: {Bloodable=true}
+[Attr] Workspace.tengonovia_248.Left Leg: {Bloodable=true}
+[Attr] Workspace.tengonovia_248.Right Leg: {Bloodable=true}
+[Attr] Workspace.tengonovia_248.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.Iheartspace03.Head: {Bloodable=true}
+[Attr] Workspace.Iheartspace03.Torso: {Bloodable=true}
+[Attr] Workspace.Iheartspace03.Left Arm: {Bloodable=true}
+[Attr] Workspace.Iheartspace03.Right Arm: {Bloodable=true}
+[Attr] Workspace.Iheartspace03.Left Leg: {Bloodable=true}
+[Attr] Workspace.Iheartspace03.Right Leg: {Bloodable=true}
+[Attr] Workspace.Iheartspace03.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.KINGbob01094.Head: {Bloodable=true}
+[Attr] Workspace.KINGbob01094.Torso: {Bloodable=true}
+[Attr] Workspace.KINGbob01094.Left Arm: {Bloodable=true}
+[Attr] Workspace.KINGbob01094.Right Arm: {Bloodable=true}
+[Attr] Workspace.KINGbob01094.Left Leg: {Bloodable=true}
+[Attr] Workspace.KINGbob01094.Right Leg: {Bloodable=true}
+[Attr] Workspace.KINGbob01094.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.skyguy1451.Head: {Bloodable=true}
+[Attr] Workspace.skyguy1451.Torso: {Bloodable=true}
+[Attr] Workspace.skyguy1451.Left Arm: {Bloodable=true}
+[Attr] Workspace.skyguy1451.Right Arm: {Bloodable=true}
+[Attr] Workspace.skyguy1451.Left Leg: {Bloodable=true}
+[Attr] Workspace.skyguy1451.Right Leg: {Bloodable=true}
+[Attr] Workspace.skyguy1451.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.dylanspiderss.Head: {Bloodable=true}
+[Attr] Workspace.dylanspiderss.Torso: {Bloodable=true}
+[Attr] Workspace.dylanspiderss.Left Arm: {Bloodable=true}
+[Attr] Workspace.dylanspiderss.Right Arm: {Bloodable=true}
+[Attr] Workspace.dylanspiderss.Left Leg: {Bloodable=true}
+[Attr] Workspace.dylanspiderss.Right Leg: {Bloodable=true}
+[Attr] Workspace.dylanspiderss.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.samirch08.Head: {Bloodable=true}
+[Attr] Workspace.samirch08.Torso: {Bloodable=true}
+[Attr] Workspace.samirch08.Left Arm: {Bloodable=true}
+[Attr] Workspace.samirch08.Right Arm: {Bloodable=true}
+[Attr] Workspace.samirch08.Left Leg: {Bloodable=true}
+[Attr] Workspace.samirch08.Right Leg: {Bloodable=true}
+[Attr] Workspace.samirch08.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+[Attr] Workspace.COVARACHO78.Head: {Bloodable=true}
+[Attr] Workspace.COVARACHO78.Torso: {Bloodable=true}
+[Attr] Workspace.COVARACHO78.Left Arm: {Bloodable=true}
+[Attr] Workspace.COVARACHO78.Right Arm: {Bloodable=true}
+[Attr] Workspace.COVARACHO78.Left Leg: {Bloodable=true}
+[Attr] Workspace.COVARACHO78.Right Leg: {Bloodable=true}
+[Attr] Workspace.COVARACHO78.CameraSystem: {CameraStiffness=1.2, CameraHeight=0.5}
+
+============================================================
+## 5. TOP 15 BIG SCRIPT
+============================================================
+
+
+============================================================
+## 6. MECHANIC HITS
+============================================================
+
+
+============================================================
+END OF MECHANICS
+============================================================
+
+==============================================================
+DIAGNOSTICS (untuk AI yang men-debug dumper ini)
+==============================================================
+
+Version   : 15.2.0
+Executor  : Arceus X 2.4.2
+
+## Executor capability
+  hookmetamethod     OK
+  getnamecallmethod  OK
+  setnamecallmethod  OK
+  hookfunction       OK
+  newcclosure        OK
+  checkcaller        OK
+  writefile          OK
+  setclipboard       OK
+  gethui             OK
+  decompile          OK
+  getscriptbytecode  OK
+  getgenv            OK
+
+## Hook / capture
+  capture=false method=auto using=nil UI=false RUN=false
+  flags HK1(namecall)=false HK2(stealth)=false
+  namecall hook terpasang : false
+  HK2 hookfunction class  : RemoteEvent, RemoteFunction, UnreliableRemoteEvent
+  hook lastError          : nil
+  antrean pending         : 0
+  enqueued=11 logged=11 deduped=0 ignored=0 dropped=0 errors=0
+  (enqueued>0 tapi logged=0 → bug di D.Capture / drain, atau Pause/Ignore aktif.)
+  (enqueued=0 padahal sudah beraksi → coba metode lain: Stealth ↔ Namecall.)
+
+## Status module (urutan load)
+  config                 OK  13594B
+  state                  OK  3490B
+  logger                 OK  2758B
+  util                   OK  5936B
+  codegen                OK  6052B
+  output                 OK  2453B
+  runtime/capture        OK  6316B
+  runtime/hook           OK  7722B
+  runtime/ui_watch       OK  3664B
+  runtime/passive        OK  3498B
+  runtime/spy            OK  2966B
+  scanner                OK  9075B
+  build/snapshot         OK  5932B
+  build/runtime_report   OK  7881B
+  build/reports          OK  4831B
+  build/mechanics        OK  5856B
+  build/brief_data       OK  21663B
+  build/brief            OK  15003B
+  actions                OK  10393B
+  ui/kit                 OK  8170B
+  ui/frame               OK  9983B
+  ui/tooltip             OK  2226B
+  ui/logview             OK  2993B
+  ui/page_start          OK  3466B
+  ui/page_scan           OK  5856B
+  ui/page_capture        OK  9353B
+  ui/page_watch          OK  1943B
+  ui/page_export         OK  2024B
+  ui/page_settings       OK  2972B
+  bootstrap              OK  997B
+
+## Error tercatat (0)
+
+## Log terakhir (maks 40)
+  761.4 [ui] [UI] ✗ stopped
+  761.5 [run] ← FlashRemote(brandonbarberertioc)
+  761.5 [run] ← PenRemote(brandonbarberertioc, Terrain, 1236.227783203125, 33.15973663)
+  761.6 [run] ← BulletRemote(brandonbarberertioc, 1203.222900390625, 28.10827827, 1236.227783203125, 33.15973663, 0.996078, 0.741176, 0.2, Terrain)
+  761.8 [run] ← FlashRemote(brandonbarberertioc)
+  761.8 [run] ← PenRemote(brandonbarberertioc, Log, 1541.45263671875, 77.156944274)
+  761.8 [run] ← BulletRemote(brandonbarberertioc, 1203.018310546875, 28.67742156, 1541.45263671875, 77.156944274, 0.996078, 0.741176, 0.2, Log)
+  761.8 [run] ← FlashRemote(brandonbarberertioc)
+  761.8 [run] ← PenRemote(brandonbarberertioc, Log, 1306.559814453125, 47.49105072)
+  761.8 [run] ← BulletRemote(brandonbarberertioc, 1203.0260009765625, 28.9471893, 1306.559814453125, 47.49105072, 0.996078, 0.741176, 0.2, Log)
+  761.9 [run] ← FlashRemote(brandonbarberertioc)
+  761.9 [run] ← BulletRemote(brandonbarberertioc, 1202.9468994140625, 29.0015239, 5122.1494140625, 692.076782226, 0.996078, 0.741176, 0.2, nil)
+  762.1 [run] ← FlashRemote(Dustmover112)
+  762.1 [run] ← BulletRemote(Dustmover112, 1096.9263916015625, 34.0769309, 1176.464599609375, 28.13042640, 0.996078, 0.741176, 0.2, hull)
+  762.1 [run] [RUN] stopped
+  781.1 [scan] ───────────────────────
+  781.1 [scan] [SCAN] ▶ START (safe mode)
+  781.3 [scan] [ROOT] ▶ ReplicatedStorage — 1972 inst, 94 script
+  782.2 [scan] [ROOT] ✓ ReplicatedStorage — 94 scripts (0.8s)
+  782.3 [scan] [ROOT] ▶ ReplicatedFirst — 0 inst, 0 script
+  782.3 [scan] [ROOT] ✓ ReplicatedFirst — 0 scripts (0.0s)
+  782.5 [scan] [ROOT] ▶ StarterPlayer — 385 inst, 39 script (+37 core skipped)
+  782.5 [scan] [ROOT] ✓ StarterPlayer — 39 scripts (0.0s)
+  782.6 [scan] [ROOT] ▶ StarterGui — 438 inst, 29 script
+  782.7 [scan] [ROOT] ✓ StarterGui — 29 scripts (0.0s)
+  788.5 [scan] [ROOT] ▶ Workspace — 63253 inst, 800 script (CAPPED) (+195 core skipped)
+  830.1 [scan] [ROOT] ✓ Workspace — 800 scripts (41.6s)
+  830.6 [scan] [ROOT] ▶ Players — 6697 inst, 230 script (+34 core skipped)
+  836.0 [scan] [ROOT] ✓ Players — 230 scripts (5.3s)
+  836.1 [scan] [ROOT] ▶ Lighting — 7 inst, 0 script
+  836.1 [scan] [ROOT] ✓ Lighting — 0 scripts (0.0s)
+  836.2 [scan] [ROOT] ▶ SoundService — 5 inst, 0 script
+  836.2 [scan] [ROOT] ✓ SoundService — 0 scripts (0.0s)
+  836.4 [scan] [ROOT] ▶ Chat — 0 inst, 0 script
+  836.4 [scan] [ROOT] ✓ Chat — 0 scripts (0.0s)
+  836.5 [scan] [ROOT] ▶ Teams — 2 inst, 0 script
+  836.5 [scan] [ROOT] ✓ Teams — 0 scripts (0.0s)
+  836.5 [scan] [DONE] r=0 e=1192 o=0 bc=0 t=0 skip=266 (55.4s) mem=0.0MB
+  840.7 [brief] [BRIEF] 22858 chars, 179 unique scripts, 53 unique remotes
+  840.8 [save] [SAVE] ✓ ai_brief_20261125_083600.txt (22.3 KB)
+==============================================================
