@@ -4,7 +4,6 @@ function M.setup(ctx)
     local main = ctx.main
     local TITLE_H = ctx.TITLE_H
     local TABROW_H = ctx.TABROW_H
-    local FRAME_H = ctx.FRAME_H
     local STATUS_H = ctx.STATUS_H
 
     local tabBar = Instance.new("Frame")
@@ -37,9 +36,8 @@ function M.setup(ctx)
     end
 
     local CONTENT_Y = TITLE_H + TABROW_H + 2
-    local CONTENT_H = FRAME_H - CONTENT_Y - STATUS_H - 2
     local content = Instance.new("Frame")
-    content.Size = UDim2.new(1, -6, 0, CONTENT_H)
+    content.Size = UDim2.new(1, -6, 1, -(CONTENT_Y + STATUS_H + 2))  -- follows window height (resizable)
     content.Position = UDim2.new(0, 3, 0, CONTENT_Y)
     content.BackgroundTransparency = 1
     content.ClipsDescendants = true

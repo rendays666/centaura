@@ -1584,6 +1584,51 @@ function M.setup(ctx)
         end)
     end
 
+    do -- resize handle (bottom-right corner): drag to resize the window
+        local MIN_W, MIN_H = 200, 220
+        local handle = Instance.new("TextButton")
+        handle.Size = UDim2.new(0, 22, 0, 22)
+        handle.Position = UDim2.new(1, -22, 1, -22)
+        handle.BackgroundTransparency = 1
+        handle.Text = "◢"
+        handle.TextColor3 = Color3.fromRGB(0, 220, 160)
+        handle.TextSize = 16
+        handle.Font = Enum.Font.GothamBold
+        handle.BorderSizePixel = 0
+        handle.AutoButtonColor = false
+        handle.ZIndex = 50
+        handle.Parent = main
+        ctx.resizeHandle = handle
+
+        local d, s, sw, sh = false, nil, 0, 0
+        handle.InputBegan:Connect(function(i)
+            if i.UserInputType == Enum.UserInputType.Touch or i.UserInputType == Enum.UserInputType.MouseButton1 then
+                d = true
+                s = i.Position
+                sw, sh = main.AbsoluteSize.X, main.AbsoluteSize.Y
+            end
+        end)
+        UIS.InputChanged:Connect(function(i)
+            if not d then return end
+            if i.UserInputType == Enum.UserInputType.Touch or i.UserInputType == Enum.UserInputType.MouseMovement then
+                local vp = Cam.ViewportSize
+                local ap = main.AbsolutePosition
+                local dd = i.Position - s
+                local maxW = math.max(MIN_W, vp.X - ap.X - 2)
+                local maxH = math.max(MIN_H, vp.Y - ap.Y - 2)
+                main.Size = UDim2.fromOffset(
+                    math.clamp(sw + dd.X, MIN_W, maxW),
+                    math.clamp(sh + dd.Y, MIN_H, maxH)
+                )
+            end
+        end)
+        UIS.InputEnded:Connect(function(i)
+            if i.UserInputType == Enum.UserInputType.Touch or i.UserInputType == Enum.UserInputType.MouseButton1 then
+                d = false
+            end
+        end)
+    end
+
     do -- floating logo at left-middle: drag to move, tap to show/hide the GUI
         local tog = Instance.new("TextButton")
         tog.Size = UDim2.new(0, 34, 0, 34)
@@ -1647,7 +1692,6 @@ function M.setup(ctx)
     local main = ctx.main
     local TITLE_H = ctx.TITLE_H
     local TABROW_H = ctx.TABROW_H
-    local FRAME_H = ctx.FRAME_H
     local STATUS_H = ctx.STATUS_H
 
     local tabBar = Instance.new("Frame")
@@ -1680,9 +1724,8 @@ function M.setup(ctx)
     end
 
     local CONTENT_Y = TITLE_H + TABROW_H + 2
-    local CONTENT_H = FRAME_H - CONTENT_Y - STATUS_H - 2
     local content = Instance.new("Frame")
-    content.Size = UDim2.new(1, -6, 0, CONTENT_H)
+    content.Size = UDim2.new(1, -6, 1, -(CONTENT_Y + STATUS_H + 2))  -- follows window height (resizable)
     content.Position = UDim2.new(0, 3, 0, CONTENT_Y)
     content.BackgroundTransparency = 1
     content.ClipsDescendants = true
