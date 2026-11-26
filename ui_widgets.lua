@@ -9,17 +9,46 @@ function M.setup(ctx)
         return ctx.orderCounter[parent]
     end
 
-    ctx.newSection = function(parent, text)
+    ctx.newSection = function(parent, text, info)
+        if not info then
+            local l = Instance.new("TextLabel")
+            l.Size = UDim2.new(1, 0, 0, 16)
+            l.BackgroundTransparency = 1
+            l.Text = text
+            l.TextColor3 = Color3.fromRGB(0, 200, 150)
+            l.TextSize = 10
+            l.Font = Enum.Font.GothamBold
+            l.TextXAlignment = Enum.TextXAlignment.Left
+            l.LayoutOrder = ctx.nextOrder(parent)
+            l.Parent = parent
+            return
+        end
+        local row = Instance.new("Frame")
+        row.Size = UDim2.new(1, 0, 0, 20)
+        row.BackgroundTransparency = 1
+        row.LayoutOrder = ctx.nextOrder(parent)
+        row.Parent = parent
+        local hl = Instance.new("UIListLayout")
+        hl.FillDirection = Enum.FillDirection.Horizontal
+        hl.VerticalAlignment = Enum.VerticalAlignment.Center
+        hl.Padding = UDim.new(0, 4)
+        hl.SortOrder = Enum.SortOrder.LayoutOrder
+        hl.Parent = row
         local l = Instance.new("TextLabel")
-        l.Size = UDim2.new(1, 0, 0, 16)
+        l.AutomaticSize = Enum.AutomaticSize.X
+        l.Size = UDim2.new(0, 0, 0, 16)
         l.BackgroundTransparency = 1
         l.Text = text
         l.TextColor3 = Color3.fromRGB(0, 200, 150)
         l.TextSize = 10
         l.Font = Enum.Font.GothamBold
         l.TextXAlignment = Enum.TextXAlignment.Left
-        l.LayoutOrder = ctx.nextOrder(parent)
-        l.Parent = parent
+        l.LayoutOrder = 1
+        l.Parent = row
+        local ib = ctx.newInfoButton(text, info)
+        ib.Size = UDim2.new(0, 16, 0, 16)
+        ib.LayoutOrder = 2
+        ib.Parent = row
     end
 
     -- shared info popup, created on first use and reused
@@ -28,8 +57,8 @@ function M.setup(ctx)
         local pop = ctx.infoPopup
         if not pop or not pop.frame.Parent then
             local pf = Instance.new("Frame")
-            pf.Size = UDim2.new(0, 280, 0, 200)
-            pf.Position = UDim2.new(0.5, -140, 0.5, -100)
+            pf.Size = UDim2.new(0, 300, 0, 230)
+            pf.Position = UDim2.new(0.5, -150, 0.5, -115)
             pf.BackgroundColor3 = Color3.fromRGB(20, 22, 34)
             pf.BorderSizePixel = 0
             pf.Active = true
@@ -111,19 +140,9 @@ function M.setup(ctx)
     end
 
     local NEEDS_RELOAD = { NoSpread = true, NoReload = true }
-    ctx.newToggle = function(parent, text, key, onChange, info)
-        local hasInfo = info ~= nil
-        local host = parent
-        if hasInfo then
-            local row = Instance.new("Frame")
-            row.Size = UDim2.new(1, 0, 0, 28)
-            row.BackgroundTransparency = 1
-            row.LayoutOrder = ctx.nextOrder(parent)
-            row.Parent = parent
-            host = row
-        end
+    ctx.newToggle = function(parent, text, key, onChange)
         local b = Instance.new("TextButton")
-        b.Size = hasInfo and UDim2.new(1, -22, 1, 0) or UDim2.new(1, 0, 0, 28)
+        b.Size = UDim2.new(1, 0, 0, 28)
         b.BackgroundColor3 = opts[key] and Color3.fromRGB(0, 160, 120) or Color3.fromRGB(40, 40, 58)
         b.Text = text .. "  [" .. (opts[key] and "ON" or "OFF") .. "]"
         b.TextColor3 = Color3.fromRGB(220, 220, 230)
@@ -131,14 +150,9 @@ function M.setup(ctx)
         b.Font = Enum.Font.GothamSemibold
         b.BorderSizePixel = 0
         b.AutoButtonColor = false
-        b.LayoutOrder = ctx.nextOrder(host)
-        b.Parent = host
+        b.LayoutOrder = ctx.nextOrder(parent)
+        b.Parent = parent
         Instance.new("UICorner", b).CornerRadius = UDim.new(0, 4)
-        if hasInfo then
-            local ib = ctx.newInfoButton(text, info)
-            ib.Position = UDim2.new(1, -20, 0, 5)
-            ib.Parent = host
-        end
         b.Activated:Connect(function()
             local was = opts[key]
             opts[key] = not opts[key]

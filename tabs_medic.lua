@@ -2,7 +2,12 @@
 local M = {}
 function M.setup(ctx)
     local p = ctx.tabsFrame[ctx.T_MEDIC]
-    ctx.newSection(p, "STATUS")
+    ctx.newSection(p, "STATUS",
+        "Read-only medic status.\n" ..
+        "- State: current medic state.\n" ..
+        "- Queue: teammates waiting to be healed.\n" ..
+        "- Bandage: READY or CD (cooldown).\n" ..
+        "- Patient: current target.")
     local medicStatus = Instance.new("TextLabel")
     medicStatus.Size = UDim2.new(1, 0, 0, 44)
     medicStatus.BackgroundColor3 = Color3.fromRGB(15, 15, 25)
@@ -29,23 +34,25 @@ function M.setup(ctx)
             end
         end
     end)
-    ctx.newSection(p, "MEDIC MODE")
+    ctx.newSection(p, "MEDIC MODE",
+        "- Medic Enabled: automatically heals nearby teammates when their HP is below the threshold.")
     ctx.newToggle(p, "Medic Enabled", "MedicEnabled", function(v)
         if v then ctx.medicSaveLocation() end
         ctx.medicState = "IDLE"
         ctx.medicQueue = {}
-    end, "Automatically heals nearby teammates when their HP is below the threshold.")
-    ctx.newSection(p, "SETTINGS")
-    ctx.newNumber(p, "HP Threshold %", ctx.medicHPThreshold, 5, 95, 5, 0, function(v) ctx.medicHPThreshold = v end,
-        "Only heal teammates whose HP is below this percentage.")
-    ctx.newNumber(p, "Below Studs", ctx.medicBelowStuds, 2, 50, 1, 0, function(v) ctx.medicBelowStuds = v end,
-        "Vertical offset used when teleporting to a patient.")
-    ctx.newNumber(p, "Teleport Wait", ctx.medicTeleportWait, 0.1, 5, 0.1, 1, function(v) ctx.medicTeleportWait = v end,
-        "Delay between teleport steps so the movement looks human.")
-    ctx.newDropdown(p, "Position", { "Below", "Front" }, ctx.medicPositionMode, function(v) ctx.medicPositionMode = v end,
-        "Where to stand when healing: below or in front of the patient.")
+    end)
+    ctx.newSection(p, "SETTINGS",
+        "- HP Threshold %: only heal teammates whose HP is below this percentage.\n" ..
+        "- Below Studs: vertical offset used when teleporting to a patient.\n" ..
+        "- Teleport Wait: delay between teleport steps so movement looks human.\n" ..
+        "- Position: stand Below or in Front of the patient.\n" ..
+        "- Humanize: adds small random movement while healing.")
+    ctx.newNumber(p, "HP Threshold %", ctx.medicHPThreshold, 5, 95, 5, 0, function(v) ctx.medicHPThreshold = v end)
+    ctx.newNumber(p, "Below Studs", ctx.medicBelowStuds, 2, 50, 1, 0, function(v) ctx.medicBelowStuds = v end)
+    ctx.newNumber(p, "Teleport Wait", ctx.medicTeleportWait, 0.1, 5, 0.1, 1, function(v) ctx.medicTeleportWait = v end)
+    ctx.newDropdown(p, "Position", { "Below", "Front" }, ctx.medicPositionMode, function(v) ctx.medicPositionMode = v end)
     local humBtn = Instance.new("TextButton")
-    humBtn.Size = UDim2.new(1, -22, 0, 28)
+    humBtn.Size = UDim2.new(1, 0, 0, 28)
     humBtn.BackgroundColor3 = ctx.medicHumanize and Color3.fromRGB(0, 160, 120) or Color3.fromRGB(40, 40, 58)
     humBtn.Text = "Humanize  [" .. (ctx.medicHumanize and "ON" or "OFF") .. "]"
     humBtn.TextColor3 = Color3.fromRGB(220, 220, 230)
@@ -56,10 +63,6 @@ function M.setup(ctx)
     humBtn.LayoutOrder = ctx.nextOrder(p)
     humBtn.Parent = p
     Instance.new("UICorner", humBtn).CornerRadius = UDim.new(0, 4)
-    local humInfo = ctx.newInfoButton("Humanize",
-        "Adds small random movement while healing so the teleport looks more human.")
-    humInfo.Position = UDim2.new(1, -20, 0, 5)
-    humInfo.Parent = humBtn
     humBtn.Activated:Connect(function()
         ctx.medicHumanize = not ctx.medicHumanize
         humBtn.BackgroundColor3 = ctx.medicHumanize and Color3.fromRGB(0, 160, 120) or Color3.fromRGB(40, 40, 58)

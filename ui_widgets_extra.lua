@@ -1,15 +1,14 @@
 -- purpose: dropdown and action row widgets
 local M = {}
 function M.setup(ctx)
-    ctx.newDropdown = function(parent, label, options, initialVal, callback, info)
-        local hasInfo = info ~= nil
+    ctx.newDropdown = function(parent, label, options, initialVal, callback)
         local row = Instance.new("Frame")
         row.Size = UDim2.new(1, 0, 0, 30)
         row.BackgroundTransparency = 1
         row.LayoutOrder = ctx.nextOrder(parent)
         row.Parent = parent
         local lbl = Instance.new("TextLabel")
-        lbl.Size = UDim2.new(hasInfo and 0.34 or 0.42, 0, 1, 0)
+        lbl.Size = UDim2.new(0.42, 0, 1, 0)
         lbl.BackgroundTransparency = 1
         lbl.Text = label
         lbl.TextColor3 = Color3.fromRGB(200, 200, 215)
@@ -17,12 +16,6 @@ function M.setup(ctx)
         lbl.Font = Enum.Font.Gotham
         lbl.TextXAlignment = Enum.TextXAlignment.Left
         lbl.Parent = row
-        if hasInfo then
-            local ib = ctx.newInfoButton(label, info)
-            ib.Size = UDim2.new(0, 16, 0, 16)
-            ib.Position = UDim2.new(0.35, 0, 0, 7)
-            ib.Parent = row
-        end
         local btn = Instance.new("TextButton")
         btn.Size = UDim2.new(0.56, 0, 0, 26)
         btn.Position = UDim2.new(0.44, 0, 0, 2)
