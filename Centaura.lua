@@ -580,7 +580,7 @@ return M
 end)()
 
 __modules['esp'] = (function()
--- purpose: player ESP drawings and FOV circle
+-- purpose: player ESP (BillboardGui) and FOV circle (GUI, no Drawing dependency)
 local M = {}
 function M.setup(ctx)
     local Players = ctx.Players
@@ -593,9 +593,24 @@ function M.setup(ctx)
 
     ctx.clearPlayerESP = function()
         for _, obj in pairs(playerESPObjects) do
-            for _, d in pairs(obj) do pcall(function() d:Remove() end) end
+            if obj.gui then pcall(function() obj.gui:Destroy() end) end
         end
         for k in pairs(playerESPObjects) do playerESPObjects[k] = nil end
+    end
+
+    local function makeLabel(parent, name, y, height, color)
+        local l = Instance.new("TextLabel")
+        l.Name = name
+        l.Size = UDim2.new(1, 0, 0, height)
+        l.Position = UDim2.new(0, 0, 0, y)
+        l.BackgroundTransparency = 1
+        l.TextColor3 = color
+        l.TextSize = 12
+        l.Font = Enum.Font.GothamBold
+        l.TextStrokeTransparency = 0.25
+        l.TextXAlignment = Enum.TextXAlignment.Center
+        l.Parent = parent
+        return l
     end
 
     ctx.updatePlayerESP = function()
@@ -607,36 +622,49 @@ function M.setup(ctx)
                 local head = char and char:FindFirstChild("Head")
                 local hum = char and char:FindFirstChildOfClass("Humanoid")
                 if head and hum and hum.Health > 0 then
-                    local headPos, onScreen = Cam:WorldToViewportPoint(head.Position)
+                    local _, onScreen = Cam:WorldToViewportPoint(head.Position)
                     local dist = (Cam.CFrame.Position - head.Position).Magnitude
                     if onScreen and dist <= ctx.aimEspDistance then
                         seen[plr] = true
-                        if not playerESPObjects[plr] then
-                            local okD, n, h, d = pcall(function()
-                                local a = Drawing.new("Text"); a.Size = 16; a.Color = Color3.fromRGB(255, 255, 0); a.Center = true; a.Outline = true
-                                local b = Drawing.new("Text"); b.Size = 14; b.Color = Color3.fromRGB(0, 255, 0); b.Center = true; b.Outline = true
-                                local c = Drawing.new("Text"); c.Size = 14; c.Color = Color3.fromRGB(0, 180, 255); c.Center = true; c.Outline = true
-                                return a, b, c
-                            end)
-                            if okD then playerESPObjects[plr] = { name = n, hp = h, dist = d } end
-                        end
                         local obj = playerESPObjects[plr]
-                        if obj then
-                            if opts.ESPShowNames then
-                                obj.name.Text = plr.Name
-                                obj.name.Position = Vector2.new(headPos.X, headPos.Y - 32)
-                                obj.name.Visible = true
-                            else obj.name.Visible = false end
-                            if opts.ESPShowHP then
-                                obj.hp.Text = "HP: " .. math.floor(hum.Health)
-                                obj.hp.Position = Vector2.new(headPos.X, headPos.Y - 14)
-                                obj.hp.Visible = true
-                            else obj.hp.Visible = false end
-                            if opts.ESPShowDist then
-                                obj.dist.Text = math.floor(dist) .. "m"
-                                obj.dist.Position = Vector2.new(headPos.X, headPos.Y + 5)
-                                obj.dist.Visible = true
-                            else obj.dist.Visible = false end
+                        if obj and (not obj.gui or not obj.gui.Parent) then
+                            playerESPObjects[plr] = nil
+                            obj = nil
+                        end
+                        if not obj then
+                            local gui = Instance.new("BillboardGui")
+                            gui.Name = "TREK_ESP"
+                            gui.Adornee = head
+                            gui.Size = UDim2.new(0, 160, 0, 46)
+                            gui.StudsOffset = Vector3.new(0, 2.4, 0)
+                            gui.AlwaysOnTop = true
+                            gui.Parent = head
+                            obj = {
+                                gui = gui,
+                                name = makeLabel(gui, "PlayerName", 0, 16, Color3.fromRGB(255, 255, 0)),
+                                hp = makeLabel(gui, "PlayerHP", 15, 16, Color3.fromRGB(0, 255, 0)),
+                                dist = makeLabel(gui, "PlayerDist", 30, 14, Color3.fromRGB(0, 180, 255)),
+                            }
+                            playerESPObjects[plr] = obj
+                        end
+                        obj.gui.Adornee = head
+                        if opts.ESPShowNames then
+                            obj.name.Text = plr.Name
+                            obj.name.Visible = true
+                        else
+                            obj.name.Visible = false
+                        end
+                        if opts.ESPShowHP then
+                            obj.hp.Text = "HP: " .. math.floor(hum.Health)
+                            obj.hp.Visible = true
+                        else
+                            obj.hp.Visible = false
+                        end
+                        if opts.ESPShowDist then
+                            obj.dist.Text = math.floor(dist) .. "m"
+                            obj.dist.Visible = true
+                        else
+                            obj.dist.Visible = false
                         end
                     end
                 end
@@ -644,22 +672,38 @@ function M.setup(ctx)
         end
         for plr, obj in pairs(playerESPObjects) do
             if not seen[plr] then
-                for _, d in pairs(obj) do pcall(function() d:Remove() end) end
+                if obj.gui then pcall(function() obj.gui:Destroy() end) end
                 playerESPObjects[plr] = nil
             end
         end
     end
 
-    ctx.fovCircle = nil
-    pcall(function()
-        ctx.fovCircle = Drawing.new("Circle")
-        ctx.fovCircle.Visible = true
-        ctx.fovCircle.Radius = ctx.fovRadius
-        ctx.fovCircle.Color = Color3.fromRGB(255, 255, 255)
-        ctx.fovCircle.Thickness = 1
-        ctx.fovCircle.Transparency = 1
-        ctx.fovCircle.Filled = false
-    end)
+    -- FOV circle via ScreenGui so it works without the executor Drawing library.
+    local oldFov = ctx.PG:FindFirstChild("TREK_FOV")
+    if oldFov then oldFov:Destroy() end
+    local fovGui = Instance.new("ScreenGui")
+    fovGui.Name = "TREK_FOV"
+    fovGui.ResetOnSpawn = false
+    fovGui.IgnoreGuiInset = true
+    fovGui.DisplayOrder = 998
+    fovGui.Parent = ctx.PG
+
+    local circle = Instance.new("Frame")
+    circle.Name = "FOVCircle"
+    circle.AnchorPoint = Vector2.new(0.5, 0.5)
+    circle.BackgroundTransparency = 1
+    circle.BorderSizePixel = 0
+    circle.Visible = false
+    circle.Parent = fovGui
+    Instance.new("UICorner", circle).CornerRadius = UDim.new(1, 0)
+    local stroke = Instance.new("UIStroke")
+    stroke.Color = Color3.new(1, 1, 1)
+    stroke.Thickness = 1
+    stroke.Transparency = 0.2
+    stroke.Parent = circle
+
+    ctx.fovGui = fovGui
+    ctx.fovCircle = circle
 end
 return M
 end)()
@@ -1540,10 +1584,10 @@ function M.setup(ctx)
         end)
     end
 
-    do -- floating logo at right-middle: drag to move, tap to show/hide the GUI
+    do -- floating logo at left-middle: drag to move, tap to show/hide the GUI
         local tog = Instance.new("TextButton")
         tog.Size = UDim2.new(0, 34, 0, 34)
-        tog.Position = UDim2.new(1, -46, 0.5, -17)
+        tog.Position = UDim2.new(0, 12, 0.5, -17)
         tog.BackgroundColor3 = Color3.fromRGB(0, 170, 130)
         tog.Text = "T"
         tog.TextColor3 = Color3.new(1, 1, 1)
@@ -2218,8 +2262,10 @@ function M.setup(ctx)
     Run.RenderStepped:Connect(function()
         if ctx.fovCircle then
             pcall(function()
-                ctx.fovCircle.Position = Vector2.new(ctx.Cam.ViewportSize.X / 2, ctx.Cam.ViewportSize.Y / 2)
-                ctx.fovCircle.Radius = ctx.fovRadius
+                local vp = ctx.Cam.ViewportSize
+                local d = ctx.fovRadius * 2
+                ctx.fovCircle.Position = UDim2.fromOffset(vp.X / 2, vp.Y / 2)
+                ctx.fovCircle.Size = UDim2.fromOffset(d, d)
                 ctx.fovCircle.Visible = ctx.opts.AutoAim and ctx.opts.AimFOV
             end)
         end
@@ -2311,7 +2357,8 @@ function M.setup(ctx)
 
     Players.PlayerRemoving:Connect(function(plr)
         if ctx.playerESPObjects[plr] then
-            for _, d in pairs(ctx.playerESPObjects[plr]) do pcall(function() d:Remove() end) end
+            local obj = ctx.playerESPObjects[plr]
+            if obj.gui then pcall(function() obj.gui:Destroy() end) end
             ctx.playerESPObjects[plr] = nil
         end
         for i = #ctx.medicQueue, 1, -1 do

@@ -5,8 +5,10 @@ function M.setup(ctx)
     Run.RenderStepped:Connect(function()
         if ctx.fovCircle then
             pcall(function()
-                ctx.fovCircle.Position = Vector2.new(ctx.Cam.ViewportSize.X / 2, ctx.Cam.ViewportSize.Y / 2)
-                ctx.fovCircle.Radius = ctx.fovRadius
+                local vp = ctx.Cam.ViewportSize
+                local d = ctx.fovRadius * 2
+                ctx.fovCircle.Position = UDim2.fromOffset(vp.X / 2, vp.Y / 2)
+                ctx.fovCircle.Size = UDim2.fromOffset(d, d)
                 ctx.fovCircle.Visible = ctx.opts.AutoAim and ctx.opts.AimFOV
             end)
         end

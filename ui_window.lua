@@ -103,10 +103,10 @@ function M.setup(ctx)
         end)
     end
 
-    do -- floating logo at right-middle: drag to move, tap to show/hide the GUI
+    do -- floating logo at left-middle: drag to move, tap to show/hide the GUI
         local tog = Instance.new("TextButton")
         tog.Size = UDim2.new(0, 34, 0, 34)
-        tog.Position = UDim2.new(1, -46, 0.5, -17)
+        tog.Position = UDim2.new(0, 12, 0.5, -17)
         tog.BackgroundColor3 = Color3.fromRGB(0, 170, 130)
         tog.Text = "T"
         tog.TextColor3 = Color3.new(1, 1, 1)

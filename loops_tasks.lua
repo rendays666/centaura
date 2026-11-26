@@ -40,7 +40,8 @@ function M.setup(ctx)
 
     Players.PlayerRemoving:Connect(function(plr)
         if ctx.playerESPObjects[plr] then
-            for _, d in pairs(ctx.playerESPObjects[plr]) do pcall(function() d:Remove() end) end
+            local obj = ctx.playerESPObjects[plr]
+            if obj.gui then pcall(function() obj.gui:Destroy() end) end
             ctx.playerESPObjects[plr] = nil
         end
         for i = #ctx.medicQueue, 1, -1 do
