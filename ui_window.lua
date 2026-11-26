@@ -7,7 +7,7 @@ function M.setup(ctx)
 
     local screenH = Cam.ViewportSize.Y
     local FRAME_W = 240
-    local FRAME_H = math.clamp(screenH * 0.72, 400, 600)
+    local FRAME_H = math.clamp(screenH * 0.72, 400, 600) * 0.6
     local TITLE_H, TABROW_H, STATUS_H = 24, 44, 40
 
     ctx.FRAME_W = FRAME_W
@@ -58,20 +58,6 @@ function M.setup(ctx)
     tl.TextXAlignment = Enum.TextXAlignment.Left
     tl.Parent = tb
 
-    local mBtn = Instance.new("TextButton")
-    mBtn.Size = UDim2.new(0, 20, 0, 20)
-    mBtn.Position = UDim2.new(1, -24, 0, 2)
-    mBtn.BackgroundColor3 = Color3.fromRGB(50, 50, 70)
-    mBtn.Text = "-"
-    mBtn.TextColor3 = Color3.new(1, 1, 1)
-    mBtn.TextSize = 14
-    mBtn.Font = Enum.Font.GothamBold
-    mBtn.BorderSizePixel = 0
-    mBtn.AutoButtonColor = false
-    mBtn.Parent = tb
-    Instance.new("UICorner", mBtn).CornerRadius = UDim.new(0, 3)
-    ctx.mBtn = mBtn
-
     local statusBar = Instance.new("Frame")
     statusBar.Size = UDim2.new(1, -6, 0, STATUS_H)
     statusBar.Position = UDim2.new(0, 3, 1, -STATUS_H - 2)
@@ -93,16 +79,6 @@ function M.setup(ctx)
     statusLbl.Parent = statusBar
     ctx.statusBar = statusBar
     ctx.statusLbl = statusLbl
-
-    local minimized = false
-    mBtn.Activated:Connect(function()
-        minimized = not minimized
-        main.Size = UDim2.new(0, FRAME_W, 0, minimized and TITLE_H or FRAME_H)
-        if ctx.tabBar then ctx.tabBar.Visible = not minimized end
-        if ctx.content then ctx.content.Visible = not minimized end
-        statusBar.Visible = not minimized
-        mBtn.Text = minimized and "+" or "-"
-    end)
 
     do -- title bar drag
         local d, s, sp = false, nil, nil
@@ -160,7 +136,12 @@ function M.setup(ctx)
                 local dd = i.Position - s
                 if math.abs(dd.X) > 6 or math.abs(dd.Y) > 6 then moved = true end
                 if moved then
-                    tog.Position = UDim2.new(sp.X.Scale, sp.X.Offset + dd.X, sp.Y.Scale, sp.Y.Offset + dd.Y)
+                    local vp = Cam.ViewportSize
+                    local x = sp.X.Scale * vp.X + sp.X.Offset + dd.X
+                    local y = sp.Y.Scale * vp.Y + sp.Y.Offset + dd.Y
+                    x = math.clamp(x, 0, math.max(0, vp.X - 34))
+                    y = math.clamp(y, 0, math.max(0, vp.Y - 34))
+                    tog.Position = UDim2.fromOffset(x, y)
                 end
             end
         end)
