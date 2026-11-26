@@ -1,14 +1,15 @@
 -- purpose: numeric stepper widget
 local M = {}
 function M.setup(ctx)
-    ctx.newNumber = function(parent, label, initial, minV, maxV, stepV, decimals, callback)
+    ctx.newNumber = function(parent, label, initial, minV, maxV, stepV, decimals, callback, info)
+        local hasInfo = info ~= nil
         local row = Instance.new("Frame")
         row.Size = UDim2.new(1, 0, 0, 32)
         row.BackgroundTransparency = 1
         row.LayoutOrder = ctx.nextOrder(parent)
         row.Parent = parent
         local lbl = Instance.new("TextLabel")
-        lbl.Size = UDim2.new(0, 88, 0, 28)
+        lbl.Size = UDim2.new(0, hasInfo and 68 or 88, 0, 28)
         lbl.Position = UDim2.new(0, 0, 0, 2)
         lbl.BackgroundTransparency = 1
         lbl.Text = label
@@ -18,6 +19,12 @@ function M.setup(ctx)
         lbl.TextXAlignment = Enum.TextXAlignment.Left
         lbl.TextTruncate = Enum.TextTruncate.AtEnd
         lbl.Parent = row
+        if hasInfo then
+            local ib = ctx.newInfoButton(label, info)
+            ib.Size = UDim2.new(0, 16, 0, 16)
+            ib.Position = UDim2.new(0, 70, 0, 6)
+            ib.Parent = row
+        end
         local minus = Instance.new("TextButton")
         minus.Size = UDim2.new(0, 30, 0, 28)
         minus.Position = UDim2.new(0, 90, 0, 2)

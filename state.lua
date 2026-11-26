@@ -11,11 +11,14 @@ function M.setup(ctx)
     ctx.lastHitAt = {}
     ctx.hpSamples = {}
     ctx.healUntil = {}
+    ctx.retryAt = {}
     ctx.INSTANT_FIRERATE = 100000
     ctx.PENDING_TIMEOUT = 4.0
     ctx.FAIL_THRESHOLD = 3
     ctx.BLACKLIST_DURATION = 30
     ctx.HEAL_SKIP = 10
+    ctx.RETRY_DELAY = 10
+    ctx.MAX_PING = 500
     ctx.STATUS = "Idle"
 
     ctx.fireTimes = {}

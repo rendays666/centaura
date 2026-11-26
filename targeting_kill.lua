@@ -35,9 +35,11 @@ function M.setup(ctx)
             return "send"
         end
         if elapsed > ctx.PENDING_TIMEOUT then
+            -- damage never registered (lag / weapon not ready): back off, never re-send blindly
             ctx.pending[uid] = nil
             if hp < p.startHP - 0.5 then ctx.failCounts[uid] = 0 else ctx.recordFail(uid) end
-            return "send"
+            ctx.retryAt[uid] = tick() + ctx.RETRY_DELAY
+            return "backoff"
         end
         return "wait"
     end
@@ -50,15 +52,37 @@ function M.setup(ctx)
         if not th or th.Health <= 0 then return false end
         local hp = th.Health
         local uid = target.UserId
+
+        if ctx.retryAt[uid] then
+            if tick() < ctx.retryAt[uid] then return false end
+            ctx.retryAt[uid] = nil
+        end
         if tick() - (ctx.lastHitAt[uid] or 0) < ctx.autoKillCooldown then return false end
-        if not ctx.canFire(uid) then
-            ctx.STATUS = string.format("Rate %.1f/%d", ctx.getRate("Damager", uid), ctx.maxFiresPerSec)
+
+        -- weapon detection: never queue damage without a real gun
+        local info = ctx.gunInfo()
+        if not info then
+            ctx.STATUS = "No gun"
             return false
         end
-        if ctx.checkPending(uid, hp, tc) == "wait" then
+        -- lag detection: in Low HP mode, do not queue damage during a lag spike
+        local ping = ctx.getPing()
+        if ctx.opts.SekaratMode and ping > ctx.MAX_PING then
+            ctx.STATUS = string.format("Lag %dms", math.floor(ping))
+            return false
+        end
+
+        -- one damage packet per enemy in flight; confirm it before sending again
+        local pendingState = ctx.checkPending(uid, hp, tc)
+        if pendingState == "wait" then
             ctx.STATUS = "Wait " .. target.Name
             return false
         end
+        if pendingState == "backoff" then
+            ctx.STATUS = "Retry " .. target.Name
+            return false
+        end
+
         local dmg = ctx.autoKillDamage
         if ctx.opts.SekaratMode then
             if hp <= ctx.minHP then return false end
@@ -69,15 +93,12 @@ function M.setup(ctx)
         if dmg < 1 then dmg = 1 end
         local tgt = tc:FindFirstChild("Head") or tc:FindFirstChild("UpperTorso") or tc:FindFirstChild("Torso")
         if not tgt then return false end
-        local info = ctx.gunInfo()
-        if not info then return false end
-        local p = ctx.pending[uid]
-        if p and p.char == tc then
-            p.totalSent = p.totalSent + dmg
-            p.sentAt = tick()
-        else
-            ctx.pending[uid] = { startHP = hp, totalSent = dmg, sentAt = tick(), char = tc }
+        if not ctx.canFire(uid) then
+            ctx.STATUS = string.format("Rate %.1f/%d", ctx.getRate("Damager", uid), ctx.maxFiresPerSec)
+            return false
         end
+
+        ctx.pending[uid] = { startHP = hp, totalSent = dmg, sentAt = tick(), char = tc }
         pcall(function() ctx.BR:FireServer(info.barrel.Position, tgt.Position, info.color, tgt, false) end)
         ctx.recordFire("Bullet", uid)
         pcall(function() ctx.DR:FireServer(info.gunScript, info.barrel.Position, tc, dmg, tgt, "Bullet") end)

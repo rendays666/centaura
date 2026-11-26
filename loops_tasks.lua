@@ -53,6 +53,7 @@ function M.setup(ctx)
         ctx.lastHitAt[uid] = nil
         ctx.hpSamples[uid] = nil
         ctx.healUntil[uid] = nil
+        ctx.retryAt[uid] = nil
     end)
 
     task.spawn(function()

@@ -75,6 +75,18 @@ function M.setup(ctx)
     ctx.DR = ctx.TR and ctx.TR:FindFirstChild("DamagerRemote")
     ctx.MODULES_OK = (ctx.BR and ctx.DR) and true or false
 
+    ctx.pingCache = { value = 0, at = 0 }
+    ctx.getPing = function()
+        local now = tick()
+        if now - ctx.pingCache.at < 0.5 then return ctx.pingCache.value end
+        local ok, value = pcall(function()
+            return game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValue()
+        end)
+        value = (ok and type(value) == "number") and value or 0
+        ctx.pingCache = { value = value, at = now }
+        return value
+    end
+
     ctx.isEnemy = function(plr)
         if plr == ctx.LP then return false end
         if plr.Team and ctx.LP.Team and plr.Team == ctx.LP.Team then return false end
@@ -197,11 +209,14 @@ function M.setup(ctx)
     ctx.lastHitAt = {}
     ctx.hpSamples = {}
     ctx.healUntil = {}
+    ctx.retryAt = {}
     ctx.INSTANT_FIRERATE = 100000
     ctx.PENDING_TIMEOUT = 4.0
     ctx.FAIL_THRESHOLD = 3
     ctx.BLACKLIST_DURATION = 30
     ctx.HEAL_SKIP = 10
+    ctx.RETRY_DELAY = 10
+    ctx.MAX_PING = 500
     ctx.STATUS = "Idle"
 
     ctx.fireTimes = {}
@@ -1270,9 +1285,11 @@ function M.setup(ctx)
             return "send"
         end
         if elapsed > ctx.PENDING_TIMEOUT then
+            -- damage never registered (lag / weapon not ready): back off, never re-send blindly
             ctx.pending[uid] = nil
             if hp < p.startHP - 0.5 then ctx.failCounts[uid] = 0 else ctx.recordFail(uid) end
-            return "send"
+            ctx.retryAt[uid] = tick() + ctx.RETRY_DELAY
+            return "backoff"
         end
         return "wait"
     end
@@ -1285,15 +1302,37 @@ function M.setup(ctx)
         if not th or th.Health <= 0 then return false end
         local hp = th.Health
         local uid = target.UserId
+
+        if ctx.retryAt[uid] then
+            if tick() < ctx.retryAt[uid] then return false end
+            ctx.retryAt[uid] = nil
+        end
         if tick() - (ctx.lastHitAt[uid] or 0) < ctx.autoKillCooldown then return false end
-        if not ctx.canFire(uid) then
-            ctx.STATUS = string.format("Rate %.1f/%d", ctx.getRate("Damager", uid), ctx.maxFiresPerSec)
+
+        -- weapon detection: never queue damage without a real gun
+        local info = ctx.gunInfo()
+        if not info then
+            ctx.STATUS = "No gun"
             return false
         end
-        if ctx.checkPending(uid, hp, tc) == "wait" then
+        -- lag detection: in Low HP mode, do not queue damage during a lag spike
+        local ping = ctx.getPing()
+        if ctx.opts.SekaratMode and ping > ctx.MAX_PING then
+            ctx.STATUS = string.format("Lag %dms", math.floor(ping))
+            return false
+        end
+
+        -- one damage packet per enemy in flight; confirm it before sending again
+        local pendingState = ctx.checkPending(uid, hp, tc)
+        if pendingState == "wait" then
             ctx.STATUS = "Wait " .. target.Name
             return false
         end
+        if pendingState == "backoff" then
+            ctx.STATUS = "Retry " .. target.Name
+            return false
+        end
+
         local dmg = ctx.autoKillDamage
         if ctx.opts.SekaratMode then
             if hp <= ctx.minHP then return false end
@@ -1304,15 +1343,12 @@ function M.setup(ctx)
         if dmg < 1 then dmg = 1 end
         local tgt = tc:FindFirstChild("Head") or tc:FindFirstChild("UpperTorso") or tc:FindFirstChild("Torso")
         if not tgt then return false end
-        local info = ctx.gunInfo()
-        if not info then return false end
-        local p = ctx.pending[uid]
-        if p and p.char == tc then
-            p.totalSent = p.totalSent + dmg
-            p.sentAt = tick()
-        else
-            ctx.pending[uid] = { startHP = hp, totalSent = dmg, sentAt = tick(), char = tc }
+        if not ctx.canFire(uid) then
+            ctx.STATUS = string.format("Rate %.1f/%d", ctx.getRate("Damager", uid), ctx.maxFiresPerSec)
+            return false
         end
+
+        ctx.pending[uid] = { startHP = hp, totalSent = dmg, sentAt = tick(), char = tc }
         pcall(function() ctx.BR:FireServer(info.barrel.Position, tgt.Position, info.color, tgt, false) end)
         ctx.recordFire("Bullet", uid)
         pcall(function() ctx.DR:FireServer(info.gunScript, info.barrel.Position, tc, dmg, tgt, "Bullet") end)
@@ -1852,10 +1888,108 @@ function M.setup(ctx)
         l.Parent = parent
     end
 
+    -- shared info popup, created on first use and reused
+    ctx.showInfo = function(title, body)
+        if not ctx.gui then return end
+        local pop = ctx.infoPopup
+        if not pop or not pop.frame.Parent then
+            local pf = Instance.new("Frame")
+            pf.Size = UDim2.new(0, 280, 0, 200)
+            pf.Position = UDim2.new(0.5, -140, 0.5, -100)
+            pf.BackgroundColor3 = Color3.fromRGB(20, 22, 34)
+            pf.BorderSizePixel = 0
+            pf.Active = true
+            pf.ZIndex = 200
+            pf.Parent = ctx.gui
+            Instance.new("UICorner", pf).CornerRadius = UDim.new(0, 8)
+            local stroke = Instance.new("UIStroke")
+            stroke.Color = Color3.fromRGB(0, 220, 160)
+            stroke.Thickness = 1.5
+            stroke.Parent = pf
+            local t = Instance.new("TextLabel")
+            t.Size = UDim2.new(1, -34, 0, 22)
+            t.Position = UDim2.new(0, 8, 0, 6)
+            t.BackgroundTransparency = 1
+            t.TextColor3 = Color3.fromRGB(0, 220, 160)
+            t.TextSize = 12
+            t.Font = Enum.Font.GothamBold
+            t.TextXAlignment = Enum.TextXAlignment.Left
+            t.TextWrapped = true
+            t.ZIndex = 201
+            t.Parent = pf
+            local bl = Instance.new("TextLabel")
+            bl.Size = UDim2.new(1, -16, 1, -58)
+            bl.Position = UDim2.new(0, 8, 0, 32)
+            bl.BackgroundTransparency = 1
+            bl.TextColor3 = Color3.fromRGB(220, 220, 230)
+            bl.TextSize = 10
+            bl.Font = Enum.Font.Gotham
+            bl.TextXAlignment = Enum.TextXAlignment.Left
+            bl.TextYAlignment = Enum.TextYAlignment.Top
+            bl.TextWrapped = true
+            bl.ZIndex = 201
+            bl.Parent = pf
+            local close = Instance.new("TextButton")
+            close.Size = UDim2.new(0, 22, 0, 22)
+            close.Position = UDim2.new(1, -28, 0, 5)
+            close.BackgroundColor3 = Color3.fromRGB(140, 40, 40)
+            close.Text = "X"
+            close.TextColor3 = Color3.new(1, 1, 1)
+            close.TextSize = 11
+            close.Font = Enum.Font.GothamBold
+            close.BorderSizePixel = 0
+            close.AutoButtonColor = false
+            close.ZIndex = 202
+            close.Parent = pf
+            Instance.new("UICorner", close).CornerRadius = UDim.new(0, 4)
+            close.Activated:Connect(function() pf.Visible = false end)
+            pop = { frame = pf, title = t, body = bl }
+            ctx.infoPopup = pop
+        end
+        pop.title.Text = title or "Info"
+        pop.body.Text = body or ""
+        pop.frame.Visible = true
+    end
+
+    ctx.toggleInfo = function(title, body)
+        local pop = ctx.infoPopup
+        if pop and pop.frame.Visible and pop.title.Text == title then
+            pop.frame.Visible = false
+        else
+            ctx.showInfo(title, body)
+        end
+    end
+
+    ctx.newInfoButton = function(title, body)
+        local ib = Instance.new("TextButton")
+        ib.Size = UDim2.new(0, 18, 0, 18)
+        ib.BackgroundColor3 = Color3.fromRGB(50, 75, 115)
+        ib.Text = "i"
+        ib.TextColor3 = Color3.fromRGB(230, 235, 255)
+        ib.TextSize = 12
+        ib.Font = Enum.Font.GothamBold
+        ib.BorderSizePixel = 0
+        ib.AutoButtonColor = false
+        ib.ZIndex = 10
+        Instance.new("UICorner", ib).CornerRadius = UDim.new(1, 0)
+        ib.Activated:Connect(function() ctx.toggleInfo(title, body) end)
+        return ib
+    end
+
     local NEEDS_RELOAD = { NoSpread = true, NoReload = true }
-    ctx.newToggle = function(parent, text, key, onChange)
+    ctx.newToggle = function(parent, text, key, onChange, info)
+        local hasInfo = info ~= nil
+        local host = parent
+        if hasInfo then
+            local row = Instance.new("Frame")
+            row.Size = UDim2.new(1, 0, 0, 28)
+            row.BackgroundTransparency = 1
+            row.LayoutOrder = ctx.nextOrder(parent)
+            row.Parent = parent
+            host = row
+        end
         local b = Instance.new("TextButton")
-        b.Size = UDim2.new(1, 0, 0, 28)
+        b.Size = hasInfo and UDim2.new(1, -22, 1, 0) or UDim2.new(1, 0, 0, 28)
         b.BackgroundColor3 = opts[key] and Color3.fromRGB(0, 160, 120) or Color3.fromRGB(40, 40, 58)
         b.Text = text .. "  [" .. (opts[key] and "ON" or "OFF") .. "]"
         b.TextColor3 = Color3.fromRGB(220, 220, 230)
@@ -1863,9 +1997,14 @@ function M.setup(ctx)
         b.Font = Enum.Font.GothamSemibold
         b.BorderSizePixel = 0
         b.AutoButtonColor = false
-        b.LayoutOrder = ctx.nextOrder(parent)
-        b.Parent = parent
+        b.LayoutOrder = ctx.nextOrder(host)
+        b.Parent = host
         Instance.new("UICorner", b).CornerRadius = UDim.new(0, 4)
+        if hasInfo then
+            local ib = ctx.newInfoButton(text, info)
+            ib.Position = UDim2.new(1, -20, 0, 5)
+            ib.Parent = host
+        end
         b.Activated:Connect(function()
             local was = opts[key]
             opts[key] = not opts[key]
@@ -1875,6 +2014,7 @@ function M.setup(ctx)
             if ctx.MODULES_OK and (key == "NoRecoil" or key == "NoSpread" or key == "NoCooldown" or key == "NoReload" or key == "OneHit") then ctx.apply() end
             if key == "AutoKill" or key == "SekaratMode" then
                 for k in pairs(ctx.pending) do ctx.pending[k] = nil end
+                for k in pairs(ctx.retryAt) do ctx.retryAt[k] = nil end
             end
             if onChange then onChange(opts[key]) end
             if ctx.requestSave then ctx.requestSave() end
@@ -1888,14 +2028,15 @@ __modules['ui_number'] = (function()
 -- purpose: numeric stepper widget
 local M = {}
 function M.setup(ctx)
-    ctx.newNumber = function(parent, label, initial, minV, maxV, stepV, decimals, callback)
+    ctx.newNumber = function(parent, label, initial, minV, maxV, stepV, decimals, callback, info)
+        local hasInfo = info ~= nil
         local row = Instance.new("Frame")
         row.Size = UDim2.new(1, 0, 0, 32)
         row.BackgroundTransparency = 1
         row.LayoutOrder = ctx.nextOrder(parent)
         row.Parent = parent
         local lbl = Instance.new("TextLabel")
-        lbl.Size = UDim2.new(0, 88, 0, 28)
+        lbl.Size = UDim2.new(0, hasInfo and 68 or 88, 0, 28)
         lbl.Position = UDim2.new(0, 0, 0, 2)
         lbl.BackgroundTransparency = 1
         lbl.Text = label
@@ -1905,6 +2046,12 @@ function M.setup(ctx)
         lbl.TextXAlignment = Enum.TextXAlignment.Left
         lbl.TextTruncate = Enum.TextTruncate.AtEnd
         lbl.Parent = row
+        if hasInfo then
+            local ib = ctx.newInfoButton(label, info)
+            ib.Size = UDim2.new(0, 16, 0, 16)
+            ib.Position = UDim2.new(0, 70, 0, 6)
+            ib.Parent = row
+        end
         local minus = Instance.new("TextButton")
         minus.Size = UDim2.new(0, 30, 0, 28)
         minus.Position = UDim2.new(0, 90, 0, 2)
@@ -2000,14 +2147,15 @@ __modules['ui_widgets_extra'] = (function()
 -- purpose: dropdown and action row widgets
 local M = {}
 function M.setup(ctx)
-    ctx.newDropdown = function(parent, label, options, initialVal, callback)
+    ctx.newDropdown = function(parent, label, options, initialVal, callback, info)
+        local hasInfo = info ~= nil
         local row = Instance.new("Frame")
         row.Size = UDim2.new(1, 0, 0, 30)
         row.BackgroundTransparency = 1
         row.LayoutOrder = ctx.nextOrder(parent)
         row.Parent = parent
         local lbl = Instance.new("TextLabel")
-        lbl.Size = UDim2.new(0.42, 0, 1, 0)
+        lbl.Size = UDim2.new(hasInfo and 0.34 or 0.42, 0, 1, 0)
         lbl.BackgroundTransparency = 1
         lbl.Text = label
         lbl.TextColor3 = Color3.fromRGB(200, 200, 215)
@@ -2015,6 +2163,12 @@ function M.setup(ctx)
         lbl.Font = Enum.Font.Gotham
         lbl.TextXAlignment = Enum.TextXAlignment.Left
         lbl.Parent = row
+        if hasInfo then
+            local ib = ctx.newInfoButton(label, info)
+            ib.Size = UDim2.new(0, 16, 0, 16)
+            ib.Position = UDim2.new(0.35, 0, 0, 7)
+            ib.Parent = row
+        end
         local btn = Instance.new("TextButton")
         btn.Size = UDim2.new(0.56, 0, 0, 26)
         btn.Position = UDim2.new(0.44, 0, 0, 2)
@@ -2078,20 +2232,26 @@ local M = {}
 function M.setup(ctx)
     local p = ctx.tabsFrame[ctx.T_COMBAT]
     ctx.newSection(p, "WEAPON MODS")
-    ctx.newToggle(p, "No Recoil", "NoRecoil")
-    ctx.newToggle(p, "No Spread", "NoSpread")
-    ctx.newToggle(p, "No Cooldown", "NoCooldown")
-    ctx.newToggle(p, "No Reload", "NoReload")
-    ctx.newToggle(p, "One Hit Kill", "OneHit")
+    ctx.newToggle(p, "No Recoil", "NoRecoil", nil,
+        "Removes vertical and horizontal recoil from your shots.")
+    ctx.newToggle(p, "No Spread", "NoSpread", nil,
+        "Removes bullet spread so every shot flies straight.")
+    ctx.newToggle(p, "No Cooldown", "NoCooldown", nil,
+        "Removes the delay between shots.")
+    ctx.newToggle(p, "No Reload", "NoReload", nil,
+        "Removes reload time and keeps your magazine full.")
+    ctx.newToggle(p, "One Hit Kill", "OneHit", nil,
+        "Raises weapon damage to a very high value so a single shot kills.")
     ctx.newSection(p, "TANK / VEHICLE")
-    ctx.newToggle(p, "Auto Pull Tank", "PullTanks")
+    ctx.newToggle(p, "Auto Pull Tank", "PullTanks", nil,
+        "Pulls nearby tanks and vehicles toward you on the client.")
     ctx.newNumber(p, "Pull Distance", ctx.pullDistance, 5, 50, 1, 0, function(v)
         ctx.pullDistance = v
         ctx.CONFIG.PullDistance = v
-    end)
+    end, "How far away a tank can be when Auto Pull Tank is ON.")
     ctx.newSection(p, "ACTIONS")
     local b = Instance.new("TextButton")
-    b.Size = UDim2.new(1, 0, 0, 28)
+    b.Size = UDim2.new(1, -22, 0, 28)
     b.BackgroundColor3 = Color3.fromRGB(50, 50, 90)
     b.Text = "Reapply Mods"
     b.TextColor3 = Color3.fromRGB(220, 220, 255)
@@ -2102,6 +2262,10 @@ function M.setup(ctx)
     b.LayoutOrder = ctx.nextOrder(p)
     b.Parent = p
     Instance.new("UICorner", b).CornerRadius = UDim.new(0, 4)
+    local bInfo = ctx.newInfoButton("Reapply Mods",
+        "Re-applies every weapon modification and re-equips your current gun.")
+    bInfo.Position = UDim2.new(1, -20, 0, 5)
+    bInfo.Parent = b
     b.Activated:Connect(function()
         if ctx.MODULES_OK then ctx.apply(); ctx.reequip() end
     end)
@@ -2115,8 +2279,10 @@ local M = {}
 function M.setup(ctx)
     local p = ctx.tabsFrame[ctx.T_AUTOKILL]
     ctx.newSection(p, "AUTO KILL")
-    ctx.newToggle(p, "Auto Kill", "AutoKill")
-    ctx.newToggle(p, "Low HP Mode", "SekaratMode")
+    ctx.newToggle(p, "Auto Kill", "AutoKill", nil,
+        "Attacks enemies in range automatically. It needs a real gun equipped and the TREK remotes to be present.")
+    ctx.newToggle(p, "Low HP Mode", "SekaratMode", nil,
+        "Leaves enemies alive at the Low HP floor instead of killing them. This only works while Auto Kill is ON. Turn it OFF when you want Auto Kill to kill normally.")
     ctx.newSection(p, "TARGET MODE")
     local modeRow = Instance.new("Frame")
     modeRow.Size = UDim2.new(1, 0, 0, 28)
@@ -2124,7 +2290,7 @@ function M.setup(ctx)
     modeRow.LayoutOrder = ctx.nextOrder(p)
     modeRow.Parent = p
     local nBtn = Instance.new("TextButton")
-    nBtn.Size = UDim2.new(0.5, -2, 1, 0)
+    nBtn.Size = UDim2.new(0.45, -2, 1, 0)
     nBtn.BackgroundColor3 = ctx.targetMode == "Nearest" and Color3.fromRGB(0, 160, 120) or Color3.fromRGB(40, 40, 58)
     nBtn.Text = "Nearest"
     nBtn.TextColor3 = Color3.fromRGB(220, 220, 230)
@@ -2135,8 +2301,8 @@ function M.setup(ctx)
     nBtn.Parent = modeRow
     Instance.new("UICorner", nBtn).CornerRadius = UDim.new(0, 4)
     local qBtn = Instance.new("TextButton")
-    qBtn.Size = UDim2.new(0.5, -2, 1, 0)
-    qBtn.Position = UDim2.new(0.5, 2, 0, 0)
+    qBtn.Size = UDim2.new(0.45, -2, 1, 0)
+    qBtn.Position = UDim2.new(0.45, 2, 0, 0)
     qBtn.BackgroundColor3 = ctx.targetMode == "Queue" and Color3.fromRGB(0, 160, 120) or Color3.fromRGB(40, 40, 58)
     qBtn.Text = "Queue"
     qBtn.TextColor3 = Color3.fromRGB(220, 220, 230)
@@ -2146,6 +2312,10 @@ function M.setup(ctx)
     qBtn.AutoButtonColor = false
     qBtn.Parent = modeRow
     Instance.new("UICorner", qBtn).CornerRadius = UDim.new(0, 4)
+    local modeInfo = ctx.newInfoButton("Target Mode",
+        "Nearest picks the closest enemy first. Queue picks enemies by UserId order. Both still sweep every eligible enemy because the cooldown is per enemy.")
+    modeInfo.Position = UDim2.new(1, -20, 0, 5)
+    modeInfo.Parent = modeRow
     nBtn.Activated:Connect(function()
         ctx.targetMode = "Nearest"
         ctx.lockedTarget = nil
@@ -2163,18 +2333,24 @@ function M.setup(ctx)
         if ctx.requestSave then ctx.requestSave() end
     end)
     ctx.newSection(p, "KILL VALUES")
-    ctx.newNumber(p, "Cooldown (s)", ctx.autoKillCooldown, 0, 60, 0.1, 1, function(v) ctx.autoKillCooldown = v end)
-    ctx.newNumber(p, "Damage", ctx.autoKillDamage, 1, 999999, 10, 0, function(v) ctx.autoKillDamage = v end)
-    ctx.newNumber(p, "Low HP", ctx.minHP, 1, 99999, 1, 0, function(v) ctx.minHP = v end)
-    ctx.newNumber(p, "Max fires/s", ctx.maxFiresPerSec, 1, 15, 1, 0, function(v) ctx.maxFiresPerSec = v end)
+    ctx.newNumber(p, "Cooldown (s)", ctx.autoKillCooldown, 0, 60, 0.1, 1, function(v) ctx.autoKillCooldown = v end,
+        "Wait time before the same enemy can be hit again. This is per enemy, not global. 0 means every eligible enemy is hit immediately each tick.")
+    ctx.newNumber(p, "Damage", ctx.autoKillDamage, 1, 999999, 10, 0, function(v) ctx.autoKillDamage = v end,
+        "Damage sent per hit. In Low HP Mode the value is capped so total damage never drops an enemy below the Low HP floor.")
+    ctx.newNumber(p, "Low HP", ctx.minHP, 1, 99999, 1, 0, function(v) ctx.minHP = v end,
+        "HP floor kept in Low HP Mode (minimum 1). Example: 20 leaves every enemy at 20 HP instead of killing them.")
+    ctx.newNumber(p, "Max fires/s", ctx.maxFiresPerSec, 1, 15, 1, 0, function(v) ctx.maxFiresPerSec = v end,
+        "Maximum damage packets sent to one enemy per second. Lower it if the server kicks you for too many remotes.")
     ctx.newSection(p, "ACTIONS")
     ctx.newActionRow(p, "Reset Queue", function()
         ctx.lastTargeted = nil
         ctx.lockedTarget = nil
         for k in pairs(ctx.pending) do ctx.pending[k] = nil end
+        for k in pairs(ctx.retryAt) do ctx.retryAt[k] = nil end
     end, "Clear Blacklist", function()
         for k in pairs(ctx.failCounts) do ctx.failCounts[k] = nil end
         for k in pairs(ctx.blacklist) do ctx.blacklist[k] = nil end
+        for k in pairs(ctx.retryAt) do ctx.retryAt[k] = nil end
     end)
 end
 return M
@@ -2186,15 +2362,23 @@ local M = {}
 function M.setup(ctx)
     local p = ctx.tabsFrame[ctx.T_AIM]
     ctx.newSection(p, "AUTO AIM")
-    ctx.newToggle(p, "Auto Aim", "AutoAim")
-    ctx.newToggle(p, "FOV Circle", "AimFOV")
-    ctx.newDropdown(p, "Strength", { "Smooth", "Medium", "Strong" }, ctx.opts.AimStrength, function(v) ctx.opts.AimStrength = v end)
-    ctx.newDropdown(p, "Priority", { "Nearest", "Lowest HP" }, ctx.opts.AimPriority, function(v) ctx.opts.AimPriority = v end)
-    ctx.newDropdown(p, "Aim Part", { "Head", "Body" }, ctx.opts.AimPart, function(v) ctx.opts.AimPart = v end)
+    ctx.newToggle(p, "Auto Aim", "AutoAim", nil,
+        "Locks your camera toward the best enemy inside the FOV radius.")
+    ctx.newToggle(p, "FOV Circle", "AimFOV", nil,
+        "Draws the aim field-of-view circle on screen.")
+    ctx.newDropdown(p, "Strength", { "Smooth", "Medium", "Strong" }, ctx.opts.AimStrength, function(v) ctx.opts.AimStrength = v end,
+        "How quickly the camera snaps to the target.")
+    ctx.newDropdown(p, "Priority", { "Nearest", "Lowest HP" }, ctx.opts.AimPriority, function(v) ctx.opts.AimPriority = v end,
+        "Chooses which enemy Auto Aim targets first.")
+    ctx.newDropdown(p, "Aim Part", { "Head", "Body" }, ctx.opts.AimPart, function(v) ctx.opts.AimPart = v end,
+        "Body part that Auto Aim points at.")
     ctx.newSection(p, "VALUES")
-    ctx.newNumber(p, "Smoothness", ctx.aimSmoothness, 0.02, 1, 0.02, 2, function(v) ctx.aimSmoothness = v end)
-    ctx.newNumber(p, "FOV Radius", ctx.fovRadius, 20, 1000, 10, 0, function(v) ctx.fovRadius = v end)
-    ctx.newNumber(p, "ESP Distance", ctx.aimEspDistance, 50, 5000, 50, 0, function(v) ctx.aimEspDistance = v end)
+    ctx.newNumber(p, "Smoothness", ctx.aimSmoothness, 0.02, 1, 0.02, 2, function(v) ctx.aimSmoothness = v end,
+        "Lower values snap faster; higher values look smoother.")
+    ctx.newNumber(p, "FOV Radius", ctx.fovRadius, 20, 1000, 10, 0, function(v) ctx.fovRadius = v end,
+        "Size of the aim area in pixels.")
+    ctx.newNumber(p, "ESP Distance", ctx.aimEspDistance, 50, 5000, 50, 0, function(v) ctx.aimEspDistance = v end,
+        "Maximum distance used for aim and ESP checks.")
 end
 return M
 end)()
@@ -2205,12 +2389,17 @@ local M = {}
 function M.setup(ctx)
     local p = ctx.tabsFrame[ctx.T_ESP]
     ctx.newSection(p, "PLAYER ESP")
-    ctx.newToggle(p, "Player ESP", "PlayerESP")
-    ctx.newToggle(p, "Show Names", "ESPShowNames")
-    ctx.newToggle(p, "Show HP", "ESPShowHP")
-    ctx.newToggle(p, "Show Distance", "ESPShowDist")
+    ctx.newToggle(p, "Player ESP", "PlayerESP", nil,
+        "Draws a box around enemy players through walls. The options below choose what the box shows.")
+    ctx.newToggle(p, "Show Names", "ESPShowNames", nil,
+        "Shows the enemy player's name on the ESP box.")
+    ctx.newToggle(p, "Show HP", "ESPShowHP", nil,
+        "Shows the enemy's current HP on the ESP box.")
+    ctx.newToggle(p, "Show Distance", "ESPShowDist", nil,
+        "Shows how far the enemy is from you on the ESP box.")
     ctx.newSection(p, "ARMOR / VEHICLE ESP")
-    ctx.newToggle(p, "Tank/Armor ESP", "ArmorESP")
+    ctx.newToggle(p, "Tank/Armor ESP", "ArmorESP", nil,
+        "Highlights tanks and armored vehicles and shows their armor status.")
 end
 return M
 end)()
@@ -2252,14 +2441,18 @@ function M.setup(ctx)
         if v then ctx.medicSaveLocation() end
         ctx.medicState = "IDLE"
         ctx.medicQueue = {}
-    end)
+    end, "Automatically heals nearby teammates when their HP is below the threshold.")
     ctx.newSection(p, "SETTINGS")
-    ctx.newNumber(p, "HP Threshold %", ctx.medicHPThreshold, 5, 95, 5, 0, function(v) ctx.medicHPThreshold = v end)
-    ctx.newNumber(p, "Below Studs", ctx.medicBelowStuds, 2, 50, 1, 0, function(v) ctx.medicBelowStuds = v end)
-    ctx.newNumber(p, "Teleport Wait", ctx.medicTeleportWait, 0.1, 5, 0.1, 1, function(v) ctx.medicTeleportWait = v end)
-    ctx.newDropdown(p, "Position", { "Below", "Front" }, ctx.medicPositionMode, function(v) ctx.medicPositionMode = v end)
+    ctx.newNumber(p, "HP Threshold %", ctx.medicHPThreshold, 5, 95, 5, 0, function(v) ctx.medicHPThreshold = v end,
+        "Only heal teammates whose HP is below this percentage.")
+    ctx.newNumber(p, "Below Studs", ctx.medicBelowStuds, 2, 50, 1, 0, function(v) ctx.medicBelowStuds = v end,
+        "Vertical offset used when teleporting to a patient.")
+    ctx.newNumber(p, "Teleport Wait", ctx.medicTeleportWait, 0.1, 5, 0.1, 1, function(v) ctx.medicTeleportWait = v end,
+        "Delay between teleport steps so the movement looks human.")
+    ctx.newDropdown(p, "Position", { "Below", "Front" }, ctx.medicPositionMode, function(v) ctx.medicPositionMode = v end,
+        "Where to stand when healing: below or in front of the patient.")
     local humBtn = Instance.new("TextButton")
-    humBtn.Size = UDim2.new(1, 0, 0, 28)
+    humBtn.Size = UDim2.new(1, -22, 0, 28)
     humBtn.BackgroundColor3 = ctx.medicHumanize and Color3.fromRGB(0, 160, 120) or Color3.fromRGB(40, 40, 58)
     humBtn.Text = "Humanize  [" .. (ctx.medicHumanize and "ON" or "OFF") .. "]"
     humBtn.TextColor3 = Color3.fromRGB(220, 220, 230)
@@ -2270,6 +2463,10 @@ function M.setup(ctx)
     humBtn.LayoutOrder = ctx.nextOrder(p)
     humBtn.Parent = p
     Instance.new("UICorner", humBtn).CornerRadius = UDim.new(0, 4)
+    local humInfo = ctx.newInfoButton("Humanize",
+        "Adds small random movement while healing so the teleport looks more human.")
+    humInfo.Position = UDim2.new(1, -20, 0, 5)
+    humInfo.Parent = humBtn
     humBtn.Activated:Connect(function()
         ctx.medicHumanize = not ctx.medicHumanize
         humBtn.BackgroundColor3 = ctx.medicHumanize and Color3.fromRGB(0, 160, 120) or Color3.fromRGB(40, 40, 58)
@@ -2287,7 +2484,7 @@ function M.setup(ctx)
     local p = ctx.tabsFrame[ctx.T_DISPLAY]
     ctx.newSection(p, "PANELS")
     local lbBtn = Instance.new("TextButton")
-    lbBtn.Size = UDim2.new(1, 0, 0, 28)
+    lbBtn.Size = UDim2.new(1, -22, 0, 28)
     lbBtn.BackgroundColor3 = ctx.lbGui.Enabled and Color3.fromRGB(180, 140, 20) or Color3.fromRGB(40, 40, 58)
     lbBtn.Text = "Leaderboard  [" .. (ctx.lbGui.Enabled and "ON" or "OFF") .. "]"
     lbBtn.TextColor3 = Color3.fromRGB(255, 220, 120)
@@ -2298,6 +2495,10 @@ function M.setup(ctx)
     lbBtn.LayoutOrder = ctx.nextOrder(p)
     lbBtn.Parent = p
     Instance.new("UICorner", lbBtn).CornerRadius = UDim.new(0, 4)
+    local lbInfo = ctx.newInfoButton("Leaderboard",
+        "Shows or hides the in-game leaderboard panel.")
+    lbInfo.Position = UDim2.new(1, -20, 0, 5)
+    lbInfo.Parent = lbBtn
     lbBtn.Activated:Connect(function()
         ctx.lbGui.Enabled = not ctx.lbGui.Enabled
         lbBtn.BackgroundColor3 = ctx.lbGui.Enabled and Color3.fromRGB(180, 140, 20) or Color3.fromRGB(40, 40, 58)
@@ -2306,7 +2507,7 @@ function M.setup(ctx)
     end)
     ctx.newSection(p, "TOOLS")
     local copyBtn = Instance.new("TextButton")
-    copyBtn.Size = UDim2.new(1, 0, 0, 28)
+    copyBtn.Size = UDim2.new(1, -22, 0, 28)
     copyBtn.BackgroundColor3 = Color3.fromRGB(80, 60, 20)
     copyBtn.Text = "Copy Error Log"
     copyBtn.TextColor3 = Color3.fromRGB(255, 230, 150)
@@ -2317,6 +2518,10 @@ function M.setup(ctx)
     copyBtn.LayoutOrder = ctx.nextOrder(p)
     copyBtn.Parent = p
     Instance.new("UICorner", copyBtn).CornerRadius = UDim.new(0, 4)
+    local copyInfo = ctx.newInfoButton("Copy Error Log",
+        "Copies the script log to your clipboard so you can report a bug.")
+    copyInfo.Position = UDim2.new(1, -20, 0, 5)
+    copyInfo.Parent = copyBtn
     copyBtn.Activated:Connect(function()
         local o = ctx.saveLogToClipboard()
         copyBtn.Text = o and "Copied!" or "Copy Failed"
@@ -2472,6 +2677,7 @@ function M.setup(ctx)
         ctx.lastHitAt[uid] = nil
         ctx.hpSamples[uid] = nil
         ctx.healUntil[uid] = nil
+        ctx.retryAt[uid] = nil
     end)
 
     task.spawn(function()

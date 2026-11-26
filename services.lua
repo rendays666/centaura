@@ -36,6 +36,18 @@ function M.setup(ctx)
     ctx.DR = ctx.TR and ctx.TR:FindFirstChild("DamagerRemote")
     ctx.MODULES_OK = (ctx.BR and ctx.DR) and true or false
 
+    ctx.pingCache = { value = 0, at = 0 }
+    ctx.getPing = function()
+        local now = tick()
+        if now - ctx.pingCache.at < 0.5 then return ctx.pingCache.value end
+        local ok, value = pcall(function()
+            return game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValue()
+        end)
+        value = (ok and type(value) == "number") and value or 0
+        ctx.pingCache = { value = value, at = now }
+        return value
+    end
+
     ctx.isEnemy = function(plr)
         if plr == ctx.LP then return false end
         if plr.Team and ctx.LP.Team and plr.Team == ctx.LP.Team then return false end

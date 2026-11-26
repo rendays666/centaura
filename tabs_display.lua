@@ -4,7 +4,7 @@ function M.setup(ctx)
     local p = ctx.tabsFrame[ctx.T_DISPLAY]
     ctx.newSection(p, "PANELS")
     local lbBtn = Instance.new("TextButton")
-    lbBtn.Size = UDim2.new(1, 0, 0, 28)
+    lbBtn.Size = UDim2.new(1, -22, 0, 28)
     lbBtn.BackgroundColor3 = ctx.lbGui.Enabled and Color3.fromRGB(180, 140, 20) or Color3.fromRGB(40, 40, 58)
     lbBtn.Text = "Leaderboard  [" .. (ctx.lbGui.Enabled and "ON" or "OFF") .. "]"
     lbBtn.TextColor3 = Color3.fromRGB(255, 220, 120)
@@ -15,6 +15,10 @@ function M.setup(ctx)
     lbBtn.LayoutOrder = ctx.nextOrder(p)
     lbBtn.Parent = p
     Instance.new("UICorner", lbBtn).CornerRadius = UDim.new(0, 4)
+    local lbInfo = ctx.newInfoButton("Leaderboard",
+        "Shows or hides the in-game leaderboard panel.")
+    lbInfo.Position = UDim2.new(1, -20, 0, 5)
+    lbInfo.Parent = lbBtn
     lbBtn.Activated:Connect(function()
         ctx.lbGui.Enabled = not ctx.lbGui.Enabled
         lbBtn.BackgroundColor3 = ctx.lbGui.Enabled and Color3.fromRGB(180, 140, 20) or Color3.fromRGB(40, 40, 58)
@@ -23,7 +27,7 @@ function M.setup(ctx)
     end)
     ctx.newSection(p, "TOOLS")
     local copyBtn = Instance.new("TextButton")
-    copyBtn.Size = UDim2.new(1, 0, 0, 28)
+    copyBtn.Size = UDim2.new(1, -22, 0, 28)
     copyBtn.BackgroundColor3 = Color3.fromRGB(80, 60, 20)
     copyBtn.Text = "Copy Error Log"
     copyBtn.TextColor3 = Color3.fromRGB(255, 230, 150)
@@ -34,6 +38,10 @@ function M.setup(ctx)
     copyBtn.LayoutOrder = ctx.nextOrder(p)
     copyBtn.Parent = p
     Instance.new("UICorner", copyBtn).CornerRadius = UDim.new(0, 4)
+    local copyInfo = ctx.newInfoButton("Copy Error Log",
+        "Copies the script log to your clipboard so you can report a bug.")
+    copyInfo.Position = UDim2.new(1, -20, 0, 5)
+    copyInfo.Parent = copyBtn
     copyBtn.Activated:Connect(function()
         local o = ctx.saveLogToClipboard()
         copyBtn.Text = o and "Copied!" or "Copy Failed"
