@@ -31,16 +31,40 @@ function M.setup(ctx)
         end
     end
 
+    -- skip enemies whose HP went up so active healers are not damage-focused
+    ctx.sampleHP = function(plr)
+        local c = plr.Character
+        local h = c and c:FindFirstChildOfClass("Humanoid")
+        if not h then return end
+        local uid = plr.UserId
+        local s = ctx.hpSamples[uid]
+        if s and s.char == c and h.Health > s.hp + 0.1 then
+            ctx.healUntil[uid] = tick() + ctx.HEAL_SKIP
+            ctx.pending[uid] = nil
+        end
+        ctx.hpSamples[uid] = { char = c, hp = h.Health }
+    end
+
+    ctx.isHealing = function(uid)
+        local t = ctx.healUntil[uid]
+        if t and tick() < t then return true end
+        if t then ctx.healUntil[uid] = nil end
+        return false
+    end
+
     ctx.scanEnemies = function()
         local list = {}
         for _, p in ipairs(Players:GetPlayers()) do
-            if ctx.isEnemy(p) and not ctx.isBL(p.UserId) then
-                if not ctx.inLobby(p) then
-                    local c = p.Character
-                    local h = c and c:FindFirstChildOfClass("Humanoid")
-                    if h and h.Health > 0 then
-                        if not (ctx.opts.SekaratMode and h.Health <= ctx.minHP) then
-                            list[#list + 1] = p
+            if ctx.isEnemy(p) then
+                ctx.sampleHP(p)
+                if not ctx.isHealing(p.UserId) and not ctx.isBL(p.UserId) then
+                    if not ctx.inLobby(p) then
+                        local c = p.Character
+                        local h = c and c:FindFirstChildOfClass("Humanoid")
+                        if h and h.Health > 0 then
+                            if not (ctx.opts.SekaratMode and h.Health <= ctx.minHP) then
+                                list[#list + 1] = p
+                            end
                         end
                     end
                 end
@@ -76,12 +100,32 @@ function M.setup(ctx)
         return es[1]
     end
 
+    -- ordered list of all eligible enemies, used to sweep every target
+    ctx.getTargetList = function()
+        local es = ctx.scanEnemies()
+        if ctx.targetMode == "Queue" then
+            table.sort(es, function(a, b) return a.UserId < b.UserId end)
+        else
+            local hrp = (LP.Character and LP.Character:FindFirstChild("HumanoidRootPart"))
+            if hrp then
+                local my = hrp.Position
+                local function dist(p)
+                    local e = p.Character and p.Character:FindFirstChild("HumanoidRootPart")
+                    return e and (e.Position - my).Magnitude or math.huge
+                end
+                table.sort(es, function(a, b) return dist(a) < dist(b) end)
+            end
+        end
+        return es
+    end
+
     ctx.getTarget = function()
         if ctx.targetMode == "Nearest" then return ctx.nearestTarget() end
         if ctx.lockedTarget then
             local c = ctx.lockedTarget.Character
             local h = c and c:FindFirstChildOfClass("Humanoid")
             if h and h.Health > 0 and not ctx.isBL(ctx.lockedTarget.UserId)
+               and not ctx.isHealing(ctx.lockedTarget.UserId)
                and not (ctx.opts.SekaratMode and h.Health <= ctx.minHP)
                and not ctx.inLobby(ctx.lockedTarget) then
                 return ctx.lockedTarget

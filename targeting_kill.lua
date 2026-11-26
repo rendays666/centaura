@@ -50,8 +50,9 @@ function M.setup(ctx)
         if not th or th.Health <= 0 then return false end
         local hp = th.Health
         local uid = target.UserId
-        if not ctx.canFire() then
-            ctx.STATUS = string.format("Rate %.1f/%d", ctx.getRate("Damager"), ctx.maxFiresPerSec)
+        if tick() - (ctx.lastHitAt[uid] or 0) < ctx.autoKillCooldown then return false end
+        if not ctx.canFire(uid) then
+            ctx.STATUS = string.format("Rate %.1f/%d", ctx.getRate("Damager", uid), ctx.maxFiresPerSec)
             return false
         end
         if ctx.checkPending(uid, hp, tc) == "wait" then
@@ -78,9 +79,10 @@ function M.setup(ctx)
             ctx.pending[uid] = { startHP = hp, totalSent = dmg, sentAt = tick(), char = tc }
         end
         pcall(function() ctx.BR:FireServer(info.barrel.Position, tgt.Position, info.color, tgt, false) end)
-        ctx.recordFire("Bullet")
+        ctx.recordFire("Bullet", uid)
         pcall(function() ctx.DR:FireServer(info.gunScript, info.barrel.Position, tc, dmg, tgt, "Bullet") end)
-        ctx.recordFire("Damager")
+        ctx.recordFire("Damager", uid)
+        ctx.lastHitAt[uid] = tick()
         ctx.STATUS = string.format("%.0f→%s", dmg, target.Name)
         return true
     end

@@ -4,18 +4,21 @@ function M.setup(ctx)
     ctx.lastTargeted = nil
     ctx.lockedTarget = nil
     ctx.currentTarget = nil
-    ctx.lastKill = 0
     ctx.originals = {}
     ctx.pending = {}
     ctx.failCounts = {}
     ctx.blacklist = {}
+    ctx.lastHitAt = {}
+    ctx.hpSamples = {}
+    ctx.healUntil = {}
     ctx.INSTANT_FIRERATE = 100000
     ctx.PENDING_TIMEOUT = 4.0
     ctx.FAIL_THRESHOLD = 3
     ctx.BLACKLIST_DURATION = 30
+    ctx.HEAL_SKIP = 10
     ctx.STATUS = "Idle"
 
-    ctx.fireTimes = { Bullet = {}, Damager = {} }
+    ctx.fireTimes = {}
 
     ctx.armorCache = {}
     ctx.armorLastScan = 0

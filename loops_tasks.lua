@@ -48,6 +48,11 @@ function M.setup(ctx)
             if ctx.medicQueue[i] == plr then table.remove(ctx.medicQueue, i) end
         end
         if ctx.medicCurrentPatient == plr then ctx.medicCurrentPatient = nil end
+        local uid = plr.UserId
+        ctx.fireTimes[uid] = nil
+        ctx.lastHitAt[uid] = nil
+        ctx.hpSamples[uid] = nil
+        ctx.healUntil[uid] = nil
     end)
 
     task.spawn(function()

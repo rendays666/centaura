@@ -4,22 +4,22 @@ function M.setup(ctx)
     local Run = ctx.Run
 
     Run.Heartbeat:Connect(function()
-        if ctx.MODULES_OK then
-            pcall(function()
-                if ctx.opts.AutoKill then ctx.currentTarget = ctx.getTarget() else ctx.currentTarget = nil end
-            end)
-        end
         if ctx.MODULES_OK and ctx.opts.AutoKill then
-            local rem = ctx.autoKillCooldown - (tick() - ctx.lastKill)
-            if rem <= 0 then
-                pcall(function()
-                    if ctx.doKill(ctx.currentTarget) then ctx.lastKill = tick()
-                    elseif not ctx.currentTarget then ctx.STATUS = "No target" end
-                end)
-            else
-                ctx.STATUS = string.format("CD %.2fs", rem)
-            end
+            pcall(function()
+                local list = ctx.getTargetList()
+                if #list == 0 then
+                    ctx.currentTarget = nil
+                    ctx.STATUS = "No target"
+                else
+                    ctx.currentTarget = list[1]
+                    -- per-player cooldown: sweep every eligible enemy, not one per tick
+                    for _, t in ipairs(list) do
+                        if ctx.doKill(t) then ctx.currentTarget = t end
+                    end
+                end
+            end)
         else
+            ctx.currentTarget = nil
             for k in pairs(ctx.pending) do ctx.pending[k] = nil end
         end
 

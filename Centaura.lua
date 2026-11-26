@@ -190,18 +190,21 @@ function M.setup(ctx)
     ctx.lastTargeted = nil
     ctx.lockedTarget = nil
     ctx.currentTarget = nil
-    ctx.lastKill = 0
     ctx.originals = {}
     ctx.pending = {}
     ctx.failCounts = {}
     ctx.blacklist = {}
+    ctx.lastHitAt = {}
+    ctx.hpSamples = {}
+    ctx.healUntil = {}
     ctx.INSTANT_FIRERATE = 100000
     ctx.PENDING_TIMEOUT = 4.0
     ctx.FAIL_THRESHOLD = 3
     ctx.BLACKLIST_DURATION = 30
+    ctx.HEAL_SKIP = 10
     ctx.STATUS = "Idle"
 
-    ctx.fireTimes = { Bullet = {}, Damager = {} }
+    ctx.fireTimes = {}
 
     ctx.armorCache = {}
     ctx.armorLastScan = 0
@@ -327,22 +330,32 @@ return M
 end)()
 
 __modules['rate'] = (function()
--- purpose: fire-rate tracking and gating for remotes
+-- purpose: per-player fire-rate tracking and gating for remotes
 local M = {}
 function M.setup(ctx)
-    ctx.getRate = function(r)
-        local t = ctx.fireTimes[r]
-        if not t then return 0 end
-        local n = 0
+    ctx.getRate = function(r, uid)
         local now = tick()
-        for _, v in ipairs(t) do
-            if now - v <= 1 then n = n + 1 end
+        local function count(t)
+            local n = 0
+            if not t then return n end
+            for _, v in ipairs(t) do
+                if now - v <= 1 then n = n + 1 end
+            end
+            return n
         end
+        if uid ~= nil then
+            local u = ctx.fireTimes[uid]
+            return u and count(u[r]) or 0
+        end
+        local n = 0
+        for _, u in pairs(ctx.fireTimes) do n = n + count(u[r]) end
         return n
     end
-    ctx.recordFire = function(r)
-        local t = ctx.fireTimes[r]
-        if not t then t = {}; ctx.fireTimes[r] = t end
+    ctx.recordFire = function(r, uid)
+        local u = ctx.fireTimes[uid]
+        if not u then u = { Bullet = {}, Damager = {} }; ctx.fireTimes[uid] = u end
+        local t = u[r]
+        if not t then t = {}; u[r] = t end
         table.insert(t, tick())
         local now = tick()
         local i = 1
@@ -350,8 +363,8 @@ function M.setup(ctx)
             if now - t[i] > 2 then table.remove(t, i) else i = i + 1 end
         end
     end
-    ctx.canFire = function()
-        return ctx.getRate("Bullet") < ctx.maxFiresPerSec and ctx.getRate("Damager") < ctx.maxFiresPerSec
+    ctx.canFire = function(uid)
+        return ctx.getRate("Bullet", uid) < ctx.maxFiresPerSec and ctx.getRate("Damager", uid) < ctx.maxFiresPerSec
     end
 end
 return M
@@ -1109,16 +1122,40 @@ function M.setup(ctx)
         end
     end
 
+    -- skip enemies whose HP went up so active healers are not damage-focused
+    ctx.sampleHP = function(plr)
+        local c = plr.Character
+        local h = c and c:FindFirstChildOfClass("Humanoid")
+        if not h then return end
+        local uid = plr.UserId
+        local s = ctx.hpSamples[uid]
+        if s and s.char == c and h.Health > s.hp + 0.1 then
+            ctx.healUntil[uid] = tick() + ctx.HEAL_SKIP
+            ctx.pending[uid] = nil
+        end
+        ctx.hpSamples[uid] = { char = c, hp = h.Health }
+    end
+
+    ctx.isHealing = function(uid)
+        local t = ctx.healUntil[uid]
+        if t and tick() < t then return true end
+        if t then ctx.healUntil[uid] = nil end
+        return false
+    end
+
     ctx.scanEnemies = function()
         local list = {}
         for _, p in ipairs(Players:GetPlayers()) do
-            if ctx.isEnemy(p) and not ctx.isBL(p.UserId) then
-                if not ctx.inLobby(p) then
-                    local c = p.Character
-                    local h = c and c:FindFirstChildOfClass("Humanoid")
-                    if h and h.Health > 0 then
-                        if not (ctx.opts.SekaratMode and h.Health <= ctx.minHP) then
-                            list[#list + 1] = p
+            if ctx.isEnemy(p) then
+                ctx.sampleHP(p)
+                if not ctx.isHealing(p.UserId) and not ctx.isBL(p.UserId) then
+                    if not ctx.inLobby(p) then
+                        local c = p.Character
+                        local h = c and c:FindFirstChildOfClass("Humanoid")
+                        if h and h.Health > 0 then
+                            if not (ctx.opts.SekaratMode and h.Health <= ctx.minHP) then
+                                list[#list + 1] = p
+                            end
                         end
                     end
                 end
@@ -1154,12 +1191,32 @@ function M.setup(ctx)
         return es[1]
     end
 
+    -- ordered list of all eligible enemies, used to sweep every target
+    ctx.getTargetList = function()
+        local es = ctx.scanEnemies()
+        if ctx.targetMode == "Queue" then
+            table.sort(es, function(a, b) return a.UserId < b.UserId end)
+        else
+            local hrp = (LP.Character and LP.Character:FindFirstChild("HumanoidRootPart"))
+            if hrp then
+                local my = hrp.Position
+                local function dist(p)
+                    local e = p.Character and p.Character:FindFirstChild("HumanoidRootPart")
+                    return e and (e.Position - my).Magnitude or math.huge
+                end
+                table.sort(es, function(a, b) return dist(a) < dist(b) end)
+            end
+        end
+        return es
+    end
+
     ctx.getTarget = function()
         if ctx.targetMode == "Nearest" then return ctx.nearestTarget() end
         if ctx.lockedTarget then
             local c = ctx.lockedTarget.Character
             local h = c and c:FindFirstChildOfClass("Humanoid")
             if h and h.Health > 0 and not ctx.isBL(ctx.lockedTarget.UserId)
+               and not ctx.isHealing(ctx.lockedTarget.UserId)
                and not (ctx.opts.SekaratMode and h.Health <= ctx.minHP)
                and not ctx.inLobby(ctx.lockedTarget) then
                 return ctx.lockedTarget
@@ -1228,8 +1285,9 @@ function M.setup(ctx)
         if not th or th.Health <= 0 then return false end
         local hp = th.Health
         local uid = target.UserId
-        if not ctx.canFire() then
-            ctx.STATUS = string.format("Rate %.1f/%d", ctx.getRate("Damager"), ctx.maxFiresPerSec)
+        if tick() - (ctx.lastHitAt[uid] or 0) < ctx.autoKillCooldown then return false end
+        if not ctx.canFire(uid) then
+            ctx.STATUS = string.format("Rate %.1f/%d", ctx.getRate("Damager", uid), ctx.maxFiresPerSec)
             return false
         end
         if ctx.checkPending(uid, hp, tc) == "wait" then
@@ -1256,9 +1314,10 @@ function M.setup(ctx)
             ctx.pending[uid] = { startHP = hp, totalSent = dmg, sentAt = tick(), char = tc }
         end
         pcall(function() ctx.BR:FireServer(info.barrel.Position, tgt.Position, info.color, tgt, false) end)
-        ctx.recordFire("Bullet")
+        ctx.recordFire("Bullet", uid)
         pcall(function() ctx.DR:FireServer(info.gunScript, info.barrel.Position, tc, dmg, tgt, "Bullet") end)
-        ctx.recordFire("Damager")
+        ctx.recordFire("Damager", uid)
+        ctx.lastHitAt[uid] = tick()
         ctx.STATUS = string.format("%.0f→%s", dmg, target.Name)
         return true
     end
@@ -2057,7 +2116,7 @@ function M.setup(ctx)
     local p = ctx.tabsFrame[ctx.T_AUTOKILL]
     ctx.newSection(p, "AUTO KILL")
     ctx.newToggle(p, "Auto Kill", "AutoKill")
-    ctx.newToggle(p, "Sekarat Mode", "SekaratMode")
+    ctx.newToggle(p, "Low HP Mode", "SekaratMode")
     ctx.newSection(p, "TARGET MODE")
     local modeRow = Instance.new("Frame")
     modeRow.Size = UDim2.new(1, 0, 0, 28)
@@ -2104,9 +2163,9 @@ function M.setup(ctx)
         if ctx.requestSave then ctx.requestSave() end
     end)
     ctx.newSection(p, "KILL VALUES")
-    ctx.newNumber(p, "Cooldown (s)", ctx.autoKillCooldown, 0.15, 60, 0.1, 1, function(v) ctx.autoKillCooldown = v end)
+    ctx.newNumber(p, "Cooldown (s)", ctx.autoKillCooldown, 0, 60, 0.1, 1, function(v) ctx.autoKillCooldown = v end)
     ctx.newNumber(p, "Damage", ctx.autoKillDamage, 1, 999999, 10, 0, function(v) ctx.autoKillDamage = v end)
-    ctx.newNumber(p, "Sekarat HP", ctx.minHP, 1, 99999, 5, 0, function(v) ctx.minHP = v end)
+    ctx.newNumber(p, "Low HP", ctx.minHP, 1, 99999, 1, 0, function(v) ctx.minHP = v end)
     ctx.newNumber(p, "Max fires/s", ctx.maxFiresPerSec, 1, 15, 1, 0, function(v) ctx.maxFiresPerSec = v end)
     ctx.newSection(p, "ACTIONS")
     ctx.newActionRow(p, "Reset Queue", function()
@@ -2332,22 +2391,22 @@ function M.setup(ctx)
     local Run = ctx.Run
 
     Run.Heartbeat:Connect(function()
-        if ctx.MODULES_OK then
-            pcall(function()
-                if ctx.opts.AutoKill then ctx.currentTarget = ctx.getTarget() else ctx.currentTarget = nil end
-            end)
-        end
         if ctx.MODULES_OK and ctx.opts.AutoKill then
-            local rem = ctx.autoKillCooldown - (tick() - ctx.lastKill)
-            if rem <= 0 then
-                pcall(function()
-                    if ctx.doKill(ctx.currentTarget) then ctx.lastKill = tick()
-                    elseif not ctx.currentTarget then ctx.STATUS = "No target" end
-                end)
-            else
-                ctx.STATUS = string.format("CD %.2fs", rem)
-            end
+            pcall(function()
+                local list = ctx.getTargetList()
+                if #list == 0 then
+                    ctx.currentTarget = nil
+                    ctx.STATUS = "No target"
+                else
+                    ctx.currentTarget = list[1]
+                    -- per-player cooldown: sweep every eligible enemy, not one per tick
+                    for _, t in ipairs(list) do
+                        if ctx.doKill(t) then ctx.currentTarget = t end
+                    end
+                end
+            end)
         else
+            ctx.currentTarget = nil
             for k in pairs(ctx.pending) do ctx.pending[k] = nil end
         end
 
@@ -2408,6 +2467,11 @@ function M.setup(ctx)
             if ctx.medicQueue[i] == plr then table.remove(ctx.medicQueue, i) end
         end
         if ctx.medicCurrentPatient == plr then ctx.medicCurrentPatient = nil end
+        local uid = plr.UserId
+        ctx.fireTimes[uid] = nil
+        ctx.lastHitAt[uid] = nil
+        ctx.hpSamples[uid] = nil
+        ctx.healUntil[uid] = nil
     end)
 
     task.spawn(function()
